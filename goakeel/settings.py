@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'goakeel.wsgi.application'
+WSGI_APPLICATION = 'goakeel.wsgi.app'
 
 
 # Database
