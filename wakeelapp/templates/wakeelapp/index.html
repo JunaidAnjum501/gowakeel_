@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -90,7 +89,7 @@
               >Home</a
             >
             <a
-              href="{% url 'wakeelapp:about' %}"
+              href="{% url 'wakeelapp:usaservice' %}"
               class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
               >About</a
             >
@@ -254,20 +253,20 @@
                 </div>
               </div> -->
             </div>
-          </div>
-          <!-- Buttons -->
-          <div class="flex space-x-4">
-            <a
-              href="#"
-              class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white  hover:bg-[#003366]"
-              >Join Us</a
-            >
-            <a
-              href="#"
-              class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white"
+            <!-- Buttons -->
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white  hover:bg-[#003366]"
+                >Join Us</a
               >
-              <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="" class="w-5 h-5 mr-2"> Whatsapp</a
-            >
+              <a
+                href="#"
+                class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white"
+                >
+                <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="" class="w-5 h-5 mr-2"> Whatsapp</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -323,7 +322,7 @@
           Our Services
         </h1>
         <div
-          class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          class="mt-8 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           <!-- Service Cards -->
           {% for service in services %}
@@ -365,7 +364,7 @@
           Our Partners 
         </h1>
 
-        <div class="grid grid-cols-4 gap-8 mt-8 ">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 ">
           <div class="flex justify-center items-center">
             <img
               src="https://media.licdn.com/dms/image/v2/D4D0BAQEVcc1cR5BbOw/company-logo_200_200/company-logo_200_200/0/1699539306029?e=2147483647&v=beta&t=L4kKmcaVDDK4Yd-Uwi05ySL39Ji8VryiyN_-ugnsHuo"

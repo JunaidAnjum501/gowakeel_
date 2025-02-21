@@ -15,5 +15,6 @@ urlpatterns =[
     path("service/<str:service_name>/", views.service_detail, name="service_detail"),
     path('blogs/', views.blogs, name="blogs"),
     path('video/', views.video, name="video"),
-     path('about/', views.about, name="about"),
+    path('about/', views.about, name="about"),
+    path('usaservice/', views.usaservice, name="usaservice"),
 ]

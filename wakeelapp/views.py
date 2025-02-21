@@ -48,6 +48,9 @@ def video(request):
 def about(request):
     return render(request, 'wakeelapp/about.html')
 
+def usaservice(request):
+    return render(request, 'wakeelapp/usaservices.html')
+
 from django.shortcuts import render
 
 def service_detail(request, service_name):
