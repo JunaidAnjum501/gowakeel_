@@ -1,0 +1,910 @@
+{% extends "wakeelapp/index.html" %} {% load static %} {% block Content %}
+    <style>
+      .active-tab {
+        background-color: #003366;
+        color: white;
+      }
+    </style>
+
+    <div class="w-container max-w-7xl mx-auto p-4 flex flex-col gap-4">
+      <!-- Left Side: Services -->
+      <div class="lg:w-3/4">
+        <h1 class="text-3xl font-bold mb-4"><a href="./blog.html">Our Business Services</a></h1>
+        <p class="text-gray-600 mb-4">
+          Registering a business can be stressful. Get expert assistance today!
+        </p>
+
+        <!-- Search Bar -->
+        <input
+          type="text"
+          id="searchBar"
+          placeholder="Search services..."
+          class="w-1/2 p-2 mb-4 border-2 rounded"
+        />
+
+        <!-- Tabs -->
+        <div class="mb-4 flex flex-wrap gap-2">
+          <button
+            onclick="filterCards('All', this)"
+            class="tab-button active-tab px-4 py-2 rounded"
+          >
+            All
+          </button>
+          <button
+            onclick="filterCards('Income Tax Return', this)"
+            class="tab-button bg-gray-200 px-4 py-2 rounded"
+          >
+            Income Tax
+          </button>
+          <button
+            onclick="filterCards('Sales Tax Registration', this)"
+            class="tab-button bg-gray-200 px-4 py-2 rounded"
+          >
+            Sales Tax
+          </button>
+          <button
+            onclick="filterCards('Company’s Registration', this)"
+            class="tab-button bg-gray-200 px-4 py-2 rounded"
+          >
+            Company Registration
+          </button>
+          <button
+            onclick="filterCards('Intellectual Property', this)"
+            class="tab-button bg-gray-200 px-4 py-2 rounded"
+          >
+            Intellectual Property
+          </button>
+          <button
+            onclick="filterCards('USA LLC & Tax Filing', this)"
+            class="tab-button bg-gray-200 px-4 py-2 rounded"
+          >
+            USA LLC
+          </button>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 md:flex-row">
+        <!-- Cards Section -->
+        <div
+          id="card-container"
+          class="md:w-3/4 h-fit grid grid-cols-1 md:grid-cols-1 gap-4"
+        ></div>
+        <!-- Right Side: Fixed Cards -->
+        <div class="md:w-1/4 space-y-4 sticky top-5 self-start">
+          <div class="bg-white pt-4 rounded-lg shadow">
+            <h2 class="text-xl font-bold bg-[#003366] text-white pl-4">
+              TOP PICKS
+            </h2>
+            <div class="flex flex-col items-center mt-4 gap-2">
+              <div
+                class="bg-gray-100 w-20 h-20 flex justify-center items-center rounded-full"
+              >
+                <img class="w-12 h-12" src="./img/liberty.png" />
+              </div>
+              <p class="mt-2">USA LLC</p>
+              <ul class="text-blue-500 w-full text-center mt-2">
+                <li class="p-2 border-y border-gray-400 hover:bg-gray-200">
+                  <a href="#">Company Formation</a>
+                </li>
+                <li class="p-2 border-y border-gray-400 hover:bg-gray-200">
+                  <a href="#">USA Bank Account</a>
+                </li>
+                <li class="p-2 border-y border-gray-400 hover:bg-gray-200">
+                  <a href="#">Tax Filing</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="bg-white pt-4 rounded-lg shadow">
+            <h2 class="text-xl font-bold bg-[#008899] text-white pl-4">
+              EXTRA DISCOUNTS!
+            </h2>
+            <div class="flex flex-col items-center mt-4 gap-2">
+              <div
+                class="bg-gray-100 w-20 h-20 flex justify-center items-center rounded-full"
+              >
+                <img class="w-12 h-12" src="./img/liberty.png" />
+              </div>
+              <p class="mt-2">BUSINESS REGISTRATION</p>
+              <ul class="text-blue-500 w-full text-center mt-2">
+                <li class="p-2 border-y border-gray-400 hover:bg-gray-200">
+                  <a href="#">Sole Proprietorship</a>
+                </li>
+                <li class="p-2 border-y border-gray-400 hover:bg-gray-200">
+                  <a href="#">AOP / Partnership</a>
+                </li>
+                <li class="p-2 border-y border-gray-400 hover:bg-gray-200">
+                  <a href="#">Private Limited Company</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const services = [
+        {
+          title: "NTN Registration – Salaried",
+          price: "Rs. 800",
+          p_notic: "",
+          completion_time: "1 - 2 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Color copy of CNIC",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+          ],
+        },
+        {
+          title: "NTN Registration – Business",
+          price: "Rs. 2,500",
+          p_notic: "",
+          completion_time: "1 - 2 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+          ],
+        },
+        {
+          title: "NTN Registration – Partnership or AOP",
+          price: "Rs. 7,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Partnership Deed",
+            "Partnership registration certificate",
+            "Authorization of principal Officer",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+          ],
+        },
+        {
+          title: "NTN Registration – Company",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Incorporation Certificate",
+            "Memorandum & Articles of Association",
+            "Partnership registration certificate",
+            "Authorization of principal Officer",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+          ],
+        },
+        {
+          title: "NTN Registration – NPO",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "NTN of all members",
+            "Registration Certificate",
+            "Constitution of NPO",
+            "Authorization of principal Officer",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Any other document as required by the concerned authority",
+          ],
+        },
+        {
+          title: "Quarterly Withholding Statements Tax Filing",
+          price: "Minimum Fee: Rs. 5,000",
+          p_notic:
+            "(Actual Fee depends on turnover and nature of business activity)",
+          completion_time: "3 - 4 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Details of Taxes deducted at source during each quarter",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "Annual Income Tax Filing - Salaried",
+          price: "Rs. 3,000",
+          p_notic: "",
+          completion_time: "3 - 5 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Annual Salary certificate",
+            "Other Income sources if any",
+            "Annual personal expense",
+            "Details of all owned assets",
+            "Investments during the year",
+            "Disposals during the year",
+            "Other inflows/outflows during the year",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "Annual Income Tax Filing - Sole Proprietor",
+          price: "Minimum Fee: Rs. 5,000",
+          p_notic:
+            "(Actual Fee depends on turnover and nature of business activity)",
+          completion_time: "3 - 5 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Annual Accounts",
+            "Other Income sources if any",
+            "Annual personal expense",
+            "Details of all owned assets",
+            "Investments during the year",
+            "Disposals during the year",
+            "Other inflows/outflows during the year",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "Annual Income Tax Filing - Partnership/PVT Company",
+          price: "Minimum Fee: Rs. 10,000",
+          p_notic:
+            "(Actual Fee depends on turnover and nature of business activity)",
+          completion_time: "5 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Annual Audited Accounts",
+            "Taxes deducted at source",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "Annual Income Tax Filing - NPO/Charitable Trusts",
+          price: "Minimum Fee: Rs. 15,000",
+          p_notic:
+            "(Actual Fee depends on turnover and nature of business activity)",
+          completion_time: "5 Working Days",
+          category: "Income Tax Return",
+          requirements: [
+            "Annual Audited Accounts",
+            "Taxes deducted at source",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "GST Registration - Manufacturer",
+          price: "Rs. 18,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "GPS-tagged photographs of the business premises",
+            "Consumer number with the gas and electricity supplier along with pictures of utilities meter",
+            "GPS-tagged photographs of machinery and industrial electricity or gas meter installed",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Latest paid electricity bill",
+            "Biometric Verification",
+            "Post Verification",
+          ],
+        },
+        {
+          title: "GST Registration - Other than Manufacturer",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "GPS-tagged photographs of the business premises",
+            "Consumer number with the gas and electricity supplier along with pictures of utilities meter",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Latest paid electricity bill",
+            "Biometric Verification",
+          ],
+        },
+        {
+          title: "Monthly Federal / Provincial Sales Tax Return Filing",
+          price: "Minimum Fee: Rs. 5,000",
+          p_notic:
+            "(Actual Fee depends on turnover and nature of business activity)",
+          completion_time: "3 - 4 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Copies of Sales Invoices",
+            "Copies of purchases Invoices",
+            "Bank Statements",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "PST Registration - Individual",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "7 - 10 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "Signed Application Form",
+          ],
+        },
+        {
+          title: "PST Registration - Company",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "7 - 10 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Incorporation Certificate",
+            "Memorandum of Association",
+            "Articles of Association",
+            "Incorporation Form/ Form A & 29",
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "Signed Application Form",
+          ],
+        },
+        {
+          title: "PST Registration - Partnership",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "7 - 10 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Partnership Certificate",
+            "Partnership deed",
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "Signed Application Form",
+          ],
+        },
+        {
+          title: "GST Registration - Manufacturer",
+          price: "Rs. 18,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "GPS-tagged photographs of the business premises",
+            "Consumer number with the gas and electricity supplier along with pictures of utilities meter",
+            "GPS-tagged photographs of machinery and industrial electricity or gas meter installed",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Latest paid electricity bill",
+            "Biometric Verification",
+            "Post Verification",
+          ],
+        },
+        {
+          title: "GST Registration - Other than Manufacturer",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "2 - 3 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "GPS-tagged photographs of the business premises",
+            "Consumer number with the gas and electricity supplier along with pictures of utilities meter",
+            "Color copy of CNIC's of Partners",
+            "Rent agreement/ownership docs of Office premises",
+            "Latest paid electricity bill",
+            "Biometric Verification",
+          ],
+        },
+        {
+          title: "Monthly Federal / Provincial Sales Tax Return Filing",
+          price: "Minimum Fee: Rs. 5,000",
+          p_notic:
+            "(Actual Fee depends on turnover and nature of business activity)",
+          completion_time: "3 - 4 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Copies of Sales Invoices",
+            "Copies of purchases Invoices",
+            "Bank Statements",
+            "Other information as required",
+          ],
+        },
+        {
+          title: "PST Registration - Individual",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "7 - 10 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "Signed Application Form",
+          ],
+        },
+        {
+          title: "PST Registration - Company",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "7 - 10 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Incorporation Certificate",
+            "Memorandum of Association",
+            "Articles of Association",
+            "Incorporation Form/ Form A & 29",
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "Signed Application Form",
+          ],
+        },
+        {
+          title: "PST Registration - Partnership",
+          price: "Rs. 15,000",
+          p_notic: "",
+          completion_time: "7 - 10 Working Days",
+          category: "Sales Tax Registration",
+          requirements: [
+            "Partnership Certificate",
+            "Partnership deed",
+            "Color copy of CNIC",
+            "Rent agreement/ownership docs of Office premises",
+            "Letterhead",
+            "Latest paid electricity bill",
+            "Phone Number",
+            "Email address",
+            "Bank Account Certificate",
+            "Acquisition Date, Capacity and Business Activity",
+            "Particulars of all branches (if any)",
+            "Authorization of principal Officer",
+            "Signed Application Form",
+          ],
+        },
+        {
+          title: "Trademark Registration",
+          price: "Rs. 70,000",
+          p_notic: "",
+          category: "Intellectual Property",
+          requirements: [
+            "TM-1 in duplicate",
+            "Six representations affixed on a durable paper of 13x8 inch",
+            "CNIC of the Trademark Holder/partners",
+            "Specification of goods or services sought to be protected in any class",
+            "Residential address of holder or Letterhead of the Business",
+            "Other Information or Documents as required",
+          ],
+        },
+        {
+          title: "Copyright Registration",
+          price: "Rs. 70,000",
+          p_notic: "",
+          category: "Intellectual Property",
+          requirements: [
+            "Two Copies of work",
+            "Demand Draft / Pay order of fee as applicable per work",
+            "CNIC of the Copyrights Holder / partners",
+            "NOC from publisher if work has been published and publisher is different from applicant",
+            "Search certificate from trademark Office if the work is capable of being used on goods",
+            "Residential address of holder or Letterhead of the Business",
+            "Power of attorney",
+            "Other Information or Documents as required",
+          ],
+        },
+        {
+          title: "Patent Registration",
+          price: "Rs. 150,000",
+          p_notic: "",
+          category: "Intellectual Property",
+          requirements: [
+            "Form P - 1 or Form P - 1A application without priority",
+            "Form P - 2 or Form P - 2A application with priority",
+            "Form P- 3 for provisional or Form P- 3A for complete specification",
+            "Patent Specification",
+            "Drawing(s), if any",
+            "Demand Draft / Pay order of fee as applicable per work",
+            "Form P - 28 (Power of Attorney) if any",
+            "Priority document (for convention application)",
+            "CNIC of the Copyrights applicant",
+            "Other Information or Documents as required",
+          ],
+        },
+        {
+          title: "Company Formation in USA - LLC / Inc. (C Corp)",
+          price: "State fee + $120",
+          p_notic: "",
+          completion_time: "3 Business Days",
+          category: "USA LLC & Tax Filing",
+          requirements: [
+            "2 Suggested Names of the Company",
+            "CNIC (English Only) / Passport of Director(s)",
+          ],
+        },
+        {
+          title: "Employer Identification Number (EIN)",
+          price: "$160",
+          p_notic: "",
+          completion_time: "30 Business Days",
+          category: "USA LLC & Tax Filing",
+          requirements: [
+            "Article of Organization",
+            "Certificate of Organization",
+          ],
+        },
+        {
+          title: "Open A US Bank Account",
+          price: "$100",
+          p_notic: "",
+          completion_time: "30 Business Days",
+          category: "USA LLC & Tax Filing",
+          requirements: [
+            "Article of Organization",
+            "Certificate of Organization",
+            "CNIC (English Only) / Passport of Director(s)",
+            "EIN",
+          ],
+        },
+        {
+          title:
+            "USA Company Formation - Complete Package (Company Formation, EIN, and Bank Account)",
+          price: "State Fee + $349",
+          p_notic: "",
+          completion_time:
+            "Company Formation: 3 Business Days, EIN: 30 Business Days after Company Formation, Bank Account: 30 Business Days after EIN",
+          category: "USA LLC & Tax Filing",
+          requirements: [
+            "2 Suggested Names of the Company",
+            "CNIC (English Only) / Passport of Director(s)",
+          ],
+        },
+        {
+          title: "Tax Filing - State: LLC / Inc. (C Corp)",
+          price: "$200",
+          p_notic: "",
+          completion_time: "3 Business Days",
+          category: "USA LLC & Tax Filing",
+          requirements: [
+            "Financial Statements",
+            "Last Year's Tax Return, if applicable",
+          ],
+        },
+        {
+          title: "Tax Filing - Federal: LLC / Inc. (C Corp)",
+          price: "$200",
+          p_notic: "",
+          completion_time: "3 Business Days",
+          category: "USA LLC & Tax Filing",
+          requirements: [
+            "Financial Statements",
+            "Last Year's Tax Return, if applicable",
+          ],
+        },
+        {
+          title:
+            "Private Limited Company Registration (Other than Licensed entity)",
+          price: "Minimum Fee: Rs. 20,000",
+          p_notic: "(Excluding SECP Fees, depends on Authorized Capital)",
+          completion_time: "3 - 10 working days",
+          t_notic: "depending upon availability of Name",
+          category: "Company’s Registration",
+          requirements: [
+            "Three Names of the proposed company",
+            "Neat and Clear Scanned copies of CNICs of all proposed Directors / Subscribers",
+            "Registered address / correspondence address of the proposed Company",
+            "The principal business of the proposed company",
+            "Nature of the business activity",
+            "Authorized Capital",
+            "Paid up Capital",
+            "Value per share e.g. Rs. 10, Rs. 50 or Rs. 100 etc.",
+            "A combination of Shares agreed to be subscribed by each Director/Subscriber",
+            "Name of the Chief Executive of the Proposed Company",
+            "Telephone numbers and email ID of all the proposed Directors",
+            "SECP login details of the proposed Directors / Subscribers (if any)",
+          ],
+        },
+        {
+          title:
+            "Single Member Company Registration (Other than Licensed entity)",
+          price: "Minimum Fee: Rs. 20,000",
+          p_notic: "(Excluding SECP Fees, depends on Authorized Capital)",
+          completion_time: "3 - 10 working days",
+          t_notic: "depending upon availability of Name",
+          category: "Company’s Registration",
+          requirements: [
+            "Three Names of the proposed company",
+            "Neat and Clear Scanned copies of CNICs of all proposed Directors / Subscribers and Nominee",
+            "Registered address / correspondence address of the proposed Company",
+            "The principal business of the proposed company",
+            "Nature of the business activity",
+            "Authorized Capital",
+            "Paid up Capital",
+            "Value per share e.g. Rs. 10, Rs. 50 or Rs. 100 etc.",
+            "Telephone numbers and email ID of all the proposed Directors of the Company and Nominee",
+            "SECP login details of the proposed Directors / Subscribers (if any)",
+          ],
+        },
+        {
+          title:
+            "Limited Liability Partnership Registration (LLP) (Other than Licensed entity)",
+          price: "Fee: Rs. 30,000",
+          p_notic: "(Excluding SECP Fees)",
+          completion_time: "7 - 10 working days",
+          t_notic:
+            "Depending upon availability of Name and provision of signed documents by the client",
+          category: "Company’s Registration",
+          requirements: [
+            "Three Names of the proposed LLP",
+            "Neat and Clear Scanned copies of CNICs of all proposed Partners",
+            "FBR Credentials of the proposed Partners",
+            "Registered address / correspondence address of the proposed LLP",
+            "The principal business of the proposed LLP",
+            "Nature of the business activity",
+            "A combination of Shares agreed to be subscribed by each Partner",
+            "Telephone numbers and email IDs of all the proposed Partners",
+            "SECP login details of the proposed Partners (if any)",
+          ],
+        },
+        {
+          title: "Partnership or AOP Registration",
+          price: "Fee: Rs. 35,000",
+          p_notic: "(Depending upon city) (Excluding official Fees)",
+          completion_time: "7 - 15 working days",
+          t_notic:
+            "Subject to timely provision of signed documents by the client",
+          category: "Company’s Registration",
+          requirements: [
+            "Neat and Clear Scanned copies of CNICs of all proposed Partners",
+            "Nature of the business activity",
+            "Registered address / correspondence address of the AOP",
+            "Letterhead of the AOP",
+            "Rent agreement / ownership docs of Office premises (for outside Karachi AOP only)",
+            "Latest paid electricity bill (for outside Karachi AOP only)",
+            "Phone Numbers of all Partners",
+            "Email address of all Partners",
+          ],
+        },
+      ];
+      function loadCards(filter = "All", searchText = "") {
+        const container = document.getElementById("card-container");
+        container.innerHTML = "";
+
+        let filteredServices =
+          filter === "All"
+            ? services
+            : services.filter((s) => s.category === filter);
+        filteredServices = filteredServices.filter((s) =>
+          s.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+
+        filteredServices.forEach((service) => {
+          const card = `
+                  <div class="bg-white p-4 rounded-lg shadow hover:bg-gray-100">
+                      <div class="flex flex-col justify-between my-2 ">
+                      <h3 class="text-lg font-bold">${service.title}</h3>
+                      <div class="flex flex-col">
+                        <p class="text-[#003366] font-semibold">${
+                          service.price
+                        }</p>
+                      <p class="text-gray-600 text-sm">${service.p_notic}</p>
+                      </div>
+                      <p class="text-gray-500 mt-2">Completion Time: ${
+                        service.completion_time
+                      }</p>
+                      <ul class="mt-2 text-sm text-gray-700">
+                          ${service.requirements
+                            .map((req) => `<li>✔ ${req}</li>`)
+                            .join("")}
+                      </ul>
+                      <div class="w-full flex justify-around gap-4 my-2">
+                      <button  onclick="openModal('${
+                        service.title
+                      }')" class="mt-4 w-1/2 border border-[#003366] text-[#003366] py-2 rounded hover:bg-[#003366] hover:text-white cursor-pointer">Request for Call</button>
+                      <button class="mt-4 w-1/2 border border-green-600 text-green-600 py-2 rounded hover:bg-green-600 hover:text-white cursor-pointer">Whatsapp Us</button>
+                      </div>
+                    </div>
+              `;
+          container.innerHTML += card;
+        });
+      }
+
+      function filterCards(category, element) {
+        document
+          .querySelectorAll(".tab-button")
+          .forEach((btn) => btn.classList.remove("active-tab"));
+        element.classList.add("active-tab");
+        loadCards(category, document.getElementById("searchBar").value);
+      }
+
+      document
+        .getElementById("searchBar")
+        .addEventListener("input", function () {
+          loadCards(
+            document.querySelector(".active-tab").innerText,
+            this.value
+          );
+        });
+
+      document.addEventListener("DOMContentLoaded", () => loadCards());
+    </script>
+    <!-- card modal -->
+
+    <!-- Modal -->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-gray-100/50 flex items-center justify-center hidden" >
+      <div class="bg-white p-10 rounded-lg w-96 relative">
+        <!-- Close Button -->
+        <button
+          onclick="closeModal()"
+          class="absolute top-3 right-3 text-white bg-[#003366] rounded-full cursor-pointer hover:bg-[#002244]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <h2 class="text-2xl text-center text-[#003366] font-bold mb-4">
+          Request for Call
+        </h2>
+        <form id="callForm">
+          <div class="mb-4">
+            <label for="name" class="block mb-0.5 text-sm font-semibold"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              class="w-full p-2 border rounded"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="email" class="block mb-0.5 text-sm font-semibold"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="w-full p-2 border rounded"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="phone" class="block mb-0.5 text-sm font-semibold"
+              >Phone</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              class="w-full p-2 border rounded"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <label for="query" class="block mb-0.5 text-sm font-semibold"
+              >Query</label
+            >
+            <input
+              type="text"
+              id="query"
+              class="w-full p-2 border rounded"
+              required
+            />
+          </div>
+          <div class="flex justify-between">
+            <button
+              type="submit"
+              class="w-full bg-[#003366] py-2 rounded hover:bg-[#002244] cursor-pointer text-white"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- modal javascript -->
+    <script>
+      // Open the modal and set the query field to the service title
+      function openModal(title) {
+        // Set the default query to the service title
+        document.getElementById("query").value = title;
+        document.getElementById("modal").classList.remove("hidden");
+      }
+
+      // Close the modal
+      function closeModal() {
+        document.getElementById("modal").classList.add("hidden");
+      }
+
+      // Handle form submission
+      document
+        .getElementById("callForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+          const query = document.getElementById("query").value;
+
+          // You can replace this with an API call or form submission logic
+          console.log("Form submitted:", { name, email, phone, query });
+
+          // Close the modal after submission
+          closeModal();
+        });
+    </script>
+    
+{% endblock Content %}

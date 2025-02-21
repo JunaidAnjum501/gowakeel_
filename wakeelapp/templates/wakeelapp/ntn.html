@@ -1,0 +1,192 @@
+{% extends "wakeelapp/cal.html" %} {% load static %} {% block content %}
+
+<section class="w-container max-w-7xl mx-auto">
+  <div class="flex justify-end">
+    <!-- Search Section -->
+    <div class="max-w-md p-6 border-b-2">
+      <h2 class="text-lg font-bold text-[#003366] text-left mb-4">
+        NTN Status Finder
+      </h2>
+      <div class="flex space-x-2">
+        <input
+          id="cnicInput"
+          type="text"
+          placeholder="Enter CNIC Number"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:outline-none"
+        />
+        <button
+          onclick="searchCNIC()"
+          class="bg-[#003366] text-white px-4 py-2 rounded-lg hover:bg-[#002244] transition"
+        >
+          Search
+        </button>
+      </div>
+      <p id="errorMessage" class="text-center text-red-600 mt-2 hidden"></p>
+    </div>
+  </div>
+
+  <!-- Centered Result Card -->
+  <div
+    id="resultCard"
+    class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-6 hidden relative"
+  >
+    <!-- Close Button -->
+    <button
+      onclick="closeCard()"
+      class="absolute top-3 right-3 w-8 h-8 flex items-center cursor-pointer justify-center rounded-full text-white font-bold bg-[#003366] hover:bg-[#002244] transition"
+    >
+      ✕
+    </button>
+
+    <h2 class="text-xl font-bold text-[#003366] text-center">User Details</h2>
+    <div id="cardContent" class="mt-4">
+      <div class="grid grid-cols-2 gap-4 text-gray-700">
+        <div><strong>Registration No:</strong> <span id="regNo"></span></div>
+        <div><strong>Reference No:</strong> <span id="refNo"></span></div>
+        <div>
+          <strong>Registered for Sales Tax:</strong> <span id="salesTax"></span>
+        </div>
+        <div><strong>Name:</strong> <span id="name"></span></div>
+        <div><strong>Category:</strong> <span id="category"></span></div>
+        <div><strong>PP/REG/INC No:</strong> <span id="ppRegNo"></span></div>
+        <div><strong>Email:</strong> <span id="email"></span></div>
+        <div><strong>Cell:</strong> <span id="cell"></span></div>
+        <div class="col-span-2">
+          <strong>Address:</strong> <span id="address"></span>
+        </div>
+        <div><strong>Registered On:</strong> <span id="regDate"></span></div>
+        <div><strong>Tax Office:</strong> <span id="taxOffice"></span></div>
+        <div class="col-span-2">
+          <strong>Registration Status:</strong> <span id="status"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Download PDF Button -->
+    <button
+      onclick="downloadPDF()"
+      class="mt-4 w-full cursor-pointer bg-[#003366] text-white py-2 rounded-lg hover:bg-[#002244] transition"
+    >
+      Download as PDF
+    </button>
+  </div>
+
+  <!-- Additional Content Below -->
+  <div class="my-10 p-3">
+    <h2 class="text-2xl md:text-4xl mb-2 font-bold text-black">Benefits of having <span class="text-[#003366]">NTN</span></h2>
+    <p class="text-gray-700 text-lg justify-center tracking-tight md:text-2xl">
+      Tax Saving Get maximum tax saving like claiming tax credits for
+      investments and adjustment of taxes paid on utilities, vehicle, property
+      transactions, and cash withdrawals etc Lower Rate of Withholding Tax
+      Non-Filers are subject to higher rate of taxes on various transactions
+      e.g. withholding tax is applicable on cash withdrawals and banking
+      transfers exceeding Rs. 50,000 Avoid Penalities. Be a responsible citizen
+      and avoid penalties and/or prosecutions from the FBR for not filing return
+      Compliance Check Many government related organizations and banks now check
+      your FBR tax filer status before acceding to your requests, like
+      registration of company, purchase of property and loan processing etc
+    </p>
+  </div>
+</section>
+<script>
+  // Sample Data
+  const userData = {
+    1110114913415: {
+      "Registration No": "1110114913415",
+      "Reference No": "7238215-1",
+      "Registered for Sales Tax": "No",
+      Name: "MUHAMMAD ANWAR BAZKHAN",
+      Category: "Pakistani Male",
+      "PP/REG/INC No": "1110114913415",
+      Email: "anw****z@***l.com",
+      Cell: "00923**973**30",
+      Address:
+        "69V2, Street No 8, Khayaban e Badban, DHA Phase 5, Karachi South Saddar Town",
+      "Registered On": "01-JUN-2016",
+      "Tax Office": "RTO-II KARACHI",
+      "Registration Status": "Income Tax: Active",
+    },
+  };
+
+  // Search CNIC Function
+  function searchCNIC() {
+    const cnicInput = document.getElementById("cnicInput").value.trim();
+    const resultCard = document.getElementById("resultCard");
+    const errorMessage = document.getElementById("errorMessage");
+
+    if (cnicInput === "") {
+      showError("Please enter a CNIC number.");
+      return;
+    }
+
+    // Simulate Server Response Time (for demonstration)
+    setTimeout(() => {
+      if (userData[cnicInput]) {
+        document.getElementById("regNo").innerText =
+          userData[cnicInput]["Registration No"];
+        document.getElementById("refNo").innerText =
+          userData[cnicInput]["Reference No"];
+        document.getElementById("salesTax").innerText =
+          userData[cnicInput]["Registered for Sales Tax"];
+        document.getElementById("name").innerText = userData[cnicInput]["Name"];
+        document.getElementById("category").innerText =
+          userData[cnicInput]["Category"];
+        document.getElementById("ppRegNo").innerText =
+          userData[cnicInput]["PP/REG/INC No"];
+        document.getElementById("email").innerText =
+          userData[cnicInput]["Email"];
+        document.getElementById("cell").innerText = userData[cnicInput]["Cell"];
+        document.getElementById("address").innerText =
+          userData[cnicInput]["Address"];
+        document.getElementById("regDate").innerText =
+          userData[cnicInput]["Registered On"];
+        document.getElementById("taxOffice").innerText =
+          userData[cnicInput]["Tax Office"];
+        document.getElementById("status").innerText =
+          userData[cnicInput]["Registration Status"];
+
+        resultCard.classList.remove("hidden");
+        errorMessage.classList.add("hidden");
+      } else {
+        showError("No record found for this CNIC.");
+        resultCard.classList.add("hidden");
+      }
+    }, 1000); // Simulated delay
+  }
+
+  // Show Error Message
+  function showError(message) {
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.innerText = message;
+    errorMessage.classList.remove("hidden");
+
+    // Hide message after 5 seconds
+    setTimeout(() => {
+      errorMessage.classList.add("hidden");
+    }, 5000);
+  }
+
+  // Close Card Function
+  function closeCard() {
+    document.getElementById("resultCard").classList.add("hidden");
+  }
+
+  // Download PDF Function (Fixed)
+  function downloadPDF() {
+    const element = document.getElementById("resultCard");
+
+    html2pdf()
+      .from(element)
+      .set({
+        margin: 10,
+        filename: "User_Details.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { format: "a4", orientation: "portrait" },
+      })
+      .save();
+  }
+</script>
+
+
+{% endblock content%}

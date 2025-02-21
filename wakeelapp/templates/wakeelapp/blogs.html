@@ -1,0 +1,71 @@
+{% extends "wakeelapp/faq.html" %}
+{% load static %}
+
+    {% block Content %} 
+    <div class="container max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-xl font-bold md:text-4xl ml-4 text-[#003366]">Blogs</h1>
+        <div class="flex flex-col md:flex-row gap-4">
+            <!-- Main Blog Section -->
+            <div class="w-full md:w-3/4">
+                <div class="blog-post bg-white flex p-6 rounded-lg gap-4 shadow-md m-4 cursor-pointer hover:bg-gray-50" data-category="Pakistan's Tax Affairs">
+                    <div class="w-1/2">
+                        <img src="https://www.befiler.com/wordpress/wp-content/uploads/2024/12/Pakistans-Real-Estate-Sector-Taxes-and-Its-Impact-.jpg" alt="Blog Image" class="w-full rounded-md" />
+                    </div>
+                    <div class="w-2/3">
+                        <h2 class="text-2xl font-semibold">Pakistan’s Real Estate Sector: Taxes and Its Impact</h2>
+                        <p class="text-gray-600 text-sm mb-2">December 18, 2024 / Befiler</p>
+                        <p class="text-gray-700">Pakistan’s real estate sector is a major contributor to the GDP and is heavily taxed. The 2024-2025 budget introduces new property taxes. [...]</p>
+                        <a href="#" class="text-blue-600 font-semibold mt-2 inline-block">Read more</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="w-full md:w-1/4 ">
+                <input type="text" id="search" placeholder="Search Posts" class="w-full p-2 border-2 border-[#003366] rounded-md mb-6" onkeyup="filterPosts()">
+                <div class="bg-white p-4 rounded-lg shadow-md md sticky top-5 self-start">
+                    <h3 class="text-xl text-[#003366] font-bold mb-4">Categories</h3>
+                    <div id="categoryFilter" class="flex flex-col gap-2">
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('')">All</div>
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Business Registration Guide')">Business Registration Guide</div>
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Learn Sales Tax')">Learn Sales Tax</div>
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('NTN Registration')">NTN Registration</div>
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Pakistan\'s Tax Affairs')">Pakistan's Tax Affairs</div>
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Tax Deduction and Credit')">Tax Deduction and Credit</div>
+                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Tax Planning')">Tax Planning</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterPosts() {
+            let searchInput = document.getElementById('search').value.toLowerCase();
+            let categoryInput = document.getElementById('categoryFilter').getAttribute('data-selected') || "";
+            let posts = document.querySelectorAll('.blog-post');
+            
+            posts.forEach(post => {
+                let title = post.getElementsByTagName('h2')[0].innerText.toLowerCase();
+                let content = post.getElementsByTagName('p')[1].innerText.toLowerCase();
+                let category = post.getAttribute('data-category');
+                
+                let matchesSearch = title.includes(searchInput) || content.includes(searchInput);
+                let matchesCategory = categoryInput === "" || category === categoryInput;
+                
+                if (matchesSearch && matchesCategory) {
+                    post.style.display = "flex";
+                } else {
+                    post.style.display = "none";
+                }
+            });
+        }
+
+        function setCategoryFilter(category) {
+            document.getElementById('categoryFilter').setAttribute('data-selected', category);
+            filterPosts();
+        }
+    </script>
+    {% endblock Content %}
+  </body>
+</html>

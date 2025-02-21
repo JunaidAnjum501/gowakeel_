@@ -1,0 +1,100 @@
+{% extends "wakeelapp/faq.html" %} {% load static %} {% block Content %}
+<div class="container max-w-7xl mx-auto my-10">
+    <div class="py-3">
+        <h2 class="text-2xl font-bold md:text-4xl mb-2">
+          <span class="text-[#003366]">Discover</span> our video content
+        </h2>
+        <p class="text-gray-700 text-lg justify-center tracking-tight md:text-2xl">
+          We would love to show you, how simple and friendly Befiler we have made it
+          for you with the help of industry's best experts, as they know everything
+          about taxes.
+        </p>
+      </div>
+
+  <!-- Search and Filter -->
+  <div class="flex gap-4 mb-4">
+    <input
+      type="text"
+      id="search"
+      placeholder="Search videos..."
+      class="w-1/3 p-2 border rounded"
+    />
+    <select id="category" class="p-2 border rounded">
+      <option value="all">All Categories</option>
+      <option value="tax">Tax Filing</option>
+      <option value="registration">NTN Registration</option>
+    </select>
+  </div>
+
+  <!-- DisCovered Video Section -->
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-4"
+    id="videoList"
+  >
+    <div
+      class="w-full mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-[#003366] hover:border-[#002244] transition video-item"
+      data-category="tax"
+    >
+      <div class="relative w-full h-56" id="videoContainer">
+        <img
+          id="videoThumbnail"
+          src="https://img.youtube.com/vi/bfXgJbpiuJU/hqdefault.jpg"
+          alt="Video Thumbnail"
+          class="w-full h-full object-cover cursor-pointer"
+          onclick="playVideo()"
+        />
+        <iframe
+          id="videoIframe"
+          class="absolute top-0 left-0 w-full h-full hidden"
+          src=""
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="p-4">
+        <h3 class="text-lg font-bold text-[#003366]">
+          Tax Filing For Non-Resident
+        </h3>
+        <p class="text-gray-600 text-sm mt-2">
+          Learn about tax filing for non-residents.
+        </p>
+        <a
+          href="https://youtu.be/bfXgJbpiuJU"
+          target="_blank"
+          class="block mt-4 text-center border border-[#003366] text-[#003366] px-4 py-2 rounded-lg hover:bg-[#003366] hover:text-white transition"
+          >Watch on YouTube</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("search").addEventListener("input", function () {
+    let searchValue = this.value.toLowerCase();
+    document.querySelectorAll(".video-item").forEach((item) => {
+      let title = item.querySelector("h3").textContent.toLowerCase();
+      item.style.display = title.includes(searchValue) ? "" : "none";
+    });
+  });
+
+  document.getElementById("category").addEventListener("change", function () {
+    let selectedCategory = this.value;
+    document.querySelectorAll(".video-item").forEach((item) => {
+      let category = item.getAttribute("data-category");
+      item.style.display =
+        selectedCategory === "all" || category === selectedCategory
+          ? ""
+          : "none";
+    });
+  });
+
+  function playVideo() {
+    const thumbnail = document.getElementById("videoThumbnail");
+    const iframe = document.getElementById("videoIframe");
+    iframe.src = "https://www.youtube.com/embed/bfXgJbpiuJU?autoplay=1&mute=1";
+    thumbnail.classList.add("hidden");
+    iframe.classList.remove("hidden");
+  }
+</script>
+{% endblock Content %}

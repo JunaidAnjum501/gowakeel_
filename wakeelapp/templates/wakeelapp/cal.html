@@ -1,0 +1,229 @@
+{% extends "wakeelapp/index.html" %} 
+{% load static %}
+
+  {% block Content %}
+    <!-- Content -->
+     <div class="w-container max-w-7xl mx-auto my-10 flex flex-col md:flex md:flex-row items-center justify-center">
+      <div class="w-full md:w-1/2 p-4 md:p-8">
+        <H1 class="text-2xl my-2 font-sans font-bold text-[#003366] md:text-4xl">Salary Tax <span class="text-black">Calculator</span></H1>
+        <p class="text-lg text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem ad reiciendis placeat laborum aliquam itaque facere, repudiandae eligendi sequi. Ea quam quibusdam officiis quae! Aut nihil quo architecto facere neque!</p>
+      </div>
+    <!-- Calculator  -->
+    <div class="max-w-4xl w-full bg-white p-8 shadow-lg rounded-lg">
+      <h1 class="text-3xl font-bold text-[#003366] text-center mb-4">Salary Tax <span class="text-black">Calculator</span></h1>
+      <p class="text-gray-700 text-center mb-6">Enter your salary to calculate applicable taxes.</p>
+
+      <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex flex-col w-full md:w-1/3">
+              <label class="font-medium">Select Tax Year</label>
+              <select id="taxSlab" class="border p-2 rounded w-full">
+                  <script>
+                      for (let year = 2024; year >= 2014; year--) {
+                          document.write(`<option value="${year}-${year + 1}">${year}-${year + 1}</option>`);
+                      }
+                  </script>
+              </select>
+          </div>
+
+          <div class="flex flex-col w-full md:w-1/3">
+              <label class="font-medium">Enter Monthly Salary</label>
+              <input id="salary" type="number" placeholder="Enter Salary" class="border p-2 rounded w-full" />
+          </div>
+
+          <button onclick="calculateTax()" class="bg-[#003366] text-white px-6 py-3 rounded-lg hover:bg-[#002244] transition w-full md:w-1/4 mt-4 md:mt-6">
+              Calculate
+          </button>
+      </div>
+
+      <div class="mt-6 border-t pt-4">
+          <h2 class="text-xl font-semibold text-center mb-4">Tax Calculation</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-lg">
+              <div class="text-justify border-b md:border-0">
+                  <p class="font-semibold">Monthly</p>
+                  <p>Salary: <span id="monthlySalary" class="font-bold">0/-</span></p>
+                  <p>Tax: <span id="monthlyTax" class="font-bold">0/-</span></p>
+                  <p>After Tax: <span id="monthlyAfterTax" class="font-bold">0/-</span></p>
+              </div>
+
+              <div class="text-justify md:border-l md:border-r md:px-4">
+                  <p class="font-semibold">Yearly</p>
+                  <p>Salary: <span id="yearlySalary" class="font-bold">0/-</span></p>
+                  <p>Tax: <span id="yearlyTax" class="font-bold">0/-</span></p>
+                  <p>After Tax: <span id="yearlyAfterTax" class="font-bold">0/-</span></p>
+              </div>
+
+              <div class="text-justify border-t md:border-0">
+                  <p class="font-semibold">Comparison</p>
+                  <p>Fixed Tax: <span id="fixedTax" class="font-bold">0/-</span></p>
+                  <p>Tax Rate: <span id="taxRate" class="font-bold">0%</span></p>
+                  <p>Net Savings: <span id="netSavings" class="font-bold">0/-</span></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+    <script>
+      // Tax slabs for different years
+      const taxSlabs = {
+        "2014-2015": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 400001, rate: 0.05, fixed_tax: 0 },
+          { threshold: 750001, rate: 0.1, fixed_tax: 17500 },
+          { threshold: 1400001, rate: 0.125, fixed_tax: 82500 },
+          { threshold: 1500001, rate: 0.15, fixed_tax: 95000 },
+          { threshold: 1800001, rate: 0.175, fixed_tax: 140000 },
+          { threshold: 2500001, rate: 0.2, fixed_tax: 262500 },
+          { threshold: 3000001, rate: 0.225, fixed_tax: 362500 },
+          { threshold: 3500001, rate: 0.25, fixed_tax: 475000 },
+          { threshold: 4000001, rate: 0.275, fixed_tax: 600000 },
+          { threshold: 7000001, rate: 0.3, fixed_tax: 1425000 },
+        ],
+        "2015-2016": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 400001, rate: 0.02, fixed_tax: 0 },
+          { threshold: 500001, rate: 0.05, fixed_tax: 2000 },
+          { threshold: 750001, rate: 0.1, fixed_tax: 14500 },
+          { threshold: 1400001, rate: 0.125, fixed_tax: 79500 },
+          { threshold: 1500001, rate: 0.15, fixed_tax: 92000 },
+          { threshold: 1800001, rate: 0.175, fixed_tax: 137000 },
+          { threshold: 2500001, rate: 0.2, fixed_tax: 259500 },
+          { threshold: 3000001, rate: 0.225, fixed_tax: 359500 },
+          { threshold: 3500001, rate: 0.25, fixed_tax: 472000 },
+          { threshold: 4000001, rate: 0.275, fixed_tax: 597000 },
+          { threshold: 7000001, rate: 0.3, fixed_tax: 1422000 },
+        ],
+        "2016-2017": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 400001, rate: 0.02, fixed_tax: 0 },
+          { threshold: 500001, rate: 0.05, fixed_tax: 2000 },
+          { threshold: 750001, rate: 0.1, fixed_tax: 14500 },
+          { threshold: 1400001, rate: 0.125, fixed_tax: 79500 },
+          { threshold: 1500001, rate: 0.15, fixed_tax: 92000 },
+          { threshold: 1800001, rate: 0.175, fixed_tax: 137000 },
+          { threshold: 2500001, rate: 0.2, fixed_tax: 259500 },
+          { threshold: 3000001, rate: 0.225, fixed_tax: 359500 },
+          { threshold: 3500001, rate: 0.25, fixed_tax: 472000 },
+          { threshold: 4000001, rate: 0.275, fixed_tax: 597000 },
+          { threshold: 7000001, rate: 0.3, fixed_tax: 1422000 },
+        ],
+        "2017-2018": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 400001, rate: 0.02, fixed_tax: 0 },
+          { threshold: 500001, rate: 0.05, fixed_tax: 2000 },
+          { threshold: 750001, rate: 0.1, fixed_tax: 14500 },
+          { threshold: 1400001, rate: 0.125, fixed_tax: 79500 },
+          { threshold: 1500001, rate: 0.15, fixed_tax: 92000 },
+          { threshold: 1800001, rate: 0.175, fixed_tax: 137000 },
+          { threshold: 2500001, rate: 0.2, fixed_tax: 259500 },
+          { threshold: 3000001, rate: 0.225, fixed_tax: 359500 },
+          { threshold: 3500001, rate: 0.25, fixed_tax: 472000 },
+          { threshold: 4000001, rate: 0.275, fixed_tax: 597000 },
+          { threshold: 7000001, rate: 0.3, fixed_tax: 1422000 },
+        ],
+        "2018-2019": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 400001, rate: 0.05, fixed_tax: 1000 },
+          { threshold: 800001, rate: 0.05, fixed_tax: 2000 },
+          { threshold: 1200001, rate: 0.05, fixed_tax: 2000 },
+          { threshold: 2500001, rate: 0.15, fixed_tax: 65000 },
+          { threshold: 4000001, rate: 0.2, fixed_tax: 290000 },
+          { threshold: 8000001, rate: 0.25, fixed_tax: 1090000 },
+        ],
+        "2019-2020": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 600001, rate: 0.05, fixed_tax: 0 },
+          { threshold: 1200001, rate: 0.1, fixed_tax: 30000 },
+          { threshold: 2400001, rate: 0.15, fixed_tax: 150000 },
+          { threshold: 3000001, rate: 0.2, fixed_tax: 240000 },
+          { threshold: 6000001, rate: 0.25, fixed_tax: 1140000 },
+          { threshold: 12000001, rate: 0.3, fixed_tax: 2640000 },
+        ],
+        "2020-2021": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 600001, rate: 0.05, fixed_tax: 0 },
+          { threshold: 1200001, rate: 0.1, fixed_tax: 30000 },
+          { threshold: 2400001, rate: 0.15, fixed_tax: 150000 },
+          { threshold: 3000001, rate: 0.2, fixed_tax: 240000 },
+          { threshold: 6000001, rate: 0.25, fixed_tax: 1140000 },
+          { threshold: 12000001, rate: 0.3, fixed_tax: 2640000 },
+        ],
+        "2021-2022": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 600001, rate: 0.05, fixed_tax: 0 },
+          { threshold: 1200001, rate: 0.1, fixed_tax: 30000 },
+          { threshold: 2400001, rate: 0.15, fixed_tax: 150000 },
+          { threshold: 3000001, rate: 0.2, fixed_tax: 240000 },
+          { threshold: 6000001, rate: 0.25, fixed_tax: 1140000 },
+          { threshold: 12000001, rate: 0.3, fixed_tax: 2640000 },
+        ],
+        "2022-2023": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 600001, rate: 0.025, fixed_tax: 0 },
+          { threshold: 1200001, rate: 0.125, fixed_tax: 15000 },
+          { threshold: 2400001, rate: 0.225, fixed_tax: 165000 },
+          { threshold: 3600001, rate: 0.275, fixed_tax: 435000 },
+          { threshold: 6000001, rate: 0.35, fixed_tax: 1095000 },
+        ],
+        "2023-2024": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 600001, rate: 0.025, fixed_tax: 0 },
+          { threshold: 1200001, rate: 0.125, fixed_tax: 15000 },
+          { threshold: 2400001, rate: 0.225, fixed_tax: 165000 },
+          { threshold: 3600001, rate: 0.275, fixed_tax: 435000 },
+          { threshold: 6000001, rate: 0.35, fixed_tax: 1095000 },
+        ],
+        "2024-2025": [
+          { threshold: 0, rate: 0, fixed_tax: 0 },
+          { threshold: 600001, rate: 0.05, fixed_tax: 0 },
+          { threshold: 1200001, rate: 0.15, fixed_tax: 30000 },
+          { threshold: 2200001, rate: 0.25, fixed_tax: 180000 },
+          { threshold: 3200001, rate: 0.3, fixed_tax: 430000 },
+          { threshold: 4100001, rate: 0.35, fixed_tax: 700000 },
+        ],
+        // Add slabs for other years if needed
+      };
+
+      function formatCurrency(amount) {
+            return amount.toLocaleString() + "/-";
+        }
+
+        function calculateTax() {
+            const monthlySalary = parseFloat(document.getElementById("salary").value) || 0;
+            const taxYear = document.getElementById("taxSlab").value;
+            const taxBrackets = taxSlabs[taxYear] || [];
+
+            const annualSalary = monthlySalary * 12;
+            let annualTax = 0;
+            let fixedTax = 0;
+            let taxRate = 0;
+
+            for (const bracket of taxBrackets) {
+                if (annualSalary > bracket.threshold) {
+                    fixedTax = bracket.fixed_tax;
+                    annualTax = fixedTax + (annualSalary - bracket.threshold) * bracket.rate;
+                    taxRate = bracket.rate * 100;
+                } else {
+                    break;
+                }
+            }
+
+            const monthlyTax = annualTax / 12;
+            const monthlyAfterTax = monthlySalary - monthlyTax;
+            const yearlyAfterTax = annualSalary - annualTax;
+            const netSavings = yearlyAfterTax - annualTax;
+
+            document.getElementById("monthlySalary").innerText = formatCurrency(monthlySalary);
+            document.getElementById("monthlyTax").innerText = formatCurrency(monthlyTax);
+            document.getElementById("monthlyAfterTax").innerText = formatCurrency(monthlyAfterTax);
+            document.getElementById("yearlySalary").innerText = formatCurrency(annualSalary);
+            document.getElementById("yearlyTax").innerText = formatCurrency(annualTax);
+            document.getElementById("yearlyAfterTax").innerText = formatCurrency(yearlyAfterTax);
+            document.getElementById("fixedTax").innerText = formatCurrency(fixedTax);
+            document.getElementById("taxRate").innerText = taxRate.toFixed(2) + "%";
+            document.getElementById("netSavings").innerText = formatCurrency(netSavings);
+        }
+
+      //
+    </script>
+    {% endblock Content %}
+    

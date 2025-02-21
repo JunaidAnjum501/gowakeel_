@@ -1,0 +1,479 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% comment %} <link rel="stylesheet" href="output.css" /> {% endcomment %}
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js" integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>FAQ</title>
+  </head>
+  <body>
+    <nav
+    x-data="{ isOpen: false }"
+    class="relative w-container shadow"
+  >
+    <div
+      class="w-container max-w-7xl m-auto px-6 py-4 md:flex md:justify-center md:items-center lg:flex lg:justify-between lg:items-center"
+    >
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <a class="flex justify-center items-center" href="#">
+          <img
+            class="w-auto h-8 md:h-12 lg:h-14 xl:h-16"
+            src="{% static 'wakeelapp/Img/logo2.png' %}"
+            alt="Logo"
+          />
+          <h2
+            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl ml-2 text-[#003366] font-bold"
+          >
+            GOWAKEEL
+          </h2>
+        </a>
+
+        <!-- Mobile menu button -->
+        <div class="flex md:hidden">
+          <button
+            @click="isOpen = !isOpen"
+            type="button"
+            class="text-gray-500 hover:text-gray-600 focus:outline-none"
+          >
+            <svg
+              x-show="!isOpen"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 8h16M4 16h16"
+              />
+            </svg>
+            <svg
+              x-show="isOpen"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navbar Links -->
+      <div
+        :class="{ 'translate-x-0 opacity-100': isOpen, 'opacity-0 -translate-x-full': !isOpen }"
+        class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white md:mt-0 md:p-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center"
+      >
+        <div class="flex flex-col md:flex-row md:mx-4">
+          <a
+            href="{% url 'wakeelapp:index' %}"
+            class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+            >Home</a
+          >
+          <a
+            href="{% url 'wakeelapp:about' %}"
+            class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+            >About</a
+          >
+          <a
+            href="{% url 'wakeelapp:calculator' %}"
+            class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+            >Tax Calculator</a
+          >
+            <a
+              href="{% url 'wakeelapp:contact' %}"
+              class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+              >Resources</a
+            >
+           
+        </div>
+        <!-- Buttons -->
+        <div class="flex space-x-4">
+          <a
+              href="#"
+              class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white  hover:bg-[#003366]"
+              >Join Us</a
+            >
+            <a
+              href="#"
+              class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white"
+              >
+              <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="" class="w-5 h-5 mr-2"> Whatsapp</a
+            >
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+    <!-- Subnavbar section -->
+    <div
+      class="w-full shadow-lg m-2 p-5 mx-auto flex justify-center items-center gap-5 md:gap-10 rounded"
+    >
+      <!-- <a
+        href="{% url 'wakeelapp:calculator' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/calculator.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="Calculator"
+        />
+        <span>Calculator</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:ntn' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/NTN.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="NTN Status"
+        />
+        <span>NTN Status</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:atl' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/ATL.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="ATL Status"
+        />
+        <span>ATL Status</span>
+      </a> -->
+      <a
+        href="{% url 'wakeelapp:blogs' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/blogs.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="Calculator"
+        />
+        <span>Blogs</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:video' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/video.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="NTN Status"
+        />
+        <span>Video</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:faq' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img src="{% static 'wakeelapp/Img/FAQ.png' %}" class="h-10 mb-2 sm:h-12 md:h-14" alt="FAQ" />
+        <span>FAQ's</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:contact' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/contact.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="Contact"
+        />
+        <span>Contact</span>
+      </a>
+      
+    </div>
+
+
+
+{% block Content %}
+<section class="bg-white ">
+    <div class="w-container max-w-7xl px-6 py-10 mx-auto">
+        <h1 class="text-2xl font-semibold text-[#003366] lg:text-4xl">FAQ's</h1>
+        <p class="text-lg text-justify mt-2 ">We're here to help, from getting you started, to long after you file. Let us help you with all your tax filing needs.</p>
+        <hr class="my-6 border-gray-300">
+
+        <div id="faq-container" class="space-y-4">
+            <!-- FAQ Items (Total: 10, Initially Show 5) -->
+            <div class="faq-item border-b border-gray-300 ">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">How can I pay for my appointment?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    You can pay via credit card, bank transfer, or online payment systems.
+                </div>
+            </div>
+
+            <div class="faq-item border-b border-gray-300">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">What can I expect at my first consultation?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    During your first consultation, we will discuss your medical history and treatment plan.
+                </div>
+            </div>
+
+            <div class="faq-item border-b border-gray-300">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">What are your opening hours?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    We are open Monday to Friday from 9 AM to 5 PM.
+                </div>
+            </div>
+
+            <div class="faq-item border-b border-gray-300">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">Do I need a referral?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    A referral is not required, but it may be beneficial depending on your condition.
+                </div>
+            </div>
+
+            <div class="faq-item border-b border-gray-300">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">Is the cost of the appointment covered by private health insurance?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    It depends on your policy; please check with your insurance provider.
+                </div>
+            </div>
+
+            <!-- Hidden FAQs (Show when 'Show More' is clicked) -->
+            <div class="faq-item hidden border-b border-gray-300">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">Can I reschedule my appointment?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    Yes, you can reschedule at least 24 hours before your appointment.
+                </div>
+            </div>
+
+            <div class="faq-item hidden border-b border-gray-300">
+                <button class="flex items-center justify-between w-full p-4 focus:outline-none faq-toggle">
+                    <h1 class="text-lg md:text-xl text-gray-700 ">Do you offer telehealth consultations?</h1>
+                    <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+                <div class="hidden px-4 pb-4 text-gray-500 ">
+                    Yes, we offer virtual consultations via video calls.
+                </div>
+            </div>
+        </div>
+
+        <!-- Show More Button -->
+        <div class="flex justify-center mt-4">
+            <button id="show-more-btn" class="px-6 py-2 text-white bg-[#003366] rounded-lg hover:bg-blue-800 transition-all">
+                Show More
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.faq-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            answer.classList.toggle('hidden');
+        });
+    });
+
+    // Show More Button Logic
+    const faqs = document.querySelectorAll('.faq-item');
+    const showMoreBtn = document.getElementById('show-more-btn');
+
+    let visibleFaqs = 5; // Show only 5 FAQs initially
+
+    showMoreBtn.addEventListener('click', () => {
+        for (let i = visibleFaqs; i < faqs.length; i++) {
+            faqs[i].classList.toggle('hidden');
+        }
+
+        if (showMoreBtn.textContent === 'Show More') {
+            showMoreBtn.textContent = 'Show Less';
+        } else {
+            showMoreBtn.textContent = 'Show More';
+        }
+    });
+</script>
+
+{% endblock Content %}
+</section>
+<!-- Footer Start-->
+<footer class="bg-[#003366]/10 overflow-hidden">
+  <div class="w-screen max-w-7xl m-auto px-10 pt-12">
+    <div class="md:flex md:items-center md:justify-between">
+      <h1
+        class="text-xl font-semibold tracking-tight text-gray-800 md:mx-3 xl:text-2xl"
+      >
+        Subscribe our newsletter to get update.
+      </h1>
+
+      <div class="mt-6 shrink-0 md:mt-0 md:w-auto">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-[#003366] rounded-lg gap-x-3 hover:bg-[#0056b3] focus:ring focus:ring-gray-300 focus:ring-opacity-80"
+        >
+          <span>Sign Up Now</span>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-5 h-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <hr class="my-6 border-gray-200 md:my-10" />
+
+    <div
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <div>
+        <p class="font-semibold text-gray-800">Quick Link</p>
+
+        <div class="flex flex-col items-start mt-5 space-y-2">
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Who We Are</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Our Philosophy</a
+          >
+        </div>
+      </div>
+
+      <div>
+        <p class="font-semibold text-gray-800">Industries</p>
+
+        <div class="flex flex-col items-start mt-5 space-y-2">
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Retail & E-Commerce</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Information Technology</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Finance & Insurance</a
+          >
+        </div>
+      </div>
+
+      <div>
+        <p class="font-semibold text-gray-800">Services</p>
+
+        <div class="flex flex-col items-start mt-5 space-y-2">
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Translation</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Proofreading & Editing</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >Content Creation</a
+          >
+        </div>
+      </div>
+
+      <div>
+        <p class="font-semibold text-gray-800">Contact Us</p>
+
+        <div class="flex flex-col items-start mt-5 space-y-2">
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >+880 768 473 4978</a
+          >
+          <a
+            href="#"
+            class="text-gray-600 transition-colors duration-300 hover:underline hover:text-blue-500"
+            >info@merakiui.com</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <hr class="my-6 border-gray-700 md:mt-10" />
+
+    <div class="flex flex-col items-center justify-between sm:flex-row">
+      <a href="#">
+        <img class="w-auto h-16" src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="Meraki UI" />
+      </a>
+
+      <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+        © Copyright 2021. All Rights Reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
+
+</body>
+</html>
