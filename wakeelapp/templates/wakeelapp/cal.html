@@ -184,7 +184,7 @@
       };
 
       function formatCurrency(amount) {
-            return amount.toLocaleString() + "/-";
+            return amount.toFixed(2).toLocaleString() + "/-";
         }
 
         function calculateTax() {
@@ -220,7 +220,6 @@
             document.getElementById("yearlyAfterTax").innerText = formatCurrency(yearlyAfterTax);
             document.getElementById("fixedTax").innerText = formatCurrency(fixedTax);
             document.getElementById("taxRate").innerText = taxRate.toFixed(2) + "%";
-            document.getElementById("netSavings").innerText = formatCurrency(netSavings);
         }
 
       //
