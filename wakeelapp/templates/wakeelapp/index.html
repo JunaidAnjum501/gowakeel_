@@ -89,7 +89,7 @@
               >Home</a
             >
             <a
-              href="{% url 'wakeelapp:usaservice' %}"
+              href="{% url 'wakeelapp:about' %}"
               class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
               >About</a
             >
@@ -340,7 +340,7 @@
             <p class="text-md font-bold text-green-600">
               Price: {{ service.price }}
             </p>
-            <a href="{% url 'wakeelapp:service_detail' service.name %}">
+            <a href="{% url 'wakeelapp:service_detail' service.slug %}">
               <button
                 class="mt-4 bg-[#003366] text-white px-4 py-2 rounded-full hover:bg-[#002244] transition"
               >

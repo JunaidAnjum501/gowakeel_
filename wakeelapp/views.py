@@ -1,17 +1,17 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
-
-# Create your views here.
+from .models import Blogs, BlogCategory, VideoCategory, Videos
 
 
 def index(request):
     services = [
-        {"name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/ntnregis.jpg"},
-        {"name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "images/tax-salary.jpg"},
-        {"name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "images/tax-business.jpg"},
-        {"name": "GST Registration", "price": "Contact for Price", "image": "images/gst.jpg"},
-        {"name": "Monthly Sales Tax Return Filing", "price": "Contact for Price", "image": "static/wakeelapp/Img/blogs.png"},
-        {"name": "Company Registration", "price": "Starting 15000 PKR", "image": "images/company.jpg"},
-        {"name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "images/trademark.jpg"},
+        {"slug":"NTN-Registration", "name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/ntnregis.jpg"},
+        {"slug":"Annual-Income-Tax-Return-(Salary)", "name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "images/tax-salary.jpg"},
+        {"slug":"Annual-Income-Tax-Return-(Business)", "name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "images/tax-business.jpg"},
+        {"slug":"GST-Registration", "name": "GST Registration", "price": "Contact for Price", "image": "images/gst.jpg"},
+        {"slug":"Monthly-Sales-Tax-Return-Filing", "name": "Monthly Sales Tax Return Filing", "price": "Contact for Price", "image": "static/wakeelapp/Img/blogs.png"},
+        {"slug":"Company-Registration", "name": "Company Registration", "price": "Starting 15000 PKR", "image": "images/company.jpg"},
+        {"slug":"Trade-Marks-&-Partnership", "name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "images/trademark.jpg"},
     ]
 
     
@@ -39,11 +39,40 @@ def contact(request):
 def service_card(request):
     return render(request, 'wakeelapp/service_card.html')
 
+
 def blogs(request):
-    return render(request, 'wakeelapp/blogs.html')
+    # Fetch all blogs and order by 'created_at'
+    blogs_list = Blogs.objects.all().order_by("-created_at")
+    categories = BlogCategory.objects.values("name")
+
+    paginator = Paginator(blogs_list, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        "blogs": page_obj,
+        "categories": categories
+    }
+
+    return render(request, 'wakeelapp/blogs.html', context)
+
 
 def video(request):
-    return render(request, 'wakeelapp/video.html')
+     # Fetch all blogs and order by 'created_at'
+    video_list = Videos.objects.all().order_by("-created_at")
+    categories = VideoCategory.objects.values("name")
+
+    paginator = Paginator(video_list, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        "videos": page_obj,
+        "categories": categories
+    }
+    return render(request, 'wakeelapp/video.html', context)
+
+
 
 def about(request):
     return render(request, 'wakeelapp/about.html')
@@ -51,11 +80,10 @@ def about(request):
 def usaservice(request):
     return render(request, 'wakeelapp/usaservices.html')
 
-from django.shortcuts import render
 
 def service_detail(request, service_name):
     services = {
-        "NTN Registration": {
+        "NTN-Registration": {
             "description": "Get your Individual NTN in just 3 simple steps.",
             "price": "Rs:500/-",
             "requirements": [
@@ -66,7 +94,7 @@ def service_detail(request, service_name):
           ],
             
         },
-        "Annual Income Tax Return (Salary)": {
+        "Annual-Income-Tax-Return-(Salary)": {
             "description": "File your tax returns without any hassle.",
             "price": "Rs:3000/-",
             "requirements": [
@@ -82,7 +110,7 @@ def service_detail(request, service_name):
           ],
             
         },
-        "Annual Income Tax Return (Business)": {
+        "Annual-Income-Tax-Return-(Business)": {
             "description": "Start your business legally with ease.",
             "price": "Rs:5000/-",
             "requirements": [
@@ -98,7 +126,7 @@ def service_detail(request, service_name):
           ],
             
         },
-        "GST Registration": {
+        "GST-Registration": {
             "description": "Start your business legally with ease.",
             "price": "$150",
             "requirements": [
@@ -117,13 +145,13 @@ def service_detail(request, service_name):
           ],
             
         },
-        "Monthly Sales Tax Return Filing": {
+        "Monthly-Sales-Tax-Return-Filing": {
             "description": "Start your business legally with ease.",
             "price": "$150",
             "requirements": ["Business Name", "CNIC Copy", "Bank Account", "Office Address"],
             
         },
-        "Company Registration": {
+        "Company-Registration": {
             "description": "Start your business legally with ease.",
             "price": "Starting From Rs:15000/-",
             "requirements": [
@@ -145,7 +173,7 @@ def service_detail(request, service_name):
           ],
             
         },
-        "Trade Marks & Partnership": {
+        "Trade-Marks-&-Partnership": {
             "description": "Start your business legally with ease.",
             "price": "Starting From Rs:7500/-",
             "requirements": ["Business Name", "CNIC Copy", "Bank Account", "Office Address"],
@@ -154,7 +182,7 @@ def service_detail(request, service_name):
     }
 
     service = services.get(service_name, None)
-    print("Data Validation", service)
+    
     if service is None:
         return render(request, "404.html", status=404)
 

@@ -7,19 +7,21 @@
         <div class="flex flex-col-reverse md:flex-row gap-4">
             <!-- Main Blog Section -->
             <div class="w-full md:w-3/4">
-                <div class="blog-post bg-white flex flex-col md:flex-row p-6 rounded-lg gap-4 shadow-md m-4 cursor-pointer hover:bg-gray-50" data-category="Pakistan's Tax Affairs">
+                {% for blog in blogs %}
+                <div class="blog-post bg-white flex flex-col md:flex-row p-6 rounded-lg gap-4 shadow-md m-4 cursor-pointer hover:bg-gray-50" data-category="{{ blog.category.name }}">
                     <div class="w-full md:w-1/2">
-                        <img src="https://www.befiler.com/wordpress/wp-content/uploads/2024/12/Pakistans-Real-Estate-Sector-Taxes-and-Its-Impact-.jpg" alt="Blog Image" class="w-full rounded-md" />
+                        <img src="{{ blog.image.url }}" alt="Blog Image" class="w-full h-64 bg-contain rounded-md" />
                     </div>
                     <div class="w-full md:w-2/3">
-                        <h2 class="text-2xl font-semibold">Pakistan’s Real Estate Sector: Taxes and Its Impact</h2>
-                        <p class="text-gray-600 text-sm mb-2">December 18, 2024 / Befiler</p>
-                        <p class="text-gray-700 text-justify">Pakistan’s real estate sector is a major contributor to the GDP and is heavily taxed. The 2024-2025 budget introduces new property taxes. [...]</p>
+                        <h2 class="text-2xl font-semibold">{{ blog.title }}</h2>
+                        <p class="text-gray-600 text-sm mb-2">{{ blog.created_at }} / GOWAKEEL</p>
+                        <p class="text-gray-700 text-justify">{{ blog.content|slice:":250" }}{% if blog.content|length > 250 %}...{% endif %}</p>
                         <a href="#" class="text-blue-600 font-semibold mt-2 inline-block">Read more</a>
                     </div>
                 </div>
+                
+                {% endfor %}
             </div>
-            
             <!-- Sidebar -->
             <div class="w-full md:w-1/4 ">
                 <input type="text" id="search" placeholder="Search Posts" class="w-full p-2 border-2 border-[#003366] rounded-md mb-6" onkeyup="filterPosts()">
@@ -27,17 +29,36 @@
                     <h3 class="text-xl text-[#003366] font-bold mb-4">Categories</h3>
                     <div id="categoryFilter" class="flex flex-col gap-2">
                         <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('')">All</div>
-                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Business Registration Guide')">Business Registration Guide</div>
-                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Learn Sales Tax')">Learn Sales Tax</div>
-                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('NTN Registration')">NTN Registration</div>
-                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Pakistan\'s Tax Affairs')">Pakistan's Tax Affairs</div>
-                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Tax Deduction and Credit')">Tax Deduction and Credit</div>
-                        <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('Tax Planning')">Tax Planning</div>
+                        {% for category in categories %}
+                            <div class="category-card bg-gray-100 p-2 rounded-md text-center cursor-pointer hover:bg-gray-200" onclick="setCategoryFilter('{{category.name}}')">{{category.name}}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Pagination -->
+    <div class="w-container max-w-7xl mx-auto my-10 pagination">
+        <div class="flex justify-center gap-4 mt-8">
+            <!-- First Button -->
+            {% if blogs.has_previous %}
+                <a href="?page=1" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">First</a>
+                <a href="?page={{ blogs.previous_page_number }}" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">Previous</a>
+            {% endif %}
+
+            <!-- Current Page Info -->
+            <span class="px-6 py-3 bg-gray-100 text-[#003366] font-semibold rounded-md shadow-md">
+                Page {{ blogs.number }} of {{ blogs.paginator.num_pages }}
+            </span>
+
+            <!-- Next Button -->
+            {% if blogs.has_next %}
+                <a href="?page={{ blogs.next_page_number }}" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">Next</a>
+                <a href="?page={{ blogs.paginator.num_pages }}" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">Last</a>
+            {% endif %}
+        </div>
+    </div>
+
 
     <script>
         function filterPosts() {

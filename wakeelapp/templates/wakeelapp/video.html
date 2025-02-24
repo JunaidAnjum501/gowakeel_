@@ -21,8 +21,9 @@
     />
     <select id="category" class="p-2 border rounded">
       <option value="all">All Categories</option>
-      <option value="tax">Tax Filing</option>
-      <option value="registration">NTN Registration</option>
+      {% for category in categories %}
+        <option value="{{category.name}}">{{category.name}}</option>
+      {% endfor %}
     </select>
   </div>
 
@@ -31,14 +32,16 @@
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-4"
     id="videoList"
   >
+
+  {% for video in videos %}
     <div
       class="w-full mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-[#003366] hover:border-[#002244] transition video-item"
-      data-category="tax"
+      data-category="{{video.category.name}}"
     >
       <div class="relative w-full h-56" id="videoContainer">
         <img
           id="videoThumbnail"
-          src="https://img.youtube.com/vi/bfXgJbpiuJU/hqdefault.jpg"
+          src="{{ video.image.url }}"
           alt="Video Thumbnail"
           class="w-full h-full object-cover cursor-pointer"
           onclick="playVideo()"
@@ -46,26 +49,49 @@
         <iframe
           id="videoIframe"
           class="absolute top-0 left-0 w-full h-full hidden"
-          src=""
+          src="{{video.link}}"
           allow="autoplay; encrypted-media"
           allowfullscreen
         ></iframe>
       </div>
       <div class="p-4">
         <h3 class="text-lg font-bold text-[#003366]">
-          Tax Filing For Non-Resident
+          {{video.title}}
         </h3>
         <p class="text-gray-600 text-sm mt-2">
-          Learn about tax filing for non-residents.
+          {{ video.content|slice:":250" }}{% if video.content|length > 250 %}...{% endif %}
         </p>
         <a
-          href="https://youtu.be/bfXgJbpiuJU"
+          href="{{ video.link }}"
           target="_blank"
           class="block mt-4 text-center border border-[#003366] text-[#003366] px-4 py-2 rounded-lg hover:bg-[#003366] hover:text-white transition"
           >Watch on YouTube</a
         >
       </div>
     </div>
+
+    {% endfor %}
+  </div>
+</div>
+ <!-- Pagination -->
+ <div class="w-container max-w-7xl mx-auto my-10 pagination">
+  <div class="flex justify-center gap-4 mt-8">
+      <!-- First Button -->
+      {% if videos.has_previous %}
+          <a href="?page=1" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">First</a>
+          <a href="?page={{ blogs.previous_page_number }}" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">Previous</a>
+      {% endif %}
+
+      <!-- Current Page Info -->
+      <span class="px-6 py-3 bg-gray-100 text-[#003366] font-semibold rounded-md shadow-md">
+          Page {{ videos.number }} of {{ videos.paginator.num_pages }}
+      </span>
+
+      <!-- Next Button -->
+      {% if videos.has_next %}
+          <a href="?page={{ blogs.next_page_number }}" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">Next</a>
+          <a href="?page={{ blogs.paginator.num_pages }}" class="px-6 py-3 bg-[#003366] text-white rounded-md shadow-md hover:bg-[#002244] transition-all duration-300 ease-in-out">Last</a>
+      {% endif %}
   </div>
 </div>
 
@@ -92,7 +118,6 @@
   function playVideo() {
     const thumbnail = document.getElementById("videoThumbnail");
     const iframe = document.getElementById("videoIframe");
-    iframe.src = "https://www.youtube.com/embed/bfXgJbpiuJU?autoplay=1&mute=1";
     thumbnail.classList.add("hidden");
     iframe.classList.remove("hidden");
   }
