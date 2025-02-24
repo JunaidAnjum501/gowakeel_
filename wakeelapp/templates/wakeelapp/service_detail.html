@@ -1,9 +1,8 @@
 {% extends "wakeelapp/index.html" %} {% load static %} {% block Content %}
 <div
-  class="w-container max-w-7xl flex flex-col md:flex-row justify-center  my-5 mx-auto p-6 "
+  class="w-container max-w-7xl flex flex-col md:flex-row justify-center my-5 mx-auto p-6"
 >
   <div class="w-full md:w-1/2 p-6">
-    
     <h1 class="text-3xl font-bold text-[#003366]">{{ service_name }}</h1>
     <p class="text-gray-700 mt-4">{{ service.description }}</p>
     <p class="text-lg font-bold text-black mt-2">
@@ -18,17 +17,21 @@
     </ul>
   </div>
   <div class="w-full md:w-1/2 p-6">
-    <h2 class="text-2xl md:text-4xl text-center font-bold text-[#003366]">Contact Us:</h2>
+    <h2 class="text-2xl md:text-4xl text-center font-bold text-[#003366]">
+      Contact Us:
+    </h2>
     <form class="mt-4">
       <label class="block">Your Name:</label>
       <input
+        required
         type="text"
         class="border p-2 w-full rounded-md"
         placeholder="Enter your name"
       />
-      
+
       <label class="block mt-4">Email:</label>
       <input
+        required
         type="email"
         class="border p-2 w-full rounded-md"
         placeholder="Enter your email"
@@ -36,7 +39,8 @@
 
       <label class="block mt-4">Phone:</label>
       <input
-        type="phone"
+        required
+        type="number"
         class="border p-2 w-full rounded-md"
         placeholder="Enter your Phone"
       />
