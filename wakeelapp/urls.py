@@ -17,4 +17,6 @@ urlpatterns =[
     path('video/', views.video, name="video"),
     path('about/', views.about, name="about"),
     path('usaservice/', views.usaservice, name="usaservice"),
+    path('login/', views.login, name="login"),
+    path('blogdetail/<slug:blog_slug>/', views.blogdetail, name="blogdetail"),
 ]

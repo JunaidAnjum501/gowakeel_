@@ -39,6 +39,32 @@ def contact(request):
 def service_card(request):
     return render(request, 'wakeelapp/service_card.html')
 
+def about(request):
+    return render(request, 'wakeelapp/about.html')
+
+def usaservice(request):
+    return render(request, 'wakeelapp/usaservices.html')
+
+def login(request):
+    return render(request, 'wakeelapp/login.html')
+
+
+def blogdetail(request, blog_slug):
+    try:
+        blog = Blogs.objects.get(slug=blog_slug)
+        blogs = Blogs.objects.all().order_by('-created_at')[:3]
+    
+    except:
+        blog = None
+        blogs = None
+
+    context = {
+        'blog': blog,
+        'blogs': blogs,
+    }
+
+
+    return render(request, 'wakeelapp/blogdetail.html', context)
 
 def blogs(request):
     # Fetch all blogs and order by 'created_at'
@@ -72,13 +98,6 @@ def video(request):
     }
     return render(request, 'wakeelapp/video.html', context)
 
-
-
-def about(request):
-    return render(request, 'wakeelapp/about.html')
-
-def usaservice(request):
-    return render(request, 'wakeelapp/usaservices.html')
 
 
 def service_detail(request, service_name):

@@ -51,6 +51,6 @@ class Videos(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def get_embed_url(self):
-        return self.link
+        return f"{self.link}"
 
 

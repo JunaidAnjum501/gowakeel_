@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gowakeel</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body>
+    <section class="flex items-center justify-center min-h-screen bg-gray-100 relative">
+        <!-- Back to Home Button -->
+        <a href="{% url 'wakeelapp:index' %}" class="absolute top-6 left-6 text-white bg-[#003366] px-4 py-2 rounded-lg shadow-md hover:bg-[#002244] transition">
+          ← Back to Home
+        </a>
+      
+        <div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl">
+          <div class="hidden bg-cover lg:block lg:w-1/2"
+            style="background-image: url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80');">
+          </div>
+      
+          <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+            <div class="flex justify-center mx-auto">
+              <img class="w-auto h-16 " src="{% static 'wakeelapp/Img/logo2.png' %}" alt="Logo" />
+            </div>
+      
+            <p class="mt-3 text-xl text-center text-gray-600">
+              Welcome back!
+            </p>
+      
+            <a href="#" class="flex items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50">
+              <div class="px-4 py-2">
+                <svg class="w-6 h-6" viewBox="0 0 40 40">
+                  <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192..." fill="#FFC107" />
+                  <path d="M5.25497 12.2425L10.7308 16.2583C12.2125..." fill="#FF3D00" />
+                  <path d="M20 36.6667C24.305 36.6667 28.2167 35.0192..." fill="#4CAF50" />
+                  <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192..." fill="#1976D2" />
+                </svg>
+              </div>
+              <span class="w-5/6 px-4 py-3 font-bold text-center">Sign in with Google</span>
+            </a>
+      
+            <div class="flex items-center justify-between mt-4">
+              <span class="w-1/5 border-b lg:w-1/4"></span>
+              <a href="#" class="text-xs text-center text-gray-500 uppercase hover:underline">or login with email</a>
+              <span class="w-1/5 border-b lg:w-1/4"></span>
+            </div>
+      
+            <div class="mt-4">
+              <label class="block mb-2 text-sm font-medium text-gray-600" for="LoggingEmailAddress">Email Address</label>
+              <input id="LoggingEmailAddress"
+                class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#003366] focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-[#003366]"
+                type="email" />
+            </div>
+      
+            <div class="mt-4">
+              <div class="flex justify-between">
+                <label class="block mb-2 text-sm font-medium text-gray-600" for="loggingPassword">Password</label>
+                <a href="#" class="text-xs text-gray-500 hover:underline">Forget Password?</a>
+              </div>
+      
+              <input id="loggingPassword"
+                class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-[#003366] focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-[#003366]"
+                type="password" />
+            </div>
+      
+            <div class="mt-6">
+              <button
+                class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#003366] rounded-lg hover:bg-[#002244] focus:outline-none focus:ring focus:ring-[#003366] focus:ring-opacity-50">
+                Sign In
+              </button>
+            </div>
+      
+            <div class="flex items-center justify-between mt-4">
+              <span class="w-1/5 border-b md:w-1/4"></span>
+              <a href="#" class="text-xs text-gray-500 uppercase hover:underline">or sign up</a>
+              <span class="w-1/5 border-b md:w-1/4"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+  </body>
+</html>
