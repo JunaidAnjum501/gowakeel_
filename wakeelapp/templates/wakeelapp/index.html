@@ -313,21 +313,19 @@
       </div>
     </div>
     <!-- Hero Section End -->
-
     <!-- service cards end -->
     <!-- new card data -->
     <section class="w-container max-w-7xl mx-auto py-12">
-      <div class="w-full mx-auto px-6">
-        <h1 class="text-2xl font-serif font-bold text-center text-gray-800 md:text-4xl">
+        <h1 class="text-3xl font-serif font-bold text-center text-gray-800 md:text-4xl">
           Our Services
         </h1>
         <div
-          class="mt-8 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          class="w-full p-4 mt-8 mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           <!-- Service Cards -->
           {% for service in services %}
           <div
-            class="service-card bg-white p-6 rounded-2xl shadow-lg text-center w-72 h-80 flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+            class="service-card bg-white p-6 rounded-2xl shadow-lg text-center w-auto h-80 flex flex-col justify-between transform transition duration-300 hover:scale-105 hover:shadow-2xl"
           >
             <img
               src="{% static service.image %}"
@@ -558,15 +556,15 @@
               </div>
           </div>
           
-          <hr class="my-6 border-gray-600 md:my-8 ">
+          <hr class="my-6 border-gray-600 md:my-4 ">
           
-          <div class="flex items-center justify-between">
-              <a href="#">
+          <div class="flex flex-col items-center md:flex-row justify-between">
+              <a href="">
                   <img class="w-auto h-16" src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="Footerlogo">
               </a>
               
               <div class="flex -mx-2">
-                <p class="mt-4 text-sm text-gray-500 sm:mt-0 ">© Copyright 2021. All Rights Reserved.</p>
+                <p class="mt-4 text-sm text-gray-500 sm:mt-0 ">© Copyright 2025. All Rights Reserved.</p>
               </div>
           </div>
       </div>
