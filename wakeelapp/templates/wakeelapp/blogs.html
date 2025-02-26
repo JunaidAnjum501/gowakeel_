@@ -4,6 +4,7 @@
     {% block Content %} 
     <div class="container max-w-7xl mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold md:text-4xl m-4 text-[#003366]">Blogs</h1>
+        <p class="text-gray-700 text-lg justify-center tracking-tight md:text-2xl">Stay tuned for insightful articles and updates on tax regulations, business registration processes, and more. Our blog section is coming soon to provide you with valuable information to assist you in your financial and business endeavors.</p>
         <div class="flex flex-col-reverse md:flex-row gap-4">
             <!-- Main Blog Section -->
             <div class="w-full md:w-3/4">
@@ -16,14 +17,14 @@
                         <h2 class="text-2xl font-semibold">{{ blog.title }}</h2>
                         <p class="text-gray-600 text-sm mb-2">{{ blog.created_at }} / GOWAKEEL</p>
                         <p class="text-gray-700 text-justify">{{ blog.content|slice:":250" }}{% if blog.content|length > 250 %}...{% endif %}</p>
-                        <a href="{% url 'wakeelapp:blogdetail' blog.slug %}" class="text-blue-600 font-semibold mt-2 inline-block">Read more</a>
+                        <a href="{% url 'wakeelapp:blogdetail' blog.slug %}" class="text-[#003366] font-semibold mt-2 inline-block">Read more</a>
                     </div>
                 </div>
                 
                 {% endfor %}
             </div>
             <!-- Sidebar -->
-            <div class="w-full md:w-1/4 ">
+            <div class="w-full mt-2 md:w-1/4 ">
                 <input type="text" id="search" placeholder="Search Posts" class="w-full p-2 border-2 border-[#003366] rounded-md mb-6" onkeyup="filterPosts()">
                 <div class="bg-white p-4 rounded-lg shadow-md md sticky top-5 self-start">
                     <h3 class="text-xl text-[#003366] font-bold mb-4">Categories</h3>

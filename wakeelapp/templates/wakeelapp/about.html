@@ -1,100 +1,239 @@
-{% extends "wakeelapp/index.html" %}
-{% load static %}
-{% block Content %}
+{% extends "wakeelapp/index.html" %} {% load static %} {% block Content %}
 <!-- Hero section -->
 <section class="w-container max-w-7xl px-6 py-16 mx-auto text-center">
-    <div class="w-full mx-auto">
-        <h1 class="text-3xl font-semibold text-gray-800  lg:text-7xl">Building Your Next App with our Awesome components</h1>
-        <p class="mt-6 text-gray-500 ">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero similique
-            obcaecati illum mollitia.</p>
-            <button class="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-[#003366] rounded-lg hover:bg-[#002244] lg:mx-0 lg:w-auto focus:outline-none">
-                Contact Now
-            </button>
-        </div>
-    </section>
-    <!-- Hero section End --> 
-    <!-- Choise Sec  -->
-    <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-    <div class="bg-[#003366] h-auto flex items-center justify-center p-6">
-        <section class="max-w-7xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-white mb-4">Why Choose Us</h2>
-            <p class="text-gray-300 mb-10 text-lg">We provide the best services with top-notch quality.</p>
-    
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200">
-                    <img src="https://via.placeholder.com/100" alt="Quality" class="mx-auto mb-4">
-                    <h3 class="text-2xl font-semibold text-[#003366]">Premium Quality</h3>
-                    <p class="text-gray-600 mt-3">Our services are crafted with excellence and attention to detail.</p>
-                </div>
-                
-                <div class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200">
-                    <img src="https://via.placeholder.com/100" alt="Support" class="mx-auto mb-4">
-                    <h3 class="text-2xl font-semibold text-[#003366]">24/7 Support</h3>
-                    <p class="text-gray-600 mt-3">We are available anytime to assist you with your needs.</p>
-                </div>
-    
-                <div class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200">
-                    <img src="https://via.placeholder.com/100" alt="Experience" class="mx-auto mb-4">
-                    <h3 class="text-2xl font-semibold text-[#003366]">Expert Team</h3>
-                    <p class="text-gray-600 mt-3">Our team consists of experienced professionals in every field.</p>
-                </div>
-            </div>
-        </section>
-    </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const elements = document.querySelectorAll('.fade-in');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('show');
-                        }
-                    });
-                }, { threshold: 0.3 });
-    
-                elements.forEach(el => observer.observe(el));
-            });
-        </script>
-        <!-- End Choise -->
-    <!-- Mission & Value -->
-    <div class="w-container w-max-7xl flex flex-col px-6 py-4 mx-auto gap-4 lg:h-auto lg:py-4 lg:flex-row lg:items-center lg:justify-around">
-    <div class="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
-        <div class="max-w-lg lg:mx-12 lg:order-2">
-            <h1 class="text-3xl font-bold tracking-wide text-[#003366] lg:text-4xl">Our Mission</h1>
-            <p class="mt-4 text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quia asperiores alias vero magnam recusandae adipisci ad vitae laudantium quod rem voluptatem eos accusantium cumque.</p>
-            <div class="mt-6">
-                <a href="#" class="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-[#003366] rounded-lg hover:bg-[#002244] lg:mx-0 lg:w-auto focus:outline-none">Download from App Store</a>
-            </div>
-        </div>
-    </div>
+  <div class="w-full mx-auto">
+    <h1 class="text-3xl font-bold text-gray-800 lg:text-7xl">
+        Welcome to GoWakeel
+    </h1>
+    <h1 class="text-3xl font-semibold text-gray-800 lg:text-5xl">
+        Your Trusted Partner in Tax Filing & Registration
+    </h1>
+    <p class="mt-6 text-gray-500">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero similique
+      obcaecati illum mollitia.
+    </p>
+    <button
+      class="px-5 py-2 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-[#003366] rounded-lg hover:bg-[#002244] lg:mx-0 lg:w-auto focus:outline-none"
+    >
+      Contact Now
+    </button>
+  </div>
+</section>
+<!-- Hero section End -->
+<!-- Choise Sec  -->
+<style>
+  .fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  .fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+<div class="bg-[#003366] h-auto flex items-center justify-center p-6">
+  <section class="max-w-7xl mx-auto text-center">
+    <h2 class="text-4xl font-bold text-white mb-4">Why Choose Us</h2>
+    <p class="text-gray-300 mb-10 text-lg">
+      We provide the best services with top-notch quality.
+    </p>
 
-    <div class="flex items-center justify-center w-full h-[auto] md:h-96 lg:w-1/3">
-        <img class="object-cover w-full h-full max-w-2xl rounded-md" src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="apple watch photo">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div
+        class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/expert.png' %}"
+          alt="Quality"
+          class="mx-auto mb-4 w-16 h-16"
+        />
+        <h3 class="text-2xl font-semibold text-[#003366]">Expert Guidance</h3>
+        <p class="text-gray-600 mt-3">
+          Personalized advice from experienced tax professionals.
+        </p>
+      </div>
+
+      <div
+        class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/affordable.png' %}"
+          alt="Support"
+          class="mx-auto mb-4 w-16 h-16"
+        />
+        <h3 class="text-2xl font-semibold text-[#003366]">Affordable</h3>
+        <p class="text-gray-600 mt-3">
+          Transparent and cost-effective pricing for all services.
+        </p>
+      </div>
+
+      <div
+        class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/turnaround.png' %}"
+          alt="Experience"
+          class="mx-auto mb-4 w-16 h-16"
+        />
+        <h3 class="text-2xl font-semibold text-[#003366]">Quick Turnaround</h3>
+        <p class="text-gray-600 mt-3">
+          Fast and efficient processing for all your tax and registration needs.
+        </p>
+      </div>
+      <div
+        class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/convient.png' %}"
+          alt="Quality"
+          class="mx-auto mb-4 w-16 h-16"
+        />
+        <h3 class="text-2xl font-semibold text-[#003366]">Convenient</h3>
+        <p class="text-gray-600 mt-3">
+          Complete your filings and registrations online in just a few easy
+          steps.
+        </p>
+      </div>
+
+      <div
+        class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/24.png' %}"
+          alt="Support"
+          class="mx-auto mb-4 w-16 h-16"
+        />
+        <h3 class="text-2xl font-semibold text-[#003366]">24/7 Support</h3>
+        <p class="text-gray-600 mt-3">
+          Full compliance with tax laws, minimizing the risk of penalties.
+        </p>
+      </div>
+
+      <div
+        class="fade-in bg-white p-8 rounded-2xl shadow-lg hover:scale-105 transition-all border border-gray-200"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/reliable.png' %}"
+          alt="Experience"
+          class="mx-auto mb-4 w-16 h-16"
+        />
+        <h3 class="text-2xl font-semibold text-[#003366]">Reliable Support</h3>
+        <p class="text-gray-600 mt-3">
+          Dedicated customer support available whenever you need assistance.
+        </p>
+      </div>
     </div>
+  </section>
 </div>
-<div class="w-container w-max-7xl flex flex-col-reverse px-6 py-4 mx-auto lg:h-auto gap-4 lg:py-4 lg:flex-row lg:items-center lg:justify-around">
-    <div class="flex items-center justify-center w-full h-[auto] md:h-96 lg:w-1/3">
-        <img class="object-cover w-full h-full max-w-2xl rounded-md" src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80" alt="apple watch photo">
-    </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const elements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
-    <div class="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
-        <div class="max-w-lg lg:mx-12 lg:order-2">
-            <h1 class="text-3xl font-bold tracking-wide text-[#003366] lg:text-4xl">Our Value</h1>
-            <p class="mt-4 text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut quia asperiores alias vero magnam recusandae adipisci ad vitae laudantium quod rem voluptatem eos accusantium cumque.</p>
-            <div class="mt-6">
-                <a href="#" class="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-[#003366] rounded-lg hover:bg-[#002244] lg:mx-0 lg:w-auto focus:outline-none">Download from App Store</a>
-            </div>
-        </div>
+    elements.forEach((el) => observer.observe(el));
+  });
+</script>
+<!-- End Choise -->
+<!-- Mission & Value -->
+<div
+  class="w-container max-w-7xl mt-10 flex flex-col px-6 py-4 mx-auto gap-4 lg:h-auto lg:py-4 lg:flex-row lg:items-center lg:justify-around"
+>
+  <div class="flex flex-col items-center w-full lg:flex-row lg:w-2/3">
+    <div class="w-full lg:mx-12 lg:order-2">
+      <h1 class="text-3xl font-bold tracking-wide text-[#003366] lg:text-4xl">
+        Our Mission
+      </h1>
+      <p class="mt-4 text-justify text-gray-600">
+        At GoWakeel, our mission is simple: To make tax filing and business
+        registration accessible, affordable, and efficient for everyone. We
+        believe that handling taxes doesn’t have to be a complicated,
+        time-consuming process. With the right team and the right tools, we
+        provide seamless services that help you stay compliant with the law and
+        maximize your tax savings.
+      </p>
+      <p class="mt-4 text-justify text-gray-600">
+        We aim to reduce the stress surrounding tax season and simplify the
+        complexities of registrations, allowing you to save time, effort, and
+        money.
+      </p>
+      <div class="mt-6">
+        <a
+          href="#"
+          class="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-[#003366] rounded-lg hover:bg-[#002244] lg:mx-0 lg:w-auto focus:outline-none"
+          >Join US</a
+        >
+      </div>
     </div>
+  </div>
+
+  <div
+    class="flex items-center justify-center w-full h-[auto] md:h-96 lg:w-1/3"
+  >
+    <img
+      class="object-cover w-full h-full max-w-2xl rounded-md"
+      src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
+      alt="apple watch photo"
+    />
+  </div>
+</div>
+<div
+  class="w-container max-w-7xl flex flex-col-reverse px-6 py-4 mx-auto lg:h-auto gap-4 lg:py-4 lg:flex-row lg:items-center lg:justify-around"
+>
+  <div
+    class="flex items-center justify-center w-full h-[auto] md:h-96 lg:w-1/3"
+  >
+    <img
+      class="object-cover w-full h-full max-w-2xl rounded-md"
+      src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
+      alt="apple watch photo"
+    />
+  </div>
+
+  <div class="flex flex-col items-center w-full lg:flex-row lg:w-2/3">
+    <div class="w-full lg:mx-12 lg:order-2">
+      <h1 class="text-3xl font-bold tracking-wide text-[#003366] lg:text-4xl">
+        Our Value
+      </h1>
+      <p class="mt-4 text-justify text-gray-600">
+        To be the leading provider of tax and registration services in the
+        country by continuously evolving and providing innovative solutions that
+        make the tax process effortless for individuals and businesses alike.
+      </p>
+      <p class="mt-4 text-gray-600 text-justify">
+        <span class="font-bold">Integrity:</span> We pride ourselves on
+        providing honest and transparent services that our clients can trust.
+      </p>
+      <p class="mt-4 text-gray-600 text-justify">
+        <span class="font-bold">Efficiency:</span> We work quickly and
+        effectively to meet deadlines and deliver high-quality services.
+      </p>
+      <p class="mt-4 text-gray-600 text-justify">
+        <span class="font-bold">Customer Focus:</span> Our clients are our
+        priority. We aim to offer solutions that are tailored to their specific
+        needs.
+      </p>
+      <p class="mt-4 text-gray-600 text-justify">
+        <span class="font-bold">Reliability:</span> We are committed to
+        delivering services that our clients can rely on every single time.
+      </p>
+      <div class="mt-6">
+        <a
+          href="#"
+          class="px-6 py-2.5 mt-6 text-sm font-medium leading-5 text-center text-white capitalize bg-[#003366] rounded-lg hover:bg-[#002244] lg:mx-0 lg:w-auto focus:outline-none"
+          >Download from App Store</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock Content %}
