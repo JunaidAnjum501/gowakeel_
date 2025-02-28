@@ -48,6 +48,12 @@ def usaservice(request):
 def login(request):
     return render(request, 'wakeelapp/login.html')
 
+def zakatcalculator(request):
+    return render(request, 'wakeelapp/zakatcalculator.html')
+
+def currencyconvert(request):
+    return render(request, 'wakeelapp/currencyconvert.html')
+
 
 def blogdetail(request, blog_slug):
     try:

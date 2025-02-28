@@ -1,0 +1,514 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <title>FAQ</title>
+  </head>
+  <body>
+    <nav x-data="{ isOpen: false }" class="relative w-container shadow">
+      <div
+        class="w-container max-w-7xl m-auto px-6 py-4 md:flex md:justify-center md:items-center lg:flex lg:justify-between lg:items-center"
+      >
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <a class="flex justify-center items-center" href="#">
+            <img
+              class="w-auto h-8 md:h-12 lg:h-14 xl:h-16"
+              src="{% static 'wakeelapp/Img/logo2.png' %}"
+              alt="Logo"
+            />
+            <h2
+              class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl ml-2 text-[#003366] font-bold"
+            >
+              GOWAKEEL
+            </h2>
+          </a>
+
+          <!-- Mobile menu button -->
+          <div class="flex md:hidden">
+            <button
+              @click="isOpen = !isOpen"
+              type="button"
+              class="text-gray-500 hover:text-gray-600 focus:outline-none"
+            >
+              <svg
+                x-show="!isOpen"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 8h16M4 16h16"
+                />
+              </svg>
+              <svg
+                x-show="isOpen"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Navbar Links -->
+        <div
+          :class="{ 'translate-x-0 opacity-100': isOpen, 'opacity-0 -translate-x-full': !isOpen }"
+          class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white md:mt-0 md:p-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center"
+        >
+          <div class="flex flex-col md:flex-row md:items-center md:mx-4">
+            <a
+              href="{% url 'wakeelapp:index' %}"
+              class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+              >Home</a
+            >
+            <a
+              href="{% url 'wakeelapp:about' %}"
+              class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+              >About</a
+            >
+            <a
+              href="{% url 'wakeelapp:calculator' %}"
+              class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+              >Tools</a
+            >
+            <!-- Tax Tools Dropdown
+            <div
+              @mouseenter="toolsOpen = true"
+              @mouseleave="toolsOpen = false"
+              class="relative"
+            > -->
+              <a
+                href="{% url 'wakeelapp:contact' %}"
+                class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+                >Resources</a
+              >
+              <!-- <div
+                x-show="toolsOpen"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 transform scale-95"
+                x-transition:enter-end="opacity-100 transform scale-100"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 transform scale-100"
+                x-transition:leave-end="opacity-0 transform scale-95"
+                class="absolute right-0 top-10 bg-gray-200 shadow-lg py-4 rounded-2xl"
+              >
+                <div
+                  class="w-80vh m-2 p-5 mx-auto flex justify-around items-center gap-10 rounded"
+                >
+                  <a
+                    href="{% url 'wakeelapp:blogs' %}"
+                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
+                  >
+                    <img
+                      src="{% static 'wakeelapp/Img/blogs.png' %}"
+                      class="h-12"
+                      alt="Blogs"
+                    />
+                    <span>Blogs</span>
+                  </a>
+                  <a
+                    href="{% url 'wakeelapp:video' %}"
+                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
+                  >
+                    <img
+                      src="{% static 'wakeelapp/Img/video.png' %}"
+                      class="h-12"
+                      alt="Video"
+                    />
+                    <span>Video</span>
+                  </a>
+                  <a
+                    href="{% url 'wakeelapp:faq' %}"
+                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
+                  >
+                    <img
+                      src="{% static 'wakeelapp/Img/FAQ.png' %}"
+                      class="h-12"
+                      alt="FQA's"
+                    />
+                    <span>FQA's</span>
+                  </a>
+                  <a
+                    href="{% url 'wakeelapp:contact' %}"
+                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
+                  >
+                    <img
+                      src="{% static 'wakeelapp/Img/contact.png' %}"
+                      class="h-12"
+                      alt="Contact"
+                    />
+                    <span>Contact</span>
+                  </a>
+                </div>
+              </div>
+            </div> -->
+          <!-- Buttons -->
+          <div class="flex space-x-4">
+            <a
+              href="#"
+              class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white hover:bg-[#003366]"
+              >Join Us</a
+            >
+            <a
+              href="#"
+              class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white"
+            >
+              <img
+                src="{% static 'wakeelapp/Img/whatsapp.png' %}"
+                alt=""
+                class="w-5 h-5 mr-2"
+              />
+              Whatsapp</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+    <!-- Subnavbar section -->
+    <div
+      class="w-full shadow-lg m-2 p-5 mx-auto flex justify-center items-center gap-5 md:gap-10 rounded"
+    >
+      <a
+        href="{% url 'wakeelapp:calculator' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/calculator.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="Calculator"
+        />
+        <span>Tax Calculator</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:zakatcalculator' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/zakatcal.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="ATL Status"
+        />
+        <span>Zakat Calculator</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:ntn' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/NTN.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="NTN Status"
+        />
+        <span>NTN Status</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:atl' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/ATL.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="ATL Status"
+        />
+        <span>ATL Status</span>
+      </a>
+      <a
+        href="{% url 'wakeelapp:currencyconvert' %}"
+        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
+      >
+        <img
+          src="{% static 'wakeelapp/Img/converter.png' %}"
+          class="h-10 mb-2 sm:h-12 md:h-14"
+          alt="NTN Status"
+        />
+        <span>Currency Converter</span>
+      </a>
+    </div>
+<!-- NavbarEnd -->
+    {% block Content %}
+    <!-- Hero Section -->
+    <div class="w-conatiner max-w-7xl mx-auto px-6 py-5">
+        <div class="max-w-7xl m-auto items-center lg:flex">
+          <div class="w-full lg:w-2/3">
+            <div class="w-full">
+            <p class="text-gray-700 text-xl justify-center font-semibold tracking-tight mb-2 md:text-3xl"><span class="text-5xl font-bold mr-2 text-[#003366] ">Zakat</span>A Pillar of Islam and Social Responsibility</p>
+            <p class="text-gray-700 text-lg text-justify tracking-tight"> 
+                Zakat is one of the five pillars of Islam, a mandatory form of charity that ensures wealth is distributed fairly within the community. Every eligible Muslim who meets the <span class="font-semibold"> Nisab threshold—the minimum amount of wealth required to be liable for Zakat—must donate 2.5%</Span> of their savings, gold, silver, investments, and other assets after deducting liabilities. 
+                By giving Zakat, individuals purify their wealth, foster social equity, and provide financial relief to the poor, needy, orphans, and those in debt. It is more than just a charitable act; it is a system designed to uplift society and create economic balance.</p>
+                <p class="text-gray-700 text-lg text-justify tracking-tight">
+                    Use our Zakat Calculator to accurately determine your due amount and ensure you fulfill this important religious obligation with ease. Contribute today and make a meaningful impact on the lives of those who need it most.</p>
+            </div>
+          </div>
+  
+          <div
+            class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2"
+          >
+            <img
+              class="w-full h-full"
+              src="https://img.freepik.com/premium-vector/flat-ramadan-charity-background-with-muslim-people-giving-donation_596042-84.jpg"
+              alt="Catalogue-pana.svg"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Hero Section End -->
+    <!-- Calculator Section -->
+    <div
+    class="bg-white container max-w-7xl mx-auto p-6 my-10 flex flex-col justify-center items-center w-full"
+  >
+    <h2 class="text-xl md:text-4xl font-bold mb-4 text-center text-[#003366]">
+      Zakat Calculator
+    </h2>
+    <p class="mb-4 text-center text-gray-700 font-semibold">
+      Nisab threshold: Rs. 179,689
+    </p>
+    <div class="flex flex-col md:flex-row justify-between w-full">
+      <div class="w-full md:w-1/2 p-4">
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Gold Price per Tola (Rs.)</label
+        >
+        <div class="relative">
+          <select
+            id="goldPrice"
+            class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366] appearance-none"
+          >
+            <option value="0">NAN</option>
+            <option value="225000">24K - Rs. 225,000</option>
+            <option value="230000">22K - Rs. 230,000</option>
+            <option value="235000">18K - Rs. 235,000</option>
+          </select>
+          <div
+            class="absolute inset-y-0 right-3 flex items-center pointer-events-none"
+          >
+            &#9662;
+          </div>
+        </div>
+  
+        <label class="block mb-2 text-[#003366] font-medium">Gold (Tolas)</label>
+        <input
+          type="number"
+          id="goldTolas"
+          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
+          placeholder="Enter gold in tolas"
+        />
+  
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Silver Price per Tola (Rs.)</label
+        >
+        <div class="relative">
+          <select
+            id="silverPrice"
+            class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366] appearance-none"
+          >
+            <option value="0">NAN</option>
+            <option value="1700">Rs. 1,700</option>
+            <option value="1750">Rs. 1,750</option>
+            <option value="1800">Rs. 1,800</option>
+          </select>
+          <div
+            class="absolute inset-y-0 right-3 flex items-center pointer-events-none"
+          >
+            &#9662;
+          </div>
+        </div>
+  
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Silver (Tolas)</label
+        >
+        <input
+          type="number"
+          id="silverTolas"
+          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
+          placeholder="Enter silver in tolas"
+        />
+      </div>
+  
+      <div class="w-full md:w-1/2 p-4">
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Savings & Cash (Rs.)</label
+        >
+        <input
+          type="number"
+          id="savings"
+          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
+          placeholder="Enter amount"
+        />
+  
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Other Assets (Rs.)</label
+        >
+        <input
+          type="number"
+          id="assets"
+          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
+          placeholder="Enter amount"
+        />
+  
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Liabilities (Rs.)</label
+        >
+        <input
+          type="number"
+          id="liabilities"
+          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
+          placeholder="Enter amount"
+        />
+  
+        <label class="block mb-2 text-[#003366] font-medium"
+          >Investments (Rs.)</label
+        >
+        <input
+          type="number"
+          id="investments"
+          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
+          placeholder="Enter total market value"
+        />
+      </div>
+    </div>
+  
+    <button
+      onclick="calculateZakat()"
+      class=" w-full md:w-1/2 bg-[#003366] font-semibold text-white py-2 rounded hover:bg-[#002244]"
+    >
+      Calculate
+    </button>
+    <div
+    id="result-container"
+    class="mt-4 w-full p-3 text-center border border-gray-300 rounded-lg bg-gray-100 hidden"
+  >
+    <p id="totalWealth" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
+    <p id="result" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
+    <p id="percentage" class="mt-2 text-center text-lg text-gray-700"></p>
+    <p id="afterZakatWealth"
+      class="mt-2 text-center text-lg font-semibold text-[#003366]"
+    ></p>
+    </div>
+  </div>
+  
+  <script>
+    function calculateZakat() {
+      let goldPrice = parseFloat(document.getElementById("goldPrice").value) || 0;
+      let goldTolas = parseFloat(document.getElementById("goldTolas").value) || 0;
+      let silverPrice =
+        parseFloat(document.getElementById("silverPrice").value) || 0;
+      let silverTolas =
+        parseFloat(document.getElementById("silverTolas").value) || 0;
+  
+      let goldValue = goldPrice * goldTolas;
+      let silverValue = silverPrice * silverTolas;
+      let savings = parseFloat(document.getElementById("savings").value) || 0;
+      let assets = parseFloat(document.getElementById("assets").value) || 0;
+      let liabilities =
+        parseFloat(document.getElementById("liabilities").value) || 0;
+      let investments =
+        parseFloat(document.getElementById("investments").value) || 0;
+  
+      let totalWealth =
+        goldValue + silverValue + savings + assets + investments - liabilities;
+      const nisab = 179689;
+      let zakat = totalWealth >= nisab ? totalWealth * 0.025 : 0;
+      let zakatPercentage = (zakat / totalWealth) * 100;
+      let afterZakatWealth = totalWealth - zakat;
+      document.getElementById("result-container").classList.remove("hidden");
+      document.getElementById(
+        "totalWealth"
+      ).innerText = `Total Wealth: Rs. ${totalWealth.toFixed(2)}`;
+  
+      if (zakat > 0) {
+        document.getElementById(
+          "result"
+        ).innerText = `Your Zakat amount is Rs. ${zakat.toFixed(2)}`;
+        document.getElementById(
+          "percentage"
+        ).innerText = `Zakat Percentage: ${zakatPercentage.toFixed(2)}%`;
+        document.getElementById(
+          "afterZakatWealth"
+        ).innerText = `After Zakat Wealth: Rs. ${afterZakatWealth.toFixed(2)}`;
+      } else {
+        document.getElementById("result").innerText =
+          "Your wealth is below the Nisab threshold, so no Zakat is due.";
+        document.getElementById("percentage").innerText = "";
+        document.getElementById("afterZakatWealth").innerText = "";
+      }
+    }
+  </script>
+{% endblock Content %}  
+  <!-- Footer Start-->
+  <footer class="bg-gray-50">
+    <div class="w-container max-w-7xl px-6 py-12 mx-auto">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
+            <div class="sm:col-span-2">
+                <h1 class="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl ">Subscribe our newsletter to get update.</h1>
+
+                <div class="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
+                    <input id="email" type="text" class="px-4 py-2 text-gray-700  border-2 border-gray-700 rounded-md  " placeholder="Email Address">
+            
+                    <button class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-[#003366] rounded-lg hover:bg-[#002244] focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+
+            <div>
+                <p class="font-semibold text-gray-800 ">Quick Link</p>
+
+                <div class="flex flex-col items-start mt-5 space-y-2">
+                    <a href="{% url 'wakeelapp:index' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Home</a>
+                    <a href="{% url 'wakeelapp:about' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">About</a>
+                    <a href="{% url 'wakeelapp:calculator' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Tax Calculator</a>
+                    <a href="{% url 'wakeelapp:contact' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Contact</a>
+                    <a href="{% url 'wakeelapp:blogs' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Blogs</a>
+                </div>
+            </div>
+
+            <div>
+                <p class="font-semibold text-gray-800 ">Contact Us</p>
+
+                <div class="flex flex-col items-start mt-5 space-y-2">
+                  <a href="#" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">+923369969997</a>
+                  <a href="mailto:info@gowakeel.com" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">info@gowakeel.com</a>
+                  <a href="#" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">43c B 8th St, DHA Phase 5 Badar Commercial Area Defence V Defence Housing Authority, Karachi, 75500</a>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="my-6 border-gray-600 md:my-4 ">
+        
+        <div class="flex flex-col items-center md:flex-row justify-between">
+            <a href="">
+                <img class="w-auto h-16" src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="Footerlogo">
+            </a>
+            
+            <div class="flex -mx-2">
+              <p class="mt-4 text-sm text-gray-500 sm:mt-0 ">© Copyright 2025. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+  <!-- End Footer -->
+  </body>
+</html>
