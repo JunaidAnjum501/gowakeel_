@@ -5,8 +5,8 @@
   <div class="w-full md:w-1/2 p-6">
     <h1 class="text-3xl font-bold text-[#003366]">{{ service_name }}</h1>
     <p class="text-gray-700 mt-4">{{ service.description }}</p>
-    <p class="text-lg font-bold text-black mt-2">
-      Price: <span class="text-[#003366]"> {{ service.price }}</span>
+    <p class="text-lg font-bold text-[#003366] mt-2">
+      Price: <span class="text-black font-semibold"> {{ service.price }}</span>
     </p>
 
     <h2 class="text-xl font-semibold mt-6">Requirements:</h2>
@@ -20,10 +20,12 @@
     <h2 class="text-2xl md:text-4xl text-center font-bold text-[#003366]">
       Contact Us:
     </h2>
-    <form class="mt-4">
+    <form class="mt-4" method="post" action="" >
+      {% csrf_token %}
       <label class="block">Your Name:</label>
       <input
         required
+        name="Name"
         type="text"
         class="border p-2 w-full rounded-md"
         placeholder="Enter your name"
@@ -31,6 +33,7 @@
 
       <label class="block mt-4">Email:</label>
       <input
+      name="Email"
         required
         type="email"
         class="border p-2 w-full rounded-md"
@@ -39,19 +42,31 @@
 
       <label class="block mt-4">Phone:</label>
       <input
+      name="Phone"
         required
         type="number"
         class="border p-2 w-full rounded-md"
         placeholder="Enter your Phone"
       />
 
+      <label class="block mt-4">Query:</label>
+      <input
+      name="Query"
+        required
+        readonly
+        type="text"
+        class="border p-2 w-full rounded-md"
+        value="{{ service_name }}"  
+      />
+
       <label class="block mt-4">Message:</label>
       <textarea
+      name="Message"
         class="border p-2 w-full rounded-md"
         placeholder="Your inquiry"
       ></textarea>
 
-      <button
+      <button type="submit"
         class="mt-4 bg-[#003366] text-white px-4 py-2 rounded-lg hover:bg-[#002244]"
       >
         Submit Inquiry

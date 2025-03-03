@@ -5,13 +5,13 @@ from .models import Blogs, BlogCategory, VideoCategory, Videos
 
 def index(request):
     services = [
-        {"slug":"NTN-Registration", "name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/ntnregis.jpg"},
-        {"slug":"Annual-Income-Tax-Return-(Salary)", "name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "images/tax-salary.jpg"},
-        {"slug":"Annual-Income-Tax-Return-(Business)", "name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "images/tax-business.jpg"},
-        {"slug":"GST-Registration", "name": "GST Registration", "price": "Contact for Price", "image": "images/gst.jpg"},
-        {"slug":"Monthly-Sales-Tax-Return-Filing", "name": "Monthly Sales Tax Return Filing", "price": "Contact for Price", "image": "static/wakeelapp/Img/blogs.png"},
-        {"slug":"Company-Registration", "name": "Company Registration", "price": "Starting 15000 PKR", "image": "images/company.jpg"},
-        {"slug":"Trade-Marks-&-Partnership", "name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "images/trademark.jpg"},
+        {"slug":"NTN-Registration", "name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/NTNRegistraion.png"},
+        {"slug":"Annual-Income-Tax-Return-(Salary)", "name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "wakeelapp/Img/annualtaxsalary.png"},
+        {"slug":"Annual-Income-Tax-Return-(Business)", "name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "wakeelapp/Img/annualtaxbus.png"},
+        {"slug":"GST-Registration", "name": "GST Registration", "price": "5000 PKR", "image": "wakeelapp/Img/gst.png"},
+        {"slug":"Monthly-Sales-Tax-Return-Filing", "name": "Monthly Sales Tax Return Filing", "price": "5000 PKR", "image": "wakeelapp/Img/monthly.png"},
+        {"slug":"Company-Registration", "name": "Company Registration", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/companyregistration.png"},
+        {"slug":"Trade-Marks-&-Partnership", "name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/Trademarks.png"},
     ]
 
     
@@ -153,7 +153,7 @@ def service_detail(request, service_name):
         },
         "GST-Registration": {
             "description": "Start your business legally with ease.",
-            "price": "$150",
+            "price": "Rs:5000/-",
             "requirements": [
             "Color copy of CNIC's of Partners",
             "Bank Account Certificate",
@@ -172,7 +172,7 @@ def service_detail(request, service_name):
         },
         "Monthly-Sales-Tax-Return-Filing": {
             "description": "Start your business legally with ease.",
-            "price": "$150",
+            "price": "Rs:5000/-",
             "requirements": ["Business Name", "CNIC Copy", "Bank Account", "Office Address"],
             
         },
@@ -200,7 +200,7 @@ def service_detail(request, service_name):
         },
         "Trade-Marks-&-Partnership": {
             "description": "Start your business legally with ease.",
-            "price": "Starting From Rs:7500/-",
+            "price": "Starting From Rs:15000/-",
             "requirements": ["Business Name", "CNIC Copy", "Bank Account", "Office Address"],
             
         },
