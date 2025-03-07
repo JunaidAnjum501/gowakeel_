@@ -279,184 +279,145 @@
       </div>
       <!-- Hero Section End -->
     <!-- Calculator Section -->
-    <div
-    class="bg-white container max-w-7xl mx-auto p-6 my-10 flex flex-col justify-center items-center w-full"
-  >
-    <h2 class="text-xl md:text-4xl font-bold mb-4 text-center text-[#003366]">
-      Zakat Calculator
-    </h2>
-    <p class="mb-4 text-center text-gray-700 font-semibold">
-      Nisab threshold: Rs. 179,689
-    </p>
-    <div class="flex flex-col md:flex-row justify-between w-full">
+<!-- Zakat Calculator Section -->
+<div class="bg-white container max-w-7xl mx-auto p-6 my-10 flex flex-col justify-center items-center w-full">
+  <h2 class="text-2xl md:text-4xl font-bold mb-4 text-center text-[#003366]">Zakat Calculator</h2>
+  <p class="mb-4 text-center text-gray-700 font-semibold">Nisab threshold: Rs. 179,689</p>
+
+  <div class="flex flex-col md:flex-row justify-between w-full">
+      <!-- Left Column: Gold & Silver -->
       <div class="w-full md:w-1/2 p-4">
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Gold Price per Tola (Rs.)</label
-        >
-        <div class="relative">
-          <select
-            id="goldPrice"
-            class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366] appearance-none"
-          >
-            <option value="0">NAN</option>
-            <option value="306900">24K - Rs. 306,900</option>
-            <option value="281325">22K - Rs. 281,325</option>
-            <option value="268537">21K - Rs. 268,537</option>
-            <option value="230175">18K - Rs. 235,000</option>
+          <!-- Gold Dropdown -->
+          <label class="block mb-2 text-[#003366] font-medium">Gold Price per Tola (Rs.)</label>
+          <select id="goldPrice" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]">
+              <option value="0">Loading...</option>
           </select>
-          <div
-            class="absolute inset-y-0 right-3 flex items-center pointer-events-none"
-          >
-            &#9662;
-          </div>
-        </div>
-  
-        <label class="block mb-2 text-[#003366] font-medium">Gold (Tolas)</label>
-        <input
-          type="number"
-          id="goldTolas"
-          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
-          placeholder="Enter gold in tolas"
-        />
-  
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Silver Price per Tola (Rs.)</label
-        >
-        <div class="relative">
-          <select
-            id="silverPrice"
-            class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366] appearance-none"
-          >
-            <option value="0">NAN</option>
-            <option value="3264">Rs. 3,264</option>
+
+          <label class="block mb-2 text-[#003366] font-medium">Gold (Tolas)</label>
+          <input type="number" id="goldTolas" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter gold in tolas">
+
+          <!-- Silver Dropdown -->
+          <label class="block mb-2 text-[#003366] font-medium">Silver Price per Tola (Rs.)</label>
+          <select id="silverPrice" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]">
+              <option value="0">Loading...</option>
           </select>
-          <div
-            class="absolute inset-y-0 right-3 flex items-center pointer-events-none"
-          >
-            &#9662;
-          </div>
-        </div>
-  
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Silver (Tolas)</label
-        >
-        <input
-          type="number"
-          id="silverTolas"
-          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
-          placeholder="Enter silver in tolas"
-        />
+
+          <label class="block mb-2 text-[#003366] font-medium">Silver (Tolas)</label>
+          <input type="number" id="silverTolas" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter silver in tolas">
       </div>
-  
+
+      <!-- Right Column: Other Assets -->
       <div class="w-full md:w-1/2 p-4">
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Savings & Cash (Rs.)</label
-        >
-        <input
-          type="number"
-          id="savings"
-          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
-          placeholder="Enter amount"
-        />
-  
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Other Assets (Rs.)</label
-        >
-        <input
-          type="number"
-          id="assets"
-          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
-          placeholder="Enter amount"
-        />
-  
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Liabilities (Rs.)</label
-        >
-        <input
-          type="number"
-          id="liabilities"
-          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
-          placeholder="Enter amount"
-        />
-  
-        <label class="block mb-2 text-[#003366] font-medium"
-          >Investments (Rs.)</label
-        >
-        <input
-          type="number"
-          id="investments"
-          class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]"
-          placeholder="Enter total market value"
-        />
+          <label class="block mb-2 text-[#003366] font-medium">Savings & Cash (Rs.)</label>
+          <input type="number" id="savings" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter amount">
+
+          <label class="block mb-2 text-[#003366] font-medium">Other Assets (Rs.)</label>
+          <input type="number" id="assets" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter amount">
+
+          <label class="block mb-2 text-[#003366] font-medium">Liabilities (Rs.)</label>
+          <input type="number" id="liabilities" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter amount">
+
+          <label class="block mb-2 text-[#003366] font-medium">Investments (Rs.)</label>
+          <input type="number" id="investments" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter total market value">
       </div>
-    </div>
-  
-    <button
-      onclick="calculateZakat()"
-      class=" w-full md:w-1/2 bg-[#003366] font-semibold text-white py-2 rounded hover:bg-[#002244]"
-    >
-      Calculate
-    </button>
-    <div
-    id="result-container"
-    class="mt-4 w-full p-3 text-center border border-gray-300 rounded-lg bg-gray-100 hidden"
-  >
-    <p id="totalWealth" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
-    <p id="result" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
-    <p id="percentage" class="mt-2 text-center text-lg text-gray-700"></p>
-    <p id="afterZakatWealth"
-      class="mt-2 text-center text-lg font-semibold text-[#003366]"
-    ></p>
-    </div>
   </div>
-  
-  <script>
-    function calculateZakat() {
+
+  <!-- Calculate Button -->
+  <button onclick="calculateZakat()" class="w-full md:w-1/2 bg-[#003366] text-white font-semibold py-2 rounded hover:bg-[#002244]">
+      Calculate Zakat
+  </button>
+
+  <!-- Result Section -->
+  <div id="result-container" class="mt-4 w-full p-3 text-center border border-gray-300 rounded-lg bg-gray-100 hidden">
+      <p id="totalWealth" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
+      <p id="result" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
+      <p id="percentage" class="mt-2 text-center text-lg text-gray-700"></p>
+      <p id="afterZakatWealth" class="mt-2 text-center text-lg font-semibold text-[#003366]"></p>
+  </div>
+</div>
+<script>
+  const myHeaders = new Headers();
+  myHeaders.append("x-api-key", "sk_f72dBc50967d40EdE688A5d02656A2d574513118506DcC3b");
+
+  const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+  };
+
+  fetch("https://gold.g.apised.com/v1/latest?metals=XAU,XAG&base_currency=PKR&currencies=PKR&weight_unit=gram", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+          const goldPrices = data.data.metal_prices.XAU;
+          const silverPricePerGram = data.data.metal_prices.XAG.price;
+
+          const tolaConversion = 11.6638; // 1 Tola = 11.6638 grams
+
+          const goldDropdown = document.getElementById("goldPrice");
+          const silverDropdown = document.getElementById("silverPrice");
+
+          goldDropdown.innerHTML = "<option value='0'>Select Gold Carat</option>";
+          silverDropdown.innerHTML = "<option value='0'>Select Silver</option>";
+
+          // Gold Prices in Different Carats (Convert to Tola)
+          const goldCarats = {
+              "24K": goldPrices.price_24k,
+              "22K": goldPrices.price_22k,
+              "21K": goldPrices.price_21k,
+              "18K": goldPrices.price_18k
+          };
+
+          for (let [carat, pricePerGram] of Object.entries(goldCarats)) {
+              let pricePerTola = pricePerGram * tolaConversion;
+              let option = document.createElement("option");
+              option.value = Math.round(pricePerTola);
+              option.text = `${carat} - Rs. ${Math.round(pricePerTola)}`;
+              goldDropdown.appendChild(option);
+          }
+
+          // Silver Price per Tola
+          let silverPricePerTola = silverPricePerGram * tolaConversion;
+          let silverOption = document.createElement("option");
+          silverOption.value = Math.round(silverPricePerTola);
+          silverOption.text = `Silver - Rs. ${Math.round(silverPricePerTola)}`;
+          silverDropdown.appendChild(silverOption);
+      })
+      .catch(error => console.error("Error fetching data:", error));
+
+  function calculateZakat() {
       let goldPrice = parseFloat(document.getElementById("goldPrice").value) || 0;
       let goldTolas = parseFloat(document.getElementById("goldTolas").value) || 0;
-      let silverPrice =
-        parseFloat(document.getElementById("silverPrice").value) || 0;
-      let silverTolas =
-        parseFloat(document.getElementById("silverTolas").value) || 0;
-  
+      let silverPrice = parseFloat(document.getElementById("silverPrice").value) || 0;
+      let silverTolas = parseFloat(document.getElementById("silverTolas").value) || 0;
+
       let goldValue = goldPrice * goldTolas;
       let silverValue = silverPrice * silverTolas;
       let savings = parseFloat(document.getElementById("savings").value) || 0;
       let assets = parseFloat(document.getElementById("assets").value) || 0;
-      let liabilities =
-        parseFloat(document.getElementById("liabilities").value) || 0;
-      let investments =
-        parseFloat(document.getElementById("investments").value) || 0;
-  
-      let totalWealth =
-        goldValue + silverValue + savings + assets + investments - liabilities;
+      let liabilities = parseFloat(document.getElementById("liabilities").value) || 0;
+      let investments = parseFloat(document.getElementById("investments").value) || 0;
+
+      let totalWealth = goldValue + silverValue + savings + assets + investments - liabilities;
       const nisab = 179689;
       let zakat = totalWealth >= nisab ? totalWealth * 0.025 : 0;
       let zakatPercentage = (zakat / totalWealth) * 100;
       let afterZakatWealth = totalWealth - zakat;
+
       document.getElementById("result-container").classList.remove("hidden");
-      document.getElementById(
-        "totalWealth"
-      ).innerText = `Total Wealth: Rs. ${totalWealth.toFixed(2)}`;
-  
+      document.getElementById("totalWealth").innerText = `Total Wealth: Rs. ${totalWealth.toFixed(2)}`;
+
       if (zakat > 0) {
-        document.getElementById(
-          "result"
-        ).innerText = `Your Zakat amount is Rs. ${zakat.toFixed(2)}`;
-        document.getElementById(
-          "percentage"
-        ).innerText = `Zakat Percentage: ${zakatPercentage.toFixed(2)}%`;
-        document.getElementById(
-          "afterZakatWealth"
-        ).innerText = `After Zakat Wealth: Rs. ${afterZakatWealth.toFixed(2)}`;
+          document.getElementById("result").innerText = `Your Zakat amount is Rs. ${zakat.toFixed(2)}`;
+          document.getElementById("percentage").innerText = `Zakat Percentage: ${zakatPercentage.toFixed(2)}%`;
+          document.getElementById("afterZakatWealth").innerText = `After Zakat Wealth: Rs. ${afterZakatWealth.toFixed(2)}`;
       } else {
-        document.getElementById("result").innerText =
-          "Your wealth is below the Nisab threshold, so no Zakat is due.";
-        document.getElementById("percentage").innerText = "";
-        document.getElementById("afterZakatWealth").innerText = "";
+          document.getElementById("result").innerText = "Your wealth is below the Nisab threshold, so no Zakat is due.";
+          document.getElementById("percentage").innerText = "";
+          document.getElementById("afterZakatWealth").innerText = "";
       }
-    }
-  </script>
+  }
+</script>
+
 {% endblock Content %}  
   <!-- Footer Start-->
   <footer class="bg-gray-50">
