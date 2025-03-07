@@ -45,7 +45,7 @@ class Videos(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
-    image = models.ImageField(upload_to="videos")
+    image = CloudinaryField()
     link = models.CharField(max_length=255)
 
     created_at = models.DateTimeField(auto_now_add=True)
