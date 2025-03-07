@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=v*mt^7_9#opgzb#^pqiw96_1%i_1+_b52k_dre820b0%4d42n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app"]
 ALLOWED_HOSTS = ["*"]
@@ -77,11 +77,17 @@ WSGI_APPLICATION = 'goakeel.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='postgres://neondb_owner:npg_3qdMPSfy1GUm@ep-nameless-credit-a4xfqkmj-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require'
+    )
 }
 
 
