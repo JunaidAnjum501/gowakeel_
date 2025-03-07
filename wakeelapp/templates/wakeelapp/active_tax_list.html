@@ -173,21 +173,33 @@
       document.getElementById("resultCard").classList.add("hidden");
     }
   
-    // Download PDF Function (Fixed)
-    function downloadPDF() {
-      const element = document.getElementById("resultCard");
-  
-      html2pdf()
-        .from(element)
-        .set({
-          margin: 10,
-          filename: "User_Details.pdf",
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { format: "a4", orientation: "portrait" },
-        })
-        .save();
-    }
+    // Dowmload the file
+  async function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const element = document.getElementById("resultCard");
+    const close = document.getElementById("close");
+    const btn = document.getElementById("downloadPdf");
+
+    // Hide the close button and download button before capturing
+    close.style.display = "none";
+    btn.style.display = "none";
+
+    html2canvas(element, { scale: 2 }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 297; // A4 height in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+        pdf.save("User_Details.pdf");
+
+        // Restore the buttons after capturing
+        close.style.display = "block";
+        btn.style.display = "block";
+    });
+}
   </script>
   
 {% endblock Content %}

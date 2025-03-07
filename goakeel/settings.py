@@ -1,3 +1,5 @@
+import cloudinary.uploader
+import cloudinary.api
 import dj_database_url
 from pathlib import Path
 
@@ -123,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Karachi'
 
 USE_I18N = True
 
@@ -159,3 +161,11 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Cloudinary configuration
+cloudinary.config(
+    cloud_name="dmj7mcivl",
+    api_key='563619839186168',
+    api_secret="NmEizyTS3yTVP9j85v6rgRU-Uk0",
+    secure=True  
+)

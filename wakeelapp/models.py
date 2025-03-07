@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 class BlogCategory(models.Model):
@@ -17,7 +18,7 @@ class Blogs(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
-    image = models.ImageField(upload_to="blogs_images")
+    image = CloudinaryField()
 
     def __str__(self):
         return self.title
