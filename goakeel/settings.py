@@ -1,4 +1,4 @@
-
+import dj_database_url
 from pathlib import Path
 
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -44,6 +45,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+STORAGES = {
+
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 STORAGES = {
@@ -83,7 +92,6 @@ WSGI_APPLICATION = 'goakeel.wsgi.app'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(
         default='postgres://neondb_owner:npg_3qdMPSfy1GUm@ep-nameless-credit-a4xfqkmj-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require'
