@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=v*mt^7_9#opgzb#^pqiw96_1%i_1+_b52k_dre820b0%4d42n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app"]
 ALLOWED_HOSTS = ["*"]
@@ -34,7 +34,12 @@ INSTALLED_APPS = [
     #custom App
 
     'wakeelapp',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
+
+# Sitemap
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

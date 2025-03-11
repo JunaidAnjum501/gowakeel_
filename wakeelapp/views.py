@@ -55,9 +55,11 @@ def currencyconvert(request):
     return render(request, 'wakeelapp/currencyconvert.html')
 
 
-def blogdetail(request, blog_slug):
+def blogdetail(request, blogs_slug):
     try:
-        blog = Blogs.objects.get(slug=blog_slug)
+        blog = Blogs.objects.get(slug=blogs_slug)
+        from icecream import ic
+        ic(blogs)
         blogs = Blogs.objects.all().order_by('-created_at')[:3]
     
     except:

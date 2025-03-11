@@ -1,3 +1,6 @@
+from django.contrib.sitemaps.views import sitemap
+from django.urls import path
+from .sitemaps import StaticViewSitemap, BlogSitemap
 from django.contrib import admin
 from django.urls import path
 from . import views
@@ -18,7 +21,17 @@ urlpatterns =[
     path('about/', views.about, name="about"),
     path('usaservice/', views.usaservice, name="usaservice"),
     path('login/', views.login, name="login"),
-    path('blogdetail/<slug:blog_slug>/', views.blogdetail, name="blogdetail"),
+    path('blogdetail/<slug:blogs_slug>/', views.blogdetail, name='blogdetail'),
     path('zakatcalculator/', views.zakatcalculator, name="zakatcalculator"),
     path('currencyconvert/', views.currencyconvert, name="currencyconvert"),
+]
+
+
+sitemaps = {
+    'static': StaticViewSitemap(),
+    'blogs': BlogSitemap(),
+}
+
+urlpatterns += [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
