@@ -1,99 +1,258 @@
 {% extends "wakeelapp/zakatcalculator.html" %} {% load static %}
-{% block title %}<title>NTN</title>{% endblock title %}
-{% block metatitle %}<meta name="description" content="">{% endblock metatitle %}
+{% block title %}<title>NTN Status Finder - Check National Tax Number Status | GoWakeel</title>{% endblock title %}
+{% block metatitle %}<meta name="description" content="Check your NTN (National Tax Number) status online. Verify registration details, tax status, and download information as PDF with GoWakeel's NTN Status Finder.">{% endblock metatitle %}
 
 {% block Content %}
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Page Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
+        <i class="fas fa-id-card mr-2"></i>NTN Status Finder
+      </h1>
+      <p class="text-gray-600 max-w-3xl mx-auto">Check your National Tax Number (NTN) status and details instantly. Enter your CNIC number below to verify registration information.</p>
+    </div>
 
-<section class="w-container max-w-7xl mx-auto">
-  <div class="flex justify-end">
-    <!-- Search Section -->
-    <div class="max-w-md p-6 border-b-2">
-      <h2 class="text-lg font-bold text-[#003366] text-left mb-4">
-        NTN Status Finder
+    <!-- Search Card -->
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 mb-8">
+      <h2 class="text-xl font-bold text-[#003366] mb-4 flex items-center">
+        <i class="fas fa-search mr-2"></i> Find NTN Status
       </h2>
-      <div class="flex space-x-2">
-        <input
-          id="cnicInput"
-          type="text"
-          placeholder="Enter CNIC Number"
-          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:outline-none"
-        />
+      <div class="space-y-4">
+        <div>
+          <label for="cnicInput" class="block text-sm font-medium text-gray-700 mb-1">CNIC Number</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-id-card text-gray-400"></i>
+            </div>
+            <input
+              id="cnicInput"
+              type="text"
+              placeholder="Enter 13-digit CNIC without dashes"
+              class="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-colors"
+              maxlength="13"
+              pattern="[0-9]{13}"
+            />
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Example: 1110114913415</p>
+        </div>
+        
         <button
           onclick="searchCNIC()"
-          class="bg-[#003366] text-white px-4 py-2 rounded-lg hover:bg-[#002244] transition"
+          class="w-full bg-gradient-to-r from-[#003366] to-[#0066cc] text-white py-3 rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center"
         >
-          Search
+          <i class="fas fa-search mr-2"></i> Search NTN Status
+        </button>
+        
+        <div id="errorMessage" class="hidden p-3 bg-red-100 text-red-700 rounded-lg text-center text-sm"></div>
+        <div id="loadingIndicator" class="hidden text-center">
+          <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-[#003366]"></div>
+          <p class="text-sm text-gray-600 mt-2">Searching...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Card -->
+    <div
+      id="resultCard"
+      class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg mt-6 hidden relative border border-[#003366]/10"
+    >
+      <!-- Close Button -->
+      <button
+        id="close"
+        onclick="closeCard()"
+        class="absolute top-4 right-4 w-8 h-8 flex items-center cursor-pointer justify-center rounded-full text-white font-bold bg-[#003366] hover:bg-[#002244] transition"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-[#003366]/10 rounded-full mb-4">
+          <i class="fas fa-user-check text-[#003366] text-2xl"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-[#003366]">NTN Registration Details</h2>
+        <p class="text-gray-500">Information retrieved from FBR database</p>
+      </div>
+      
+      <div id="cardContent" class="mt-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-gray-700">
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Registration No</p>
+            <p id="regNo" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Reference No</p>
+            <p id="refNo" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Name</p>
+            <p id="name" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Category</p>
+            <p id="category" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Registered for Sales Tax</p>
+            <p id="salesTax" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">PP/REG/INC No</p>
+            <p id="ppRegNo" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Email</p>
+            <p id="email" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Cell</p>
+            <p id="cell" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2 col-span-2">
+            <p class="text-sm text-gray-500">Address</p>
+            <p id="address" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Registered On</p>
+            <p id="regDate" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Tax Office</p>
+            <p id="taxOffice" class="font-medium"></p>
+          </div>
+          <div class="col-span-2 mt-2">
+            <p class="text-sm text-gray-500">Registration Status</p>
+            <p id="status" class="font-medium text-green-600"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download PDF Button -->
+      <div class="mt-6 flex justify-center">
+        <button
+          id="downloadPdf"
+          onclick="downloadPDF()"
+          class="px-6 py-3 bg-[#003366] text-white rounded-lg hover:bg-[#002244] transition-all duration-300 flex items-center"
+        >
+          <i class="fas fa-file-pdf mr-2"></i> Download as PDF
         </button>
       </div>
-      <p id="errorMessage" class="text-center text-red-600 mt-2 hidden"></p>
     </div>
-  </div>
 
-  <!-- Centered Result Card -->
-  <div
-    id="resultCard"
-    class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-6 hidden relative"
-  >
-    <!-- Close Button -->
-    <button
-      id="close"
-      onclick="closeCard()"
-      class="absolute top-3 right-3 w-8 h-8 flex items-center cursor-pointer justify-center rounded-full text-white font-bold bg-[#003366] hover:bg-[#002244] transition"
-    >
-      ✕
-    </button>
-
-    <h2 class="text-xl font-bold text-[#003366] text-center">User Details</h2>
-    <div id="cardContent" class="mt-4">
-      <div class="grid grid-cols-2 gap-4 text-gray-700">
-        <div><strong>Registration No:</strong> <span id="regNo"></span></div>
-        <div><strong>Reference No:</strong> <span id="refNo"></span></div>
-        <div>
-          <strong>Registered for Sales Tax:</strong> <span id="salesTax"></span>
-        </div>
-        <div><strong>Name:</strong> <span id="name"></span></div>
-        <div><strong>Category:</strong> <span id="category"></span></div>
-        <div><strong>PP/REG/INC No:</strong> <span id="ppRegNo"></span></div>
-        <div><strong>Email:</strong> <span id="email"></span></div>
-        <div><strong>Cell:</strong> <span id="cell"></span></div>
-        <div class="col-span-2">
-          <strong>Address:</strong> <span id="address"></span>
-        </div>
-        <div><strong>Registered On:</strong> <span id="regDate"></span></div>
-        <div><strong>Tax Office:</strong> <span id="taxOffice"></span></div>
-        <div class="col-span-2">
-          <strong>Registration Status:</strong> <span id="status"></span>
+    <!-- Information Sections -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Benefits Section -->
+      <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10">
+        <h2 class="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+          <i class="fas fa-check-circle mr-2 text-[#003366]"></i> Benefits of having NTN
+        </h2>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Tax Savings:</strong> Claim tax credits for investments and adjust taxes paid on utilities, vehicles, property transactions, and cash withdrawals.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Lower Withholding Tax:</strong> Non-filers are subject to higher rates of taxes on various transactions.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Avoid Penalties:</strong> Be a responsible citizen and avoid penalties and/or prosecutions from the FBR for not filing returns.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Compliance Check:</strong> Many government organizations and banks check your FBR tax filer status before processing requests like company registration, property purchase, and loan processing.</span>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- How to Apply Section -->
+      <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10">
+        <h2 class="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+          <i class="fas fa-file-alt mr-2 text-[#003366]"></i> How to Apply for NTN
+        </h2>
+        <ol class="space-y-3 text-gray-700 list-decimal pl-5">
+          <li class="pl-2">
+            <strong><i class="fas fa-laptop mr-1"></i> Online Application:</strong> Visit the FBR IRIS portal and register yourself.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-copy mr-1"></i> Required Documents:</strong> CNIC copy, utility bills, and other supporting documents.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-pen-alt mr-1"></i> Form Submission:</strong> Complete the online application form with accurate information.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-check-double mr-1"></i> Verification:</strong> Your application will be verified by the tax authorities.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-certificate mr-1"></i> NTN Issuance:</strong> Upon successful verification, your NTN will be issued.
+          </li>
+        </ol>
+        <div class="mt-4">
+          <a href="{% url 'wakeelapp:contact' %}" class="inline-flex items-center text-[#003366] hover:text-[#0066cc] transition-colors">
+            <i class="fas fa-headset mr-2"></i> Need help with NTN registration? Contact our experts
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
         </div>
       </div>
     </div>
-
-    <!-- Download PDF Button -->
-    <button
-    id="downloadPdf"
-      onclick="downloadPDF()"
-      class="mt-4 w-full cursor-pointer bg-[#003366] text-white py-2 rounded-lg hover:bg-[#002244] transition"
-    >
-      Download as PDF
-    </button>
-  </div>
-
-  <!-- Additional Content Below -->
-  <div class="my-10 p-3">
-    <h2 class="text-2xl md:text-4xl mb-2 font-bold text-black">Benefits of having <span class="text-[#003366]">NTN</span></h2>
-    <p class="text-gray-700 text-lg text-justify tracking-tight md:text-2xl">
-      Tax Saving Get maximum tax saving like claiming tax credits for
-      investments and adjustment of taxes paid on utilities, vehicle, property
-      transactions, and cash withdrawals etc Lower Rate of Withholding Tax
-      Non-Filers are subject to higher rate of taxes on various transactions
-      e.g. withholding tax is applicable on cash withdrawals and banking
-      transfers exceeding Rs. 50,000 Avoid Penalities. Be a responsible citizen
-      and avoid penalties and/or prosecutions from the FBR for not filing return
-      Compliance Check Many government related organizations and banks now check
-      your FBR tax filer status before acceding to your requests, like
-      registration of company, purchase of property and loan processing etc
-    </p>
+    
+    <!-- FAQ Section -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-[#003366] mb-6 text-center">
+        <i class="fas fa-question-circle mr-2"></i>Frequently Asked Questions
+      </h2>
+      <div class="bg-white rounded-xl shadow-md border border-[#003366]/10 overflow-hidden">
+        <div class="divide-y divide-gray-200">
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-info-circle mr-2"></i>What is NTN?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">NTN (National Tax Number) is a unique identifier issued by the Federal Board of Revenue (FBR) to taxpayers in Pakistan. It is used for filing tax returns and for various financial transactions.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-users mr-2"></i>Who needs to have an NTN?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">All individuals and businesses that earn taxable income in Pakistan are required to have an NTN. This includes salaried individuals, business owners, professionals, and companies.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-id-badge mr-2"></i>Is NTN the same as CNIC?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">No, NTN and CNIC are different. CNIC (Computerized National Identity Card) is issued by NADRA for identification purposes, while NTN is issued by FBR specifically for tax purposes. However, for individuals, the NTN is now linked to their CNIC number.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Call to Action Section -->
+    <div class="mt-16 bg-[#003366] rounded-xl p-8 text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">
+        <i class="fas fa-hand-point-right mr-2"></i>Need Professional Assistance?
+      </h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-6">Our tax experts can help you with NTN registration, verification, and tax filing services.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="{% url 'wakeelapp:contact' %}" class="px-6 py-3 bg-white text-[#003366] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center">
+          <i class="fas fa-envelope mr-2"></i> Contact Us
+        </a>
+        <a href="https://wa.me/923369969997?text=I'm%20interested%20in%20NTN%20services" class="px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center">
+          <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
   </div>
 </section>
+
 <script>
   // Sample Data
   const userData = {
@@ -114,97 +273,231 @@
     },
   };
 
-  // Search CNIC Function
+  // Function to search CNIC
   function searchCNIC() {
     const cnicInput = document.getElementById("cnicInput").value.trim();
-    const resultCard = document.getElementById("resultCard");
     const errorMessage = document.getElementById("errorMessage");
-
-    if (cnicInput === "") {
-      showError("Please enter a CNIC number.");
+    const loadingIndicator = document.getElementById("loadingIndicator");
+    const resultCard = document.getElementById("resultCard");
+    
+    // Reset UI
+    errorMessage.classList.add("hidden");
+    resultCard.classList.add("hidden");
+    
+    // Validate input
+    if (!cnicInput) {
+      showError("Please enter a CNIC number");
       return;
     }
-
-    // Simulate Server Response Time (for demonstration)
+    
+    if (!/^\d{13}$/.test(cnicInput)) {
+      showError("Please enter a valid 13-digit CNIC number without dashes");
+      return;
+    }
+    
+    // Show loading
+    loadingIndicator.classList.remove("hidden");
+    
+    // Simulate API call with timeout
     setTimeout(() => {
+      loadingIndicator.classList.add("hidden");
+      
       if (userData[cnicInput]) {
-        document.getElementById("regNo").innerText =
-          userData[cnicInput]["Registration No"];
-        document.getElementById("refNo").innerText =
-          userData[cnicInput]["Reference No"];
-        document.getElementById("salesTax").innerText =
-          userData[cnicInput]["Registered for Sales Tax"];
-        document.getElementById("name").innerText = userData[cnicInput]["Name"];
-        document.getElementById("category").innerText =
-          userData[cnicInput]["Category"];
-        document.getElementById("ppRegNo").innerText =
-          userData[cnicInput]["PP/REG/INC No"];
-        document.getElementById("email").innerText =
-          userData[cnicInput]["Email"];
-        document.getElementById("cell").innerText = userData[cnicInput]["Cell"];
-        document.getElementById("address").innerText =
-          userData[cnicInput]["Address"];
-        document.getElementById("regDate").innerText =
-          userData[cnicInput]["Registered On"];
-        document.getElementById("taxOffice").innerText =
-          userData[cnicInput]["Tax Office"];
-        document.getElementById("status").innerText =
-          userData[cnicInput]["Registration Status"];
-
-        resultCard.classList.remove("hidden");
-        errorMessage.classList.add("hidden");
+        displayResult(userData[cnicInput]);
       } else {
-        showError("No record found for this CNIC.");
-        resultCard.classList.add("hidden");
+        showError("No NTN record found for this CNIC. Please verify your CNIC number or contact FBR for assistance.");
       }
-    }, 1000); // Simulated delay
-  }
-
-  // Show Error Message
-  function showError(message) {
-    const errorMessage = document.getElementById("errorMessage");
-    errorMessage.innerText = message;
-    errorMessage.classList.remove("hidden");
-
-    // Hide message after 5 seconds
-    setTimeout(() => {
-      errorMessage.classList.add("hidden");
-    }, 5000);
-  }
-
-  // Close Card Function
-  function closeCard() {
-    document.getElementById("resultCard").classList.add("hidden");
+    }, 1500);
   }
   
-// Dowmload the file
-  async function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF("p", "mm", "a4");
+  // Function to display error
+  function showError(message) {
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.textContent = message;
+    errorMessage.classList.remove("hidden");
+  }
+  
+  // Function to display result
+  function displayResult(data) {
+    // Populate fields
+    document.getElementById("regNo").textContent = data["Registration No"];
+    document.getElementById("refNo").textContent = data["Reference No"];
+    document.getElementById("name").textContent = data["Name"];
+    document.getElementById("category").textContent = data["Category"];
+    document.getElementById("salesTax").textContent = data["Registered for Sales Tax"];
+    document.getElementById("ppRegNo").textContent = data["PP/REG/INC No"];
+    document.getElementById("email").textContent = data["Email"];
+    document.getElementById("cell").textContent = data["Cell"];
+    document.getElementById("address").textContent = data["Address"];
+    document.getElementById("regDate").textContent = data["Registered On"];
+    document.getElementById("taxOffice").textContent = data["Tax Office"];
+    document.getElementById("status").textContent = data["Registration Status"];
+    
+    // Show result card
+    document.getElementById("resultCard").classList.remove("hidden");
+    
+    // Scroll to result
+    document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  
+  // Function to close result card
+  function closeCard() {
+    document.getElementById("resultCard").classList.add("hidden");
+    document.getElementById("cnicInput").focus();
+  }
+  
+  // Function to download PDF
+  function downloadPDF() {
+    // Get data from displayed result
+    const name = document.getElementById("name").textContent;
+    const regNo = document.getElementById("regNo").textContent;
+    const status = document.getElementById("status").textContent;
+    
+    // Create a new window for PDF
+    const printWindow = window.open('', '', 'height=650,width=900');
+    printWindow.document.write('<html><head><title>NTN Certificate</title>');
+    
+    // Add styles
+    printWindow.document.write(`
+      <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .certificate { max-width: 800px; margin: 0 auto; border: 2px solid #003366; padding: 30px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .logo { font-size: 24px; font-weight: bold; color: #003366; margin-bottom: 10px; }
+        h1 { color: #003366; margin-bottom: 20px; }
+        .content { margin-bottom: 30px; }
+        .info-row { display: flex; margin-bottom: 10px; }
+        .label { font-weight: bold; width: 200px; }
+        .value { flex: 1; }
+        .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #666; }
+        .status { margin-top: 20px; padding: 10px; background-color: #e6f7e6; border-radius: 5px; color: #2e7d32; font-weight: bold; }
+        @media print {
+          body { -webkit-print-color-adjust: exact; }
+        }
+      </style>
+    `);
+    
+    printWindow.document.write('</head><body>');
+    
+    // Certificate content
+    printWindow.document.write(`
+      <div class="certificate">
+        <div class="header">
+          <div class="logo">GoWakeel</div>
+          <h1>NTN Registration Certificate</h1>
+          <p>This document confirms the NTN registration status as retrieved from FBR database</p>
+        </div>
+        
+        <div class="content">
+          <div class="info-row">
+            <div class="label">Name:</div>
+            <div class="value">${document.getElementById("name").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Registration No:</div>
+            <div class="value">${document.getElementById("regNo").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Reference No:</div>
+            <div class="value">${document.getElementById("refNo").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Category:</div>
+            <div class="value">${document.getElementById("category").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Registered for Sales Tax:</div>
+            <div class="value">${document.getElementById("salesTax").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">PP/REG/INC No:</div>
+            <div class="value">${document.getElementById("ppRegNo").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Email:</div>
+            <div class="value">${document.getElementById("email").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Cell:</div>
+            <div class="value">${document.getElementById("cell").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Address:</div>
+            <div class="value">${document.getElementById("address").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Registered On:</div>
+            <div class="value">${document.getElementById("regDate").textContent}</div>
+          </div>
+          <div class="info-row">
+            <div class="label">Tax Office:</div>
+            <div class="value">${document.getElementById("taxOffice").textContent}</div>
+          </div>
+          
+          <div class="status">
+            Registration Status: ${document.getElementById("status").textContent}
+          </div>
+        </div>
+        
+        <div class="footer">
+          <p>This certificate was generated on ${new Date().toLocaleDateString()} via GoWakeel NTN Status Finder</p>
+          <p>For verification, please visit the official FBR website or contact your nearest tax office.</p>
+          <p>© ${new Date().getFullYear()} GoWakeel. All rights reserved.</p>
+        </div>
+      </div>
+    `);
+    
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    
+    // Wait for content to load then print
+    setTimeout(function() {
+      printWindow.print();
+      printWindow.close();
+    }, 500);
+  }
 
-    const element = document.getElementById("resultCard");
-    const close = document.getElementById("close");
-    const btn = document.getElementById("downloadPdf");
-
-    // Hide the close button and download button before capturing
-    close.style.display = "none";
-    btn.style.display = "none";
-
-    html2canvas(element, { scale: 2 }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const imgWidth = 210; // A4 width in mm
-        const pageHeight = 297; // A4 height in mm
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-        pdf.save("User_Details.pdf");
-
-        // Restore the buttons after capturing
-        close.style.display = "block";
-        btn.style.display = "block";
+  // FAQ Accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle answer visibility
+        if (answer.classList.contains('hidden')) {
+          answer.classList.remove('hidden');
+          icon.classList.add('rotate-180');
+        } else {
+          answer.classList.add('hidden');
+          icon.classList.remove('rotate-180');
+        }
+      });
     });
-}
+    
+    // Add CNIC input formatting
+    const cnicInput = document.getElementById('cnicInput');
+    if (cnicInput) {
+      cnicInput.addEventListener('input', function(e) {
+        // Remove non-numeric characters
+        this.value = this.value.replace(/\D/g, '');
+        
+        // Limit to 13 digits
+        if (this.value.length > 13) {
+          this.value = this.value.slice(0, 13);
+        }
+      });
+      
+      // Allow Enter key to trigger search
+      cnicInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          searchCNIC();
+        }
+      });
+    }
+  });
 </script>
-
-
 {% endblock Content %}

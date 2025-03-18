@@ -9,14 +9,15 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-    {% block title %}<title>Zakat Calculator</title>{% endblock title %}
-    {% block metatitle %}<meta name="description" content="">{% endblock metatitle %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block title %}<title>Zakat Calculator - GoWakeel</title>{% endblock title %}
+    {% block metatitle %}<meta name="description" content="Calculate your Zakat accurately with GoWakeel's Zakat Calculator. Get real-time gold and silver prices and determine your Zakat obligation easily.">{% endblock metatitle %}
   </head>
-  <body>
-    <nav x-data="{ isOpen: false }" class="relative w-container shadow">
+  <body class="bg-gray-50">
+    <nav x-data="{ isOpen: false }" class="relative w-container shadow bg-white">
       <div
         class="w-container max-w-7xl m-auto px-6 py-4 md:flex md:justify-center md:items-center lg:flex lg:justify-between lg:items-center"
       >
@@ -97,87 +98,22 @@
               class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
               >Tools</a
             >
-            <!-- Tax Tools Dropdown
-            <div
-              @mouseenter="toolsOpen = true"
-              @mouseleave="toolsOpen = false"
-              class="relative"
-            > -->
-              <a
-                href="{% url 'wakeelapp:contact' %}"
-                class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
-                >Resources</a
-              >
-              <!-- <div
-                x-show="toolsOpen"
-                x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 transform scale-95"
-                x-transition:enter-end="opacity-100 transform scale-100"
-                x-transition:leave="transition ease-in duration-200"
-                x-transition:leave-start="opacity-100 transform scale-100"
-                x-transition:leave-end="opacity-0 transform scale-95"
-                class="absolute right-0 top-10 bg-gray-200 shadow-lg py-4 rounded-2xl"
-              >
-                <div
-                  class="w-80vh m-2 p-5 mx-auto flex justify-around items-center gap-10 rounded"
-                >
-                  <a
-                    href="{% url 'wakeelapp:blogs' %}"
-                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
-                  >
-                    <img
-                      src="{% static 'wakeelapp/Img/blogs.png' %}"
-                      class="h-12"
-                      alt="Blogs"
-                    />
-                    <span>Blogs</span>
-                  </a>
-                  <a
-                    href="{% url 'wakeelapp:video' %}"
-                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
-                  >
-                    <img
-                      src="{% static 'wakeelapp/Img/video.png' %}"
-                      class="h-12"
-                      alt="Video"
-                    />
-                    <span>Video</span>
-                  </a>
-                  <a
-                    href="{% url 'wakeelapp:faq' %}"
-                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
-                  >
-                    <img
-                      src="{% static 'wakeelapp/Img/FAQ.png' %}"
-                      class="h-12"
-                      alt="FQA's"
-                    />
-                    <span>FQA's</span>
-                  </a>
-                  <a
-                    href="{% url 'wakeelapp:contact' %}"
-                    class="flex flex-col items-center text-gray-700 font-bold hover:text-[#003366] gap-2"
-                  >
-                    <img
-                      src="{% static 'wakeelapp/Img/contact.png' %}"
-                      class="h-12"
-                      alt="Contact"
-                    />
-                    <span>Contact</span>
-                  </a>
-                </div>
-              </div>
-            </div> -->
+            <a
+              href="{% url 'wakeelapp:contact' %}"
+              class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+              >Resources</a
+            >
+          </div>
           <!-- Buttons -->
           <div class="flex space-x-4">
             <a
               href="{% url 'wakeelapp:login' %}"
-              class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white hover:bg-[#003366]"
+              class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white hover:bg-[#003366] transition-colors duration-300"
               >Join Us</a
             >
             <a
               href="https://wa.me/+923369969997"
-              class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white"
+              class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white transition-colors duration-300"
             >
               <img
                 src="{% static 'wakeelapp/Img/whatsapp.png' %}"
@@ -191,287 +127,820 @@
       </div>
     </nav>
     <!-- Navbar End -->
+    
     <!-- Subnavbar section -->
-    <div
-      class="w-full shadow-lg m-2 p-5 mx-auto flex justify-center items-center gap-5 md:gap-10 rounded"
-    >
-      <a
-        href="{% url 'wakeelapp:calculator' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/calculator.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="Calculator"
-        />
-        <span>Tax Calculator</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:zakatcalculator' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/zakatcal.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="ATL Status"
-        />
-        <span>Zakat Calculator</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:ntn' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/NTN.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="NTN Status"
-        />
-        <span>NTN Status</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:atl' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/ATL.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="ATL Status"
-        />
-        <span>ATL Status</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:currencyconvert' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/converter.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="NTN Status"
-        />
-        <span>Currency Converter</span>
-      </a>
+    <div class="bg-white shadow-md py-4 px-6">
+      <div class="max-w-7xl mx-auto flex justify-center items-center gap-5 md:gap-10 overflow-x-auto">
+        <a
+          href="{% url 'wakeelapp:calculator' %}"
+          class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="{% static 'wakeelapp/Img/calculator.png' %}"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="Calculator"
+          />
+          <span>Tax Calculator</span>
+        </a>
+        <a
+          href="{% url 'wakeelapp:zakatcalculator' %}"
+          class="flex flex-col items-center text-[#003366] font-bold text-xs sm:text-sm md:text-base border-b-2 border-[#003366] pb-1"
+        >
+          <img
+            src="{% static 'wakeelapp/Img/zakatcal.png' %}"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="Zakat Calculator"
+          />
+          <span>Zakat Calculator</span>
+        </a>
+        <a
+          href="{% url 'wakeelapp:ntn' %}"
+          class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="{% static 'wakeelapp/Img/NTN.png' %}"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="NTN Status"
+          />
+          <span>NTN Status</span>
+        </a>
+        <a
+          href="{% url 'wakeelapp:atl' %}"
+          class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="{% static 'wakeelapp/Img/ATL.png' %}"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="ATL Status"
+          />
+          <span>ATL Status</span>
+        </a>
+        <a
+          href="{% url 'wakeelapp:currencyconvert' %}"
+          class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="{% static 'wakeelapp/Img/converter.png' %}"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="Currency Converter"
+          />
+          <span>Currency Converter</span>
+        </a>
+      </div>
     </div>
-<!-- NavbarEnd -->
+    <!-- NavbarEnd -->
+    
     {% block Content %}
     <!-- Hero Section -->
-    <div class="w-conatiner max-w-7xl mx-auto px-6 py-5">
-        <div class="max-w-7xl m-auto items-center lg:flex">
-          <div class="w-full lg:w-2/3">
-            <div class="w-full">
-            <p class="text-gray-700 text-xl justify-center font-semibold tracking-tight mb-2 md:text-3xl"><span class="text-5xl font-bold mr-2 text-[#003366] ">Zakat</span>A Pillar of Islam and Social Responsibility</p>
-            <p class="text-gray-700 text-lg text-justify tracking-tight"> 
-                Zakat is one of the five pillars of Islam, a mandatory form of charity that ensures wealth is distributed fairly within the community. Every eligible Muslim who meets the <span class="font-semibold"> Nisab threshold—the minimum amount of wealth required to be liable for Zakat—must donate 2.5%</Span> of their savings, gold, silver, investments, and other assets after deducting liabilities. 
-                By giving Zakat, individuals purify their wealth, foster social equity, and provide financial relief to the poor, needy, orphans, and those in debt. It is more than just a charitable act; it is a system designed to uplift society and create economic balance.</p>
-                <p class="text-gray-700 text-lg text-justify tracking-tight">
-                    Use our Zakat Calculator to accurately determine your due amount and ensure you fulfill this important religious obligation with ease. Contribute today and make a meaningful impact on the lives of those who need it most.</p>
-            </div>
+    <div class="bg-gradient-to-r from-white to-[#003366]/5 py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+          <div class="w-full lg:w-1/2">
+            <h1 class="text-4xl font-bold text-[#003366] mb-2">
+              <span class="text-5xl font-bold">Zakat</span> Calculator
+            </h1>
+            <div class="h-1 w-20 bg-[#003366] mb-6"></div>
+            <p class="text-xl font-semibold text-gray-800 mb-4">A Pillar of Islam and Social Responsibility</p>
+            <p class="text-gray-700 text-lg mb-4"> 
+              Zakat is one of the five pillars of Islam, a mandatory form of charity that ensures wealth is distributed fairly within the community. Every eligible Muslim who meets the <span class="font-semibold">Nisab threshold—the minimum amount of wealth required to be liable for Zakat—must donate 2.5%</span> of their savings, gold, silver, investments, and other assets after deducting liabilities.
+            </p>
+            <p class="text-gray-700 text-lg">
+              By giving Zakat, individuals purify their wealth, foster social equity, and provide financial relief to the poor, needy, orphans, and those in debt. It is more than just a charitable act; it is a system designed to uplift society and create economic balance.
+            </p>
+            <a href="#linkhere"><button class="p-3 bg-[#1f628a] text-white font-semibold rounded mt-2 hover:bg-[#003366] ">Zakat Calculator</button></a>
           </div>
-  
-          <div
-            class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2"
-          >
+          
+          <div class="w-full lg:w-1/2 flex justify-center">
             <img
-              class="w-full h-full"
+              class="w-full max-w-md rounded-lg shadow-lg"
               src="https://img.freepik.com/premium-vector/flat-ramadan-charity-background-with-muslim-people-giving-donation_596042-84.jpg"
-              alt="Catalogue-pana.svg"
+              alt="Zakat Charity"
             />
           </div>
         </div>
       </div>
-      <!-- Hero Section End -->
-    <!-- Calculator Section -->
-<!-- Zakat Calculator Section -->
-<div class="bg-white container max-w-7xl mx-auto p-6 my-10 flex flex-col justify-center items-center w-full">
-  <h2 class="text-2xl md:text-4xl font-bold mb-4 text-center text-[#003366]">Zakat Calculator</h2>
-  <p class="mb-4 text-center text-gray-700 font-semibold">Nisab threshold: Rs. 179,689</p>
-
-  <div class="flex flex-col md:flex-row justify-between w-full">
-      <!-- Left Column: Gold & Silver -->
-      <div class="w-full md:w-1/2 p-4">
-          <!-- Gold Dropdown -->
-          <label class="block mb-2 text-[#003366] font-medium">Gold Price per Tola (Rs.)</label>
-          <select id="goldPrice" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]">
-              <option value="0">Loading...</option>
-          </select>
-
-          <label class="block mb-2 text-[#003366] font-medium">Gold (Tolas)</label>
-          <input type="number" id="goldTolas" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter gold in tolas">
-
-          <!-- Silver Dropdown -->
-          <label class="block mb-2 text-[#003366] font-medium">Silver Price per Tola (Rs.)</label>
-          <select id="silverPrice" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]">
-              <option value="0">Loading...</option>
-          </select>
-
-          <label class="block mb-2 text-[#003366] font-medium">Silver (Tolas)</label>
-          <input type="number" id="silverTolas" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter silver in tolas">
-      </div>
-
-      <!-- Right Column: Other Assets -->
-      <div class="w-full md:w-1/2 p-4">
-          <label class="block mb-2 text-[#003366] font-medium">Savings & Cash (Rs.)</label>
-          <input type="number" id="savings" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter amount">
-
-          <label class="block mb-2 text-[#003366] font-medium">Other Assets (Rs.)</label>
-          <input type="number" id="assets" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter amount">
-
-          <label class="block mb-2 text-[#003366] font-medium">Liabilities (Rs.)</label>
-          <input type="number" id="liabilities" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter amount">
-
-          <label class="block mb-2 text-[#003366] font-medium">Investments (Rs.)</label>
-          <input type="number" id="investments" class="w-full p-2 border rounded mb-4 focus:ring-2 focus:ring-[#003366]" placeholder="Enter total market value">
-      </div>
-  </div>
-
-  <!-- Calculate Button -->
-  <button onclick="calculateZakat()" class="w-full md:w-1/2 bg-[#003366] text-white font-semibold py-2 rounded hover:bg-[#002244]">
-      Calculate Zakat
-  </button>
-
-  <!-- Result Section -->
-  <div id="result-container" class="mt-4 w-full p-3 text-center border border-gray-300 rounded-lg bg-gray-100 hidden">
-      <p id="totalWealth" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
-      <p id="result" class="mt-4 text-center text-lg font-semibold text-[#003366]"></p>
-      <p id="percentage" class="mt-2 text-center text-lg text-gray-700"></p>
-      <p id="afterZakatWealth" class="mt-2 text-center text-lg font-semibold text-[#003366]"></p>
-  </div>
-</div>
-<script>
-  const myHeaders = new Headers();
-  myHeaders.append("x-api-key", "sk_f72dBc50967d40EdE688A5d02656A2d574513118506DcC3b");
-
-  const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow"
-  };
-
-  fetch("https://gold.g.apised.com/v1/latest?metals=XAU,XAG&base_currency=PKR&currencies=PKR&weight_unit=gram", requestOptions)
-      .then(response => response.json())
-      .then(data => {
-          const goldPrices = data.data.metal_prices.XAU;
-          const silverPricePerGram = data.data.metal_prices.XAG.price;
-
-          const tolaConversion = 11.6638; // 1 Tola = 11.6638 grams
-
-          const goldDropdown = document.getElementById("goldPrice");
-          const silverDropdown = document.getElementById("silverPrice");
-
-          goldDropdown.innerHTML = "<option value='0'>Select Gold Carat</option>";
-          silverDropdown.innerHTML = "<option value='0'>Select Silver</option>";
-
-          // Gold Prices in Different Carats (Convert to Tola)
-          const goldCarats = {
-              "24K": goldPrices.price_24k,
-              "22K": goldPrices.price_22k,
-              "21K": goldPrices.price_21k,
-              "18K": goldPrices.price_18k
-          };
-
-          for (let [carat, pricePerGram] of Object.entries(goldCarats)) {
-              let pricePerTola = pricePerGram * tolaConversion;
-              let option = document.createElement("option");
-              option.value = Math.round(pricePerTola);
-              option.text = `${carat} - Rs. ${Math.round(pricePerTola)}`;
-              goldDropdown.appendChild(option);
-          }
-
-          // Silver Price per Tola
-          let silverPricePerTola = silverPricePerGram * tolaConversion;
-          let silverOption = document.createElement("option");
-          silverOption.value = Math.round(silverPricePerTola);
-          silverOption.text = `Silver - Rs. ${Math.round(silverPricePerTola)}`;
-          silverDropdown.appendChild(silverOption);
-      })
-      .catch(error => console.error("Error fetching data:", error));
-
-  function calculateZakat() {
-      let goldPrice = parseFloat(document.getElementById("goldPrice").value) || 0;
-      let goldTolas = parseFloat(document.getElementById("goldTolas").value) || 0;
-      let silverPrice = parseFloat(document.getElementById("silverPrice").value) || 0;
-      let silverTolas = parseFloat(document.getElementById("silverTolas").value) || 0;
-
-      let goldValue = goldPrice * goldTolas;
-      let silverValue = silverPrice * silverTolas;
-      let savings = parseFloat(document.getElementById("savings").value) || 0;
-      let assets = parseFloat(document.getElementById("assets").value) || 0;
-      let liabilities = parseFloat(document.getElementById("liabilities").value) || 0;
-      let investments = parseFloat(document.getElementById("investments").value) || 0;
-
-      let totalWealth = goldValue + silverValue + savings + assets + investments - liabilities;
-      const nisab = 179689;
-      let zakat = totalWealth >= nisab ? totalWealth * 0.025 : 0;
-      let zakatPercentage = (zakat / totalWealth) * 100;
-      let afterZakatWealth = totalWealth - zakat;
-
-      document.getElementById("result-container").classList.remove("hidden");
-      document.getElementById("totalWealth").innerText = `Total Wealth: Rs. ${totalWealth.toFixed(2)}`;
-
-      if (zakat > 0) {
-          document.getElementById("result").innerText = `Your Zakat amount is Rs. ${zakat.toFixed(2)}`;
-          document.getElementById("percentage").innerText = `Zakat Percentage: ${zakatPercentage.toFixed(2)}%`;
-          document.getElementById("afterZakatWealth").innerText = `After Zakat Wealth: Rs. ${afterZakatWealth.toFixed(2)}`;
-      } else {
-          document.getElementById("result").innerText = "Your wealth is below the Nisab threshold, so no Zakat is due.";
-          document.getElementById("percentage").innerText = "";
-          document.getElementById("afterZakatWealth").innerText = "";
-      }
-  }
-</script>
-
-{% endblock Content %}  
-  <!-- Footer Start-->
-  <footer class="bg-gray-50">
-    <div class="w-container max-w-7xl px-6 py-12 mx-auto">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
-            <div class="sm:col-span-2">
-                <h1 class="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl ">Subscribe our newsletter to get update.</h1>
-
-                <div class="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
-                    <input id="email" type="text" class="px-4 py-2 text-gray-700  border-2 border-gray-700 rounded-md  " placeholder="Email Address">
-            
-                    <button class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-[#003366] rounded-lg hover:bg-[#002244] focus:ring focus:ring-gray-300 focus:ring-opacity-80">
-                        Subscribe
-                    </button>
-                </div>
-            </div>
-
-            <div>
-                <p class="font-semibold text-gray-800 ">Quick Link</p>
-
-                <div class="flex flex-col items-start mt-5 space-y-2">
-                    <a href="{% url 'wakeelapp:index' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Home</a>
-                    <a href="{% url 'wakeelapp:about' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">About</a>
-                    <a href="{% url 'wakeelapp:calculator' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Tax Calculator</a>
-                    <a href="{% url 'wakeelapp:contact' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Contact</a>
-                    <a href="{% url 'wakeelapp:blogs' %}" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">Blogs</a>
-                </div>
-            </div>
-
-            <div>
-                <p class="font-semibold text-gray-800 ">Contact Us</p>
-
-                <div class="flex flex-col items-start mt-5 space-y-2">
-                  <a href="#" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">+923369969997</a>
-                  <a href="mailto:info@gowakeel.com" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">info@gowakeel.com</a>
-                  <a href="#" class="text-gray-600 transition-colors duration-300   hover:underline hover:text-[#003366]">43c B 8th St, DHA Phase 5 Badar Commercial Area Defence V Defence Housing Authority, Karachi, 75500</a>
-                </div>
-            </div>
-        </div>
-        
-        <hr class="my-6 border-gray-600 md:my-4 ">
-        
-        <div class="flex flex-col items-center md:flex-row justify-between">
-            <a href="">
-                <img class="w-auto h-16" src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="Footerlogo">
-            </a>
-            
-            <div class="flex -mx-2">
-              <p class="mt-4 text-sm text-gray-500 sm:mt-0 ">© Copyright 2025. All Rights Reserved.</p>
-            </div>
-        </div>
     </div>
-</footer>
-  <!-- End Footer -->
+    <!-- Hero Section End -->
+    
+    <!-- Calculator Section -->
+    <div class="py-12 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10">
+          <h2 id= "linkhere" class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">Calculate Your Zakat</h2>
+          <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+            Use our Zakat Calculator to accurately determine your due amount and ensure you fulfill this important religious obligation with ease.
+          </p>
+          <div class="flex items-center justify-center mt-4">
+            <div class="px-4 py-2 bg-[#003366]/10 rounded-lg text-[#003366] font-semibold flex items-center">
+              <i class="fas fa-info-circle mr-2"></i>
+              Current Nisab Threshold: <span class="ml-2 font-bold">Rs. 179,689</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-[#003366] to-[#004c99] text-white p-4">
+            <h3 class="text-xl font-bold text-center">Enter Your Assets</h3>
+          </div>
+          
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Left Column: Gold & Silver -->
+              <div class="space-y-6">
+                <div class="bg-[#003366]/5 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-[#003366] mb-4 flex items-center">
+                    <i class="fas fa-coins mr-2"></i>Gold & Silver
+                  </h4>
+                  
+                  <!-- Gold Dropdown -->
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Gold Price per Tola (Rs.)</label>
+                    <div class="relative">
+                      <select id="goldPrice" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10 appearance-none">
+                        <option value="0">Loading...</option>
+                      </select>
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-coins text-[#003366]"></i>
+                      </div>
+                      <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Gold (Tolas)</label>
+                    <div class="relative">
+                      <input type="number" id="goldTolas" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0" step="0.01">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-balance-scale text-[#003366]"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Enter the amount of gold you own in tolas</p>
+                  </div>
+                  
+                  <!-- Silver Dropdown -->
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Silver Price per Tola (Rs.)</label>
+                    <div class="relative">
+                      <select id="silverPrice" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10 appearance-none">
+                        <option value="0">Loading...</option>
+                      </select>
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-coins text-[#003366]"></i>
+                      </div>
+                      <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label class="block mb-2 text-gray-700 font-medium">Silver (Tolas)</label>
+                    <div class="relative">
+                      <input type="number" id="silverTolas" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0" step="0.01">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-balance-scale text-[#003366]"></i>
+                      </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Enter the amount of silver you own in tolas</p>
+                  </div>
+                </div>
+                
+                <!-- Cash & Bank Balances -->
+                <div class="bg-[#003366]/5 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-[#003366] mb-4 flex items-center">
+                    <i class="fas fa-money-bill-wave mr-2"></i>Cash & Bank Balances
+                  </h4>
+                  
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Cash in Hand (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="cashInHand" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-wallet text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label class="block mb-2 text-gray-700 font-medium">Bank Balance (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="bankBalance" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-university text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right Column: Investments & Liabilities -->
+              <div class="space-y-6">
+                <!-- Investments -->
+                <div class="bg-[#003366]/5 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-[#003366] mb-4 flex items-center">
+                    <i class="fas fa-chart-line mr-2"></i>Investments & Other Assets
+                  </h4>
+                  
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Stocks & Mutual Funds (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="investments" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-chart-pie text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Business Assets (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="businessAssets" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-store text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label class="block mb-2 text-gray-700 font-medium">Other Assets (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="otherAssets" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-boxes text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Liabilities -->
+                <div class="bg-[#003366]/5 p-4 rounded-lg">
+                  <h4 class="text-lg font-semibold text-[#003366] mb-4 flex items-center">
+                    <i class="fas fa-hand-holding-usd mr-2"></i>Liabilities
+                  </h4>
+                  
+                  <div class="mb-4">
+                    <label class="block mb-2 text-gray-700 font-medium">Loans & Debts (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="loans" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-file-invoice-dollar text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label class="block mb-2 text-gray-700 font-medium">Other Liabilities (Rs.)</label>
+                    <div class="relative">
+                      <input type="number" id="otherLiabilities" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] pl-10" placeholder="Enter amount" min="0">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-receipt text-[#003366]"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Calculate Button -->
+            <div class="mt-8 flex justify-center">
+              <button id="calculateZakat" class="px-8 py-4 bg-gradient-to-r from-[#003366] to-[#004c99] text-white font-bold rounded-lg hover:from-[#002244] hover:to-[#003366] transition-all duration-300 shadow-md flex items-center">
+                <i class="fas fa-calculator mr-2"></i> Calculate Zakat
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div id="zakatResults" class="mt-10 hidden">
+          <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="bg-gradient-to-r from-[#003366] to-[#004c99] text-white p-4">
+              <h3 class="text-xl font-bold text-center">Your Zakat Calculation Results</h3>
+            </div>
+            
+            <div class="p-6">
+              <!-- Summary Card -->
+              <div class="bg-[#003366]/10 p-6 rounded-lg mb-6 text-center">
+                <h4 class="text-lg font-semibold text-[#003366] mb-2">Total Zakat Due</h4>
+                <p id="totalZakat" class="text-4xl font-bold text-[#003366] mb-2">Rs. 0</p>
+                <p class="text-sm text-gray-600">Based on your total zakatable assets</p>
+              </div>
+              
+              <!-- Detailed Breakdown -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Assets Summary -->
+                <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+                    <i class="fas fa-plus-circle mr-2 text-green-600"></i>Total Assets
+                  </h4>
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Gold Value:</span>
+                      <span id="goldValue" class="font-bold">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Silver Value:</span>
+                      <span id="silverValue" class="font-bold">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Cash & Bank:</span>
+                      <span id="cashBankValue" class="font-bold">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Investments & Other:</span>
+                      <span id="investmentsValue" class="font-bold">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
+                      <span class="text-gray-700 font-medium">Total Assets:</span>
+                      <span id="totalAssets" class="font-bold text-lg text-green-600">Rs. 0</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Liabilities & Net Worth -->
+                <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+                  <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+                    <i class="fas fa-minus-circle mr-2 text-red-600"></i>Liabilities & Net Worth
+                  </h4>
+                  <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Total Liabilities:</span>
+                      <span id="totalLiabilities" class="font-bold text-red-600">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
+                      <span class="text-gray-700 font-medium">Net Zakatable Amount:</span>
+                      <span id="netWorth" class="font-bold text-lg">Rs. 0</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Nisab Threshold:</span>
+                      <span id="nisabThreshold" class="font-bold">Rs. 179,689</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-600">Zakat Rate:</span>
+                      <span class="font-bold">2.5%</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-gray-700 font-medium">Zakat Status:</span>
+                      <span id="zakatStatus" class="font-bold text-[#003366]">Not Eligible</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Visual Representation -->
+              <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm mb-6">
+                <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+                  <i class="fas fa-chart-pie mr-2"></i>Zakat Breakdown
+                </h4>
+                <div class="w-full bg-gray-200 rounded-full h-8 mb-3 overflow-hidden">
+                  <div id="zakatProgressBar" class="bg-gradient-to-r from-[#003366] to-[#0066cc] h-8 rounded-full relative" style="width: 0%">
+                    <span id="zakatProgressText" class="absolute inset-0 text-center text-white flex items-center justify-center font-medium">0%</span>
+                  </div>
+                </div>
+                <div class="flex justify-between text-sm mt-2">
+                  <span class="font-medium text-gray-700"><i class="fas fa-money-bill-wave mr-1"></i>Total Assets</span>
+                  <span id="zakatPercentage" class="font-medium text-gray-700">2.5% goes to Zakat</span>
+                  <span class="font-medium text-gray-700"><i class="fas fa-hand-holding-usd mr-1"></i>Zakat Due</span>
+                </div>
+              </div>
+              
+              <!-- Print/Share Options -->
+              <div class="flex justify-center space-x-4">
+                <button onclick="printZakatResults()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+                  <i class="fas fa-print mr-2"></i> Print Results
+                </button>
+                <button onclick="downloadPDF()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+                  <i class="fas fa-file-pdf mr-2"></i> Download PDF
+                </button>
+                <button onclick="copyZakatResults()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+                  <i class="fas fa-copy mr-2"></i> Copy Results
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Zakat Information Section -->
+    <section class="py-12 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-[#003366] mb-8 text-center">Understanding Zakat</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Card 1: What is Zakat -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#003366]/10 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-question text-[#003366] text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-[#003366]">What is Zakat?</h3>
+            </div>
+            <p class="text-gray-700">
+              Zakat is the third pillar of Islam, a mandatory charitable contribution that purifies wealth and helps those in need. It is calculated at 2.5% of eligible assets held for one lunar year.
+            </p>
+          </div>
+          
+          <!-- Card 2: Who Must Pay -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#003366]/10 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-user text-[#003366] text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-[#003366]">Who Must Pay?</h3>
+            </div>
+            <p class="text-gray-700">
+              Every adult Muslim who possesses wealth equal to or exceeding the Nisab threshold for one lunar year must pay Zakat. The Nisab is equivalent to the value of 87.48 grams of gold or 612.36 grams of silver.
+            </p>
+          </div>
+          
+          <!-- Card 3: Zakatable Assets -->
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 bg-[#003366]/10 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-coins text-[#003366] text-xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-[#003366]">Zakatable Assets</h3>
+            </div>
+            <p class="text-gray-700">
+              Assets subject to Zakat include gold, silver, cash, bank deposits, investments, business inventory, and agricultural produce. Personal items like your primary residence, vehicle, and personal belongings are exempt.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold text-[#003366] mb-6 text-center">Frequently Asked Questions</h3>
+          
+          <div class="space-y-4">
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+              <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-[#003366]">When should I pay my Zakat?</span>
+                <i class="fas fa-chevron-down text-[#003366]"></i>
+              </button>
+              <div class="mt-3 hidden">
+                <p class="text-gray-700">
+                  Zakat is due after one lunar year (Hawl) has passed on your wealth that meets or exceeds the Nisab threshold. Many Muslims choose to pay during Ramadan as good deeds are multiplied in reward during this blessed month.
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+              <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-[#003366]">How is Nisab calculated?</span>
+                <i class="fas fa-chevron-down text-[#003366]"></i>
+              </button>
+              <div class="mt-3 hidden">
+                <p class="text-gray-700">
+                  Nisab is calculated based on either the value of 87.48 grams of gold or 612.36 grams of silver. Most scholars recommend using whichever value is lower, which is typically silver, to ensure more people benefit from Zakat.
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+              <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-[#003366]">Who can receive Zakat?</span>
+                <i class="fas fa-chevron-down text-[#003366]"></i>
+              </button>
+              <div class="mt-3 hidden">
+                <p class="text-gray-700">
+                  The Quran specifies eight categories of people eligible to receive Zakat: the poor, the needy, Zakat administrators, those whose hearts are to be reconciled, those in bondage, those in debt, those in the cause of Allah, and travelers in need.
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+              <button class="flex justify-between items-center w-full text-left" onclick="toggleFAQ(this)">
+                <span class="font-semibold text-[#003366]">Can I pay Zakat in installments?</span>
+                <i class="fas fa-chevron-down text-[#003366]"></i>
+              </button>
+              <div class="mt-3 hidden">
+                <p class="text-gray-700">
+                  Yes, you can pay Zakat in installments throughout the year, as long as the full amount is paid by the due date. Some people prefer to set up monthly payments to make it more manageable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+      <!-- JavaScript for Calculator -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Fetch gold and silver prices from API
+          fetchMetalPrices();
+          
+          // Calculate button event listener
+          document.getElementById('calculateZakat').addEventListener('click', calculateZakat);
+        });
+        
+        async function fetchMetalPrices() {
+          try {
+            // Display loading state
+            const goldPriceSelect = document.getElementById('goldPrice');
+            const silverPriceSelect = document.getElementById('silverPrice');
+            goldPriceSelect.innerHTML = '<option value="0">Loading prices...</option>';
+            silverPriceSelect.innerHTML = '<option value="0">Loading prices...</option>';
+            
+            // API request setup
+            const myHeaders = new Headers();
+            myHeaders.append("x-api-key", "sk_f72dBc50967d40EdE688A5d02656A2d574513118506DcC3b");
+
+            const requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+                redirect: "follow"
+            };
+
+            // Fetch metal prices from API
+            const response = await fetch("https://gold.g.apised.com/v1/latest?metals=XAU,XAG&base_currency=PKR&currencies=PKR&weight_unit=gram", requestOptions);
+            const data = await response.json();
+            
+            const goldPrices = data.data.metal_prices.XAU;
+            const silverPricePerGram = data.data.metal_prices.XAG.price;
+
+            const tolaConversion = 11.6638; // 1 Tola = 11.6638 grams
+
+            // Clear dropdowns
+            goldPriceSelect.innerHTML = "";
+            silverPriceSelect.innerHTML = "";
+
+            // Gold Prices in Different Carats (Convert to Tola)
+            const goldCarats = {
+                "24K": goldPrices.price_24k,
+                "22K": goldPrices.price_22k,
+                "21K": goldPrices.price_21k,
+                "18K": goldPrices.price_18k
+            };
+
+            for (let [carat, pricePerGram] of Object.entries(goldCarats)) {
+                let pricePerTola = pricePerGram * tolaConversion;
+                let option = document.createElement("option");
+                option.value = Math.round(pricePerTola);
+                option.text = `${carat} - Rs. ${Math.round(pricePerTola).toLocaleString()}`;
+                goldPriceSelect.appendChild(option);
+            }
+
+            // Silver Price per Tola
+            let silverPricePerTola = silverPricePerGram * tolaConversion;
+            let silverOption = document.createElement("option");
+            silverOption.value = Math.round(silverPricePerTola);
+            silverOption.text = `Silver - Rs. ${Math.round(silverPricePerTola).toLocaleString()}`;
+            silverPriceSelect.appendChild(silverOption);
+            
+            // Add sterling silver option (92.5% pure)
+            let sterlingSilverPricePerTola = silverPricePerTola * 0.925;
+            let sterlingSilverOption = document.createElement("option");
+            sterlingSilverOption.value = Math.round(sterlingSilverPricePerTola);
+            sterlingSilverOption.text = `Sterling Silver (92.5%) - Rs. ${Math.round(sterlingSilverPricePerTola).toLocaleString()}`;
+            silverPriceSelect.appendChild(sterlingSilverOption);
+            
+            // Update Nisab threshold based on silver price (612.36 grams = 52.5 tolas of silver)
+            const nisabThreshold = Math.round(silverPricePerTola * 52.5);
+            document.getElementById('nisabThreshold').textContent = `Rs. ${nisabThreshold.toLocaleString()}`;
+            
+          } catch (error) {
+            console.error('Error fetching metal prices:', error);
+            
+            // Fallback to default values if API fails
+            const goldPriceSelect = document.getElementById('goldPrice');
+            const silverPriceSelect = document.getElementById('silverPrice');
+            
+            goldPriceSelect.innerHTML = '';
+            const goldPrices = [
+              { value: 245000, label: "24K - Rs. 245,000" },
+              { value: 224583, label: "22K - Rs. 224,583" },
+              { value: 204167, label: "21K - Rs. 204,167" },
+              { value: 183750, label: "18K - Rs. 183,750" }
+            ];
+            
+            goldPrices.forEach(price => {
+              const option = document.createElement('option');
+              option.value = price.value;
+              option.textContent = price.label;
+              goldPriceSelect.appendChild(option);
+            });
+            
+            silverPriceSelect.innerHTML = '';
+            const silverPrices = [
+              { value: 2900, label: "Pure Silver - Rs. 2,900" },
+              { value: 2700, label: "Sterling Silver - Rs. 2,700" }
+            ];
+            
+            silverPrices.forEach(price => {
+              const option = document.createElement('option');
+              option.value = price.value;
+              option.textContent = price.label;
+              silverPriceSelect.appendChild(option);
+            });
+          }
+        }
+        
+        function calculateZakat() {
+          // Get values from inputs
+          const goldPrice = parseFloat(document.getElementById('goldPrice').value) || 0;
+          const goldTolas = parseFloat(document.getElementById('goldTolas').value) || 0;
+          const silverPrice = parseFloat(document.getElementById('silverPrice').value) || 0;
+          const silverTolas = parseFloat(document.getElementById('silverTolas').value) || 0;
+        const cashInHand = parseFloat(document.getElementById('cashInHand').value) || 0;
+        const bankBalance = parseFloat(document.getElementById('bankBalance').value) || 0;
+        const investments = parseFloat(document.getElementById('investments').value) || 0;
+        const businessAssets = parseFloat(document.getElementById('businessAssets').value) || 0;
+        const otherAssets = parseFloat(document.getElementById('otherAssets').value) || 0;
+        const loans = parseFloat(document.getElementById('loans').value) || 0;
+        const otherLiabilities = parseFloat(document.getElementById('otherLiabilities').value) || 0;
+        
+        // Calculate values
+        const goldValue = goldPrice * goldTolas;
+        const silverValue = silverPrice * silverTolas;
+        const cashBankValue = cashInHand + bankBalance;
+        const investmentsValue = investments + businessAssets + otherAssets;
+        const totalAssets = goldValue + silverValue + cashBankValue + investmentsValue;
+        const totalLiabilities = loans + otherLiabilities;
+        const netWorth = totalAssets - totalLiabilities;
+        
+        // Nisab threshold (based on silver value - 612.36g)
+        const nisabThreshold = 179689; // This would be dynamically calculated in production
+        
+        // Calculate Zakat (2.5% of net worth if above nisab)
+        const zakatAmount = netWorth >= nisabThreshold ? netWorth * 0.025 : 0;
+        const zakatPercentage = (zakatAmount / totalAssets) * 100;
+        
+        // Update results
+        document.getElementById('goldValue').textContent = `Rs. ${goldValue.toLocaleString()}`;
+        document.getElementById('silverValue').textContent = `Rs. ${silverValue.toLocaleString()}`;
+        document.getElementById('cashBankValue').textContent = `Rs. ${cashBankValue.toLocaleString()}`;
+        document.getElementById('investmentsValue').textContent = `Rs. ${investmentsValue.toLocaleString()}`;
+        document.getElementById('totalAssets').textContent = `Rs. ${totalAssets.toLocaleString()}`;
+        document.getElementById('totalLiabilities').textContent = `Rs. ${totalLiabilities.toLocaleString()}`;
+        document.getElementById('netWorth').textContent = `Rs. ${netWorth.toLocaleString()}`;
+        document.getElementById('totalZakat').textContent = `Rs. ${zakatAmount.toLocaleString()}`;
+        document.getElementById('zakatStatus').textContent = netWorth >= nisabThreshold ? 'Eligible for Zakat' : 'Not Eligible';
+        document.getElementById('zakatStatus').className = netWorth >= nisabThreshold ? 'font-bold text-green-600' : 'font-bold text-gray-600';
+        
+        // Update progress bar
+        const progressBar = document.getElementById('zakatProgressBar');
+        const progressText = document.getElementById('zakatProgressText');
+        const percentage = netWorth >= nisabThreshold ? 2.5 : 0;
+        progressBar.style.width = `${percentage}%`;
+        progressText.textContent = `${percentage.toFixed(1)}%`;
+        document.getElementById('zakatPercentage').textContent = `${percentage.toFixed(1)}% goes to Zakat`;
+        
+        // Show results section
+        document.getElementById('zakatResults').classList.remove('hidden');
+        
+        // Scroll to results
+        document.getElementById('zakatResults').scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      function toggleFAQ(element) {
+        const content = element.nextElementSibling;
+        const icon = element.querySelector('i');
+        
+        content.classList.toggle('hidden');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      }
+      
+      function printZakatResults() {
+        window.print();
+      }
+      
+      function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        html2canvas(document.getElementById('zakatResults')).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          const imgWidth = 210;
+          const pageHeight = 295;
+          const imgHeight = canvas.height * imgWidth / canvas.width;
+          let heightLeft = imgHeight;
+          let position = 0;
+          
+          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pageHeight;
+          
+          while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+          }
+          
+          doc.save('zakat-calculation.pdf');
+        });
+      }
+      
+      function copyZakatResults() {
+        const totalZakat = document.getElementById('totalZakat').textContent;
+        const totalAssets = document.getElementById('totalAssets').textContent;
+        const netWorth = document.getElementById('netWorth').textContent;
+        const zakatStatus = document.getElementById('zakatStatus').textContent;
+        
+        const textToCopy = `Zakat Calculation Results:
+Total Zakat Due: ${totalZakat}
+Total Assets: ${totalAssets}
+Net Zakatable Amount: ${netWorth}
+Zakat Status: ${zakatStatus}
+
+Calculated using GoWakeel's Zakat Calculator
+Visit: https://gowakeel.com`;
+        
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            alert('Zakat calculation results copied to clipboard!');
+          })
+          .catch(err => {
+            console.error('Failed to copy text: ', err);
+            alert('Failed to copy results. Please try again.');
+          });
+      }
+    </script>
+    {% endblock Content %}
+    <!-- Footer -->
+    <footer class="bg-[#003366] text-white py-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div>
+            <div class="flex items-center mb-4">
+              <img src="{% static 'wakeelapp/Img/logo2.png' %}" alt="GoWakeel Logo" class="h-10 mr-2">
+              <h3 class="text-xl font-bold">GOWAKEEL</h3>
+            </div>
+            <p class="text-gray-300 mb-4">
+              Your trusted partner for tax and legal services in Pakistan. We make complex financial matters simple.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-white hover:text-gray-300 transition-colors">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-white hover:text-gray-300 transition-colors">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-white hover:text-gray-300 transition-colors">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="text-white hover:text-gray-300 transition-colors">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li><a href="{% url 'wakeelapp:index' %}" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+              <li><a href="{% url 'wakeelapp:about' %}" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="{% url 'wakeelapp:calculator' %}" class="text-gray-300 hover:text-white transition-colors">Tools</a></li>
+              <li><a href="{% url 'wakeelapp:contact' %}" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
+          <!-- Tools -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Our Tools</h3>
+            <ul class="space-y-2">
+              <li><a href="{% url 'wakeelapp:calculator' %}" class="text-gray-300 hover:text-white transition-colors">Tax Calculator</a></li>
+              <li><a href="{% url 'wakeelapp:zakatcalculator' %}" class="text-gray-300 hover:text-white transition-colors">Zakat Calculator</a></li>
+              <li><a href="{% url 'wakeelapp:ntn' %}" class="text-gray-300 hover:text-white transition-colors">NTN Status</a></li>
+              <li><a href="{% url 'wakeelapp:atl' %}" class="text-gray-300 hover:text-white transition-colors">ATL Status</a></li>
+              <li><a href="{% url 'wakeelapp:currencyconvert' %}" class="text-gray-300 hover:text-white transition-colors">Currency Converter</a></li>
+            </ul>
+          </div>
+          
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-300"></i>
+                <span class="text-gray-300">43c B 8th St, DHA Phase 5 Badar Commercial Area Defence V Defence Housing Authority, Karachi, 75500</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone mr-3 text-gray-300"></i>
+                <span class="text-gray-300">+923369969997</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-gray-300"></i>
+                <span class="text-gray-300">info@gowakeel.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-clock mr-3 text-gray-300"></i>
+                <span class="text-gray-300">Mon-Fri: 9AM - 5PM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+          <p class="text-gray-300">© 2023 GoWakeel. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,265 +1,603 @@
 {% extends "wakeelapp/zakatcalculator.html" %} {% load static %}
-{% block title %}<title>Tax Calculate</title>{% endblock title %}
-{% block metatitle %}<meta name="description" content="">{% endblock metatitle %}
+{% block title %}<title>Pakistan Salary Tax Calculator | GoWakeel</title>{% endblock title %}
+{% block metatitle %}<meta name="description" content="Calculate your salary tax in Pakistan with GoWakeel's accurate tax calculator. Get instant estimates of your monthly and yearly tax liability based on current FBR rates.">{% endblock metatitle %}
 
 {% block Content %}
-<!-- Content -->
-<div
-  class="w-container max-w-7xl mx-auto my-10 flex flex-col md:flex md:flex-row items-center justify-center"
->
-  <div class="w-full md:w-1/2 p-4 md:p-8">
-    <h1 class="text-2xl my-2 font-sans font-bold text-[#003366] md:text-4xl">
-      Salary Tax <span class="text-black">Calculator</span>
-    </h1>
-    <p class="text-gray-700 text-lg md:text-2xl text-justify tracking-tight">
-      The <span>GoWakeel Tax Salary Calculator</span> helps you quickly estimate your net
-      income by factoring in taxes, deductions, and exemptions. Simply enter
-      your gross salary and relevant details to get an instant breakdown of your
-      take-home pay. With accurate, up-to-date tax regulations, our tool
-      simplifies financial planning, empowering you to make informed decisions.
-      Try it today!
-    </p>
-  </div>
-  <!-- Calculator  -->
-  <div class="max-w-4xl w-full bg-white p-8 shadow-lg rounded-lg">
-    <h1 class="text-3xl font-bold text-[#003366] text-center mb-4">
-      Salary Tax <span class="text-black">Calculator</span>
-    </h1>
-    <p class="text-gray-700 text-center mb-6">
-      Enter your salary to calculate applicable taxes.
-    </p>
-
-    <div class="flex flex-wrap items-center justify-between gap-4">
-      <div class="flex flex-col w-full md:w-1/3">
-        <label class="font-medium">Select Tax Year</label>
-        <select id="taxSlab" class="border p-2 rounded w-full">
-          <script>
-            for (let year = 2024; year >= 2014; year--) {
-              document.write(
-                `<option value="${year}-${year + 1}">${year}-${
-                  year + 1
-                }</option>`
-              );
-            }
-          </script>
-        </select>
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-white to-[#003366]/5 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center justify-between gap-8">
+      <div class="w-full text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
+          Pakistan Salary <span class="text-black">Tax Calculator</span>
+        </h1>
+        <p class="text-gray-700 text-lg mb-6 max-w-3xl mx-auto">
+          The <span class="font-semibold">GoWakeel Tax Calculator</span> helps you quickly estimate your net
+          income by factoring in taxes, deductions, and exemptions based on the latest FBR tax slabs.
+        </p>
       </div>
+    
+      <!-- Calculator Card - Centered and full width -->
+      <div class="w-full max-w-3xl mx-auto bg-white p-6 md:p-8 shadow-lg rounded-lg border border-[#003366]/10">
+        <h2 class="text-2xl font-bold text-[#003366] text-center mb-4">
+          <i class="fas fa-calculator mr-2"></i>Salary Tax Calculator
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col">
+              <label class="font-medium text-gray-700 mb-1">Select Tax Year</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fas fa-calendar-alt text-gray-400"></i>
+                </div>
+                <select id="taxSlab" class="pl-10 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-colors w-full">
+                  <script>
+                    for (let year = 2024; year >= 2014; year--) {
+                      document.write(
+                        `<option value="${year}-${year + 1}">${year}-${
+                          year + 1
+                        }</option>`
+                      );
+                    }
+                  </script>
+                </select>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">Select the tax year for calculation</p>
+            </div>
 
-      <div class="flex flex-col w-full md:w-1/3">
-        <label class="font-medium">Enter Monthly Salary</label>
-        <input
-          id="salary"
-          type="number"
-          placeholder="Enter Salary"
-          class="border p-2 rounded w-full"
-        />
+            <div class="flex flex-col">
+              <label class="font-medium text-gray-700 mb-1">Enter Monthly Salary (PKR)</label>
+              <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <i class="fas fa-rupee-sign text-gray-400"></i>
+                </div>
+                <input
+                  id="salary"
+                  type="number"
+                  placeholder="e.g. 100000"
+                  class="pl-10 w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-colors"
+                />
+                <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                  <span class="text-gray-400">PKR</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">Enter gross monthly salary</p>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button
+              onclick="calculateTax()"
+              class="w-full bg-gradient-to-r from-[#003366] to-[#0066cc] text-white px-6 py-3 rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center"
+            >
+              <i class="fas fa-calculator mr-2"></i> Calculate Tax
+            </button>
+          </div>
+          
+          <div class="text-xs text-center text-gray-500 mt-2">
+            <i class="fas fa-shield-alt mr-1"></i> Your data is processed locally and never stored or shared
+          </div>
+        </div>
+        
+        <!-- Results Section - Improved Design -->
+        <div id="resultsSection" class="mt-8 pt-6 border-t border-gray-200 hidden">
+          <h3 class="text-xl font-bold text-[#003366] text-center mb-6">Your Tax Calculation Results</h3>
+          
+          <!-- Summary Card - Enhanced -->
+          <div class="bg-gradient-to-r from-[#003366]/10 to-[#003366]/5 p-6 rounded-lg border border-[#003366]/20 mb-6">
+            <div class="grid grid-cols-3 gap-4">
+              <div class="text-center">
+                <div class="text-sm text-gray-600 font-medium">Monthly Take-Home</div>
+                <div id="monthlyAfterTax" class="text-3xl font-bold text-[#003366]">0/-</div>
+                <div class="text-xs text-gray-500 mt-1">After tax</div>
+              </div>
+              <div class="text-center border-x border-gray-300">
+                <div class="text-sm text-gray-600 font-medium">Tax Year</div>
+                <div id="taxYearDisplay" class="text-xl font-semibold">2024-2025</div>
+                <div class="text-xs text-gray-500 mt-1">Selected period</div>
+              </div>
+              <div class="text-center">
+                <div class="text-sm text-gray-600 font-medium">Effective Tax Rate</div>
+                <div id="effectiveTaxRate" class="text-xl font-semibold text-[#003366]">0%</div>
+                <div class="text-xs text-gray-500 mt-1">Of total income</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tax Breakdown - Visual -->
+          <div class="mb-6 bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
+            <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+              <i class="fas fa-chart-pie mr-2"></i>Tax Breakdown
+            </h4>
+            <div class="w-full bg-gray-200 rounded-full h-10 mb-3 overflow-hidden">
+              <div id="taxProgressBar" class="bg-gradient-to-r from-[#003366] to-[#0066cc] h-10 rounded-full relative" style="width: 0%">
+                <span id="taxProgressText" class="absolute inset-0 text-center text-white flex items-center justify-center font-medium">0%</span>
+              </div>
+            </div>
+            <div class="flex justify-between text-sm mt-2">
+              <span class="font-medium text-gray-700"><i class="fas fa-money-bill-wave mr-1"></i>Gross Income</span>
+              <span id="taxPercentage" class="font-medium text-gray-700">0% goes to tax</span>
+              <span class="font-medium text-gray-700"><i class="fas fa-wallet mr-1"></i>Net Income</span>
+            </div>
+          </div>
+          
+          <!-- Monthly/Yearly Comparison - Side by Side -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Monthly Breakdown -->
+            <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+                <i class="fas fa-calendar-day mr-2 text-[#003366]"></i>Monthly Breakdown
+              </h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Gross Salary:</span>
+                  <span id="monthlySalary" class="font-bold text-lg">0/-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Tax Deduction:</span>
+                  <span id="monthlyTax" class="font-bold text-lg text-red-600">0/-</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
+                  <span class="text-gray-700 font-medium">Net Salary:</span>
+                  <span id="monthlyAfterTaxCopy" class="font-bold text-lg text-green-600">0/-</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Yearly Breakdown -->
+            <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+                <i class="fas fa-calendar-alt mr-2 text-[#003366]"></i>Yearly Breakdown
+              </h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Gross Salary:</span>
+                  <span id="yearlySalary" class="font-bold text-lg">0/-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Tax Deduction:</span>
+                  <span id="yearlyTax" class="font-bold text-lg text-red-600">0/-</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
+                  <span class="text-gray-700 font-medium">Net Salary:</span>
+                  <span id="yearlyAfterTax" class="font-bold text-lg text-green-600">0/-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tax Details -->
+          <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow mb-6">
+            <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+              <i class="fas fa-percentage mr-2 text-[#003366]"></i>Tax Details
+            </h4>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Fixed Tax:</span>
+                <span id="fixedTax" class="font-bold text-lg">0/-</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Tax Rate:</span>
+                <span id="taxRate" class="font-bold text-lg">0%</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-600">Tax Bracket:</span>
+                <span id="taxBracket" class="font-bold text-lg">-</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Print/Share Options -->
+          <div class="mt-8 flex justify-center space-x-4">
+            <button onclick="window.print()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+              <i class="fas fa-print mr-2"></i> Print Results
+            </button>
+            <button onclick="copyResults()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+              <i class="fas fa-copy mr-2"></i> Copy Results
+            </button>
+          </div>
+        </div>
       </div>
-
-      <button
-        onclick="calculateTax()"
-        class="bg-[#003366] text-white px-6 py-3 rounded-lg hover:bg-[#002244] transition w-full md:w-1/4 mt-4 md:mt-6"
-      >
-        Calculate
-      </button>
     </div>
+  </div>
+</section>
 
-    <div class="mt-6 border-t pt-4">
-      <h2 class="text-xl font-semibold text-center mb-4">Tax Calculation</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-lg">
-        <div class="text-justify border-b md:border-0">
-          <p class="font-semibold">Monthly</p>
-          <p>Salary: <span id="monthlySalary" class="font-bold">0/-</span></p>
-          <p>Tax: <span id="monthlyTax" class="font-bold">0/-</span></p>
-          <p>
-            After Tax: <span id="monthlyAfterTax" class="font-bold">0/-</span>
-          </p>
+<!-- Tax Information Section -->
+<section class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-[#003366] mb-8 text-center">Understanding Pakistan Income Tax</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Tax Slab Information -->
+      <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+        <h3 class="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+          <i class="fas fa-table mr-2"></i> Current Tax Slabs (2024-2025)
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white border border-gray-200">
+            <thead>
+              <tr>
+                <th class="py-2 px-4 border-b text-left">Annual Income (PKR)</th>
+                <th class="py-2 px-4 border-b text-left">Tax Rate</th>
+                <th class="py-2 px-4 border-b text-left">Fixed Tax</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-2 px-4 border-b">Up to 600,000</td>
+                <td class="py-2 px-4 border-b">0%</td>
+                <td class="py-2 px-4 border-b">0</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b">600,001 to 1,200,000</td>
+                <td class="py-2 px-4 border-b">5%</td>
+                <td class="py-2 px-4 border-b">0</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b">1,200,001 to 2,200,000</td>
+                <td class="py-2 px-4 border-b">15%</td>
+                <td class="py-2 px-4 border-b">30,000</td>
+              </tr>
+              <td class="py-2 px-4 border-b">1,200,001 to 2,200,000</td>
+              <td class="py-2 px-4 border-b">15%</td>
+              <td class="py-2 px-4 border-b">30,000</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">2,200,001 to 4,200,000</td>
+              <td class="py-2 px-4 border-b">20%</td>
+              <td class="py-2 px-4 border-b">180,000</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">4,200,001 to 6,200,000</td>
+              <td class="py-2 px-4 border-b">25%</td>
+              <td class="py-2 px-4 border-b">580,000</td>
+            </tr>
+            <tr>
+              <td class="py-2 px-4 border-b">Above 6,200,000</td>
+              <td class="py-2 px-4 border-b">32.5%</td>
+              <td class="py-2 px-4 border-b">1,080,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Tax Calculation Process -->
+    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
+      <h3 class="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+        <i class="fas fa-calculator mr-2"></i> How Tax is Calculated
+      </h3>
+      <div class="space-y-4 text-gray-700">
+        <p>Pakistan follows a progressive tax system where higher income levels are taxed at higher rates. Here's how your income tax is calculated:</p>
+        
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>Your monthly salary is multiplied by 12 to get your annual income.</li>
+          <li>Based on your annual income, the applicable tax bracket is determined.</li>
+          <li>The tax calculation includes a fixed amount plus a percentage of income exceeding the lower limit of your bracket.</li>
+          <li>The calculated annual tax is divided by 12 to determine your monthly tax liability.</li>
+        </ol>
+        
+        <p class="text-sm italic mt-4">Note: This calculator provides estimates based on the standard tax slabs. Actual tax liability may vary based on additional income sources, deductions, and exemptions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+// Format currency function
+function formatCurrency(amount) {
+  return amount.toLocaleString('en-PK') + "/-";
+}
+
+// Tax slabs for different years
+const taxSlabs = {
+  "2024-2025": [
+    { min: 0, max: 600000, rate: 0, fixed: 0 },
+    { min: 600000, max: 1200000, rate: 0.05, fixed: 0 },
+    { min: 1200000, max: 2200000, rate: 0.15, fixed: 30000 },
+    { min: 2200000, max: 4200000, rate: 0.20, fixed: 180000 },
+    { min: 4200000, max: 6200000, rate: 0.25, fixed: 580000 },
+    { min: 6200000, max: Infinity, rate: 0.325, fixed: 1080000 }
+  ],
+  "2023-2024": [
+    { min: 0, max: 600000, rate: 0, fixed: 0 },
+    { min: 600000, max: 1200000, rate: 0.05, fixed: 0 },
+    { min: 1200000, max: 2400000, rate: 0.10, fixed: 30000 },
+    { min: 2400000, max: 3600000, rate: 0.15, fixed: 150000 },
+    { min: 3600000, max: 6000000, rate: 0.20, fixed: 330000 },
+    { min: 6000000, max: 12000000, rate: 0.25, fixed: 810000 },
+    { min: 12000000, max: Infinity, rate: 0.32, fixed: 2310000 }
+  ],
+  "2022-2023": [
+    { min: 0, max: 600000, rate: 0, fixed: 0 },
+    { min: 600000, max: 1200000, rate: 0.025, fixed: 0 },
+    { min: 1200000, max: 2400000, rate: 0.125, fixed: 15000 },
+    { min: 2400000, max: 3600000, rate: 0.20, fixed: 165000 },
+    { min: 3600000, max: 6000000, rate: 0.25, fixed: 405000 },
+    { min: 6000000, max: 12000000, rate: 0.30, fixed: 1005000 },
+    { min: 12000000, max: Infinity, rate: 0.35, fixed: 2805000 }
+  ]
+};
+
+// Add tax slabs for previous years
+for (let year = 2021; year >= 2014; year--) {
+  taxSlabs[`${year}-${year+1}`] = taxSlabs["2022-2023"];
+}
+
+// Calculate tax based on annual income and selected tax slab
+function calculateTax() {
+  // Get input values
+  const monthlySalary = parseFloat(document.getElementById("salary").value) || 0;
+  const selectedYear = document.getElementById("taxSlab").value;
+  const annualSalary = monthlySalary * 12;
+  
+  // Validate input
+  if (monthlySalary <= 0) {
+    alert("Please enter a valid salary amount");
+    return;
+  }
+  
+  // Get tax slab for selected year
+  const currentTaxSlab = taxSlabs[selectedYear] || taxSlabs["2024-2025"];
+  
+  // Find applicable tax bracket
+  let applicableSlab = currentTaxSlab[0];
+  for (const slab of currentTaxSlab) {
+    if (annualSalary > slab.min && annualSalary <= slab.max) {
+      applicableSlab = slab;
+      break;
+    }
+  }
+  
+  // Calculate tax
+  const fixedTax = applicableSlab.fixed;
+  const variableTax = (annualSalary - applicableSlab.min) * applicableSlab.rate;
+  const totalAnnualTax = fixedTax + variableTax;
+  const monthlyTax = totalAnnualTax / 12;
+  
+  // Calculate net income
+  const netAnnualIncome = annualSalary - totalAnnualTax;
+  const netMonthlyIncome = netAnnualIncome / 12;
+  
+  // Calculate tax percentage
+  const taxPercentage = (totalAnnualTax / annualSalary) * 100;
+  
+  // Update UI
+  document.getElementById("monthlySalary").textContent = formatCurrency(monthlySalary);
+  document.getElementById("monthlyTax").textContent = formatCurrency(monthlyTax);
+  document.getElementById("monthlyAfterTax").textContent = formatCurrency(netMonthlyIncome);
+  document.getElementById("monthlyAfterTaxCopy").textContent = formatCurrency(netMonthlyIncome);
+  
+  document.getElementById("yearlySalary").textContent = formatCurrency(annualSalary);
+  document.getElementById("yearlyTax").textContent = formatCurrency(totalAnnualTax);
+  document.getElementById("yearlyAfterTax").textContent = formatCurrency(netAnnualIncome);
+  
+  document.getElementById("fixedTax").textContent = formatCurrency(fixedTax);
+  document.getElementById("taxRate").textContent = `${(applicableSlab.rate * 100).toFixed(1)}%`;
+  document.getElementById("taxBracket").textContent = `${formatCurrency(applicableSlab.min).replace("/-", "")} - ${
+    applicableSlab.max === Infinity ? "Above" : formatCurrency(applicableSlab.max).replace("/-", "")
+  }`;
+  
+  // Update tax breakdown
+  document.getElementById("taxProgressBar").style.width = `${taxPercentage}%`;
+  document.getElementById("taxPercentage").textContent = `${taxPercentage.toFixed(1)}% goes to tax`;
+  document.getElementById("taxProgressText").textContent = `${taxPercentage.toFixed(1)}%`;
+  
+  // Update new UI elements
+  document.getElementById("taxYearDisplay").textContent = selectedYear;
+  document.getElementById("effectiveTaxRate").textContent = `${taxPercentage.toFixed(1)}%`;
+  
+  // Show results section
+  document.getElementById("resultsSection").classList.remove("hidden");
+  
+  // Scroll to results
+  document.getElementById("resultsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// Copy results to clipboard
+function copyResults() {
+  const monthlySalary = document.getElementById("monthlySalary").textContent;
+  const monthlyTax = document.getElementById("monthlyTax").textContent;
+  const monthlyAfterTax = document.getElementById("monthlyAfterTaxCopy").textContent;
+  const yearlySalary = document.getElementById("yearlySalary").textContent;
+  const yearlyTax = document.getElementById("yearlyTax").textContent;
+  const yearlyAfterTax = document.getElementById("yearlyAfterTax").textContent;
+  const taxRate = document.getElementById("taxRate").textContent;
+  
+  const resultText = `
+Tax Calculation Results:
+------------------------
+Monthly Gross Salary: ${monthlySalary}
+Monthly Tax: ${monthlyTax}
+Monthly Net Salary: ${monthlyAfterTax}
+
+Yearly Gross Salary: ${yearlySalary}
+Yearly Tax: ${yearlyTax}
+Yearly Net Salary: ${yearlyAfterTax}
+
+Tax Rate: ${taxRate}
+Tax Year: ${document.getElementById("taxSlab").value}
+`;
+  
+  // Create a temporary textarea element to copy the text
+  const textarea = document.createElement('textarea');
+  textarea.value = resultText;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  
+  // Show a temporary notification
+  const button = document.querySelector('button[onclick="copyResults()"]');
+  const originalText = button.innerHTML;
+  button.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+  setTimeout(() => {
+    button.innerHTML = originalText;
+  }, 2000);
+}
+
+// FAQ Accordion functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const answer = question.nextElementSibling;
+      const icon = question.querySelector('i');
+      
+      // Toggle answer visibility
+      if (answer.classList.contains('hidden')) {
+        answer.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        answer.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    });
+  });
+  
+  // Add Enter key support for salary input
+  const salaryInput = document.getElementById('salary');
+  if (salaryInput) {
+    salaryInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        calculateTax();
+      }
+    });
+  }
+});
+</script>
+
+<!-- Tax Saving Tips Section -->
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-2xl font-bold text-[#003366] mb-8 text-center">Tax Saving Tips for Salaried Individuals</h2>
+  
+  <div class="bg-white rounded-xl shadow-md border border-[#003366]/10 p-6">
+    <p class="text-gray-700 mb-6">
+      There are several legal ways to reduce your tax liability in Pakistan. Here are some strategies that can help you save on taxes:
+    </p>
+    
+    <ul class="space-y-4">
+      <li class="flex items-start">
+        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <div>
+          <strong>Retirement Contributions:</strong>
+          <p class="text-sm text-gray-600">Contributions to approved pension funds are tax-deductible up to 20% of your taxable income.</p>
         </div>
-
-        <div class="text-justify md:border-l md:border-r md:px-4">
-          <p class="font-semibold">Yearly</p>
-          <p>Salary: <span id="yearlySalary" class="font-bold">0/-</span></p>
-          <p>Tax: <span id="yearlyTax" class="font-bold">0/-</span></p>
-          <p>
-            After Tax: <span id="yearlyAfterTax" class="font-bold">0/-</span>
-          </p>
+      </li>
+      <li class="flex items-start">
+        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <div>
+          <strong>Health Insurance Premiums:</strong>
+          <p class="text-sm text-gray-600">Deduct health insurance premiums paid for yourself and your family.</p>
         </div>
+      </li>
+      <li class="flex items-start">
+        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <div>
+          <strong>Education Expenses:</strong>
+          <p class="text-sm text-gray-600">Claim tax credits for education expenses at recognized institutions.</p>
+        </div>
+      </li>
+      <li class="flex items-start">
+        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <div>
+          <strong>Zakat Deduction:</strong>
+          <p class="text-sm text-gray-600">Zakat paid under the Zakat Ordinance is deductible from your taxable income.</p>
+        </div>
+      </li>
+      <li class="flex items-start">
+        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <div>
+          <strong>Charitable Donations:</strong>
+          <p class="text-sm text-gray-600">Donations to approved non-profit organizations can be claimed as tax credits.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</section>
 
-        <div class="text-justify border-t md:border-0">
-          <p class="font-semibold">Tax Calculation</p>
-          <p>Fixed Tax: <span id="fixedTax" class="font-bold">0/-</span></p>
-          <p>Tax Rate: <span id="taxRate" class="font-bold">0%</span></p>
+<!-- FAQ Section -->
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <h2 class="text-2xl font-bold text-[#003366] mb-8 text-center">Frequently Asked Questions</h2>
+  
+  <div class="bg-white rounded-xl shadow-md border border-[#003366]/10 overflow-hidden">
+    <div class="divide-y divide-gray-200">
+      <div class="faq-item">
+        <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+          <span class="text-lg font-semibold text-[#003366]">How is income tax calculated in Pakistan?</span>
+          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-6 hidden">
+          <p class="text-gray-700">Income tax in Pakistan is calculated based on your annual income and the applicable tax slab. The government sets different tax rates for different income brackets. For salaried individuals, the tax is typically deducted at source by the employer as Withholding Tax.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+          <span class="text-lg font-semibold text-[#003366]">Do I need to file a tax return if my employer deducts tax?</span>
+          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-6 hidden">
+          <p class="text-gray-700">Yes, even if your employer deducts tax from your salary, you are still required to file an annual tax return if your annual income exceeds the minimum taxable limit. Filing a return allows you to claim tax credits and refunds for excess tax paid.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+          <span class="text-lg font-semibold text-[#003366]">What is the deadline for filing income tax returns in Pakistan?</span>
+          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-6 hidden">
+          <p class="text-gray-700">The deadline for filing income tax returns in Pakistan is typically September 30th for salaried individuals. However, the FBR may extend this deadline. It's advisable to check the current year's deadline on the FBR website or with a tax professional.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+          <span class="text-lg font-semibold text-[#003366]">How can I reduce my tax liability legally?</span>
+          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-6 hidden">
+          <p class="text-gray-700">You can reduce your tax liability legally by claiming tax credits and deductions available under the tax laws. These include investments in approved pension funds, health insurance premiums, education expenses, charitable donations, and zakat payments. Consult with a tax professional to maximize your tax savings.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+          <span class="text-lg font-semibold text-[#003366]">What happens if I don't file my tax return?</span>
+          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer px-6 pb-6 hidden">
+          <p class="text-gray-700">Failure to file a tax return when required can result in penalties, including fines and surcharges. Additionally, non-filers face higher withholding tax rates on various transactions such as banking, property, and vehicle purchases. Your name may also be removed from the Active Taxpayers List (ATL), which can affect your ability to conduct certain financial transactions.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-<script>
-  // Tax slabs for different years
-  const taxSlabs = {
-    "2014-2015": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 400001, rate: 0.05, fixed_tax: 0 },
-      { threshold: 750001, rate: 0.1, fixed_tax: 17500 },
-      { threshold: 1400001, rate: 0.125, fixed_tax: 82500 },
-      { threshold: 1500001, rate: 0.15, fixed_tax: 95000 },
-      { threshold: 1800001, rate: 0.175, fixed_tax: 140000 },
-      { threshold: 2500001, rate: 0.2, fixed_tax: 262500 },
-      { threshold: 3000001, rate: 0.225, fixed_tax: 362500 },
-      { threshold: 3500001, rate: 0.25, fixed_tax: 475000 },
-      { threshold: 4000001, rate: 0.275, fixed_tax: 600000 },
-      { threshold: 7000001, rate: 0.3, fixed_tax: 1425000 },
-    ],
-    "2015-2016": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 400001, rate: 0.02, fixed_tax: 0 },
-      { threshold: 500001, rate: 0.05, fixed_tax: 2000 },
-      { threshold: 750001, rate: 0.1, fixed_tax: 14500 },
-      { threshold: 1400001, rate: 0.125, fixed_tax: 79500 },
-      { threshold: 1500001, rate: 0.15, fixed_tax: 92000 },
-      { threshold: 1800001, rate: 0.175, fixed_tax: 137000 },
-      { threshold: 2500001, rate: 0.2, fixed_tax: 259500 },
-      { threshold: 3000001, rate: 0.225, fixed_tax: 359500 },
-      { threshold: 3500001, rate: 0.25, fixed_tax: 472000 },
-      { threshold: 4000001, rate: 0.275, fixed_tax: 597000 },
-      { threshold: 7000001, rate: 0.3, fixed_tax: 1422000 },
-    ],
-    "2016-2017": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 400001, rate: 0.02, fixed_tax: 0 },
-      { threshold: 500001, rate: 0.05, fixed_tax: 2000 },
-      { threshold: 750001, rate: 0.1, fixed_tax: 14500 },
-      { threshold: 1400001, rate: 0.125, fixed_tax: 79500 },
-      { threshold: 1500001, rate: 0.15, fixed_tax: 92000 },
-      { threshold: 1800001, rate: 0.175, fixed_tax: 137000 },
-      { threshold: 2500001, rate: 0.2, fixed_tax: 259500 },
-      { threshold: 3000001, rate: 0.225, fixed_tax: 359500 },
-      { threshold: 3500001, rate: 0.25, fixed_tax: 472000 },
-      { threshold: 4000001, rate: 0.275, fixed_tax: 597000 },
-      { threshold: 7000001, rate: 0.3, fixed_tax: 1422000 },
-    ],
-    "2017-2018": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 400001, rate: 0.02, fixed_tax: 0 },
-      { threshold: 500001, rate: 0.05, fixed_tax: 2000 },
-      { threshold: 750001, rate: 0.1, fixed_tax: 14500 },
-      { threshold: 1400001, rate: 0.125, fixed_tax: 79500 },
-      { threshold: 1500001, rate: 0.15, fixed_tax: 92000 },
-      { threshold: 1800001, rate: 0.175, fixed_tax: 137000 },
-      { threshold: 2500001, rate: 0.2, fixed_tax: 259500 },
-      { threshold: 3000001, rate: 0.225, fixed_tax: 359500 },
-      { threshold: 3500001, rate: 0.25, fixed_tax: 472000 },
-      { threshold: 4000001, rate: 0.275, fixed_tax: 597000 },
-      { threshold: 7000001, rate: 0.3, fixed_tax: 1422000 },
-    ],
-    "2018-2019": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 400001, rate: 0.05, fixed_tax: 1000 },
-      { threshold: 800001, rate: 0.05, fixed_tax: 2000 },
-      { threshold: 1200001, rate: 0.05, fixed_tax: 2000 },
-      { threshold: 2500001, rate: 0.15, fixed_tax: 65000 },
-      { threshold: 4000001, rate: 0.2, fixed_tax: 290000 },
-      { threshold: 8000001, rate: 0.25, fixed_tax: 1090000 },
-    ],
-    "2019-2020": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 600001, rate: 0.05, fixed_tax: 0 },
-      { threshold: 1200001, rate: 0.1, fixed_tax: 30000 },
-      { threshold: 2400001, rate: 0.15, fixed_tax: 150000 },
-      { threshold: 3000001, rate: 0.2, fixed_tax: 240000 },
-      { threshold: 6000001, rate: 0.25, fixed_tax: 1140000 },
-      { threshold: 12000001, rate: 0.3, fixed_tax: 2640000 },
-    ],
-    "2020-2021": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 600001, rate: 0.05, fixed_tax: 0 },
-      { threshold: 1200001, rate: 0.1, fixed_tax: 30000 },
-      { threshold: 2400001, rate: 0.15, fixed_tax: 150000 },
-      { threshold: 3000001, rate: 0.2, fixed_tax: 240000 },
-      { threshold: 6000001, rate: 0.25, fixed_tax: 1140000 },
-      { threshold: 12000001, rate: 0.3, fixed_tax: 2640000 },
-    ],
-    "2021-2022": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 600001, rate: 0.05, fixed_tax: 0 },
-      { threshold: 1200001, rate: 0.1, fixed_tax: 30000 },
-      { threshold: 2400001, rate: 0.15, fixed_tax: 150000 },
-      { threshold: 3000001, rate: 0.2, fixed_tax: 240000 },
-      { threshold: 6000001, rate: 0.25, fixed_tax: 1140000 },
-      { threshold: 12000001, rate: 0.3, fixed_tax: 2640000 },
-    ],
-    "2022-2023": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 600001, rate: 0.025, fixed_tax: 0 },
-      { threshold: 1200001, rate: 0.125, fixed_tax: 15000 },
-      { threshold: 2400001, rate: 0.225, fixed_tax: 165000 },
-      { threshold: 3600001, rate: 0.275, fixed_tax: 435000 },
-      { threshold: 6000001, rate: 0.35, fixed_tax: 1095000 },
-    ],
-    "2023-2024": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 600001, rate: 0.025, fixed_tax: 0 },
-      { threshold: 1200001, rate: 0.125, fixed_tax: 15000 },
-      { threshold: 2400001, rate: 0.225, fixed_tax: 165000 },
-      { threshold: 3600001, rate: 0.275, fixed_tax: 435000 },
-      { threshold: 6000001, rate: 0.35, fixed_tax: 1095000 },
-    ],
-    "2024-2025": [
-      { threshold: 0, rate: 0, fixed_tax: 0 },
-      { threshold: 600001, rate: 0.05, fixed_tax: 0 },
-      { threshold: 1200001, rate: 0.15, fixed_tax: 30000 },
-      { threshold: 2200001, rate: 0.25, fixed_tax: 180000 },
-      { threshold: 3200001, rate: 0.3, fixed_tax: 430000 },
-      { threshold: 4100001, rate: 0.35, fixed_tax: 700000 },
-    ],
-    // Add slabs for other years if needed
-  };
+</section>
 
-  function formatCurrency(amount) {
-    return amount.toFixed(2).toLocaleString() + "/-";
-  }
-
-  function calculateTax() {
-    const monthlySalary =
-      parseFloat(document.getElementById("salary").value) || 0;
-    const taxYear = document.getElementById("taxSlab").value;
-    const taxBrackets = taxSlabs[taxYear] || [];
-
-    const annualSalary = monthlySalary * 12;
-    let annualTax = 0;
-    let fixedTax = 0;
-    let taxRate = 0;
-
-    for (const bracket of taxBrackets) {
-      if (annualSalary > bracket.threshold) {
-        fixedTax = bracket.fixed_tax;
-        annualTax =
-          fixedTax + (annualSalary - bracket.threshold) * bracket.rate;
-        taxRate = bracket.rate * 100;
-      } else {
-        break;
-      }
-    }
-
-    const monthlyTax = annualTax / 12;
-    const monthlyAfterTax = monthlySalary - monthlyTax;
-    const yearlyAfterTax = annualSalary - annualTax;
-    const netSavings = yearlyAfterTax - annualTax;
-
-    document.getElementById("monthlySalary").innerText =
-      formatCurrency(monthlySalary);
-    document.getElementById("monthlyTax").innerText =
-      formatCurrency(monthlyTax);
-    document.getElementById("monthlyAfterTax").innerText =
-      formatCurrency(monthlyAfterTax);
-    document.getElementById("yearlySalary").innerText =
-      formatCurrency(annualSalary);
-    document.getElementById("yearlyTax").innerText = formatCurrency(annualTax);
-    document.getElementById("yearlyAfterTax").innerText =
-      formatCurrency(yearlyAfterTax);
-    document.getElementById("fixedTax").innerText = formatCurrency(fixedTax);
-    document.getElementById("taxRate").innerText = taxRate.toFixed(2) + "%";
-  }
-
-  //
-</script>
+<!-- Call to Action Section -->
+<section class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-[#003366] rounded-xl p-8 text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">Need Professional Tax Assistance?</h2>
+      <p class="text-white/80 max-w-2xl mx-auto mb-6">Our tax experts can help you with tax planning, return filing, and maximizing your tax savings.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="{% url 'wakeelapp:contact' %}" class="px-6 py-3 bg-white text-[#003366] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center">
+          <i class="fas fa-envelope mr-2"></i> Contact Our Tax Experts
+        </a>
+        <a href="https://wa.me/923369969997?text=I'm%20interested%20in%20tax%20services" class="px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center">
+          <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock Content %}

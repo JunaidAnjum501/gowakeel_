@@ -1,206 +1,500 @@
-{% extends "wakeelapp/zakatcalculator.html" %}
-{% load static %}
-{% block title %}<title>ATL</title>{% endblock title %}
-{% block metatitle %}<meta name="description" content="">{% endblock metatitle %}
+{% extends "wakeelapp/zakatcalculator.html" %} {% load static %}
+{% block title %}<title>ATL Status Finder - Check Active Taxpayer List Status | GoWakeel</title>{% endblock title %}
+{% block metatitle %}<meta name="description" content="Check your ATL (Active Taxpayer List) status online. Verify if you're on the active taxpayer list and download information as PDF with GoWakeel's ATL Status Finder.">{% endblock metatitle %}
+
 {% block Content %}
-<section class="w-container max-w-7xl mx-auto">
-    <div class="flex justify-end">
-      <!-- Search Section -->
-      <div class="max-w-md p-6 border-b-2">
-        <h2 class="text-lg font-bold text-[#003366] text-left mb-4">
-          ATL Status Finder
-        </h2>
-        <div class="flex space-x-2">
-          <input
-            id="cnicInput"
-            type="text"
-            placeholder="Enter CNIC Number"
-            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#003366] focus:outline-none"
-          />
-          <button
-            onclick="searchCNIC()"
-            class="bg-[#003366] text-white px-4 py-2 rounded-lg hover:bg-[#002244] transition"
-          >
-            Search
-          </button>
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Page Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
+        <i class="fas fa-check-circle mr-2"></i>ATL Status Finder
+      </h1>
+      <p class="text-gray-600 max-w-3xl mx-auto">Check if you're on the Active Taxpayer List (ATL) instantly. Enter your CNIC or NTN number below to verify your tax filing status.</p>
+    </div>
+
+    <!-- Search Card -->
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 mb-8">
+      <h2 class="text-xl font-bold text-[#003366] mb-4 flex items-center">
+        <i class="fas fa-search mr-2"></i> Find ATL Status
+      </h2>
+      <div class="space-y-4">
+        <div>
+          <label for="cnicInput" class="block text-sm font-medium text-gray-700 mb-1">CNIC/NTN Number</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-id-card text-gray-400"></i>
+            </div>
+            <input
+              id="cnicInput"
+              type="text"
+              placeholder="Enter 13-digit CNIC or 7-digit NTN"
+              class="pl-10 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-colors"
+              maxlength="13"
+            />
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Example: 1110114913415 (CNIC) or 7238215 (NTN)</p>
         </div>
-        <p id="errorMessage" class="text-center text-red-600 mt-2 hidden"></p>
+        
+        <button
+          onclick="searchCNIC()"
+          class="w-full bg-gradient-to-r from-[#003366] to-[#0066cc] text-white py-3 rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center"
+        >
+          <i class="fas fa-search mr-2"></i> Check ATL Status
+        </button>
+        
+        <div id="errorMessage" class="hidden p-3 bg-red-100 text-red-700 rounded-lg text-center text-sm"></div>
+        <div id="loadingIndicator" class="hidden text-center">
+          <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-[#003366]"></div>
+          <p class="text-sm text-gray-600 mt-2">Searching...</p>
+        </div>
       </div>
     </div>
-  
-    <!-- Centered Result Card -->
+
+    <!-- Result Card -->
     <div
       id="resultCard"
-      class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-6 hidden relative"
+      class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-lg mt-6 hidden relative border border-[#003366]/10"
     >
       <!-- Close Button -->
       <button
+        id="close"
         onclick="closeCard()"
-        class="absolute top-3 right-3 w-8 h-8 flex items-center cursor-pointer justify-center rounded-full text-white font-bold bg-[#003366] hover:bg-[#002244] transition"
+        class="absolute top-4 right-4 w-8 h-8 flex items-center cursor-pointer justify-center rounded-full text-white font-bold bg-[#003366] hover:bg-[#002244] transition"
       >
-        ✕
+        <i class="fas fa-times"></i>
       </button>
-  
-      <h2 class="text-xl font-bold text-[#003366] text-center">User Details</h2>
+
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-[#003366]/10 rounded-full mb-4">
+          <i class="fas fa-user-check text-[#003366] text-2xl"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-[#003366]">ATL Status Details</h2>
+        <p class="text-gray-500">Information retrieved from FBR database</p>
+      </div>
+      
       <div id="cardContent" class="mt-4">
-        <div class="grid grid-cols-2 gap-4 text-gray-700">
-          <div><strong>Registration No:</strong> <span id="regNo"></span></div>
-          <div><strong>Reference No:</strong> <span id="refNo"></span></div>
-          <div>
-            <strong>Registered for Sales Tax:</strong> <span id="salesTax"></span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 text-gray-700">
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Registration No</p>
+            <p id="regNo" class="font-medium"></p>
           </div>
-          <div><strong>Name:</strong> <span id="name"></span></div>
-          <div><strong>Category:</strong> <span id="category"></span></div>
-          <div><strong>PP/REG/INC No:</strong> <span id="ppRegNo"></span></div>
-          <div><strong>Email:</strong> <span id="email"></span></div>
-          <div><strong>Cell:</strong> <span id="cell"></span></div>
-          <div class="col-span-2">
-            <strong>Address:</strong> <span id="address"></span>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Reference No</p>
+            <p id="refNo" class="font-medium"></p>
           </div>
-          <div><strong>Registered On:</strong> <span id="regDate"></span></div>
-          <div><strong>Tax Office:</strong> <span id="taxOffice"></span></div>
-          <div class="col-span-2">
-            <strong>Registration Status:</strong> <span id="status"></span>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Name</p>
+            <p id="name" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Category</p>
+            <p id="category" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Registered for Sales Tax</p>
+            <p id="salesTax" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">PP/REG/INC No</p>
+            <p id="ppRegNo" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Email</p>
+            <p id="email" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Cell</p>
+            <p id="cell" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2 col-span-2">
+            <p class="text-sm text-gray-500">Address</p>
+            <p id="address" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Registered On</p>
+            <p id="regDate" class="font-medium"></p>
+          </div>
+          <div class="border-b pb-2">
+            <p class="text-sm text-gray-500">Tax Office</p>
+            <p id="taxOffice" class="font-medium"></p>
+          </div>
+          <div class="col-span-2 mt-2">
+            <p class="text-sm text-gray-500">ATL Status</p>
+            <p id="status" class="font-medium text-green-600"></p>
           </div>
         </div>
       </div>
-  
+
       <!-- Download PDF Button -->
-      <button
-        onclick="downloadPDF()"
-        class="mt-4 w-full cursor-pointer bg-[#003366] text-white py-2 rounded-lg hover:bg-[#002244] transition"
-      >
-        Download as PDF
-      </button>
+      <div class="mt-6 flex justify-center">
+        <button
+          id="downloadPdf"
+          onclick="downloadPDF()"
+          class="px-6 py-3 bg-[#003366] text-white rounded-lg hover:bg-[#002244] transition-all duration-300 flex items-center"
+        >
+          <i class="fas fa-file-pdf mr-2"></i> Download as PDF
+        </button>
+      </div>
     </div>
-  
-    <!-- Additional Content Below -->
-    <div class="my-10 p-3">
-      <h2 class="text-2xl md:text-4xl mb-2 font-bold text-black">Benefits of having <span class="text-[#003366]">ATL</span></h2>
-      <p class="text-gray-700 text-lg text-justify tracking-tight md:text-2xl">
-        Tax Saving Get maximum tax saving like claiming tax credits for
-        investments and adjustment of taxes paid on utilities, vehicle, property
-        transactions, and cash withdrawals etc Lower Rate of Withholding Tax
-        Non-Filers are subject to higher rate of taxes on various transactions
-        e.g. withholding tax is applicable on cash withdrawals and banking
-        transfers exceeding Rs. 50,000 Avoid Penalities. Be a responsible citizen
-        and avoid penalties and/or prosecutions from the FBR for not filing return
-        Compliance Check Many government related organizations and banks now check
-        your FBR tax filer status before acceding to your requests, like
-        registration of company, purchase of property and loan processing etc
-      </p>
+
+    <!-- Information Sections -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Benefits Section -->
+      <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10">
+        <h2 class="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+          <i class="fas fa-check-circle mr-2 text-[#003366]"></i> Benefits of being on ATL
+        </h2>
+        <ul class="space-y-3 text-gray-700">
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Lower Tax Rates:</strong> Active taxpayers enjoy reduced withholding tax rates on various transactions including banking, property, and vehicle purchases.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Business Credibility:</strong> Being on the ATL enhances your business reputation and credibility with partners and financial institutions.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Avoid Penalties:</strong> Non-filers face higher tax rates and may be subject to penalties from FBR for non-compliance.</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+            <span><strong>Financial Services:</strong> Many banks and financial institutions check ATL status before processing loans, credit cards, and other financial services.</span>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- How to Get on ATL Section -->
+      <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10">
+        <h2 class="text-2xl font-bold text-[#003366] mb-4 flex items-center">
+          <i class="fas fa-file-alt mr-2 text-[#003366]"></i> How to Get on the ATL
+        </h2>
+        <ol class="space-y-3 text-gray-700 list-decimal pl-5">
+          <li class="pl-2">
+            <strong><i class="fas fa-id-card mr-1"></i> Get an NTN:</strong> Register for a National Tax Number if you don't already have one.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-file-invoice mr-1"></i> File Tax Return:</strong> Submit your income tax return for the relevant tax year before the deadline.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-money-bill-wave mr-1"></i> Pay Due Tax:</strong> Ensure all due taxes are paid as per your return calculation.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-calendar-check mr-1"></i> Annual Renewal:</strong> File your tax return annually to maintain your status on the ATL.
+          </li>
+          <li class="pl-2">
+            <strong><i class="fas fa-check-double mr-1"></i> Verification:</strong> Your name will appear on the ATL after successful filing and verification.
+          </li>
+        </ol>
+        <div class="mt-4">
+          <a href="{% url 'wakeelapp:contact' %}" class="inline-flex items-center text-[#003366] hover:text-[#0066cc] transition-colors">
+            <i class="fas fa-headset mr-2"></i> Need help with tax filing? Contact our experts
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
     </div>
-  </section>
-  <script>
-    // Sample Data
-    const userData = {
-      1110114913415: {
-        "Registration No": "1110114913415",
-        "Reference No": "7238215-1",
-        "Registered for Sales Tax": "No",
-        Name: "MUHAMMAD ANWAR BAZKHAN",
-        Category: "Pakistani Male",
-        "PP/REG/INC No": "1110114913415",
-        Email: "anw****z@***l.com",
-        Cell: "00923**973**30",
-        Address:
-          "69V2, Street No 8, Khayaban e Badban, DHA Phase 5, Karachi South Saddar Town",
-        "Registered On": "01-JUN-2016",
-        "Tax Office": "RTO-II KARACHI",
-        "Registration Status": "Income Tax: Active",
-      },
-    };
-  
-    // Search CNIC Function
-    function searchCNIC() {
-      const cnicInput = document.getElementById("cnicInput").value.trim();
-      const resultCard = document.getElementById("resultCard");
-      const errorMessage = document.getElementById("errorMessage");
-  
-      if (cnicInput === "") {
-        showError("Please enter a CNIC number.");
-        return;
-      }
-  
-      // Simulate Server Response Time (for demonstration)
-      setTimeout(() => {
-        if (userData[cnicInput]) {
-          document.getElementById("regNo").innerText =
-            userData[cnicInput]["Registration No"];
-          document.getElementById("refNo").innerText =
-            userData[cnicInput]["Reference No"];
-          document.getElementById("salesTax").innerText =
-            userData[cnicInput]["Registered for Sales Tax"];
-          document.getElementById("name").innerText = userData[cnicInput]["Name"];
-          document.getElementById("category").innerText =
-            userData[cnicInput]["Category"];
-          document.getElementById("ppRegNo").innerText =
-            userData[cnicInput]["PP/REG/INC No"];
-          document.getElementById("email").innerText =
-            userData[cnicInput]["Email"];
-          document.getElementById("cell").innerText = userData[cnicInput]["Cell"];
-          document.getElementById("address").innerText =
-            userData[cnicInput]["Address"];
-          document.getElementById("regDate").innerText =
-            userData[cnicInput]["Registered On"];
-          document.getElementById("taxOffice").innerText =
-            userData[cnicInput]["Tax Office"];
-          document.getElementById("status").innerText =
-            userData[cnicInput]["Registration Status"];
-  
-          resultCard.classList.remove("hidden");
-          errorMessage.classList.add("hidden");
+    
+    <!-- FAQ Section -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-[#003366] mb-6 text-center">
+        <i class="fas fa-question-circle mr-2"></i>Frequently Asked Questions
+      </h2>
+      <div class="bg-white rounded-xl shadow-md border border-[#003366]/10 overflow-hidden">
+        <div class="divide-y divide-gray-200">
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-info-circle mr-2"></i>What is the Active Taxpayer List (ATL)?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">The Active Taxpayer List (ATL) is a database maintained by the Federal Board of Revenue (FBR) that contains the names of individuals and businesses who have filed their income tax returns for the current tax year. Being on the ATL indicates tax compliance and provides various benefits including lower withholding tax rates.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-calendar-alt mr-2"></i>How often is the ATL updated?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">The FBR updates the ATL regularly. Generally, it's updated after the tax filing deadline for each tax year. However, if you file your return after the deadline, your name may be added to the ATL within a few days to weeks after filing and verification.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-exclamation-triangle mr-2"></i>What happens if I'm not on the ATL?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">If you're not on the ATL, you'll be considered a "non-filer" and will be subject to higher withholding tax rates on various transactions such as banking, property, and vehicle purchases. Additionally, you may face difficulties in accessing certain financial services and could be subject to penalties from the FBR.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-sync-alt mr-2"></i>How can I check my ATL status?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">You can check your ATL status by entering your CNIC or NTN number in the search box above. Alternatively, you can visit the FBR's official website or use the FBR Tax Asaan mobile app. Our tool provides a convenient way to check your status and download the information as a PDF.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
+              <span class="text-lg font-semibold text-[#003366]"><i class="fas fa-file-alt mr-2"></i>Can I file my tax return after the deadline?</span>
+              <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+            </button>
+            <div class="faq-answer px-6 pb-6 hidden">
+              <p class="text-gray-700">Yes, you can file your tax return after the deadline, but you may be subject to penalties for late filing. However, once you file your return and it's verified, your name will be added to the ATL, and you'll start enjoying the benefits of being an active taxpayer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set up FAQ accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('.fa-chevron-down');
+        
+        // Toggle answer visibility
+        if (answer.classList.contains('hidden')) {
+          answer.classList.remove('hidden');
+          icon.classList.add('rotate-180');
         } else {
-          showError("No record found for this CNIC.");
-          resultCard.classList.add("hidden");
+          answer.classList.add('hidden');
+          icon.classList.remove('rotate-180');
         }
-      }, 1000); // Simulated delay
-    }
-  
-    // Show Error Message
-    function showError(message) {
-      const errorMessage = document.getElementById("errorMessage");
-      errorMessage.innerText = message;
-      errorMessage.classList.remove("hidden");
-  
-      // Hide message after 5 seconds
-      setTimeout(() => {
-        errorMessage.classList.add("hidden");
-      }, 5000);
-    }
-  
-    // Close Card Function
-    function closeCard() {
-      document.getElementById("resultCard").classList.add("hidden");
-    }
-  
-    // Dowmload the file
-  async function downloadPDF() {
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF("p", "mm", "a4");
-
-    const element = document.getElementById("resultCard");
-    const close = document.getElementById("close");
-    const btn = document.getElementById("downloadPdf");
-
-    // Hide the close button and download button before capturing
-    close.style.display = "none";
-    btn.style.display = "none";
-
-    html2canvas(element, { scale: 2 }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
-        const imgWidth = 210; // A4 width in mm
-        const pageHeight = 297; // A4 height in mm
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-        pdf.save("User_Details.pdf");
-
-        // Restore the buttons after capturing
-        close.style.display = "block";
-        btn.style.display = "block";
+      });
     });
-}
-  </script>
+    
+    // Add CNIC input formatting
+    const cnicInput = document.getElementById('cnicInput');
+    if (cnicInput) {
+      cnicInput.addEventListener('input', function(e) {
+        // Remove non-numeric characters
+        this.value = this.value.replace(/\D/g, '');
+        
+        // Limit to 13 digits for CNIC or 7 digits for NTN
+        if (this.value.length > 13) {
+          this.value = this.value.slice(0, 13);
+        }
+      });
+      
+      // Allow Enter key to trigger search
+      cnicInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          searchCNIC();
+        }
+      });
+    }
+  });
   
+  function searchCNIC() {
+    const cnicInput = document.getElementById('cnicInput');
+    const errorMessage = document.getElementById('errorMessage');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const resultCard = document.getElementById('resultCard');
+    
+    // Validate input
+    const cnicValue = cnicInput.value.trim();
+    if (!cnicValue) {
+      showError("Please enter a CNIC or NTN number");
+      return;
+    }
+    
+    // Check if input is valid (either 13 digits for CNIC or 7 digits for NTN)
+    if (cnicValue.length !== 13 && cnicValue.length !== 7) {
+      showError("Please enter a valid 13-digit CNIC or 7-digit NTN number");
+      return;
+    }
+    
+    // Hide error message if any
+    errorMessage.classList.add('hidden');
+    
+    // Show loading indicator
+    loadingIndicator.classList.remove('hidden');
+    
+    // Hide result card if visible
+    resultCard.classList.add('hidden');
+    
+    // Simulate API call (replace with actual API call in production)
+    setTimeout(() => {
+      // Hide loading indicator
+      loadingIndicator.classList.add('hidden');
+      
+      // For demo purposes, we'll simulate a successful response
+      // In production, replace this with actual API call and response handling
+      if (Math.random() > 0.2) { // 80% chance of success for demo
+        displayResults({
+          regNo: cnicValue.length === 13 ? cnicValue : "NTN-" + cnicValue,
+          refNo: "REF-" + Math.floor(Math.random() * 1000000),
+          name: "Muhammad Ahmed",
+          category: "Individual",
+          salesTax: "No",
+          ppRegNo: "N/A",
+          email: "example@email.com",
+          cell: "03001234567",
+          address: "House #123, Street #45, Sector F-10/4, Islamabad",
+          regDate: "15-07-2019",
+          taxOffice: "Regional Tax Office, Islamabad",
+          status: "Active Taxpayer"
+        });
+      } else {
+        // Simulate error response
+        showError("No record found for the provided CNIC/NTN. Please verify and try again.");
+      }
+    }, 1500); // Simulate network delay
+  }
+  
+  function showError(message) {
+    const errorMessage = document.getElementById('errorMessage');
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('hidden');
+    
+    // Hide loading indicator if visible
+    document.getElementById('loadingIndicator').classList.add('hidden');
+  }
+  
+  function displayResults(data) {
+    // Populate result card with data
+    document.getElementById('regNo').textContent = data.regNo;
+    document.getElementById('refNo').textContent = data.refNo;
+    document.getElementById('name').textContent = data.name;
+    document.getElementById('category').textContent = data.category;
+    document.getElementById('salesTax').textContent = data.salesTax;
+    document.getElementById('ppRegNo').textContent = data.ppRegNo;
+    document.getElementById('email').textContent = data.email;
+    document.getElementById('cell').textContent = data.cell;
+    document.getElementById('address').textContent = data.address;
+    document.getElementById('regDate').textContent = data.regDate;
+    document.getElementById('taxOffice').textContent = data.taxOffice;
+    
+    // Set status with appropriate color
+    const statusElement = document.getElementById('status');
+    statusElement.textContent = data.status;
+    
+    if (data.status.toLowerCase().includes('active')) {
+      statusElement.classList.remove('text-red-600');
+      statusElement.classList.add('text-green-600');
+    } else {
+      statusElement.classList.remove('text-green-600');
+      statusElement.classList.add('text-red-600');
+    }
+    
+    // Show result card
+    document.getElementById('resultCard').classList.remove('hidden');
+    
+    // Scroll to result card
+    document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  
+  function closeCard() {
+    document.getElementById('resultCard').classList.add('hidden');
+  }
+  
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    
+    // Get data from the card
+    const name = document.getElementById('name').textContent;
+    const regNo = document.getElementById('regNo').textContent;
+    const status = document.getElementById('status').textContent;
+    const date = new Date().toLocaleDateString();
+    
+    // Add logo (replace with your actual logo path)
+    // doc.addImage("{% static 'wakeelapp/Img/logo.png' %}", 'PNG', 15, 10, 30, 30);
+    
+    // Add title
+    doc.setFontSize(22);
+    doc.setTextColor(0, 51, 102); // #003366
+    doc.text("ATL Status Certificate", 105, 20, { align: "center" });
+    
+    // Add subtitle
+    doc.setFontSize(12);
+    doc.setTextColor(100, 100, 100);
+    doc.text("Generated on " + date, 105, 30, { align: "center" });
+    
+    // Add horizontal line
+    doc.setDrawColor(0, 51, 102);
+    doc.line(20, 35, 190, 35);
+    
+    // Add content
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0);
+    doc.text("Taxpayer Information", 20, 50);
+    
+    doc.setFontSize(12);
+    doc.text("Name:", 20, 60);
+    doc.text(name, 70, 60);
+    
+    doc.text("Registration No:", 20, 70);
+    doc.text(regNo, 70, 70);
+    
+    doc.text("Status:", 20, 80);
+    if (status.toLowerCase().includes('active')) {
+      doc.setTextColor(0, 128, 0); // Green for active
+    } else {
+      doc.setTextColor(255, 0, 0); // Red for inactive
+    }
+    doc.text(status, 70, 80);
+    
+    // Reset text color
+    doc.setTextColor(0, 0, 0);
+    
+    // Add more details
+    doc.text("Reference No:", 20, 90);
+    doc.text(document.getElementById('refNo').textContent, 70, 90);
+    
+    doc.text("Category:", 20, 100);
+    doc.text(document.getElementById('category').textContent, 70, 100);
+    
+    doc.text("Registered for Sales Tax:", 20, 110);
+    doc.text(document.getElementById('salesTax').textContent, 70, 110);
+    
+    doc.text("Email:", 20, 120);
+    doc.text(document.getElementById('email').textContent, 70, 120);
+    
+    doc.text("Cell:", 20, 130);
+    doc.text(document.getElementById('cell').textContent, 70, 130);
+    
+    doc.text("Address:", 20, 140);
+    
+    // Handle long address by wrapping text
+    const address = document.getElementById('address').textContent;
+    const splitAddress = doc.splitTextToSize(address, 120);
+    doc.text(splitAddress, 70, 140);
+    
+    let yPos = 140 + (splitAddress.length * 7);
+    
+    doc.text("Registered On:", 20, yPos);
+    doc.text(document.getElementById('regDate').textContent, 70, yPos);
+    
+    yPos += 10;
+    doc.text("Tax Office:", 20, yPos);
+    doc.text(document.getElementById('taxOffice').textContent, 70, yPos);
+    
+    // Add footer
+    yPos = 250;
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text("This document is generated from GoWakeel's ATL Status Finder.", 105, yPos, { align: "center" });
+    doc.text("For official verification, please visit the FBR website.", 105, yPos + 7, { align: "center" });
+    
+    // Save the PDF
+    doc.save("ATL_Status_" + regNo + ".pdf");
+  }
+</script>
 {% endblock Content %}
