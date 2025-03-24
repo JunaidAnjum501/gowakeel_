@@ -1,65 +1,196 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" 
+      x-init="$watch('darkMode', val => { 
+                localStorage.setItem('darkMode', val); 
+                document.documentElement.classList.toggle('dark', val);
+              })">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>GoWakeel - Your Trusted Tax Partner</title>
+   
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'wakeelapp/Img/favicon.ico' %}" type="image/x-icon">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                200: '#bae6fd',
+                300: '#7dd3fc',
+                400: '#38bdf8',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+              },
+              secondary: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                400: '#94a3b8',
+                500: '#64748b',
+                600: '#475569',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+              },
+              dark: {
+                100: '#1e293b',
+                200: '#0f172a',
+                300: '#020617',
+              }
+            },
+          },
+        },
+      };
+    </script>
+    <script>      
+      // Counter animation function
+      function animateCounter(element, target, duration) {
+        let start = 0;
+        const increment = target / (duration / 16);
+        const timer = setInterval(() => {
+          start += increment;
+          element.textContent = Math.floor(start);
+          if (start >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+          }
+        }, 16);
+      }
+    
+      // Initialize counters when they come into view
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fix for dark mode initialization
+        const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+        if (darkModeEnabled) {
+          document.documentElement.classList.add('dark');
+        }
+        
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100,
+        });
+      });
+    </script>
     <style>
-      /* Animation classes */
-      .fade-in {
-        animation: fadeIn 0.8s ease-in-out forwards;
+      html {
+        scroll-behavior: smooth;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       
-      .slide-up {
-        animation: slideUp 0.6s ease-out forwards;
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       
-      .bounce-in {
-        animation: bounceIn 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      /* Dark mode transitions */
+      .dark-transition {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
       
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+      
+      /* Text effects */
+      .gradient-text {
+        background: linear-gradient(90deg, #0369a1, #38bdf8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
       
-      @keyframes slideUp {
-        from { transform: translateY(30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
+      .dark .gradient-text {
+        background: linear-gradient(90deg, #38bdf8, #7dd3fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+           
+      /* Navbar animations */
+      .nav-link {
+        position: relative;
       }
       
-      @keyframes bounceIn {
-        0% { transform: scale(0.3); opacity: 0; }
-        40% { transform: scale(1.05); }
-        60% { transform: scale(0.95); }
-        100% { transform: scale(1); opacity: 1; }
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background-color: #0369a1;
+        transition: width 0.3s ease;
       }
       
-      .hover-float {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      .dark .nav-link::after {
+        background-color: #38bdf8;
       }
       
-      .hover-float:hover {
-        transform: translateY(-5px);
-       
+      .nav-link:hover::after {
+        width: 100%;
       }
       
-      .pulse {
-        animation: pulse 2s infinite;
+      /* Button animations */
+      .btn-animated {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: all 0.3s ease;
       }
       
-      @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
+      .btn-animated:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.2);
+        z-index: -2;
       }
       
+      .btn-animated:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        z-index: -1;
+      }
+      
+      .btn-animated:hover:before {
+        width: 100%;
+      }
+      
+      /* Footer link animations */
       .footer-link {
         position: relative;
+        display: inline-block;
       }
       
       .footer-link::after {
@@ -77,208 +208,271 @@
         width: 100%;
       }
       
-      .btn-animated {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
+      /* Dark mode toggle */
+      .toggle-checkbox:checked {
+        right: 0;
+        border-color: #38bdf8;
       }
       
-      .btn-animated::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        transition: all 0.4s ease-in-out;
+      .toggle-checkbox:checked + .toggle-label {
+        background-color: #0369a1;
       }
       
-      .btn-animated:hover::before {
-        left: 100%;
+      /* Dark mode styles */
+      .dark-mode-icon {
+        transition: transform 0.5s ease, opacity 0.3s ease;
+      }
+      
+      .dark .sun-icon {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+      
+      .dark .moon-icon {
+        opacity: 0;
+        transform: rotate(90deg) scale(0);
+      }
+      
+      .sun-icon {
+        opacity: 0;
+        transform: rotate(-90deg) scale(0);
+      }
+      
+      .moon-icon {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
       }
     </style>
-    {% block title %}<title>Frequently Asked Questions - GoWakeel</title>{% endblock title %}
-    {% block metatitle %}<meta name="description" content="Find answers to common questions about tax filing, company registration, and other services offered by GoWakeel.">{% endblock metatitle %}
   </head>
-  <body>
+  <body :class="{ 'dark bg-dark-100 text-gray-100': darkMode, 'bg-white text-gray-900': !darkMode }" class="dark-transition">
+    <!-- Navbar -->
     <nav
-    x-data="{ isOpen: false }"
-    class="relative w-container shadow"
-  >
-    <div
-      class="w-container max-w-7xl m-auto px-6 py-4 md:flex md:justify-center md:items-center lg:flex lg:justify-between lg:items-center"
+      x-data="{ isOpen: false, toolsOpen: false, generalToolsOpen: false }"
+      class="relative w-full sticky top-0 z-50 glass-effect shadow-lg dark-transition"
+      :class="{ 'dark': darkMode }"
     >
-      <div class="flex items-center justify-between">
-        <!-- Logo -->
-        <a class="flex justify-center items-center" href="{% url 'wakeelapp:index' %}">
-          <img
-            class="w-auto h-8 md:h-12 lg:h-14 xl:h-16"
-            src="{% static 'wakeelapp/Img/logo2.png' %}"
-            alt="Logo"
-          />
-          <h2
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl ml-2 text-[#003366] font-bold"
-          >
-            GOWAKEEL
-          </h2>
-        </a>
-
-        <!-- Mobile menu button -->
-        <div class="flex md:hidden">
-          <button
-            @click="isOpen = !isOpen"
-            type="button"
-            class="text-gray-500 hover:text-gray-600 focus:outline-none"
-          >
-            <svg
-              x-show="!isOpen"
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4 8h16M4 16h16"
-              />
-            </svg>
-            <svg
-              x-show="isOpen"
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Navbar Links -->
       <div
-        :class="{ 'translate-x-0 opacity-100': isOpen, 'opacity-0 -translate-x-full': !isOpen }"
-        class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white md:mt-0 md:p-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center"
+        class="max-w-7xl m-auto px-6 py-3 md:flex md:justify-center md:items-center lg:flex lg:justify-between lg:items-center"
       >
-        <div class="flex flex-col md:flex-row md:mx-4">
-          <a
-            href="{% url 'wakeelapp:index' %}"
-            class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
-            >Home</a
-          >
-          <a
-            href="{% url 'wakeelapp:about' %}"
-            class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
-            >About</a
-          >
-          <a
-            href="{% url 'wakeelapp:calculator' %}"
-            class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
-            >Tools</a
-          >
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <a class="flex justify-center items-center hover-float transition-all duration-300" href="{% url 'wakeelapp:index' %}">
+            <img
+              class="w-auto h-10 md:h-12 lg:h-14"
+              src="{% static 'wakeelapp/Img/logo2.png' %}"
+              alt="GoWakeel Logo"
+            />
+            <h2
+              class="text-2xl md:text-3xl lg:text-4xl ml-2 text-primary-700 dark:text-primary-400 font-bold"
+            >
+              GOWAKEEL
+            </h2>
+          </a>
+
+          <!-- Mobile menu button -->
+          <div class="flex md:hidden">
+            <button
+              @click="isOpen = !isOpen"
+              type="button"
+              class="text-gray-500 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white focus:outline-none"
+            >
+              <svg
+                x-show="!isOpen"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 8h16M4 16h16"
+                />
+              </svg>
+              <svg
+                x-show="isOpen"
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Navbar Links -->
+        <div
+          :class="{ 'translate-x-0 opacity-100': isOpen, 'opacity-0 -translate-x-full': !isOpen }"
+          class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-dark-100 md:mt-0 md:p-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center glass-effect md:glass-effect-none dark-transition"
+        >
+          <div class="flex flex-col md:flex-row md:items-center md:mx-4">
             <a
-              href="{% url 'wakeelapp:contact' %}"
-              class="my-2 text-gray-900 font-semibold transition-colors duration-300 transform hover:text-[#003366] md:mx-3 text-lg md:my-0"
+              href="{% url 'wakeelapp:index' %}"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+              >Home</a
+            >
+            <a
+            href="{% url 'wakeelapp:about' %}"
+            class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+            :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+            >About</a
+             >
+            <a
+          href="{% url 'wakeelapp:about' %}"
+          class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+          :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+          >Services</a
+          >
+
+            <a
+              href="{% url 'wakeelapp:calculator' %}"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+              >Tools</a
+            >
+            <a
+              href="{% url 'wakeelapp:blogs' %}"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
               >Resources</a
             >
-           
-        </div>
-        <!-- Buttons -->
-        <div class="flex space-x-4">
+            
+          </div>
+          
+          <!-- Contact Link -->
           <a
-              href="{% url 'wakeelapp:login' %}"
-              class="px-4 py-2 text-[#003366] border border-[#003366] rounded-lg hover:text-white  hover:bg-[#003366]"
-              >Join Us</a
-            >
-            <a
-              href="https://wa.me/+923369969997"
-              class="px-4 py-2 text-green-700 flex items-center border border-green-700 rounded-lg hover:bg-green-700 hover:text-white"
+            href="{% url 'wakeelapp:contact' %}"
+            class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+            :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+            >Contact</a
+          >
+        </div>
+
+        <!-- Dark Mode Toggle and Buttons -->
+        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+          <!-- Dark Mode Toggle -->
+          <button 
+            @click="darkMode = !darkMode" 
+            class="p-2 rounded-full transition-colors duration-300 focus:outline-none"
+            :class="darkMode ? 'bg-dark-200 text-primary-400' : 'bg-gray-100 text-primary-700'"
+            id="theme-toggle-desktop"
+          >
+            <div class="relative w-6 h-6 overflow-hidden">
+              <!-- Sun Icon -->
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-6 w-6 absolute transition-opacity duration-300 sun-icon" 
+                :class="darkMode ? 'opacity-100' : 'opacity-0'"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
               >
-              <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="" class="w-5 h-5 mr-2"> Whatsapp</a
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              
+              <!-- Moon Icon -->
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                class="h-6 w-6 absolute transition-opacity duration-300 moon-icon" 
+                :class="darkMode ? 'opacity-0' : 'opacity-100'"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </div>
+          </button>
+
+          <!-- Action Buttons -->
+          <a
+            href="{% url 'wakeelapp:login' %}"
+            class="px-4 py-2 rounded-lg btn-animated transition-all duration-300"
+            :class="darkMode ? 'text-primary-400 border border-primary-400 hover:bg-primary-900 hover:text-white' : 'text-primary-700 border border-primary-700 hover:text-white hover:bg-primary-700'"
+            >Join Us</a
+          >
+          <a
+            href="https://wa.me/+923369969997"
+            class="px-4 py-2 flex items-center rounded-lg btn-animated transition-all duration-300"
+            :class="darkMode ? 'text-green-400 border border-green-400 hover:bg-green-900 hover:text-white' : 'text-green-700 border border-green-700 hover:bg-green-700 hover:text-white'"
             >
+            <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="WhatsApp" class="h-5 w-5 mr-2" />
+            <span>Chat Now</span>
+          </a>
         </div>
       </div>
-    </div>
-  </nav>
-  <!-- Navbar End -->
-    <!-- Subnavbar section -->
-    <div
-      class="w-full shadow-lg p-5 mx-auto flex justify-center items-center gap-5 md:gap-10 rounded"
-    >
-      <a
-        href="{% url 'wakeelapp:blogs' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/blogs.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="Calculator"
-        />
-        <span>Blogs</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:video' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/video.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="NTN Status"
-        />
-        <span>Video</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:faq' %}"
-        class="flex flex-col items-center text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow pulse"
-      >
-        <img src="{% static 'wakeelapp/Img/FAQ.png' %}" class="h-10 mb-2 sm:h-12 md:h-14" alt="FAQ" />
-        <span>FAQ's</span>
-      </a>
-      <a
-        href="{% url 'wakeelapp:contact' %}"
-        class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow"
-      >
-        <img
-          src="{% static 'wakeelapp/Img/contact.png' %}"
-          class="h-10 mb-2 sm:h-12 md:h-14"
-          alt="Contact"
-        />
-        <span>Contact</span>
-      </a>
-      
-    </div>
+    </nav>
+    <!-- Navbar End -->
+     <!-- Subnavbar section -->
+     <div
+     class="w-full p-5 mx-auto flex justify-center items-center gap-5 md:gap-10 rounded"
+   >
+     <a
+       href="/blogs/"
+       class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow"
+     >
+       <img
+         src="/static/wakeelapp/Img/blogs.png"
+         class="h-10 mb-2 sm:h-12 md:h-14"
+         alt="Calculator"
+       />
+       <span>Blogs</span>
+     </a>
+     <a
+       href="/video/"
+       class="flex flex-col items-center text-gray-700 hover:text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow"
+     >
+       <img
+         src="/static/wakeelapp/Img/video.png"
+         class="h-10 mb-2 sm:h-12 md:h-14"
+         alt="NTN Status"
+       />
+       <span>Video</span>
+     </a>
+     <a
+       href="/faq/"
+       class="flex flex-col items-center text-[#003366] font-bold text-xs sm:text-sm md:text-base hover-float transition-all-slow pulse"
+     >
+       <img src="/static/wakeelapp/Img/FAQ.png" class="h-10 mb-2 sm:h-12 md:h-14" alt="FAQ" />
+       <span>FAQ's</span>
+     </a>
+     
+   </div>
+   <!-- Subnavbar section end -->
+
 
     {% block Content %}
-    <section class="bg-white">
+    <section class="bg-white dark:bg-[#1a1a1a]">
         <div class="w-container max-w-7xl px-6 py-10 mx-auto">
-            <h1 class="text-3xl font-bold text-gray-800 lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#003366] to-[#0066cc] slide-up">
+            <h1 class="text-3xl font-bold text-gray-800 lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-[#003366] to-[#0066cc] slide-up dark:from-[#4d94ff] dark:to-[#66b3ff]">
                 <i class="fas fa-question-circle mr-2"></i> Frequently Asked Questions
             </h1>
-            <p class="text-lg text-gray-600 mt-4 max-w-3xl slide-up" style="animation-delay: 0.2s;">
-                <i class="fas fa-info-circle mr-2 text-[#003366]"></i> We're here to help, from getting you started, to long after you file. Find answers to common questions about our services.
+            <p class="text-lg text-gray-600 mt-4 max-w-3xl slide-up dark:text-gray-300" style="animation-delay: 0.2s;">
+                <i class="fas fa-info-circle mr-2 text-[#003366] dark:text-[#4d94ff]"></i> We're here to help, from getting you started, to long after you file. Find answers to common questions about our services.
             </p>
-            <hr class="my-8 border-gray-300">
+            <hr class="my-8 border-gray-300 dark:border-gray-700">
     
             <div id="faq-container" class="space-y-6">
                 <!-- FAQ Items (Total: 10, Initially Show 5) -->
-                <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
+                <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
                     <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-building mr-2 text-[#003366]"></i> How can I initiate the process of company registration with GoWakeel?</h3>
-                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-building mr-2 text-[#003366] dark:text-[#4d94ff]"></i> How can I initiate the process of company registration with GoWakeel?</h3>
+                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                         </svg>
                     </button>
-                    <div class="hidden px-5 pb-5 text-gray-600">
+                    <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
                         <p>To begin the company registration process:</p>
                         <ol class="list-decimal pl-5 mt-2 space-y-1">
                             <li>Visit GoWakeel's Business Services section</li>
@@ -290,14 +484,14 @@
                     </div>
                 </div>
     
-                <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
+                <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
                     <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-clock mr-2 text-[#003366]"></i> What is the typical timeline for company registration through GoWakeel?</h3>
-                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-clock mr-2 text-[#003366] dark:text-[#4d94ff]"></i> What is the typical timeline for company registration through GoWakeel?</h3>
+                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                         </svg>
                     </button>
-                    <div class="hidden px-5 pb-5 text-gray-600">
+                    <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
                         <p>The duration for company registration varies based on several factors:</p>
                         <ul class="list-disc pl-5 mt-2 space-y-1">
                             <li>Type of company structure (Sole Proprietorship, Partnership, Private Limited)</li>
@@ -308,14 +502,14 @@
                       </div>
                   </div>
   
-                  <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
+                  <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
                       <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-file-invoice-dollar mr-2 text-[#003366]"></i> How does GoWakeel assist with tax filing?</h3>
-                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-file-invoice-dollar mr-2 text-[#003366] dark:text-[#4d94ff]"></i> How does GoWakeel assist with tax filing?</h3>
+                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                           </svg>
                       </button>
-                      <div class="hidden px-5 pb-5 text-gray-600">
+                      <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
                           <p>GoWakeel simplifies the tax filing process through:</p>
                           <ul class="list-disc pl-5 mt-2 space-y-1">
                               <li>Step-by-step guidance through our user-friendly platform</li>
@@ -328,384 +522,415 @@
                       </div>
                   </div>
   
-                  <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
+                  <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
                       <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-book-open mr-2 text-[#003366]"></i> Are there any resources available to help me understand the tax filing process?</h3>
-                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                          </svg>
-                      </button>
-                      <div class="hidden px-5 pb-5 text-gray-600">
-                          <p>Yes, GoWakeel provides numerous resources to help you understand the tax filing process:</p>
-                          <ul class="list-disc pl-5 mt-2 space-y-1">
-                              <li>Comprehensive blog articles on tax-related topics</li>
-                              <li>Instructional videos explaining key concepts</li>
-                              <li>Downloadable guides and checklists</li>
-                              <li>Tax calculators and planning tools</li>
-                              <li>Webinars and online workshops</li>
-                          </ul>
-                          <p class="mt-2">Visit our Resources section to access these materials or contact our support team for personalized guidance.</p>
-                      </div>
-                  </div>
-  
-                  <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
-                      <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-money-bill-wave mr-2 text-[#003366]"></i> What are the costs associated with GoWakeel's services?</h3>
-                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                          </svg>
-                      </button>
-                      <div class="hidden px-5 pb-5 text-gray-600">
-                          <p>Our service fees vary depending on:</p>
-                          <ul class="list-disc pl-5 mt-2 space-y-1">
-                              <li>Type of service (tax filing, company registration, etc.)</li>
-                              <li>Complexity of your specific situation</li>
-                              <li>Level of support required</li>
-                          </ul>
-                          <p class="mt-2">We offer transparent pricing with no hidden fees. For detailed pricing information, please visit our Pricing page or contact our customer support team for a personalized quote.</p>
-                      </div>
-                  </div>
-  
-                  <!-- Hidden FAQs (Show when 'Show More' is clicked) -->
-                  <div class="faq-item hidden border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
-                      <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-headset mr-2 text-[#003366]"></i> How can I contact GoWakeel for support or inquiries?</h3>
-                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                          </svg>
-                      </button>
-                      <div class="hidden px-5 pb-5 text-gray-600">
-                          <p>You can reach GoWakeel's customer support team through multiple channels:</p>
-                          <ul class="list-disc pl-5 mt-2 space-y-1">
-                              <li>Phone: +92 336 996 9997</li>
-                              <li>Email: info@gowakeel.com</li>
-                              <li>WhatsApp: Message us directly through the WhatsApp button on our website</li>
-                              <li>Contact Form: Fill out the form on our Contact page</li>
-                              <li>Visit our office: 43c B 8th St, DHA Phase 5 Badar Commercial Area, Karachi</li>
-                          </ul>
-                          <p class="mt-2">Our support team is available Monday through Friday, 9 AM to 6 PM.</p>
-                      </div>
-                  </div>
-  
-                  <div class="faq-item hidden border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
-                      <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-gavel mr-2 text-[#003366]"></i> Does GoWakeel provide legal documentation services?</h3>
-                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                          </svg>
-                      </button>
-                      <div class="hidden px-5 pb-5 text-gray-600">
-                          <p>Yes, GoWakeel offers comprehensive legal documentation services including:</p>
-                          <ul class="list-disc pl-5 mt-2 space-y-1">
-                              <li>Business contracts and agreements</li>
-                              <li>Employment contracts</li>
-                              <li>Partnership agreements</li>
-                              <li>Memorandum and Articles of Association</li>
-                              <li>Trademark and copyright registrations</li>
-                          </ul>
-                          <p class="mt-2">Our legal experts ensure all documents comply with relevant laws and regulations while protecting your interests. Visit our Legal Services section for more details.</p>
-                      </div>
-                  </div>
-                  
-                  <div class="faq-item hidden border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float">
-                      <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
-                          <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left"><i class="fas fa-shield-alt mr-2 text-[#003366]"></i> How does GoWakeel ensure the security of my information?</h3>
-                          <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                          </svg>
-                      </button>
-                      <div class="hidden px-5 pb-5 text-gray-600">
-                          <p>GoWakeel takes data security very seriously. We implement multiple layers of protection:</p>
-                          <ul class="list-disc pl-5 mt-2 space-y-1">
-                              <li>End-to-end encryption for all data transmission</li>
-                              <li>Secure servers with advanced firewall protection</li>
-                              <li>Regular security audits and updates</li>
-                              <li>Strict access controls for client information</li>
-                              <li>Compliance with data protection regulations</li>
-                          </ul>
-                          <p class="mt-2">Your personal and financial information is handled with the utmost confidentiality and is never shared with unauthorized third parties.</p>
-                      </div>
+                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-book-open mr-2 text-[#003366] dark:text-[#4d94ff]"></i> Are there any resources available to help me understand the tax filing process?</h3>
+                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+                        <p>Yes, GoWakeel provides numerous resources to help you understand the tax filing process:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>Comprehensive blog articles on tax-related topics</li>
+                            <li>Instructional videos explaining key concepts</li>
+                            <li>Downloadable guides and checklists</li>
+                            <li>Tax calculators and planning tools</li>
+                            <li>Webinars and online workshops</li>
+                        </ul>
+                        <p class="mt-2">Visit our Resources section to access these materials or contact our support team for personalized guidance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
+                    <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
+                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-money-bill-wave mr-2 text-[#003366] dark:text-[#4d94ff]"></i> What are the costs associated with GoWakeel's services?</h3>
+                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+                        <p>Our service fees vary depending on:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>Type of service (tax filing, company registration, etc.)</li>
+                            <li>Complexity of your specific situation</li>
+                            <li>Level of support required</li>
+                        </ul>
+                        <p class="mt-2">We offer transparent pricing with no hidden fees. For detailed pricing information, please visit our Pricing page or contact our customer support team for a personalized quote.</p>
+                    </div>
+                </div>
+
+                <!-- Hidden FAQs (Show when 'Show More' is clicked) -->
+                <div class="faq-item hidden border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
+                    <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
+                        <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-headset mr-2 text-[#003366] dark:text-[#4d94ff]"></i> How can I contact GoWakeel for support or inquiries?</h3>
+                        <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </button>
+                    <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+                        <p>You can reach GoWakeel's customer support team through multiple channels:</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>Phone: +92 336 996 9997</li>
+                            <li>Email: info@gowakeel.com</li>
+                            <li>WhatsApp: Message us directly through the WhatsApp button on our website</li>
+                            <li>Contact Form: Fill out the form on our Contact page</li>
+                            <li>Visit our office: 43c B 8th St, DHA Phase 5 Badar Commercial Area, Karachi</li>
+                        </ul>
+                        <p class="mt-2">Our support team is available Monday through Friday, 9 AM to 6 PM.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item hidden border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
+                  <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
+                      <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-gavel mr-2 text-[#003366] dark:text-[#4d94ff]"></i> Does GoWakeel provide legal documentation services?</h3>
+                      <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                      </svg>
+                  </button>
+                  <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+                      <p>Yes, GoWakeel offers comprehensive legal documentation services including:</p>
+                      <ul class="list-disc pl-5 mt-2 space-y-1">
+                          <li>Business contracts and agreements</li>
+                          <li>Employment contracts</li>
+                          <li>Partnership agreements</li>
+                          <li>Memorandum and Articles of Association</li>
+                          <li>Trademark and copyright registrations</li>
+                      </ul>
+                      <p class="mt-2">Our legal experts ensure all documents comply with relevant laws and regulations while protecting your interests. Visit our Legal Services section for more details.</p>
                   </div>
               </div>
-  
-              <!-- Show More Button -->
-              <div class="flex justify-center mt-8">
-                  <button id="show-more-btn" class="px-8 py-3 text-white font-semibold transition-all duration-300 transform bg-gradient-to-r from-[#003366] to-[#0066cc] rounded-lg hover:from-[#002244] hover:to-[#004c99] shadow-lg bounce-in" style="animation-delay: 0.4s;">
-                      <span class="flex items-center">
-                          <i class="fas fa-plus-circle mr-2"></i>
-                          <span>Show More Questions</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                          </svg>
-                      </span>
+              
+              <div class="faq-item hidden border border-[#003366]/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover-float dark:border-[#4d94ff]/30 dark:bg-[#2d3748]">
+                  <button class="flex items-center justify-between w-full p-5 focus:outline-none faq-toggle">
+                      <h3 class="text-lg md:text-xl font-medium text-gray-700 text-left dark:text-gray-200"><i class="fas fa-shield-alt mr-2 text-[#003366] dark:text-[#4d94ff]"></i> How does GoWakeel ensure the security of my information?</h3>
+                      <svg class="w-6 h-6 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                      </svg>
                   </button>
+                  <div class="hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+                      <p>GoWakeel takes data security very seriously. We implement multiple layers of protection:</p>
+                      <ul class="list-disc pl-5 mt-2 space-y-1">
+                          <li>End-to-end encryption for all data transmission</li>
+                          <li>Secure servers with advanced firewall protection</li>
+                          <li>Regular security audits and updates</li>
+                          <li>Strict access controls for client information</li>
+                          <li>Compliance with data protection regulations</li>
+                      </ul>
+                      <p class="mt-2">Your personal and financial information is handled with the utmost confidentiality and is never shared with unauthorized third parties.</p>
+                  </div>
               </div>
           </div>
-      </section>
-  
-      <!-- Contact Options Section -->
-      <section class="py-16 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/20">
-          <div class="max-w-7xl mx-auto px-6 text-center">
-              <h2 class="text-3xl font-bold lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#003366] to-[#0066cc] mb-4 slide-up">
-                  <i class="fas fa-comments mr-2"></i> Still Have Questions?
-              </h2>
-              <p class="text-gray-600 max-w-2xl mx-auto mb-8 text-lg slide-up" style="animation-delay: 0.2s;">
-                  Our team is ready to assist you with any questions or concerns you may have about our services.
-              </p>
-              
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                  <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border-b-4 border-[#003366] hover-float fade-in" style="animation-delay: 0.3s;">
-                      <div class="w-16 h-16 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <i class="fas fa-phone-alt text-[#003366] text-2xl"></i>
-                      </div>
-                      <h3 class="text-xl font-bold text-[#003366] mb-2">Call Us</h3>
-                      <p class="text-gray-600 mb-4">Speak directly with our customer support team</p>
-                      <a href="tel:+923369969997" class="text-[#003366] font-semibold hover:text-[#0066cc] transition-colors">
-                          <i class="fas fa-phone-alt mr-1"></i> +92 336 996 9997
-                      </a>
+
+          <!-- Show More Button -->
+          <div class="flex justify-center mt-8">
+              <button id="show-more-btn" class="px-8 py-3 text-white font-semibold transition-all duration-300 transform bg-gradient-to-r from-[#003366] to-[#0066cc] rounded-lg hover:from-[#002244] hover:to-[#004c99] shadow-lg bounce-in dark:from-[#4d94ff] dark:to-[#66b3ff] dark:hover:from-[#3385ff] dark:hover:to-[#4d94ff]" style="animation-delay: 0.4s;">
+                  <span class="flex items-center">
+                      <i class="fas fa-plus-circle mr-2"></i>
+                      <span>Show More Questions</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </span>
+              </button>
+          </div>
+      </div>
+  </section>
+
+  <!-- Contact Options Section -->
+  <section class="py-16 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/20 dark:from-[#003366]/30 dark:to-[#0066cc]/40">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+          <h2 class="text-3xl font-bold lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#003366] to-[#0066cc] mb-4 slide-up dark:from-[#4d94ff] dark:to-[#66b3ff]">
+              <i class="fas fa-comments mr-2"></i> Still Have Questions?
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto mb-8 text-lg slide-up dark:text-gray-300" style="animation-delay: 0.2s;">
+              Our team is ready to assist you with any questions or concerns you may have about our services.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border-b-4 border-[#003366] hover-float fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]" style="animation-delay: 0.3s;">
+                  <div class="w-16 h-16 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mx-auto mb-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                      <i class="fas fa-phone-alt text-[#003366] text-2xl dark:text-[#4d94ff]"></i>
                   </div>
-                  
-                  <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border-b-4 border-[#003366] hover-float fade-in" style="animation-delay: 0.5s;">
-                      <div class="w-16 h-16 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                          <i class="fas fa-envelope text-[#003366] text-2xl"></i>
-                      </div>
-                      <h3 class="text-xl font-bold text-[#003366] mb-2">Email Us</h3>
-                      <p class="text-gray-600 mb-4">Send us your questions and we'll respond promptly</p>
-                      <a href="mailto:info@gowakeel.com" class="text-[#003366] font-semibold hover:text-[#0066cc] transition-colors">
-                        <i class="fas fa-envelope mr-1"></i> info@gowakeel.com
-                    </a>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border-b-4 border-[#003366] hover-float fade-in" style="animation-delay: 0.7s;">
-                    <div class="w-16 h-16 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fab fa-whatsapp text-[#003366] text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-[#003366] mb-2">WhatsApp</h3>
-                    <p class="text-gray-600 mb-4">Message us directly for quick assistance</p>
-                    <a href="https://wa.me/923369969997" class="text-[#003366] font-semibold hover:text-[#0066cc] transition-colors">
-                        <i class="fab fa-whatsapp mr-1"></i> Chat with Us
-                    </a>
-                </div>
+                  <h3 class="text-xl font-bold text-[#003366] mb-2 dark:text-[#4d94ff]">Call Us</h3>
+                  <p class="text-gray-600 mb-4 dark:text-gray-300">Speak directly with our customer support team</p>
+                  <a href="tel:+923369969997" class="text-[#003366] font-semibold hover:text-[#0066cc] transition-colors dark:text-[#4d94ff] dark:hover:text-[#66b3ff]">
+                      <i class="fas fa-phone-alt mr-1"></i> +92 336 996 9997
+                  </a>
+              </div>
+              
+              <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border-b-4 border-[#003366] hover-float fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]" style="animation-delay: 0.5s;">
+                  <div class="w-16 h-16 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mx-auto mb-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                      <i class="fas fa-envelope text-[#003366] text-2xl dark:text-[#4d94ff]"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-[#003366] mb-2 dark:text-[#4d94ff]">Email Us</h3>
+                  <p class="text-gray-600 mb-4 dark:text-gray-300">Send us your questions and we'll respond promptly</p>
+                  <a href="mailto:info@gowakeel.com" class="text-[#003366] font-semibold hover:text-[#0066cc] transition-colors dark:text-[#4d94ff] dark:hover:text-[#66b3ff]">
+                    <i class="fas fa-envelope mr-1"></i> info@gowakeel.com
+                </a>
             </div>
             
-            <div class="mt-10 fade-in" style="animation-delay: 0.9s;">
-                <a href="{% url 'wakeelapp:contact' %}" class="px-8 py-3 text-white font-semibold transition-all duration-300 transform bg-gradient-to-r from-[#003366] to-[#0066cc] rounded-lg hover:from-[#002244] hover:to-[#004c99] inline-block shadow-lg btn-animated">
-                    <span class="flex items-center">
-                        <i class="fas fa-paper-plane mr-2"></i>
-                        <span>Contact Us</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </span>
+            <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-all duration-300 border-b-4 border-[#003366] hover-float fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]" style="animation-delay: 0.7s;">
+                <div class="w-16 h-16 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mx-auto mb-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                    <i class="fab fa-whatsapp text-[#003366] text-2xl dark:text-[#4d94ff]"></i>
+                </div>
+                <h3 class="text-xl font-bold text-[#003366] mb-2 dark:text-[#4d94ff]">WhatsApp</h3>
+                <p class="text-gray-600 mb-4 dark:text-gray-300">Message us directly for quick assistance</p>
+                <a href="https://wa.me/923369969997" class="text-[#003366] font-semibold hover:text-[#0066cc] transition-colors dark:text-[#4d94ff] dark:hover:text-[#66b3ff]">
+                    <i class="fab fa-whatsapp mr-1"></i> Chat with Us
                 </a>
             </div>
         </div>
-    </section>
-    
-    <!-- FAQ JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // FAQ Toggle Functionality
-            const faqToggles = document.querySelectorAll('.faq-toggle');
-            
-            faqToggles.forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const content = this.nextElementSibling;
-                    const icon = this.querySelector('svg');
-                    
-                    // Toggle content visibility
-                    if (content.classList.contains('hidden')) {
-                        content.classList.remove('hidden');
-                        content.classList.add('animate-fadeIn');
-                        icon.classList.add('rotate-45');
-                    } else {
-                        content.classList.add('hidden');
-                        icon.classList.remove('rotate-45');
-                    }
-                });
-            });
-            
-            // Show More Button Functionality
-            const showMoreBtn = document.getElementById('show-more-btn');
-            const hiddenFaqs = document.querySelectorAll('.faq-item.hidden');
-            
-            showMoreBtn.addEventListener('click', function() {
-                hiddenFaqs.forEach((faq, index) => {
-                    setTimeout(() => {
-                        faq.classList.remove('hidden');
-                        faq.classList.add('animate-fadeIn');
-                    }, index * 200); // Stagger the animations
-                });
-                
-                // Change button text and hide it after showing all FAQs
-                this.innerHTML = '<span class="flex items-center"><i class="fas fa-check-circle mr-2"></i><span>All Questions Shown</span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" /></svg></span>';
-                
-                setTimeout(() => {
-                    this.style.opacity = '0';
-                    setTimeout(() => {
-                        this.style.display = 'none';
-                    }, 500);
-                }, 1500);
-            });
-            
-            // Add animation class
-            document.head.insertAdjacentHTML('beforeend', `
-                <style>
-                    @keyframes fadeIn {
-                        from { opacity: 0; transform: translateY(10px); }
-                        to { opacity: 1; transform: translateY(0); }
-                    }
-                    .animate-fadeIn {
-                        animation: fadeIn 0.5s ease-out forwards;
-                    }
-                    
-                    /* Add rotation animation for the plus icon */
-                    .rotate-45 {
-                        transform: rotate(45deg);
-                        transition: transform 0.3s ease;
-                    }
-                </style>
-            `);
-            
-            // Add scroll reveal effect for FAQ items
-            const faqItems = document.querySelectorAll('.faq-item');
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            faqItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.animationDelay = `${0.2 + (index * 0.1)}s`;
-                observer.observe(item);
-            });
-        });
-    </script>
-    {% endblock Content %}
- <!-- Footer -->
- <footer class="bg-[#003366] text-white py-12">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <div class="flex items-center mb-4">
-          <img src="{% static 'wakeelapp/Img/logo2.png' %}" alt="Logo" class="h-12 w-auto">
-          <h3 class="text-2xl font-bold ml-2">GoWakeel</h3>
-        </div>
-        <p class="text-white/80">
-          Your trusted partner for all tax and financial services in Pakistan.
-        </p>
-        <div class="mt-4 flex space-x-4">
-          <a href="#" class="text-white hover:text-white/80 transition-all">
-            <i class="fab fa-facebook-f text-xl"></i>
-          </a>
-          <a href="#" class="text-white hover:text-white/80 transition-all">
-            <i class="fab fa-twitter text-xl"></i>
-          </a>
-          <a href="#" class="text-white hover:text-white/80 transition-all">
-            <i class="fab fa-instagram text-xl"></i>
-          </a>
-          <a href="#" class="text-white hover:text-white/80 transition-all">
-            <i class="fab fa-linkedin-in text-xl"></i>
-          </a>
-        </div>
-      </div>
-      <div>
-        <h4 class="text-lg font-bold mb-4">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a href="{% url 'wakeelapp:index' %}" class="text-white/80 hover:text-white footer-link">Home</a></li>
-          <li><a href="{% url 'wakeelapp:about' %}" class="text-white/80 hover:text-white footer-link">About Us</a></li>
-          <li><a href="" class="text-white/80 hover:text-white footer-link">Services</a></li>
-          <li><a href="{% url 'wakeelapp:blogs' %}" class="text-white/80 hover:text-white footer-link">Blogs</a></li>
-          <li><a href="{% url 'wakeelapp:contact' %}" class="text-white/80 hover:text-white footer-link">Contact</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="text-lg font-bold mb-4">Tools</h4>
-        <ul class="space-y-2">
-          <li><a href="{% url 'wakeelapp:calculator' %}" class="text-white/80 hover:text-white footer-link">Tax Calculator</a></li>
-          <li><a href="{% url 'wakeelapp:zakatcalculator' %}" class="text-white/80 hover:text-white footer-link">Zakat Calculator</a></li>
-          <li><a href="{% url 'wakeelapp:ntn' %}" class="text-white/80 hover:text-white footer-link">NTN Status</a></li>
-          <li><a href="{% url 'wakeelapp:atl' %}" class="text-white/80 hover:text-white footer-link">ATL Status</a></li>
-          <li><a href="{% url 'wakeelapp:currencyconvert' %}" class="text-white/80 hover:text-white footer-link">Currency Converter</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="text-lg font-bold mb-4">Contact Us</h4>
-        <ul class="space-y-2">
-          <li class="flex items-start">
-            <i class="fas fa-map-marker-alt mt-1 mr-3 text-white/80"></i>
-            <span class="text-white/80">43c B 8th St, DHA Phase 5 Badar Commercial Area Defence V Defence Housing Authority, Karachi, 75500
-            </span>
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-phone mr-3 text-white/80"></i>
-            <span class="text-white/80">+923369969997</span>
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-envelope mr-3 text-white/80"></i>
-            <span class="text-white/80">info@gowakeel.com</span>
-          </li>
-          <li class="mt-4">
-            <a href="{% url 'wakeelapp:contact' %}" class="px-4 py-2 bg-white text-[#003366] rounded-lg hover:bg-white/90 inline-block btn-animated">
-              Get in Touch
+        
+        <div class="mt-10 fade-in" style="animation-delay: 0.9s;">
+            <a href="{% url 'wakeelapp:contact' %}" class="px-8 py-3 text-white font-semibold transition-all duration-300 transform bg-gradient-to-r from-[#003366] to-[#0066cc] rounded-lg hover:from-[#002244] hover:to-[#004c99] inline-block shadow-lg btn-animated dark:from-[#4d94ff] dark:to-[#66b3ff] dark:hover:from-[#3385ff] dark:hover:to-[#4d94ff]">
+                <span class="flex items-center">
+                    <i class="fas fa-envelope-open-text mr-2"></i>
+                    <span>Contact Us</span>
+                </span>
             </a>
-          </li>
-        </ul>
-      </div>
+        </div>
     </div>
-    
-    <div class="border-t border-white/20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
-      <p class="text-white/70 text-sm">
-        &copy; 2025 GoWakeel. All rights reserved.
-      </p>
-      <div class="mt-4 md:mt-0">
-        <ul class="flex space-x-6">
-          <li><a href="#" class="text-white/70 hover:text-white text-sm footer-link">Privacy Policy</a></li>
-          <li><a href="#" class="text-white/70 hover:text-white text-sm footer-link">Terms of Service</a></li>
-          <li><a href="#" class="text-white/70 hover:text-white text-sm footer-link">Cookie Policy</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- Footer End -->
+</section>
+{% endblock Content %}
 
-<!-- Back to Top Button -->
-<button id="back-to-top" class="fixed bottom-6 right-6 bg-[#003366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-[#002244]">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<script>
-   // Back to top button
-   const backToTopButton = document.getElementById('back-to-top');
-    
-   window.addEventListener('scroll', () => {
-     if (window.pageYOffset > 300) {
-       backToTopButton.classList.remove('opacity-0', 'invisible');
-       backToTopButton.classList.add('opacity-100', 'visible');
-     } else {
-       backToTopButton.classList.remove('opacity-100', 'visible');
-       backToTopButton.classList.add('opacity-0', 'invisible');
-     }
-   });
-   
-   backToTopButton.addEventListener('click', () => {
-     window.scrollTo({
-       top: 0,
-       behavior: 'smooth'
-     });
-   });
-</script>
-</body>
-</html>
+<!-- Footer -->
+<footer class="bg-[#003366] text-white py-12 dark:bg-[#1a2e4a]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div>
+              <div class="flex items-center mb-4">
+                <img
+                  src="{% static 'wakeelapp/Img/logo2.png' %}"
+                  alt="GoWakeel Logo"
+                  class="h-10 mr-2"
+                />
+                <h3 class="text-xl font-bold">GOWAKEEL</h3>
+              </div>
+              <p class="text-gray-300 mb-4">
+                Your trusted partner for tax filing, company registration, and legal
+                services in Pakistan.
+              </p>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="text-white hover:text-blue-400 transition-colors"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-white hover:text-blue-400 transition-colors"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-white hover:text-pink-400 transition-colors"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="#"
+                  class="text-white hover:text-blue-400 transition-colors"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+      
+            <!-- Quick Links -->
+            <div>
+              <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href="{% url 'wakeelapp:index' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:about' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Services
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:blogs' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:faq' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>FAQs
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:contact' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- Services -->
+            <div>
+              <h3 class="text-xl font-bold mb-4">Our Services</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href="{% url 'wakeelapp:service_detail' 'income-tax-filing' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Income Tax Filing
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:service_detail' 'ntn-registration' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>NTN Registration
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:service_detail' 'sales-tax-registration' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Sales Tax Registration
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:service_detail' 'company-registration' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Company Registration
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'wakeelapp:service_detail' 'tax-consultation' %}" class="text-gray-300 hover:text-white transition-colors">
+                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Tax Consultation
+                  </a>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- Contact Info -->
+            <div>
+              <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
+                  <span class="text-gray-300">43c B 8th St, DHA Phase 5 Badar Commercial Area, Karachi</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
+                  <a href="tel:+923369969997" class="text-gray-300 hover:text-white transition-colors">+92 336 9969997</a>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-envelope mr-3 text-blue-400"></i>
+                  <a href="mailto:info@gowakeel.com" class="text-gray-300 hover:text-white transition-colors">info@gowakeel.com</a>
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-clock mr-3 text-blue-400"></i>
+                  <span class="text-gray-300">Mon-Fri: 9:00 AM - 6:00 PM</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+      
+          <!-- Bottom Footer -->
+          <div class="pt-8 mt-8 border-t border-blue-900">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+              <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                &copy; {% now "Y" %} GoWakeel. All rights reserved.
+              </p>
+              <div class="flex space-x-6">
+                <a href="" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                <a href="" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                <a href="" class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer End -->
+      
+      <!-- WhatsApp Floating Button -->
+      <a href="https://wa.me/+923369969997" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
+        <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="WhatsApp" class="h-6 w-6">
+      </a>
+      
+      <!-- Back to Top Button -->
+      <button 
+        id="backToTop" 
+        class="fixed bottom-6 right-20 z-50 p-3 rounded-full shadow-lg transition-all duration-300 transform scale-0 flex items-center justify-center"
+        :class="darkMode ? 'bg-dark-100 text-white hover:bg-primary-900' : 'bg-white text-gray-800 hover:bg-gray-100'"
+      >
+        <i class="fas fa-arrow-up"></i>
+      </button>
+      
+      <!-- Custom Scripts -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // FAQ toggle functionality
+          const faqToggles = document.querySelectorAll('.faq-toggle');
+          
+          faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+              const content = this.nextElementSibling;
+              const icon = this.querySelector('svg');
+              
+              // Toggle content visibility
+              content.classList.toggle('hidden');
+              
+              // Rotate icon
+              if (content.classList.contains('hidden')) {
+                icon.classList.remove('rotate-45');
+                icon.classList.add('rotate-0');
+              } else {
+                icon.classList.remove('rotate-0');
+                icon.classList.add('rotate-45');
+              }
+            });
+          });
+          
+          // Show More button functionality
+          const showMoreBtn = document.getElementById('show-more-btn');
+          const hiddenFaqs = document.querySelectorAll('.faq-item.hidden');
+          
+          if (showMoreBtn) {
+            showMoreBtn.addEventListener('click', function() {
+              hiddenFaqs.forEach(faq => {
+                faq.classList.remove('hidden');
+              });
+              
+              // Change button text and hide it after showing all FAQs
+              this.innerHTML = '<span class="flex items-center"><i class="fas fa-check-circle mr-2"></i><span>All Questions Shown</span></span>';
+              this.classList.add('bg-green-600');
+              this.classList.remove('from-[#003366]', 'to-[#0066cc]', 'hover:from-[#002244]', 'hover:to-[#004c99]');
+              
+              // Disable the button after clicking
+              setTimeout(() => {
+                this.style.display = 'none';
+              }, 2000);
+            });
+          }
+          
+          // Back to top button functionality
+          const backToTopButton = document.getElementById('backToTop');
+          
+          window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+              backToTopButton.classList.remove('scale-0');
+              backToTopButton.classList.add('scale-100');
+            } else {
+              backToTopButton.classList.remove('scale-100');
+              backToTopButton.classList.add('scale-0');
+            }
+          });
+          
+          backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          });
+        });
+      </script>
+      </body>
+      </html>

@@ -4,49 +4,50 @@
 {% block Content %}
 
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-[#003366]/5 to-white py-8">
+<div class="bg-gradient-to-r from-[#003366]/5 to-white dark:from-gray-900 dark:to-gray-800 py-8 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center">
-      <h1 class="text-3xl md:text-4xl font-bold text-[#003366] mb-2">
+      <h1 class="text-3xl md:text-4xl font-bold text-[#003366] dark:text-blue-300 mb-2 transition-colors duration-300">
         Currency Converter
       </h1>
-      <div class="h-1 w-20 bg-[#003366] mb-4 mx-auto"></div>
-      <p class="text-gray-700 max-w-2xl mx-auto">
+      <div class="h-1 w-20 bg-[#003366] dark:bg-blue-500 mb-4 mx-auto transition-colors duration-300"></div>
+      <p class="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
         Convert between 150+ currencies with real-time exchange rates. Perfect for travel planning, business, or personal finance.
       </p>
     </div>
   </div>
 </div>
 
+
 <section class="w-container max-w-7xl mx-auto my-8 px-4">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     <!-- Converter Card -->
     <div class="md:col-span-2">
-      <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-        <h2 class="text-2xl font-bold mb-6 text-[#003366] flex items-center">
-          <i class="fas fa-exchange-alt mr-3 text-[#003366]/70"></i>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <h2 class="text-2xl font-bold mb-6 text-[#003366] dark:text-blue-300 flex items-center transition-colors duration-300">
+          <i class="fas fa-exchange-alt mr-3 text-[#003366]/70 dark:text-blue-400/70"></i>
           Currency Converter
         </h2>
 
         <div id="loading-currencies" class="text-center py-8">
-          <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-[#003366]"></div>
-          <p class="mt-3 text-gray-600">Loading currencies...</p>
+          <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-[#003366] dark:border-blue-400"></div>
+          <p class="mt-3 text-gray-600 dark:text-gray-400 transition-colors duration-300">Loading currencies...</p>
         </div>
 
         <div id="converter-form" class="hidden">
           <!-- Amount Input -->
           <div class="mb-6">
-            <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">Amount</label>
+            <label for="amount" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">Amount</label>
             <div class="relative">
               <input
                 type="number"
                 id="amount"
-                class="w-full p-3 pl-10 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-[#003366] focus:border-[#003366] focus:outline-none text-lg"
+                class="w-full p-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg mt-1 focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 focus:outline-none text-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-300"
                 placeholder="Enter amount"
                 value="1"
               />
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <i class="fas fa-coins text-[#003366]"></i>
+                <i class="fas fa-coins text-[#003366] dark:text-blue-400 transition-colors duration-300"></i>
               </div>
             </div>
           </div>
@@ -54,33 +55,33 @@
           <!-- Currency Selection -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
-              <label for="from" class="block text-sm font-medium text-gray-700 mb-2">From Currency</label>
+              <label for="from" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">From Currency</label>
               <div class="relative">
                 <select
                   id="from"
-                  class="w-full p-3 pl-10 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-[#003366] focus:border-[#003366] focus:outline-none appearance-none bg-white"
+                  class="w-full p-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg mt-1 focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 focus:outline-none appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-300"
                 ></select>
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <i class="fas fa-globe text-[#003366]"></i>
+                  <i class="fas fa-globe text-[#003366] dark:text-blue-400 transition-colors duration-300"></i>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <i class="fas fa-chevron-down text-gray-400"></i>
+                  <i class="fas fa-chevron-down text-gray-400 dark:text-gray-500 transition-colors duration-300"></i>
                 </div>
               </div>
             </div>
 
             <div>
-              <label for="to" class="block text-sm font-medium text-gray-700 mb-2">To Currency</label>
+              <label for="to" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">To Currency</label>
               <div class="relative">
                 <select
                   id="to"
-                  class="w-full p-3 pl-10 border border-gray-300 rounded-lg mt-1 focus:ring-2 focus:ring-[#003366] focus:border-[#003366] focus:outline-none appearance-none bg-white"
+                  class="w-full p-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg mt-1 focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 focus:outline-none appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors duration-300"
                 ></select>
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <i class="fas fa-globe text-[#003366]"></i>
+                  <i class="fas fa-globe text-[#003366] dark:text-blue-400 transition-colors duration-300"></i>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                  <i class="fas fa-chevron-down text-gray-400"></i>
+                  <i class="fas fa-chevron-down text-gray-400 dark:text-gray-500 transition-colors duration-300"></i>
                 </div>
               </div>
             </div>
@@ -90,7 +91,7 @@
           <div class="flex justify-center mb-6">
             <button 
               onclick="swapCurrencies()" 
-              class="bg-[#003366]/10 text-[#003366] p-3 rounded-full hover:bg-[#003366]/20 transition"
+              class="bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 p-3 rounded-full hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors duration-300"
               title="Swap currencies"
             >
               <i class="fas fa-exchange-alt text-lg"></i>
@@ -99,78 +100,104 @@
 
           <button
             onclick="convertCurrency()"
-            class="w-full bg-[#003366] text-white py-3 rounded-lg hover:bg-[#002244] transition duration-300 flex items-center justify-center text-lg"
+            class="w-full bg-[#003366] dark:bg-blue-600 text-white py-3 rounded-lg hover:bg-[#002244] dark:hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center text-lg"
           >
             <i class="fas fa-sync-alt mr-2"></i> Convert
           </button>
 
-          <div id="api-error" class="mt-6 p-4 text-center border border-red-300 rounded-lg bg-red-50 hidden">
-            <p class="text-red-600"></p>
+          <div id="api-error" class="mt-6 p-4 text-center border border-red-300 dark:border-red-800 rounded-lg bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 hidden transition-colors duration-300">
+            <p></p>
           </div>
 
           <div
             id="result-container"
-            class="mt-6 p-5 text-center border border-gray-300 rounded-lg bg-gradient-to-r from-gray-50 to-white hidden"
+            class="mt-6 p-5 text-center border border-gray-300 dark:border-gray-700 rounded-lg bg-gradient-to-r from-gray-50 to-white dark:from-gray-800 dark:to-gray-700 hidden transition-colors duration-300"
           >
-            <h3 id="result" class="text-xl font-bold text-[#003366]"></h3>
-            <p id="exchange-rate" class="text-sm text-gray-700 mt-2"></p>
-            <p id="last-updated" class="text-xs text-gray-500 mt-2"></p>
+            <h3 id="result" class="text-xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300"></h3>
+            <p id="exchange-rate" class="text-sm text-gray-700 dark:text-gray-300 mt-2 transition-colors duration-300"></p>
+            <p id="last-updated" class="text-xs text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300"></p>
+            
+            <!-- Added action buttons -->
+            <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600 flex justify-center space-x-3 transition-colors duration-300">
+              <button onclick="saveConversion()" class="px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors duration-300 flex items-center text-sm">
+                <i class="fas fa-bookmark mr-1.5"></i> Save
+              </button>
+              <button onclick="copyResult()" class="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors duration-300 flex items-center text-sm">
+                <i class="fas fa-copy mr-1.5"></i> Copy
+              </button>
+              <button onclick="shareResult()" class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors duration-300 flex items-center text-sm">
+                <i class="fas fa-share-alt mr-1.5"></i> Share
+              </button>
+            </div>
           </div>
+        </div>
+      </div>
+      
+      <!-- Saved Conversions Section -->
+      <div id="savedConversionsSection" class="mt-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 hidden transition-colors duration-300">
+        <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
+          <i class="fas fa-bookmark mr-2"></i> Saved Conversions
+        </h3>
+        <div id="noSavedConversions" class="p-4 text-center text-gray-500 dark:text-gray-400 transition-colors duration-300">
+          <p>No saved conversions yet.</p>
+        </div>
+        <div id="savedConversionsList" class="divide-y divide-gray-200 dark:divide-gray-700 hidden transition-colors duration-300">
+          <!-- Saved conversions will be added here dynamically -->
         </div>
       </div>
     </div>
     
     <!-- Info Card -->
-    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-      <h3 class="text-xl font-bold mb-4 text-[#003366]">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+      <h3 class="text-xl font-bold mb-4 text-[#003366] dark:text-blue-300 transition-colors duration-300">
         <i class="fas fa-info-circle mr-2"></i> About This Tool
       </h3>
       
       <div class="space-y-4">
         <div class="flex items-start">
-          <div class="flex-shrink-0 w-8 h-8 bg-[#003366]/10 rounded-full flex items-center justify-center mr-3">
-            <i class="fas fa-bolt text-[#003366]"></i>
+          <div class="flex-shrink-0 w-8 h-8 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3 transition-colors duration-300">
+            <i class="fas fa-bolt text-[#003366] dark:text-blue-400 transition-colors duration-300"></i>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-800">Real-Time Rates</h4>
-            <p class="text-sm text-gray-600">Get up-to-date exchange rates from reliable financial data sources.</p>
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 transition-colors duration-300">Real-Time Rates</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Get up-to-date exchange rates from reliable financial data sources.</p>
           </div>
         </div>
         
         <div class="flex items-start">
-          <div class="flex-shrink-0 w-8 h-8 bg-[#003366]/10 rounded-full flex items-center justify-center mr-3">
-            <i class="fas fa-globe text-[#003366]"></i>
+          <div class="flex-shrink-0 w-8 h-8 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3 transition-colors duration-300">
+            <i class="fas fa-globe text-[#003366] dark:text-blue-400 transition-colors duration-300"></i>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-800">150+ Currencies</h4>
-            <p class="text-sm text-gray-600">Convert between major and exotic currencies from around the world.</p>
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 transition-colors duration-300">150+ Currencies</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Convert between major and exotic currencies from around the world.</p>
           </div>
         </div>
         
         <div class="flex items-start">
-          <div class="flex-shrink-0 w-8 h-8 bg-[#003366]/10 rounded-full flex items-center justify-center mr-3">
-            <i class="fas fa-shield-alt text-[#003366]"></i>
+          <div class="flex-shrink-0 w-8 h-8 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-3 transition-colors duration-300">
+            <i class="fas fa-shield-alt text-[#003366] dark:text-blue-400 transition-colors duration-300"></i>
           </div>
           <div>
-            <h4 class="font-semibold text-gray-800">Secure & Free</h4>
-            <p class="text-sm text-gray-600">No registration required. Use our converter as often as you need.</p>
+            <h4 class="font-semibold text-gray-800 dark:text-gray-200 transition-colors duration-300">Secure & Free</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">No registration required. Use our converter as often as you need.</p>
           </div>
         </div>
       </div>
       
-      <div class="mt-6 pt-6 border-t border-gray-200">
-        <h4 class="font-semibold text-gray-800 mb-2">Popular Conversions</h4>
+      <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <h4 class="font-semibold text-gray-800 dark:text-gray-200 mb-2 transition-colors duration-300">Popular Conversions</h4>
         <div class="grid grid-cols-2 gap-2">
-          <button onclick="setQuickConversion('USD', 'PKR')" class="p-2 text-sm border border-gray-300 rounded hover:bg-gray-100 transition text-left">
+          <button onclick="setQuickConversion('USD', 'PKR')" class="p-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 text-left text-gray-800 dark:text-gray-200">
             <span class="font-medium">USD to PKR</span>
           </button>
-          <button onclick="setQuickConversion('EUR', 'PKR')" class="p-2 text-sm border border-gray-300 rounded hover:bg-gray-100 transition text-left">
+          <button onclick="setQuickConversion('EUR', 'PKR')" class="p-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 text-left text-gray-800 dark:text-gray-200">
             <span class="font-medium">EUR to PKR</span>
           </button>
-          <button onclick="setQuickConversion('GBP', 'PKR')" class="p-2 text-sm border border-gray-300 rounded hover:bg-gray-100 transition text-left">
+          <button onclick="setQuickConversion('GBP', 'PKR')" class="p-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 text-left text-gray-800 dark:text-gray-200">
             <span class="font-medium">GBP to PKR</span>
           </button>
-          <button onclick="setQuickConversion('SAR', 'PKR')" class="p-2 text-sm border border-gray-300 rounded hover:bg-gray-100 transition text-left">
+          <button onclick="setQuickConversion('SAR', 'PKR')" class="p-2 text-sm border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 text-left text-gray-800 dark:text-gray-200">
             <span class="font-medium">SAR to PKR</span>
           </button>
         </div>
@@ -179,23 +206,23 @@
   </div>
   
   <!-- Recent Rates Section -->
-  <div class="mt-10 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
-    <h3 class="text-xl font-bold mb-4 text-[#003366]">
+  <div class="mt-10 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <h3 class="text-xl font-bold mb-4 text-[#003366] dark:text-blue-300 transition-colors duration-300">
       <i class="fas fa-chart-line mr-2"></i> Recent Exchange Rates
     </h3>
     <div class="overflow-x-auto">
-      <table class="min-w-full divide-y divide-gray-200">
+      <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
         <thead>
           <tr>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Currency Pair</th>
-            <th class="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Exchange Rate</th>
-            <th class="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Convert</th>
+            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">Currency Pair</th>
+            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">Exchange Rate</th>
+            <th class="px-6 py-3 bg-gray-50 dark:bg-gray-700 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider transition-colors duration-300">Convert</th>
           </tr>
         </thead>
-        <tbody class="bg-white divide-y divide-gray-200" id="recent-rates">
+        <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300" id="recent-rates">
           <tr>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center" colspan="3">
-              <div class="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-[#003366]"></div>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 text-center transition-colors duration-300" colspan="3">
+              <div class="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-[#003366] dark:border-blue-400"></div>
               <span class="ml-2">Loading rates...</span>
             </td>
           </tr>
@@ -204,6 +231,14 @@
     </div>
   </div>
 </section>
+
+<!-- Copy Success Toast -->
+<div id="copyToast" class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+  <div class="flex items-center">
+    <i class="fas fa-check-circle mr-2"></i>
+    <span>Copied to clipboard!</span>
+  </div>
+</div>
 
 <script>
   const apiKey = "sk_f72dBc50967d40EdE688A5d02656A2d574513118506DcC3b";
@@ -214,201 +249,55 @@
   document.addEventListener('DOMContentLoaded', function() {
     fetchCurrencies();
     loadRecentRates();
+    initDarkMode();
+    loadSavedConversions();
   });
 
+  // Dark mode functionality
+  function initDarkMode() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Apply the right theme
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Toggle dark/light mode
+    darkModeToggle.addEventListener('click', function() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  }
+
   function fetchCurrencies() {
-    const loadingElement = document.getElementById("loading-currencies");
-    const formElement = document.getElementById("converter-form");
-    const errorElement = document.getElementById("api-error");
-    
-    loadingElement.classList.remove("hidden");
-    formElement.classList.add("hidden");
-    errorElement.classList.add("hidden");
-    
-    fetch("https://currency-converter.g.apised.com/v1/supported-currencies", {
-      method: "GET",
-      headers,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data || !data.data) {
-          throw new Error("Invalid API response format");
-        }
-
-        const currencies = data.data;
-        const fromSelect = document.getElementById("from");
-        const toSelect = document.getElementById("to");
-        
-        // Clear existing options
-        fromSelect.innerHTML = "";
-        toSelect.innerHTML = "";
-
-        // Sort currencies alphabetically by name
-        currencies.sort((a, b) => a.currency_name.localeCompare(b.currency_name));
-
-        // Add popular currencies at the top
-        const popularCurrencies = ["USD", "EUR", "GBP", "PKR", "SAR", "AED"];
-        
-        // Create option groups
-        const popularGroup = document.createElement("optgroup");
-        popularGroup.label = "Popular Currencies";
-        
-        const otherGroup = document.createElement("optgroup");
-        otherGroup.label = "All Currencies";
-        
-        currencies.forEach((currency) => {
-          let option = new Option(
-            `${currency.currency_name} (${currency.currency_code})`,
-            currency.currency_code
-          );
-          
-          if (popularCurrencies.includes(currency.currency_code)) {
-            popularGroup.appendChild(option.cloneNode(true));
-          } else {
-            otherGroup.appendChild(option.cloneNode(true));
-          }
-        });
-        
-        // Add option groups to selects
-        fromSelect.appendChild(popularGroup.cloneNode(true));
-        fromSelect.appendChild(otherGroup.cloneNode(true));
-        
-        toSelect.appendChild(popularGroup.cloneNode(true));
-        toSelect.appendChild(otherGroup.cloneNode(true));
-        
-        // Set default values
-        setDefaultCurrencies();
-        
-        // Show the form
-        loadingElement.classList.add("hidden");
-        formElement.classList.remove("hidden");
-      })
-      .catch((error) => {
-        console.error("Error fetching currencies:", error);
-        loadingElement.classList.add("hidden");
-        formElement.classList.remove("hidden");
-        
-        // Show error message
-        errorElement.classList.remove("hidden");
-        errorElement.querySelector("p").textContent = 
-          "Unable to load currencies. Please try again later or use the default values.";
-          
-        // Load fallback currencies
-        loadFallbackCurrencies();
-      });
+    // ... existing code ...
   }
   
   function loadFallbackCurrencies() {
-    const fromSelect = document.getElementById("from");
-    const toSelect = document.getElementById("to");
-    
-    // Clear existing options
-    fromSelect.innerHTML = "";
-    toSelect.innerHTML = "";
-    
-    // Add some common currencies as fallback
-    const fallbackCurrencies = [
-      { code: "USD", name: "US Dollar" },
-      { code: "EUR", name: "Euro" },
-      { code: "GBP", name: "British Pound" },
-      { code: "PKR", name: "Pakistani Rupee" },
-      { code: "AED", name: "UAE Dirham" },
-      { code: "SAR", name: "Saudi Riyal" },
-      { code: "CAD", name: "Canadian Dollar" },
-      { code: "AUD", name: "Australian Dollar" },
-      { code: "JPY", name: "Japanese Yen" },
-      { code: "INR", name: "Indian Rupee" }
-    ];
-    
-    fallbackCurrencies.forEach(currency => {
-      let option = new Option(
-        `${currency.name} (${currency.code})`,
-        currency.code
-      );
-      fromSelect.add(option.cloneNode(true));
-      toSelect.add(option);
-    });
-    
-    setDefaultCurrencies();
+    // ... existing code ...
   }
   
   function setDefaultCurrencies() {
-    // Set default values (USD to PKR)
-    const fromSelect = document.getElementById("from");
-    const toSelect = document.getElementById("to");
-    
-    // Try to set USD as default "from" currency
-    for (let i = 0; i < fromSelect.options.length; i++) {
-      if (fromSelect.options[i].value === "USD") {
-        fromSelect.selectedIndex = i;
-        break;
-      }
-    }
-    
-    // Try to set PKR as default "to" currency
-    for (let i = 0; i < toSelect.options.length; i++) {
-      if (toSelect.options[i].value === "PKR") {
-        toSelect.selectedIndex = i;
-        break;
-      }
-    }
+    // ... existing code ...
   }
 
   function swapCurrencies() {
-    const fromSelect = document.getElementById("from");
-    const toSelect = document.getElementById("to");
-    
-    const tempValue = fromSelect.value;
-    const tempIndex = fromSelect.selectedIndex;
-    
-    // Find the equivalent option in the other select
-    for (let i = 0; i < fromSelect.options.length; i++) {
-      if (fromSelect.options[i].value === toSelect.value) {
-        fromSelect.selectedIndex = i;
-        break;
-      }
-    }
-    
-    for (let i = 0; i < toSelect.options.length; i++) {
-      if (toSelect.options[i].value === tempValue) {
-        toSelect.selectedIndex = i;
-        break;
-      }
-    }
-    
-    // If we already have a result, update it
-    if (!document.getElementById("result-container").classList.contains("hidden")) {
-      convertCurrency();
-    }
+    // ... existing code ...
   }
   
   function setQuickConversion(fromCurrency, toCurrency) {
-    const fromSelect = document.getElementById("from");
-    const toSelect = document.getElementById("to");
-    
-    // Set the "from" currency
-    for (let i = 0; i < fromSelect.options.length; i++) {
-      if (fromSelect.options[i].value === fromCurrency) {
-        fromSelect.selectedIndex = i;
-        break;
-      }
-    }
-    
-    // Set the "to" currency
-    for (let i = 0; i < toSelect.options.length; i++) {
-      if (toSelect.options[i].value === toCurrency) {
-        toSelect.selectedIndex = i;
-        break;
-      }
-    }
-    
-    // Trigger conversion
-    convertCurrency();
+    // ... existing code ...
   }
 
   function convertCurrency() {
@@ -432,8 +321,8 @@
     // Show loading in the result container
     resultContainer.innerHTML = `
       <div class="flex justify-center items-center py-4">
-        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#003366]"></div>
-        <span class="ml-2 text-gray-600">Converting...</span>
+        <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[#003366] dark:border-blue-400"></div>
+        <span class="ml-2 text-gray-600 dark:text-gray-400">Converting...</span>
       </div>
     `;
     resultContainer.classList.remove("hidden");
@@ -470,15 +359,28 @@
         
         // Update the result container
         resultContainer.innerHTML = `
-          <h3 id="result" class="text-xl font-bold text-[#003366]">
+          <h3 id="result" class="text-xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300">
             ${formattedAmount} ${from} = ${formattedResult} ${to}
           </h3>
-          <p id="exchange-rate" class="text-sm text-gray-700 mt-2">
+          <p id="exchange-rate" class="text-sm text-gray-700 dark:text-gray-300 mt-2 transition-colors duration-300">
             Exchange Rate: 1 ${from} = ${exchangeRate.toFixed(4)} ${to}
           </p>
-          <p id="last-updated" class="text-xs text-gray-500 mt-2">
+          <p id="last-updated" class="text-xs text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">
             Last updated: ${currentDate}
           </p>
+          
+          <!-- Action buttons -->
+          <div class="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600 flex justify-center space-x-3 transition-colors duration-300">
+            <button onclick="saveConversion()" class="px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors duration-300 flex items-center text-sm">
+              <i class="fas fa-bookmark mr-1.5"></i> Save
+            </button>
+            <button onclick="copyResult()" class="px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors duration-300 flex items-center text-sm">
+              <i class="fas fa-copy mr-1.5"></i> Copy
+            </button>
+            <button onclick="shareResult()" class="px-3 py-1.5 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded hover:bg-purple-200 dark:hover:bg-purple-900/50 transition-colors duration-300 flex items-center text-sm">
+              <i class="fas fa-share-alt mr-1.5"></i> Share
+            </button>
+          </div>
         `;
       })
       .catch((error) => {
@@ -493,22 +395,214 @@
   }
   
   function loadRecentRates() {
-    const recentRatesElement = document.getElementById("recent-rates");
-    const popularPairs = [
-      { from: "USD", to: "PKR" },
-      { from: "EUR", to: "PKR" },
-      { from: "GBP", to: "PKR" },
-      { from: "SAR", to: "PKR" },
-      { from: "AED", to: "PKR" }
-    ];
+    // ... existing code ...
+  }
+  
+  // Add event listener for Enter key on amount input
+  document.getElementById("amount").addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+      convertCurrency();
+    }
+  });
+  
+  // Function to save conversion
+  function saveConversion() {
+    const amount = document.getElementById("amount").value;
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+    const result = document.getElementById("result").textContent;
+    const rate = document.getElementById("exchange-rate").textContent;
     
-    // Clear loading indicator
-    recentRatesElement.innerHTML = "";
+    // Create conversion object
+    const conversion = {
+      id: Date.now(),
+      amount: amount,
+      from: from,
+      to: to,
+      result: result,
+      rate: rate,
+      date: new Date().toLocaleString()
+    };
     
-    // Create a promise for each currency pair
-    const fetchPromises = popularPairs.map(pair => {
+    // Get existing saved conversions
+    let savedConversions = JSON.parse(localStorage.getItem('savedConversions')) || [];
+    
+    // Add new conversion
+    savedConversions.push(conversion);
+    
+    // Save to localStorage
+    localStorage.setItem('savedConversions', JSON.stringify(savedConversions));
+    
+    // Update UI
+    loadSavedConversions();
+    
+    // Show notification
+    showToast("Conversion saved successfully!");
+  }
+  
+  // Function to load saved conversions
+  function loadSavedConversions() {
+    const savedConversions = JSON.parse(localStorage.getItem('savedConversions')) || [];
+    const savedConversionsSection = document.getElementById('savedConversionsSection');
+    const noSavedConversions = document.getElementById('noSavedConversions');
+    const savedConversionsList = document.getElementById('savedConversionsList');
+    
+    if (savedConversions.length > 0) {
+      savedConversionsSection.classList.remove('hidden');
+      noSavedConversions.classList.add('hidden');
+      savedConversionsList.classList.remove('hidden');
+      
+      // Clear existing list
+      savedConversionsList.innerHTML = '';
+      
+      // Add each saved conversion
+      savedConversions.forEach(conversion => {
+        const item = document.createElement('div');
+        item.className = 'p-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300';
+        
+        item.innerHTML = `
+          <div class="flex justify-between items-center">
+            <div>
+              <h4 class="font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">${conversion.result}</h4>
+              <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">${conversion.rate}</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">Saved on: ${conversion.date}</p>
+            </div>
+            <div class="flex space-x-2">
+              <button onclick="loadSavedConversion('${conversion.from}', '${conversion.to}', ${conversion.amount})" class="p-2 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+              <button onclick="deleteSavedConversion(${conversion.id})" class="p-2 text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300 transition-colors duration-300">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        savedConversionsList.appendChild(item);
+      });
+    } else {
+      if (savedConversionsSection.classList.contains('hidden')) {
+        savedConversionsSection.classList.add('hidden');
+      } else {
+        noSavedConversions.classList.remove('hidden');
+        savedConversionsList.classList.add('hidden');
+      }
+    }
+  }
+
+  // Function to load a saved conversion
+  function loadSavedConversion(fromCurrency, toCurrency, amount) {
+    document.getElementById("from").value = fromCurrency;
+    document.getElementById("to").value = toCurrency;
+    document.getElementById("amount").value = amount;
+    
+    // Perform conversion
+    convertCurrency();
+  }
+  
+  // Function to delete a saved conversion
+  function deleteSavedConversion(id) {
+    // Get existing saved conversions
+    let savedConversions = JSON.parse(localStorage.getItem('savedConversions')) || [];
+    
+    // Filter out the conversion to delete
+    savedConversions = savedConversions.filter(conversion => conversion.id !== id);
+    
+    // Save to localStorage
+    localStorage.setItem('savedConversions', JSON.stringify(savedConversions));
+    
+    // Update UI
+    loadSavedConversions();
+    
+    // Show notification
+    showToast("Conversion deleted successfully!");
+  }
+  
+  // Function to copy result to clipboard
+  function copyResult() {
+    const result = document.getElementById("result").textContent;
+    
+    navigator.clipboard.writeText(result).then(() => {
+      showToast("Copied to clipboard!");
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+      showToast("Failed to copy to clipboard", "error");
+    });
+  }
+  
+  // Function to share result
+  function shareResult() {
+    const result = document.getElementById("result").textContent;
+    const rate = document.getElementById("exchange-rate").textContent;
+    
+    // Check if Web Share API is supported
+    if (navigator.share) {
+      navigator.share({
+        title: 'Currency Conversion',
+        text: `${result}\n${rate}\nConverted with GoWakeel Currency Converter`
+      }).catch(err => {
+        console.error('Share failed:', err);
+      });
+    } else {
+      // Fallback for browsers that don't support the Web Share API
+      copyResult();
+      showToast("Result copied! You can now paste it to share.");
+    }
+  }
+  
+  // Function to show toast notification
+  function showToast(message, type = "success") {
+    const toast = document.getElementById("copyToast");
+    
+    // Set toast content
+    if (type === "success") {
+      toast.className = "fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50";
+      toast.innerHTML = `
+        <div class="flex items-center">
+          <i class="fas fa-check-circle mr-2"></i>
+          <span>${message}</span>
+        </div>
+      `;
+    } else {
+      toast.className = "fixed bottom-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50";
+      toast.innerHTML = `
+        <div class="flex items-center">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          <span>${message}</span>
+        </div>
+      `;
+    }
+    
+    // Show toast
+    setTimeout(() => {
+      toast.classList.remove("translate-y-20", "opacity-0");
+    }, 100);
+    
+    // Hide toast after 3 seconds
+    setTimeout(() => {
+      toast.classList.add("translate-y-20", "opacity-0");
+    }, 3000);
+  }
+  
+  // Function to populate recent rates table
+  function loadRecentRates() {
+    const recentRatesTable = document.getElementById("recent-rates");
+    const popularCurrencies = ["USD", "EUR", "GBP", "JPY", "AUD"];
+    const baseCurrency = "PKR";
+    
+    // Show loading state
+    recentRatesTable.innerHTML = `
+      <tr>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 text-center transition-colors duration-300" colspan="3">
+          <div class="inline-block animate-spin rounded-full h-5 w-5 border-b-2 border-[#003366] dark:border-blue-400"></div>
+          <span class="ml-2">Loading rates...</span>
+        </td>
+      </tr>
+    `;
+    
+    // Create promises for each currency pair
+    const promises = popularCurrencies.map(currency => {
       return fetch(
-        `https://currency-converter.g.apised.com/v1/convert?from=${pair.from}&to=${pair.to}&amount=1`,
+        `https://currency-converter.g.apised.com/v1/convert?from=${currency}&to=${baseCurrency}&amount=1`,
         { method: "GET", headers }
       )
         .then(response => {
@@ -522,70 +616,167 @@
             throw new Error("Invalid API response format");
           }
           return {
-            from: pair.from,
-            to: pair.to,
+            from: currency,
+            to: baseCurrency,
             rate: data.data.convertedAmount
           };
         })
         .catch(error => {
-          console.error(`Error fetching rate for ${pair.from} to ${pair.to}:`, error);
+          console.error(`Error fetching ${currency} to ${baseCurrency} rate:`, error);
           return {
-            from: pair.from,
-            to: pair.to,
-            rate: "Error"
+            from: currency,
+            to: baseCurrency,
+            rate: "N/A",
+            error: true
           };
         });
     });
     
     // Wait for all promises to resolve
-    Promise.all(fetchPromises)
+    Promise.all(promises)
       .then(results => {
+        // Clear loading state
+        recentRatesTable.innerHTML = "";
+        
+        // Add each rate to the table
         results.forEach(result => {
           const row = document.createElement("tr");
+          row.className = "hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-300";
+          
           row.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-              <div class="flex items-center">
-                <span class="font-medium text-gray-900">${result.from}</span>
-                <span class="mx-2 text-gray-500">to</span>
-                <span class="font-medium text-gray-900">${result.to}</span>
-              </div>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">
+              ${result.from} / ${result.to}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right">
-              <span class="font-medium ${result.rate === "Error" ? "text-red-600" : "text-gray-900"}">
-                ${result.rate === "Error" ? "Unavailable" : result.rate.toFixed(4)}
-              </span>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-right text-gray-800 dark:text-gray-200 transition-colors duration-300">
+              ${result.error ? "N/A" : result.rate.toFixed(2)}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right">
-              <button 
-                onclick="setQuickConversion('${result.from}', '${result.to}')" 
-                class="text-[#003366] hover:text-[#002244] font-medium"
-                ${result.rate === "Error" ? "disabled" : ""}
-              >
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-right">
+              <button onclick="setQuickConversion('${result.from}', '${result.to}')" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300">
                 <i class="fas fa-exchange-alt mr-1"></i> Convert
               </button>
             </td>
           `;
-          recentRatesElement.appendChild(row);
+          
+          recentRatesTable.appendChild(row);
         });
       })
       .catch(error => {
         console.error("Error loading recent rates:", error);
-        recentRatesElement.innerHTML = `
+        recentRatesTable.innerHTML = `
           <tr>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600 text-center" colspan="3">
-              Unable to load recent rates. Please try again later.
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500 dark:text-red-400 text-center transition-colors duration-300" colspan="3">
+              <i class="fas fa-exclamation-circle mr-2"></i>
+              Failed to load recent rates. Please try again later.
             </td>
           </tr>
         `;
       });
   }
   
-  // Add event listener for Enter key on amount input
-  document.getElementById("amount").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") {
-      convertCurrency();
-    }
-  });
+  // Function to fetch currencies
+  function fetchCurrencies() {
+    const fromSelect = document.getElementById("from");
+    const toSelect = document.getElementById("to");
+    const loadingCurrencies = document.getElementById("loading-currencies");
+    const converterForm = document.getElementById("converter-form");
+    
+    fetch("https://currency-converter.g.apised.com/v1/currencies", { method: "GET", headers })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (!data || !data.data || !Array.isArray(data.data)) {
+          throw new Error("Invalid API response format");
+        }
+        
+        // Sort currencies alphabetically
+        const currencies = data.data.sort((a, b) => a.code.localeCompare(b.code));
+        
+        // Populate select elements
+        currencies.forEach(currency => {
+          const option = document.createElement("option");
+          option.value = currency.code;
+          option.textContent = `${currency.code} - ${currency.name}`;
+          
+          const optionClone = option.cloneNode(true);
+          
+          fromSelect.appendChild(option);
+          toSelect.appendChild(optionClone);
+        });
+        
+        // Set default currencies
+        setDefaultCurrencies();
+        
+        // Show converter form
+        loadingCurrencies.classList.add("hidden");
+        converterForm.classList.remove("hidden");
+      })
+      .catch(error => {
+        console.error("Error fetching currencies:", error);
+        loadFallbackCurrencies();
+      });
+  }
+  
+  // Function to load fallback currencies if API fails
+  function loadFallbackCurrencies() {
+    const fromSelect = document.getElementById("from");
+    const toSelect = document.getElementById("to");
+    const loadingCurrencies = document.getElementById("loading-currencies");
+    const converterForm = document.getElementById("converter-form");
+    
+    // Common currencies as fallback
+    const commonCurrencies = [
+      { code: "USD", name: "United States Dollar" },
+      { code: "EUR", name: "Euro" },
+      { code: "GBP", name: "British Pound" },
+      { code: "JPY", name: "Japanese Yen" },
+      { code: "AUD", name: "Australian Dollar" },
+      { code: "CAD", name: "Canadian Dollar" },
+      { code: "CHF", name: "Swiss Franc" },
+      { code: "CNY", name: "Chinese Yuan" },
+      { code: "INR", name: "Indian Rupee" },
+      { code: "PKR", name: "Pakistani Rupee" },
+      { code: "SAR", name: "Saudi Riyal" },
+      { code: "AED", name: "United Arab Emirates Dirham" }
+    ];
+    
+    // Populate select elements
+    commonCurrencies.forEach(currency => {
+      const option = document.createElement("option");
+      option.value = currency.code;
+      option.textContent = `${currency.code} - ${currency.name}`;
+      
+      const optionClone = option.cloneNode(true);
+      
+      fromSelect.appendChild(option);
+      toSelect.appendChild(optionClone);
+    });
+    
+    // Set default currencies
+    setDefaultCurrencies();
+    
+    // Show converter form
+    loadingCurrencies.classList.add("hidden");
+    converterForm.classList.remove("hidden");
+  }
+  
+  // Function to set default currencies
+  function setDefaultCurrencies() {
+    document.getElementById("from").value = "USD";
+    document.getElementById("to").value = "PKR";
+  }
+  
+  // Function to swap currencies
+  function swapCurrencies() {
+    const fromSelect = document.getElementById("from");
+    const toSelect = document.getElementById("to");
+    
+    const temp = fromSelect.value;
+    fromSelect.value = toSelect.value;
+    toSelect.value = temp;
+  }
 </script>
-
 {% endblock Content %}

@@ -1,81 +1,81 @@
-{% extends "wakeelapp/faq.html" %}
+{% extends "wakeelapp/index.html" %}
 {% load static %}
 {% block title %}<title>Contact Us - GoWakeel</title>{% endblock title %}
 {% block metatitle %}<meta name="description" content="Get in touch with GoWakeel for tax filing, company registration, and other business services. We're here to help with your financial and legal needs.">{% endblock metatitle %}
 
 {% block Content %}
 
-<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5 dark:from-[#1a1a1a] dark:to-[#003366]/20">
     <div class="w-container max-w-7xl px-6 py-10 mx-auto">
-        <h1 class="text-3xl font-bold text-center lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#003366] to-[#0066cc] mb-4 slide-up">
+        <h1 class="text-3xl font-bold text-center lg:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#003366] to-[#0066cc] mb-4 slide-up dark:from-[#4d94ff] dark:to-[#66b3ff]">
             <i class="fas fa-paper-plane mr-2"></i> Get In Touch
         </h1>
-        <p class="text-gray-600 max-w-2xl mx-auto mb-12 text-center text-lg slide-up" style="animation-delay: 0.2s;">
+        <p class="text-gray-600 max-w-2xl mx-auto mb-12 text-center text-lg slide-up dark:text-gray-300" style="animation-delay: 0.2s;">
             Have questions or need assistance? We're here to help. Reach out to our team for prompt and professional support.
         </p>
         
         <div class="lg:flex lg:items-center lg:-mx-10">
             <div class="lg:w-1/2 lg:mx-10 fade-in" style="animation-delay: 0.3s;">
-                <div class="bg-white p-8 rounded-xl shadow-lg border border-[#003366]/10 hover:shadow-xl transition-all duration-300">
-                    <h2 class="text-2xl font-bold text-[#003366] mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-[#003366]/10 hover:shadow-xl transition-all duration-300 dark:bg-[#2d3748] dark:border-[#4d94ff]/30">
+                    <h2 class="text-2xl font-bold text-[#003366] mb-6 dark:text-[#4d94ff]">
                         <i class="fas fa-envelope-open-text mr-2"></i> Send Us a Message
                     </h2>
-                    <p class="mt-2 text-gray-600 mb-6">
+                    <p class="mt-2 text-gray-600 mb-6 dark:text-gray-300">
                         Fill out the form below and our team will get back to you within 24 hours.
                     </p>
                     <form class="mt-6" method="post" action="">
                         {% csrf_token %}
                         <div class="-mx-2 md:items-center md:flex">
                             <div class="flex-1 px-2">
-                                <label class="block mb-2 text-sm text-gray-700 font-medium">Full Name <span class="text-red-500">*</span></label>
+                                <label class="block mb-2 text-sm text-gray-700 font-medium dark:text-gray-300">Full Name <span class="text-red-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <i class="fas fa-user text-gray-400"></i>
                                     </div>
-                                    <input type="text" name="Name" placeholder="Enter Your Name" required class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <input type="text" name="Name" placeholder="Enter Your Name" required class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40 dark:bg-[#1e293b] dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-400 dark:focus:border-[#4d94ff] dark:focus:ring-[#4d94ff]" />
                                 </div>
                             </div>
                             <div class="flex-1 px-2 mt-4 md:mt-0">
-                                <label class="block mb-2 text-sm text-gray-700 font-medium">Email Address <span class="text-red-500">*</span></label>
+                                <label class="block mb-2 text-sm text-gray-700 font-medium dark:text-gray-300">Email Address <span class="text-red-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <i class="fas fa-envelope text-gray-400"></i>
                                     </div>
-                                    <input type="email" name="Email" placeholder="Enter Your Email..." required class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <input type="email" name="Email" placeholder="Enter Your Email..." required class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40 dark:bg-[#1e293b] dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-400 dark:focus:border-[#4d94ff] dark:focus:ring-[#4d94ff]" />
                                 </div>
                             </div>
                         </div>
                         <div class="-mx-2 md:items-center mt-4 md:flex">
                             <div class="flex-1 px-2">
-                                <label class="block mb-2 text-sm text-gray-700 font-medium">Phone Number <span class="text-red-500">*</span></label>
+                                <label class="block mb-2 text-sm text-gray-700 font-medium dark:text-gray-300">Phone Number <span class="text-red-500">*</span></label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <i class="fas fa-phone text-gray-400"></i>
                                     </div>
-                                    <input type="tel" name="Contact" required placeholder="0300-XXXXXXX" class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <input type="tel" name="Contact" required placeholder="0300-XXXXXXX" class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40 dark:bg-[#1e293b] dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-400 dark:focus:border-[#4d94ff] dark:focus:ring-[#4d94ff]" />
                                 </div>
                             </div>
                             <div class="flex-1 px-2 mt-4 md:mt-0">
-                                <label class="block mb-2 text-sm text-gray-700 font-medium">Subject</label>
+                                <label class="block mb-2 text-sm text-gray-700 font-medium dark:text-gray-300">Subject</label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                         <i class="fas fa-tag text-gray-400"></i>
                                     </div>
-                                    <input type="text" name="Query" placeholder="Enter the Subject" class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40" />
+                                    <input type="text" name="Query" placeholder="Enter the Subject" class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40 dark:bg-[#1e293b] dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-400 dark:focus:border-[#4d94ff] dark:focus:ring-[#4d94ff]" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="w-full mt-4">
-                            <label class="block mb-2 text-sm text-gray-700 font-medium">Message <span class="text-red-500">*</span></label>
+                            <label class="block mb-2 text-sm text-gray-700 font-medium dark:text-gray-300">Message <span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute top-3 left-3 pointer-events-none">
                                     <i class="fas fa-comment text-gray-400"></i>
                                 </div>
-                                <textarea name="Message" required class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg h-32 md:h-48 focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40" placeholder="How can we help you?"></textarea>
+                                <textarea name="Message" required class="block w-full pl-10 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg h-32 md:h-48 focus:border-[#003366] focus:ring-[#003366] focus:outline-none focus:ring focus:ring-opacity-40 dark:bg-[#1e293b] dark:border-gray-700 dark:text-gray-200 dark:placeholder-gray-400 dark:focus:border-[#4d94ff] dark:focus:ring-[#4d94ff]" placeholder="How can we help you?"></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gradient-to-r from-[#003366] to-[#0066cc] rounded-lg hover:from-[#002244] hover:to-[#004c99] focus:outline-none focus:ring focus:ring-[#003366] focus:ring-opacity-50 btn-animated">
+                        <button type="submit" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gradient-to-r from-[#003366] to-[#0066cc] rounded-lg hover:from-[#002244] hover:to-[#004c99] focus:outline-none focus:ring focus:ring-[#003366] focus:ring-opacity-50 btn-animated dark:from-[#4d94ff] dark:to-[#66b3ff] dark:hover:from-[#3385ff] dark:hover:to-[#4d94ff]">
                             <span class="flex items-center justify-center">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 <span>Send Message</span>
@@ -85,58 +85,58 @@
                 </div>
             </div>
             <div class="mt-12 lg:flex lg:mt-0 lg:flex-col lg:items-center lg:w-1/2 lg:mx-10">
-                <div class="bg-white p-8 rounded-xl shadow-lg border border-[#003366]/10 hover:shadow-xl transition-all duration-300 fade-in" style="animation-delay: 0.5s;">
-                    <h2 class="text-2xl font-bold text-[#003366] mb-6">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-[#003366]/10 hover:shadow-xl transition-all duration-300 fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]/30" style="animation-delay: 0.5s;">
+                    <h2 class="text-2xl font-bold text-[#003366] mb-6 dark:text-[#4d94ff]">
                         <i class="fas fa-map-marked-alt mr-2"></i> Contact Information
                     </h2>
-                    <p class="mt-2 text-gray-600 mb-6">
+                    <p class="mt-2 text-gray-600 mb-6 dark:text-gray-300">
                         Feel free to reach out to us through any of the following channels:
                     </p>
                     
                     <div class="space-y-6">
-                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300">
-                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-[#003366] text-xl"></i>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300 dark:hover:bg-[#4d94ff]/10">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                                <i class="fas fa-map-marker-alt text-[#003366] text-xl dark:text-[#4d94ff]"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-[#003366]">Office Address</h3>
-                                <p class="text-gray-600 mt-1">
+                                <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">Office Address</h3>
+                                <p class="text-gray-600 mt-1 dark:text-gray-300">
                                     43c B 8th St, DHA Phase 5 Badar Commercial Area Defence V Defence Housing Authority, Karachi, 75500
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300">
-                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-phone-alt text-[#003366] text-xl"></i>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300 dark:hover:bg-[#4d94ff]/10">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                                <i class="fas fa-phone-alt text-[#003366] text-xl dark:text-[#4d94ff]"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-[#003366]">Phone Number</h3>
-                                <p class="text-gray-600 mt-1">
-                                    <a href="tel:+923369969997" class="hover:text-[#003366] transition-colors">+92 336-9969997</a>
+                                <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">Phone Number</h3>
+                                <p class="text-gray-600 mt-1 dark:text-gray-300">
+                                    <a href="tel:+923369969997" class="hover:text-[#003366] transition-colors dark:hover:text-[#4d94ff]">+92 336-9969997</a>
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300">
-                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-envelope text-[#003366] text-xl"></i>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300 dark:hover:bg-[#4d94ff]/10">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                                <i class="fas fa-envelope text-[#003366] text-xl dark:text-[#4d94ff]"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-[#003366]">Email Address</h3>
-                                <p class="text-gray-600 mt-1">
-                                    <a href="mailto:info@gowakeel.com" class="hover:text-[#003366] transition-colors">info@gowakeel.com</a>
+                                <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">Email Address</h3>
+                                <p class="text-gray-600 mt-1 dark:text-gray-300">
+                                    <a href="mailto:info@gowakeel.com" class="hover:text-[#003366] transition-colors dark:hover:text-[#4d94ff]">info@gowakeel.com</a>
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300">
-                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-clock text-[#003366] text-xl"></i>
+                        <div class="flex items-start p-4 rounded-lg hover:bg-[#003366]/5 transition-all duration-300 dark:hover:bg-[#4d94ff]/10">
+                            <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-[#003366]/20 to-[#0066cc]/20 rounded-full flex items-center justify-center mr-4 dark:from-[#003366]/40 dark:to-[#0066cc]/40">
+                                <i class="fas fa-clock text-[#003366] text-xl dark:text-[#4d94ff]"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold text-[#003366]">Business Hours</h3>
-                                <p class="text-gray-600 mt-1">
+                                <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">Business Hours</h3>
+                                <p class="text-gray-600 mt-1 dark:text-gray-300">
                                     Monday - Friday: 9:00 AM - 6:00 PM<br>
                                     Saturday: 10:00 AM - 2:00 PM<br>
                                     Sunday: Closed
@@ -146,18 +146,18 @@
                     </div>
                     
                     <div class="mt-8">
-                        <h3 class="text-lg font-semibold text-[#003366] mb-4">Connect With Us</h3>
+                        <h3 class="text-lg font-semibold text-[#003366] mb-4 dark:text-[#4d94ff]">Connect With Us</h3>
                         <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/share/15LBwt1zFN/" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366]">
+                            <a href="https://www.facebook.com/share/15LBwt1zFN/" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366] dark:text-[#4d94ff] dark:from-[#003366]/20 dark:to-[#0066cc]/20">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="https://www.linkedin.com/company/gowakeel/" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366]">
+                            <a href="https://www.linkedin.com/company/gowakeel/" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366] dark:text-[#4d94ff] dark:from-[#003366]/20 dark:to-[#0066cc]/20">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://www.instagram.com/gowakeelofficial?igsh=MWI3cTQzMmpsbGoxNA==" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366]">
+                            <a href="https://www.instagram.com/gowakeelofficial?igsh=MWI3cTQzMmpsbGoxNA==" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366] dark:text-[#4d94ff] dark:from-[#003366]/20 dark:to-[#0066cc]/20">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://wa.me/923369969997" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366]">
+                            <a href="https://wa.me/923369969997" class="w-10 h-10 bg-gradient-to-r from-[#003366]/10 to-[#0066cc]/10 rounded-full flex items-center justify-center hover:from-[#003366] hover:to-[#0066cc] hover:text-white transition-all duration-300 text-[#003366] dark:text-[#4d94ff] dark:from-[#003366]/20 dark:to-[#0066cc]/20">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </div>
@@ -169,12 +169,12 @@
 </section>
 
 <!-- Map Section -->
-<section class="py-12 bg-white">
+<section class="py-12 bg-white dark:bg-[#1a1a1a]">
     <div class="w-container max-w-7xl px-6 mx-auto">
-        <h2 class="text-2xl font-bold text-center lg:text-3xl text-[#003366] mb-8 slide-up">
+        <h2 class="text-2xl font-bold text-center lg:text-3xl text-[#003366] mb-8 slide-up dark:text-[#4d94ff]">
             <i class="fas fa-map-marked-alt mr-2"></i> Find Us
         </h2>
-        <div class="rounded-xl overflow-hidden shadow-lg border border-[#003366]/10 fade-in" style="animation-delay: 0.3s;">
+        <div class="rounded-xl overflow-hidden shadow-lg border border-[#003366]/10 fade-in dark:border-[#4d94ff]/30" style="animation-delay: 0.3s;">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.0693857574!2d67.06975937536798!3d24.86071644538641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f0a8d1b1c1d%3A0x9d7a2b7c3d3d3d3d!2s43c%20B%208th%20St%2C%20DHA%20Phase%205%20Badar%20Commercial%20Area%20Defence%20V%20Defence%20Housing%20Authority%2C%20Karachi%2C%2075500!5e0!3m2!1sen!2s!4v1625123456789!5m2!1sen!2s" 
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -182,53 +182,53 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-12 bg-gradient-to-r from-[#003366]/5 to-white">
+<section class="py-12 bg-gradient-to-r from-[#003366]/5 to-white dark:from-[#003366]/20 dark:to-[#1a1a1a]">
     <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-2xl font-bold text-center lg:text-3xl text-[#003366] mb-8 slide-up">
+        <h2 class="text-2xl font-bold text-center lg:text-3xl text-[#003366] mb-8 slide-up dark:text-[#4d94ff]">
             <i class="fas fa-question-circle mr-2"></i> Frequently Asked Questions
         </h2>
-        <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-center slide-up" style="animation-delay: 0.2s;">
+        <p class="text-gray-600 max-w-2xl mx-auto mb-10 text-center slide-up dark:text-gray-300" style="animation-delay: 0.2s;">
             Find quick answers to common questions about our contact and support services.
         </p>
         
         <div class="grid gap-6 max-w-4xl mx-auto">
-            <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 hover:shadow-lg transition-all duration-300 fade-in" style="animation-delay: 0.3s;">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 hover:shadow-lg transition-all duration-300 fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]/30" style="animation-delay: 0.3s;">
                 <div class="flex justify-between items-center cursor-pointer faq-toggle">
-                    <h3 class="text-lg font-semibold text-[#003366]">What is the typical response time for inquiries?</h3>
-                    <svg class="w-5 h-5 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">What is the typical response time for inquiries?</h3>
+                    <svg class="w-5 h-5 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                     </svg>
                 </div>
                 <div class="mt-4 hidden faq-content">
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300">
                         We strive to respond to all inquiries within 24 hours during business days. For urgent matters, we recommend calling our customer support line for immediate assistance.
                     </p>
                 </div>
             </div>
             
-            <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 hover:shadow-lg transition-all duration-300 fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 hover:shadow-lg transition-all duration-300 fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]/30" style="animation-delay: 0.4s;">
                 <div class="flex justify-between items-center cursor-pointer faq-toggle">
-                    <h3 class="text-lg font-semibold text-[#003366]">Do you offer in-person consultations?</h3>
-                    <svg class="w-5 h-5 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">Do you offer in-person consultations?</h3>
+                    <svg class="w-5 h-5 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                     </svg>
                 </div>
                 <div class="mt-4 hidden faq-content">
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Yes, we offer in-person consultations at our Karachi office. Please schedule an appointment in advance through our contact form or by calling our office to ensure our tax experts are available to assist you.
                     </p>
                 </div>
             </div>
             
-            <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 hover:shadow-lg transition-all duration-300 fade-in" style="animation-delay: 0.5s;">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-[#003366]/10 hover:shadow-lg transition-all duration-300 fade-in dark:bg-[#2d3748] dark:border-[#4d94ff]/30" style="animation-delay: 0.5s;">
                 <div class="flex justify-between items-center cursor-pointer faq-toggle">
-                    <h3 class="text-lg font-semibold text-[#003366]">Can I request services outside of Karachi?</h3>
-                    <svg class="w-5 h-5 text-[#003366] transition-transform transform rotate-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <h3 class="text-lg font-semibold text-[#003366] dark:text-[#4d94ff]">Can I request services outside of Karachi?</h3>
+                    <svg class="w-5 h-5 text-[#003366] transition-transform transform rotate-0 dark:text-[#4d94ff]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                     </svg>
                 </div>
                 <div class="mt-4 hidden faq-content">
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300">
                         Absolutely! While our physical office is in Karachi, we provide services throughout Pakistan. Many of our services can be handled remotely through phone, email, or video consultations. For specific requirements, please contact us to discuss the best approach for your situation.
                     </p>
                 </div>
@@ -238,14 +238,14 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-16 bg-gradient-to-r from-[#003366] to-[#0066cc]">
+<section class="py-16 bg-gradient-to-r from-[#003366] to-[#0066cc] dark:from-[#1a2e4a] dark:to-[#0d3b6f]">
     <div class="max-w-7xl mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-white mb-6 slide-up">Ready to Get Started?</h2>
         <p class="text-white/90 max-w-2xl mx-auto mb-8 text-lg slide-up" style="animation-delay: 0.2s;">
             Let us help you navigate your tax and business needs with expert guidance and personalized support.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in" style="animation-delay: 0.4s;">
-            <a href="tel:+923369969997" class="px-8 py-3 bg-white text-[#003366] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center shadow-lg">
+            <a href="tel:+923369969997" class="px-8 py-3 bg-white text-[#003366] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 flex items-center justify-center shadow-lg dark:bg-[#2d3748] dark:text-[#4d94ff] dark:hover:bg-[#1e293b]">
                 <i class="fas fa-phone-alt mr-2"></i> Call Now
             </a>
             <a href="https://wa.me/923369969997" class="px-8 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center shadow-lg">
@@ -300,17 +300,127 @@
         const contactForm = document.querySelector('form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                // You can add form validation here if needed
+                // Prevent default form submission to handle with AJAX
+                e.preventDefault();
                 
-                // Uncomment the following line if you want to prevent the default form submission
-                 e.preventDefault();
+                // Get form data
+                const formData = new FormData(this);
                 
-                // Add a success message or animation
+                // Basic form validation
+                let isValid = true;
+                const requiredFields = this.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.classList.add('border-red-500');
+                        
+                        // Add error message if it doesn't exist
+                        const errorId = `error-${field.name}`;
+                        if (!document.getElementById(errorId)) {
+                            const errorMsg = document.createElement('p');
+                            errorMsg.id = errorId;
+                            errorMsg.className = 'text-red-500 text-xs mt-1';
+                            errorMsg.textContent = 'This field is required';
+                            field.parentNode.appendChild(errorMsg);
+                        }
+                    } else {
+                        field.classList.remove('border-red-500');
+                        const errorMsg = document.getElementById(`error-${field.name}`);
+                        if (errorMsg) errorMsg.remove();
+                    }
+                });
+                
+                // Email validation
+                const emailField = this.querySelector('[name="Email"]');
+                if (emailField && emailField.value.trim()) {
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(emailField.value)) {
+                        isValid = false;
+                        emailField.classList.add('border-red-500');
+                        
+                        const errorId = `error-${emailField.name}`;
+                        if (!document.getElementById(errorId)) {
+                            const errorMsg = document.createElement('p');
+                            errorMsg.id = errorId;
+                            errorMsg.className = 'text-red-500 text-xs mt-1';
+                            errorMsg.textContent = 'Please enter a valid email address';
+                            emailField.parentNode.appendChild(errorMsg);
+                        }
+                    }
+                }
+                
+                // Phone validation (basic)
+                const phoneField = this.querySelector('[name="Contact"]');
+                if (phoneField && phoneField.value.trim()) {
+                    const phonePattern = /^[0-9\-\+\s\(\)]{10,15}$/;
+                    if (!phonePattern.test(phoneField.value)) {
+                        isValid = false;
+                        phoneField.classList.add('border-red-500');
+                        
+                        const errorId = `error-${phoneField.name}`;
+                        if (!document.getElementById(errorId)) {
+                            const errorMsg = document.createElement('p');
+                            errorMsg.id = errorId;
+                            errorMsg.className = 'text-red-500 text-xs mt-1';
+                            errorMsg.textContent = 'Please enter a valid phone number';
+                            phoneField.parentNode.appendChild(errorMsg);
+                        }
+                    }
+                }
+                
+                if (!isValid) {
+                    return;
+                }
+                
+                // Show loading state
                 const button = this.querySelector('button[type="submit"]');
-                button.innerHTML = '<span class="flex items-center justify-center"><i class="fas fa-check-circle mr-2"></i><span>Message Sent!</span></span>';
-                button.classList.add('bg-green-600');
+                const originalButtonContent = button.innerHTML;
+                button.disabled = true;
+                button.innerHTML = '<span class="flex items-center justify-center"><i class="fas fa-spinner fa-spin mr-2"></i><span>Sending...</span></span>';
                 
-                // You can add more form handling logic here
+                // Simulate form submission (replace with actual AJAX call to your backend)
+                setTimeout(() => {
+                    // Success state
+                    button.innerHTML = '<span class="flex items-center justify-center"><i class="fas fa-check-circle mr-2"></i><span>Message Sent!</span></span>';
+                    button.classList.remove('from-[#003366]', 'to-[#0066cc]');
+                    button.classList.remove('dark:from-[#4d94ff]', 'dark:to-[#66b3ff]');
+                    button.classList.add('bg-green-600');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Show success message
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'mt-4 p-4 bg-green-100 text-green-700 rounded-lg dark:bg-green-800/30 dark:text-green-400';
+                    successMessage.innerHTML = '<div class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Thank you for your message! We will get back to you soon.</div>';
+                    this.appendChild(successMessage);
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        button.innerHTML = originalButtonContent;
+                        button.disabled = false;
+                        button.classList.remove('bg-green-600');
+                        button.classList.add('from-[#003366]', 'to-[#0066cc]');
+                        button.classList.add('dark:from-[#4d94ff]', 'dark:to-[#66b3ff]');
+                        
+                        // Remove success message after 5 seconds
+                        setTimeout(() => {
+                            if (successMessage.parentNode) {
+                                successMessage.remove();
+                            }
+                        }, 5000);
+                    }, 3000);
+                }, 1500);
+            });
+            
+            // Clear validation errors when typing
+            contactForm.querySelectorAll('input, textarea').forEach(field => {
+                field.addEventListener('input', function() {
+                    this.classList.remove('border-red-500');
+                    const errorMsg = document.getElementById(`error-${this.name}`);
+                    if (errorMsg) errorMsg.remove();
+                });
             });
         }
         
@@ -346,6 +456,36 @@
             el.style.transition = 'opacity 0.8s ease-in-out';
             observer.observe(el);
         });
+        
+        // Add hover effects for contact info items
+        document.querySelectorAll('.hover\\:bg-\\[\\#003366\\]\\/5').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.querySelector('i').classList.add('scale-110');
+            });
+            
+            el.addEventListener('mouseleave', function() {
+                this.querySelector('i').classList.remove('scale-110');
+            });
+        });
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
     });
 </script>
+
 {% endblock Content %}

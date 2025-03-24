@@ -4,34 +4,34 @@
 
 {% block Content %}
 <!-- Hero Section -->
-<section class="bg-gradient-to-r from-white to-[#003366]/5 py-12">
+<section class="bg-gradient-to-r from-white to-[#003366]/5 dark:from-gray-900 dark:to-gray-800 py-12 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center justify-between gap-8">
       <div class="w-full text-center">
-        <h1 class="text-3xl md:text-4xl font-bold text-[#003366] mb-4">
-          Pakistan Salary <span class="text-black">Tax Calculator</span>
+        <h1 class="text-3xl md:text-4xl font-bold text-[#003366] dark:text-blue-300 mb-4 transition-colors duration-300">
+          Pakistan Salary <span class="text-black dark:text-white transition-colors duration-300">Tax Calculator</span>
         </h1>
-        <p class="text-gray-700 text-lg mb-6 max-w-3xl mx-auto">
+        <p class="text-gray-700 dark:text-gray-300 text-lg mb-6 max-w-3xl mx-auto transition-colors duration-300">
           The <span class="font-semibold">GoWakeel Tax Calculator</span> helps you quickly estimate your net
           income by factoring in taxes, deductions, and exemptions based on the latest FBR tax slabs.
         </p>
       </div>
     
       <!-- Calculator Card - Centered and full width -->
-      <div class="w-full max-w-3xl mx-auto bg-white p-6 md:p-8 shadow-lg rounded-lg border border-[#003366]/10">
-        <h2 class="text-2xl font-bold text-[#003366] text-center mb-4">
+      <div class="w-full max-w-3xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-8 shadow-lg rounded-lg border border-[#003366]/10 dark:border-blue-900/30 transition-colors duration-300">
+        <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 text-center mb-4 transition-colors duration-300">
           <i class="fas fa-calculator mr-2"></i>Salary Tax Calculator
         </h2>
         
         <div class="space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="flex flex-col">
-              <label class="font-medium text-gray-700 mb-1">Select Tax Year</label>
+              <label class="font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300">Select Tax Year</label>
               <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <i class="fas fa-calendar-alt text-gray-400"></i>
+                  <i class="fas fa-calendar-alt text-gray-400 dark:text-gray-500 transition-colors duration-300"></i>
                 </div>
-                <select id="taxSlab" class="pl-10 border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-colors w-full">
+                <select id="taxSlab" class="pl-10 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-400 focus:border-[#003366] dark:focus:border-blue-400 transition-colors duration-300 w-full">
                   <script>
                     for (let year = 2024; year >= 2014; year--) {
                       document.write(
@@ -43,160 +43,212 @@
                   </script>
                 </select>
               </div>
-              <p class="text-xs text-gray-500 mt-1">Select the tax year for calculation</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300">Select the tax year for calculation</p>
             </div>
 
             <div class="flex flex-col">
-              <label class="font-medium text-gray-700 mb-1">Enter Monthly Salary (PKR)</label>
+              <label class="font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300">Enter Monthly Salary (PKR)</label>
               <div class="relative">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <i class="fas fa-rupee-sign text-gray-400"></i>
+                  <i class="fas fa-rupee-sign text-gray-400 dark:text-gray-500 transition-colors duration-300"></i>
                 </div>
                 <input
                   id="salary"
                   type="number"
                   placeholder="e.g. 100000"
-                  class="pl-10 w-full border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] focus:border-[#003366] transition-colors"
+                  class="pl-10 w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-400 focus:border-[#003366] dark:focus:border-blue-400 transition-colors duration-300"
                 />
                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                  <span class="text-gray-400">PKR</span>
+                  <span class="text-gray-400 dark:text-gray-500 transition-colors duration-300">PKR</span>
                 </div>
               </div>
-              <p class="text-xs text-gray-500 mt-1">Enter gross monthly salary</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300">Enter gross monthly salary</p>
             </div>
           </div>
 
           <div class="pt-2">
             <button
               onclick="calculateTax()"
-              class="w-full bg-gradient-to-r from-[#003366] to-[#0066cc] text-white px-6 py-3 rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center"
+              class="w-full bg-gradient-to-r from-[#003366] to-[#0066cc] dark:from-blue-700 dark:to-blue-500 text-white px-6 py-3 rounded-lg hover:from-[#002244] hover:to-[#004c99] dark:hover:from-blue-800 dark:hover:to-blue-600 transition-all duration-300 flex items-center justify-center"
             >
               <i class="fas fa-calculator mr-2"></i> Calculate Tax
             </button>
           </div>
           
-          <div class="text-xs text-center text-gray-500 mt-2">
+          <div class="text-xs text-center text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300">
             <i class="fas fa-shield-alt mr-1"></i> Your data is processed locally and never stored or shared
           </div>
         </div>
         
         <!-- Results Section - Improved Design -->
-        <div id="resultsSection" class="mt-8 pt-6 border-t border-gray-200 hidden">
-          <h3 class="text-xl font-bold text-[#003366] text-center mb-6">Your Tax Calculation Results</h3>
+        <div id="resultsSection" class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 hidden transition-colors duration-300">
+          <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300 text-center mb-6 transition-colors duration-300">Your Tax Calculation Results</h3>
+          
+          <!-- Save Calculation Button -->
+          <div class="mb-4 flex justify-end">
+            <button id="saveCalculation" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center text-sm font-medium transition-colors duration-300">
+              <i class="fas fa-save mr-2"></i> Save Calculation
+            </button>
+          </div>
           
           <!-- Summary Card - Enhanced -->
-          <div class="bg-gradient-to-r from-[#003366]/10 to-[#003366]/5 p-6 rounded-lg border border-[#003366]/20 mb-6">
+          <div class="bg-gradient-to-r from-[#003366]/10 to-[#003366]/5 dark:from-blue-900/30 dark:to-blue-800/20 p-6 rounded-lg border border-[#003366]/20 dark:border-blue-800/30 mb-6 transition-colors duration-300">
             <div class="grid grid-cols-3 gap-4">
               <div class="text-center">
-                <div class="text-sm text-gray-600 font-medium">Monthly Take-Home</div>
-                <div id="monthlyAfterTax" class="text-3xl font-bold text-[#003366]">0/-</div>
-                <div class="text-xs text-gray-500 mt-1">After tax</div>
+                <div class="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300">Monthly Take-Home</div>
+                <div id="monthlyAfterTax" class="text-3xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300">0/-</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300">After tax</div>
               </div>
-              <div class="text-center border-x border-gray-300">
-                <div class="text-sm text-gray-600 font-medium">Tax Year</div>
-                <div id="taxYearDisplay" class="text-xl font-semibold">2024-2025</div>
-                <div class="text-xs text-gray-500 mt-1">Selected period</div>
+              <div class="text-center border-x border-gray-300 dark:border-gray-600 transition-colors duration-300">
+                <div class="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300">Tax Year</div>
+                <div id="taxYearDisplay" class="text-xl font-semibold dark:text-white transition-colors duration-300">2024-2025</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300">Selected period</div>
               </div>
               <div class="text-center">
-                <div class="text-sm text-gray-600 font-medium">Effective Tax Rate</div>
-                <div id="effectiveTaxRate" class="text-xl font-semibold text-[#003366]">0%</div>
-                <div class="text-xs text-gray-500 mt-1">Of total income</div>
+                <div class="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300">Effective Tax Rate</div>
+                <div id="effectiveTaxRate" class="text-xl font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300">0%</div>
+                <div class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300">Of total income</div>
               </div>
             </div>
           </div>
           
           <!-- Tax Breakdown - Visual -->
-          <div class="mb-6 bg-white p-5 rounded-lg border border-gray-200 shadow-sm">
-            <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
+          <div class="mb-6 bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm transition-colors duration-300">
+            <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
               <i class="fas fa-chart-pie mr-2"></i>Tax Breakdown
             </h4>
-            <div class="w-full bg-gray-200 rounded-full h-10 mb-3 overflow-hidden">
-              <div id="taxProgressBar" class="bg-gradient-to-r from-[#003366] to-[#0066cc] h-10 rounded-full relative" style="width: 0%">
+            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-10 mb-3 overflow-hidden transition-colors duration-300">
+              <div id="taxProgressBar" class="bg-gradient-to-r from-[#003366] to-[#0066cc] dark:from-blue-700 dark:to-blue-500 h-10 rounded-full relative transition-colors duration-300" style="width: 0%">
                 <span id="taxProgressText" class="absolute inset-0 text-center text-white flex items-center justify-center font-medium">0%</span>
               </div>
             </div>
             <div class="flex justify-between text-sm mt-2">
-              <span class="font-medium text-gray-700"><i class="fas fa-money-bill-wave mr-1"></i>Gross Income</span>
-              <span id="taxPercentage" class="font-medium text-gray-700">0% goes to tax</span>
-              <span class="font-medium text-gray-700"><i class="fas fa-wallet mr-1"></i>Net Income</span>
+              <span class="font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300"><i class="fas fa-money-bill-wave mr-1"></i>Gross Income</span>
+              <span id="taxPercentage" class="font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300">0% goes to tax</span>
+              <span class="font-medium text-gray-700 dark:text-gray-300 transition-colors duration-300"><i class="fas fa-wallet mr-1"></i>Net Income</span>
             </div>
           </div>
           
           <!-- Monthly/Yearly Comparison - Side by Side -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <!-- Monthly Breakdown -->
-            <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-              <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
-                <i class="fas fa-calendar-day mr-2 text-[#003366]"></i>Monthly Breakdown
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+              <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
+                <i class="fas fa-calendar-day mr-2 text-[#003366] dark:text-blue-300 transition-colors duration-300"></i>Monthly Breakdown
               </h4>
               <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                  <span class="text-gray-600">Gross Salary:</span>
-                  <span id="monthlySalary" class="font-bold text-lg">0/-</span>
+                  <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Gross Salary:</span>
+                  <span id="monthlySalary" class="font-bold text-lg dark:text-white transition-colors duration-300">0/-</span>
                 </div>
                 <div class="flex justify-between items-center">
-                  <span class="text-gray-600">Tax Deduction:</span>
-                  <span id="monthlyTax" class="font-bold text-lg text-red-600">0/-</span>
+                  <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Tax Deduction:</span>
+                  <span id="monthlyTax" class="font-bold text-lg text-red-600 dark:text-red-400 transition-colors duration-300">0/-</span>
                 </div>
-                <div class="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
-                  <span class="text-gray-700 font-medium">Net Salary:</span>
-                  <span id="monthlyAfterTaxCopy" class="font-bold text-lg text-green-600">0/-</span>
+                <div class="flex justify-between items-center border-t border-gray-300 dark:border-gray-600 pt-3 mt-3 transition-colors duration-300">
+                  <span class="text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">Net Salary:</span>
+                  <span id="monthlyAfterTaxCopy" class="font-bold text-lg text-green-600 dark:text-green-400 transition-colors duration-300">0/-</span>
                 </div>
               </div>
             </div>
             
             <!-- Yearly Breakdown -->
-            <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-              <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
-                <i class="fas fa-calendar-alt mr-2 text-[#003366]"></i>Yearly Breakdown
+            <div class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+              <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
+                <i class="fas fa-calendar-alt mr-2 text-[#003366] dark:text-blue-300 transition-colors duration-300"></i>Yearly Breakdown
               </h4>
               <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                  <span class="text-gray-600">Gross Salary:</span>
-                  <span id="yearlySalary" class="font-bold text-lg">0/-</span>
+                  <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Gross Salary:</span>
+                  <span id="yearlySalary" class="font-bold text-lg dark:text-white transition-colors duration-300">0/-</span>
                 </div>
                 <div class="flex justify-between items-center">
-                  <span class="text-gray-600">Tax Deduction:</span>
-                  <span id="yearlyTax" class="font-bold text-lg text-red-600">0/-</span>
+                  <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Tax Deduction:</span>
+                  <span id="yearlyTax" class="font-bold text-lg text-red-600 dark:text-red-400 transition-colors duration-300">0/-</span>
                 </div>
-                <div class="flex justify-between items-center border-t border-gray-300 pt-3 mt-3">
-                  <span class="text-gray-700 font-medium">Net Salary:</span>
-                  <span id="yearlyAfterTax" class="font-bold text-lg text-green-600">0/-</span>
+                <div class="flex justify-between items-center border-t border-gray-300 dark:border-gray-600 pt-3 mt-3 transition-colors duration-300">
+                  <span class="text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">Net Salary:</span>
+                  <span id="yearlyAfterTax" class="font-bold text-lg text-green-600 dark:text-green-400 transition-colors duration-300">0/-</span>
                 </div>
               </div>
             </div>
           </div>
           
           <!-- Tax Details -->
-          <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-shadow mb-6">
-            <h4 class="font-semibold text-[#003366] mb-4 flex items-center">
-              <i class="fas fa-percentage mr-2 text-[#003366]"></i>Tax Details
+          <div class="bg-white dark:bg-gray-800 p-5 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 mb-6">
+            <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
+              <i class="fas fa-percentage mr-2 text-[#003366] dark:text-blue-300 transition-colors duration-300"></i>Tax Details
             </h4>
             <div class="space-y-3">
               <div class="flex justify-between items-center">
-                <span class="text-gray-600">Fixed Tax:</span>
-                <span id="fixedTax" class="font-bold text-lg">0/-</span>
+                <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Fixed Tax:</span>
+                <span id="fixedTax" class="font-bold text-lg dark:text-white transition-colors duration-300">0/-</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-gray-600">Tax Rate:</span>
-                <span id="taxRate" class="font-bold text-lg">0%</span>
+                <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Tax Rate:</span>
+                <span id="taxRate" class="font-bold text-lg dark:text-white transition-colors duration-300">0%</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-gray-600">Tax Bracket:</span>
-                <span id="taxBracket" class="font-bold text-lg">-</span>
+                <span class="text-gray-600 dark:text-gray-300 transition-colors duration-300">Tax Bracket:</span>
+                <span id="taxBracket" class="font-bold text-lg dark:text-white transition-colors duration-300">-</span>
               </div>
             </div>
           </div>
           
           <!-- Print/Share Options -->
-          <div class="mt-8 flex justify-center space-x-4">
-            <button onclick="window.print()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <button onclick="window.print()" class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/40 transition-colors duration-300 flex items-center text-sm font-medium">
               <i class="fas fa-print mr-2"></i> Print Results
             </button>
-            <button onclick="copyResults()" class="px-6 py-3 bg-[#003366]/10 text-[#003366] rounded-lg hover:bg-[#003366]/20 transition-colors flex items-center text-sm font-medium">
+            <button onclick="copyResults()" class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/40 transition-colors duration-300 flex items-center text-sm font-medium">
               <i class="fas fa-copy mr-2"></i> Copy Results
             </button>
+            <button onclick="exportPDF()" class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/40 transition-colors duration-300 flex items-center text-sm font-medium">
+              <i class="fas fa-file-pdf mr-2"></i> Export PDF
+            </button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Saved Calculations Section -->
+<section id="savedCalculationsSection" class="py-8 bg-white dark:bg-gray-900 hidden transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 mb-6 text-center transition-colors duration-300">
+      <i class="fas fa-history mr-2"></i>Your Saved Calculations
+    </h2>
+    
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+      <div id="noSavedCalculations" class="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-300">
+        <i class="fas fa-calculator text-4xl mb-3"></i>
+        <p>You haven't saved any calculations yet.</p>
+      </div>
+      
+      <div id="savedCalculationsList" class="hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
+            <thead>
+              <tr>
+                <th class="px-4 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider transition-colors duration-300">Date</th>
+                <th class="px-4 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider transition-colors duration-300">Tax Year</th>
+                <th class="px-4 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider transition-colors duration-300">Monthly Salary</th>
+                <th class="px-4 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider transition-colors duration-300">Monthly Tax</th>
+                <th class="px-4 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider transition-colors duration-300">Net Salary</th>
+                <th class="px-4 py-3 bg-gray-50 dark:bg-gray-700 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider transition-colors duration-300">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="savedCalculationsTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
+              <!-- Saved calculations will be inserted here -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="mt-4 flex justify-end">
+          <button id="clearAllCalculations" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg flex items-center text-sm font-medium transition-colors duration-300">
+            <i class="fas fa-trash-alt mr-2"></i> Clear All
+          </button>
         </div>
       </div>
     </div>
@@ -204,88 +256,133 @@
 </section>
 
 <!-- Tax Information Section -->
-<section class="py-12 bg-white">
+<section class="py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="text-2xl font-bold text-[#003366] mb-8 text-center">Understanding Pakistan Income Tax</h2>
+    <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 mb-8 text-center transition-colors duration-300">Understanding Pakistan Income Tax</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Tax Slab Information -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 class="text-xl font-semibold text-[#003366] mb-4 flex items-center">
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <h3 class="text-xl font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
           <i class="fas fa-table mr-2"></i> Current Tax Slabs (2024-2025)
         </h3>
         <div class="overflow-x-auto">
-          <table class="min-w-full bg-white border border-gray-200">
+          <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-colors duration-300">
             <thead>
               <tr>
-                <th class="py-2 px-4 border-b text-left">Annual Income (PKR)</th>
-                <th class="py-2 px-4 border-b text-left">Tax Rate</th>
-                <th class="py-2 px-4 border-b text-left">Fixed Tax</th>
+                <th class="py-2 px-4 border-b dark:border-gray-700 text-left text-gray-700 dark:text-gray-300 transition-colors duration-300">Annual Income (PKR)</th>
+                <th class="py-2 px-4 border-b dark:border-gray-700 text-left text-gray-700 dark:text-gray-300 transition-colors duration-300">Tax Rate</th>
+                <th class="py-2 px-4 border-b dark:border-gray-700 text-left text-gray-700 dark:text-gray-300 transition-colors duration-300">Fixed Tax</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="py-2 px-4 border-b">Up to 600,000</td>
-                <td class="py-2 px-4 border-b">0%</td>
-                <td class="py-2 px-4 border-b">0</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">Up to 600,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">0%</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">0</td>
               </tr>
               <tr>
-                <td class="py-2 px-4 border-b">600,001 to 1,200,000</td>
-                <td class="py-2 px-4 border-b">5%</td>
-                <td class="py-2 px-4 border-b">0</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">600,001 to 1,200,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">5%</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">0</td>
               </tr>
               <tr>
-                <td class="py-2 px-4 border-b">1,200,001 to 2,200,000</td>
-                <td class="py-2 px-4 border-b">15%</td>
-                <td class="py-2 px-4 border-b">30,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">1,200,001 to 2,200,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">15%</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">30,000</td>
               </tr>
-              <td class="py-2 px-4 border-b">1,200,001 to 2,200,000</td>
-              <td class="py-2 px-4 border-b">15%</td>
-              <td class="py-2 px-4 border-b">30,000</td>
-            </tr>
-            <tr>
-              <td class="py-2 px-4 border-b">2,200,001 to 4,200,000</td>
-              <td class="py-2 px-4 border-b">20%</td>
-              <td class="py-2 px-4 border-b">180,000</td>
-            </tr>
-            <tr>
-              <td class="py-2 px-4 border-b">4,200,001 to 6,200,000</td>
-              <td class="py-2 px-4 border-b">25%</td>
-              <td class="py-2 px-4 border-b">580,000</td>
-            </tr>
-            <tr>
-              <td class="py-2 px-4 border-b">Above 6,200,000</td>
-              <td class="py-2 px-4 border-b">32.5%</td>
-              <td class="py-2 px-4 border-b">1,080,000</td>
-            </tr>
-          </tbody>
-        </table>
+              <tr>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">2,200,001 to 4,200,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">20%</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">180,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">4,200,001 to 6,200,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">25%</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">580,000</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">Above 6,200,000</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">32.5%</td>
+                <td class="py-2 px-4 border-b dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">1,080,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
     
-    <!-- Tax Calculation Process -->
-    <div class="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-200">
-      <h3 class="text-xl font-semibold text-[#003366] mb-4 flex items-center">
-        <i class="fas fa-calculator mr-2"></i> How Tax is Calculated
-      </h3>
-      <div class="space-y-4 text-gray-700">
-        <p>Pakistan follows a progressive tax system where higher income levels are taxed at higher rates. Here's how your income tax is calculated:</p>
-        
-        <ol class="list-decimal pl-5 space-y-2">
-          <li>Your monthly salary is multiplied by 12 to get your annual income.</li>
-          <li>Based on your annual income, the applicable tax bracket is determined.</li>
-          <li>The tax calculation includes a fixed amount plus a percentage of income exceeding the lower limit of your bracket.</li>
-          <li>The calculated annual tax is divided by 12 to determine your monthly tax liability.</li>
-        </ol>
-        
-        <p class="text-sm italic mt-4">Note: This calculator provides estimates based on the standard tax slabs. Actual tax liability may vary based on additional income sources, deductions, and exemptions.</p>
+      <!-- Tax Calculation Process -->
+      <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+        <h3 class="text-xl font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center transition-colors duration-300">
+          <i class="fas fa-calculator mr-2"></i> How Tax is Calculated
+        </h3>
+        <div class="space-y-4 text-gray-700 dark:text-gray-300 transition-colors duration-300">
+          <p>Pakistan follows a progressive tax system where higher income levels are taxed at higher rates. Here's how your income tax is calculated:</p>
+          
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Your monthly salary is multiplied by 12 to get your annual income.</li>
+            <li>Based on your annual income, the applicable tax bracket is determined.</li>
+            <li>The tax calculation includes a fixed amount plus a percentage of income exceeding the lower limit of your bracket.</li>
+            <li>The calculated annual tax is divided by 12 to determine your monthly tax liability.</li>
+          </ol>
+          
+          <p class="text-sm italic mt-4">Note: This calculator provides estimates based on the standard tax slabs. Actual tax liability may vary based on additional income sources, deductions, and exemptions.</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
 <script>
+// Dark mode functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Check for saved theme preference or use system preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+  
+  // Dark mode toggle
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  darkModeToggle.addEventListener('click', function() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+  
+  // Initialize saved calculations
+  loadSavedCalculations();
+  
+  // Add Enter key support for salary input
+  const salaryInput = document.getElementById('salary');
+  if (salaryInput) {
+    salaryInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        calculateTax();
+      }
+    });
+  }
+  
+  // Save calculation button
+  const saveCalculationBtn = document.getElementById('saveCalculation');
+  if (saveCalculationBtn) {
+    saveCalculationBtn.addEventListener('click', saveCurrentCalculation);
+  }
+  
+  // Clear all calculations button
+  const clearAllBtn = document.getElementById('clearAllCalculations');
+  if (clearAllBtn) {
+    clearAllBtn.addEventListener('click', clearAllCalculations);
+  }
+});
+
 // Format currency function
 function formatCurrency(amount) {
   return amount.toLocaleString('en-PK') + "/-";
@@ -438,6 +535,209 @@ Tax Year: ${document.getElementById("taxSlab").value}
   }, 2000);
 }
 
+// Export results to PDF
+function exportPDF() {
+  // Check if jsPDF is loaded
+  if (typeof jspdf === 'undefined') {
+    // Load jsPDF dynamically
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    script.onload = function() {
+      generatePDF();
+    };
+    document.head.appendChild(script);
+  } else {
+    generatePDF();
+  }
+}
+
+function generatePDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  
+  // Add title
+  doc.setFontSize(20);
+  doc.setTextColor(0, 51, 102);
+  doc.text("Pakistan Salary Tax Calculation", 105, 20, { align: "center" });
+  
+  // Add date
+  doc.setFontSize(10);
+  doc.setTextColor(100, 100, 100);
+  doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 105, 30, { align: "center" });
+  
+  // Add tax year
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  doc.text(`Tax Year: ${document.getElementById("taxYearDisplay").textContent}`, 20, 45);
+  
+  // Add monthly breakdown
+  doc.setFontSize(14);
+  doc.setTextColor(0, 51, 102);
+  doc.text("Monthly Breakdown", 20, 60);
+  
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  doc.text(`Gross Salary: ${document.getElementById("monthlySalary").textContent}`, 30, 70);
+  doc.text(`Tax Deduction: ${document.getElementById("monthlyTax").textContent}`, 30, 80);
+  doc.text(`Net Salary: ${document.getElementById("monthlyAfterTaxCopy").textContent}`, 30, 90);
+  
+  // Add yearly breakdown
+  doc.setFontSize(14);
+  doc.setTextColor(0, 51, 102);
+  doc.text("Yearly Breakdown", 20, 110);
+  
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  doc.text(`Gross Salary: ${document.getElementById("yearlySalary").textContent}`, 30, 120);
+  doc.text(`Tax Deduction: ${document.getElementById("yearlyTax").textContent}`, 30, 130);
+  doc.text(`Net Salary: ${document.getElementById("yearlyAfterTax").textContent}`, 30, 140);
+  
+  // Add tax details
+  doc.setFontSize(14);
+  doc.setTextColor(0, 51, 102);
+  doc.text("Tax Details", 20, 160);
+  
+  doc.setFontSize(12);
+  doc.setTextColor(0, 0, 0);
+  doc.text(`Fixed Tax: ${document.getElementById("fixedTax").textContent}`, 30, 170);
+  doc.text(`Tax Rate: ${document.getElementById("taxRate").textContent}`, 30, 180);
+  doc.text(`Tax Bracket: ${document.getElementById("taxBracket").textContent}`, 30, 190);
+  doc.text(`Effective Tax Rate: ${document.getElementById("effectiveTaxRate").textContent}`, 30, 200);
+  
+  // Add footer
+  doc.setFontSize(10);
+  doc.setTextColor(100, 100, 100);
+  doc.text("Generated by GoWakeel Tax Calculator", 105, 280, { align: "center" });
+  
+  // Save the PDF
+  doc.save("tax-calculation.pdf");
+  
+  // Show a temporary notification
+  const button = document.querySelector('button[onclick="exportPDF()"]');
+  const originalText = button.innerHTML;
+  button.innerHTML = '<i class="fas fa-check mr-2"></i> PDF Exported!';
+  setTimeout(() => {
+    button.innerHTML = originalText;
+  }, 2000);
+}
+
+// Save current calculation to localStorage
+function saveCurrentCalculation() {
+  // Check if calculation has been performed
+  const monthlySalary = document.getElementById("monthlySalary").textContent;
+  if (monthlySalary === "0/-") {
+    alert("Please calculate tax before saving");
+    return;
+  }
+  
+  // Get calculation data
+  const calculation = {
+    id: Date.now(),
+    date: new Date().toLocaleDateString(),
+    taxYear: document.getElementById("taxYearDisplay").textContent,
+    monthlySalary: document.getElementById("monthlySalary").textContent,
+    monthlyTax: document.getElementById("monthlyTax").textContent,
+    netSalary: document.getElementById("monthlyAfterTaxCopy").textContent,
+    effectiveTaxRate: document.getElementById("effectiveTaxRate").textContent
+  };
+  
+  // Get existing calculations from localStorage
+  let savedCalculations = JSON.parse(localStorage.getItem('taxCalculations')) || [];
+  
+  // Add new calculation
+  savedCalculations.push(calculation);
+  
+  // Save to localStorage
+  localStorage.setItem('taxCalculations', JSON.stringify(savedCalculations));
+  
+  // Update UI
+  loadSavedCalculations();
+  
+  // Show saved calculations section
+  document.getElementById("savedCalculationsSection").classList.remove("hidden");
+  
+  // Show a temporary notification
+  const button = document.getElementById("saveCalculation");
+  const originalText = button.innerHTML;
+  button.innerHTML = '<i class="fas fa-check mr-2"></i> Saved!';
+  setTimeout(() => {
+    button.innerHTML = originalText;
+  }, 2000);
+  
+  // Scroll to saved calculations
+  document.getElementById("savedCalculationsSection").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// Load saved calculations from localStorage
+function loadSavedCalculations() {
+  const savedCalculations = JSON.parse(localStorage.getItem('taxCalculations')) || [];
+  
+  // Show/hide appropriate elements
+  if (savedCalculations.length > 0) {
+    document.getElementById("noSavedCalculations").classList.add("hidden");
+    document.getElementById("savedCalculationsList").classList.remove("hidden");
+    document.getElementById("savedCalculationsSection").classList.remove("hidden");
+    
+    // Populate table
+    const tableBody = document.getElementById("savedCalculationsTable");
+    tableBody.innerHTML = '';
+    
+    savedCalculations.forEach(calc => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-300 transition-colors duration-300">${calc.date}</td>
+        <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-300 transition-colors duration-300">${calc.taxYear}</td>
+        <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-300 transition-colors duration-300">${calc.monthlySalary}</td>
+        <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-300 transition-colors duration-300">${calc.monthlyTax}</td>
+        <td class="px-4 py-3 whitespace-nowrap text-gray-700 dark:text-gray-300 transition-colors duration-300">${calc.netSalary}</td>
+        <td class="px-4 py-3 whitespace-nowrap">
+          <button onclick="deleteCalculation(${calc.id})" class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 transition-colors duration-300">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
+  } else {
+    document.getElementById("noSavedCalculations").classList.remove("hidden");
+    document.getElementById("savedCalculationsList").classList.add("hidden");
+  }
+}
+
+// Delete a specific calculation
+function deleteCalculation(id) {
+  // Get existing calculations
+  let savedCalculations = JSON.parse(localStorage.getItem('taxCalculations')) || [];
+  
+  // Filter out the calculation to delete
+  savedCalculations = savedCalculations.filter(calc => calc.id !== id);
+  
+  // Save updated list
+  localStorage.setItem('taxCalculations', JSON.stringify(savedCalculations));
+  
+  // Update UI
+  loadSavedCalculations();
+  
+  // Hide section if no calculations left
+  if (savedCalculations.length === 0) {
+    document.getElementById("savedCalculationsSection").classList.add("hidden");
+  }
+}
+
+// Clear all saved calculations
+function clearAllCalculations() {
+  if (confirm("Are you sure you want to delete all saved calculations?")) {
+    // Clear localStorage
+    localStorage.removeItem('taxCalculations');
+    
+    // Update UI
+    loadSavedCalculations();
+    
+    // Hide section
+    document.getElementById("savedCalculationsSection").classList.add("hidden");
+  }
+}
+
 // FAQ Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
   const faqQuestions = document.querySelectorAll('.faq-question');
@@ -457,64 +757,53 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
-  // Add Enter key support for salary input
-  const salaryInput = document.getElementById('salary');
-  if (salaryInput) {
-    salaryInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        calculateTax();
-      }
-    });
-  }
 });
 </script>
 
 <!-- Tax Saving Tips Section -->
-<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <h2 class="text-2xl font-bold text-[#003366] mb-8 text-center">Tax Saving Tips for Salaried Individuals</h2>
+  <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 mb-8 text-center transition-colors duration-300">Tax Saving Tips for Salaried Individuals</h2>
   
-  <div class="bg-white rounded-xl shadow-md border border-[#003366]/10 p-6">
-    <p class="text-gray-700 mb-6">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-[#003366]/10 dark:border-blue-900/30 p-6 transition-colors duration-300">
+    <p class="text-gray-700 dark:text-gray-300 mb-6 transition-colors duration-300">
       There are several legal ways to reduce your tax liability in Pakistan. Here are some strategies that can help you save on taxes:
     </p>
     
     <ul class="space-y-4">
       <li class="flex items-start">
-        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <i class="fas fa-check-circle text-green-500 dark:text-green-400 mt-1 mr-2 transition-colors duration-300"></i>
         <div>
-          <strong>Retirement Contributions:</strong>
-          <p class="text-sm text-gray-600">Contributions to approved pension funds are tax-deductible up to 20% of your taxable income.</p>
+          <strong class="text-gray-800 dark:text-gray-200 transition-colors duration-300">Retirement Contributions:</strong>
+          <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Contributions to approved pension funds are tax-deductible up to 20% of your taxable income.</p>
         </div>
       </li>
       <li class="flex items-start">
-        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <i class="fas fa-check-circle text-green-500 dark:text-green-400 mt-1 mr-2 transition-colors duration-300"></i>
         <div>
-          <strong>Health Insurance Premiums:</strong>
-          <p class="text-sm text-gray-600">Deduct health insurance premiums paid for yourself and your family.</p>
+          <strong class="text-gray-800 dark:text-gray-200 transition-colors duration-300">Health Insurance Premiums:</strong>
+          <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Deduct health insurance premiums paid for yourself and your family.</p>
         </div>
       </li>
       <li class="flex items-start">
-        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <i class="fas fa-check-circle text-green-500 dark:text-green-400 mt-1 mr-2 transition-colors duration-300"></i>
         <div>
-          <strong>Education Expenses:</strong>
-          <p class="text-sm text-gray-600">Claim tax credits for education expenses at recognized institutions.</p>
+          <strong class="text-gray-800 dark:text-gray-200 transition-colors duration-300">Education Expenses:</strong>
+          <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Claim tax credits for education expenses at recognized institutions.</p>
         </div>
       </li>
       <li class="flex items-start">
-        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <i class="fas fa-check-circle text-green-500 dark:text-green-400 mt-1 mr-2 transition-colors duration-300"></i>
         <div>
-          <strong>Zakat Deduction:</strong>
-          <p class="text-sm text-gray-600">Zakat paid under the Zakat Ordinance is deductible from your taxable income.</p>
+          <strong class="text-gray-800 dark:text-gray-200 transition-colors duration-300">Zakat Deduction:</strong>
+          <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Zakat paid under the Zakat Ordinance is deductible from your taxable income.</p>
         </div>
       </li>
       <li class="flex items-start">
-        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+        <i class="fas fa-check-circle text-green-500 dark:text-green-400 mt-1 mr-2 transition-colors duration-300"></i>
         <div>
-          <strong>Charitable Donations:</strong>
-          <p class="text-sm text-gray-600">Donations to approved non-profit organizations can be claimed as tax credits.</p>
+          <strong class="text-gray-800 dark:text-gray-200 transition-colors duration-300">Charitable Donations:</strong>
+          <p class="text-sm text-gray-600 dark:text-gray-400 transition-colors duration-300">Donations to approved non-profit organizations can be claimed as tax credits.</p>
         </div>
       </li>
     </ul>
@@ -523,59 +812,59 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <!-- FAQ Section -->
-<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5">
+<section class="py-12 bg-gradient-to-r from-white to-[#003366]/5 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <h2 class="text-2xl font-bold text-[#003366] mb-8 text-center">Frequently Asked Questions</h2>
+  <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 mb-8 text-center transition-colors duration-300">Frequently Asked Questions</h2>
   
-  <div class="bg-white rounded-xl shadow-md border border-[#003366]/10 overflow-hidden">
-    <div class="divide-y divide-gray-200">
+  <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-[#003366]/10 dark:border-blue-900/30 overflow-hidden transition-colors duration-300">
+    <div class="divide-y divide-gray-200 dark:divide-gray-700 transition-colors duration-300">
       <div class="faq-item">
         <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
-          <span class="text-lg font-semibold text-[#003366]">How is income tax calculated in Pakistan?</span>
-          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+          <span class="text-lg font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300">How is income tax calculated in Pakistan?</span>
+          <i class="fas fa-chevron-down text-[#003366] dark:text-blue-300 transform transition-transform duration-300"></i>
         </button>
         <div class="faq-answer px-6 pb-6 hidden">
-          <p class="text-gray-700">Income tax in Pakistan is calculated based on your annual income and the applicable tax slab. The government sets different tax rates for different income brackets. For salaried individuals, the tax is typically deducted at source by the employer as Withholding Tax.</p>
+          <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">Income tax in Pakistan is calculated based on your annual income and the applicable tax slab. The government sets different tax rates for different income brackets. For salaried individuals, the tax is typically deducted at source by the employer as Withholding Tax.</p>
         </div>
       </div>
       
       <div class="faq-item">
         <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
-          <span class="text-lg font-semibold text-[#003366]">Do I need to file a tax return if my employer deducts tax?</span>
-          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+          <span class="text-lg font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300">Do I need to file a tax return if my employer deducts tax?</span>
+          <i class="fas fa-chevron-down text-[#003366] dark:text-blue-300 transform transition-transform duration-300"></i>
         </button>
         <div class="faq-answer px-6 pb-6 hidden">
-          <p class="text-gray-700">Yes, even if your employer deducts tax from your salary, you are still required to file an annual tax return if your annual income exceeds the minimum taxable limit. Filing a return allows you to claim tax credits and refunds for excess tax paid.</p>
+          <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">Yes, even if your employer deducts tax from your salary, you are still required to file an annual tax return if your annual income exceeds the minimum taxable limit. Filing a return allows you to claim tax credits and refunds for excess tax paid.</p>
         </div>
       </div>
       
       <div class="faq-item">
         <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
-          <span class="text-lg font-semibold text-[#003366]">What is the deadline for filing income tax returns in Pakistan?</span>
-          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+          <span class="text-lg font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300">What is the deadline for filing income tax returns in Pakistan?</span>
+          <i class="fas fa-chevron-down text-[#003366] dark:text-blue-300 transform transition-transform duration-300"></i>
         </button>
         <div class="faq-answer px-6 pb-6 hidden">
-          <p class="text-gray-700">The deadline for filing income tax returns in Pakistan is typically September 30th for salaried individuals. However, the FBR may extend this deadline. It's advisable to check the current year's deadline on the FBR website or with a tax professional.</p>
+          <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">The deadline for filing income tax returns in Pakistan is typically September 30th for salaried individuals. However, the FBR may extend this deadline. It's advisable to check the current year's deadline on the FBR website or with a tax professional.</p>
         </div>
       </div>
       
       <div class="faq-item">
         <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
-          <span class="text-lg font-semibold text-[#003366]">How can I reduce my tax liability legally?</span>
-          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+          <span class="text-lg font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300">How can I reduce my tax liability legally?</span>
+          <i class="fas fa-chevron-down text-[#003366] dark:text-blue-300 transform transition-transform duration-300"></i>
         </button>
         <div class="faq-answer px-6 pb-6 hidden">
-          <p class="text-gray-700">You can reduce your tax liability legally by claiming tax credits and deductions available under the tax laws. These include investments in approved pension funds, health insurance premiums, education expenses, charitable donations, and zakat payments. Consult with a tax professional to maximize your tax savings.</p>
+          <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">You can reduce your tax liability legally by claiming tax credits and deductions available under the tax laws. These include investments in approved pension funds, health insurance premiums, education expenses, charitable donations, and zakat payments. Consult with a tax professional to maximize your tax savings.</p>
         </div>
       </div>
       
       <div class="faq-item">
         <button class="faq-question w-full flex items-center justify-between p-6 text-left focus:outline-none">
-          <span class="text-lg font-semibold text-[#003366]">What happens if I don't file my tax return?</span>
-          <i class="fas fa-chevron-down text-[#003366] transform transition-transform duration-300"></i>
+          <span class="text-lg font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300">What happens if I don't file my tax return?</span>
+          <i class="fas fa-chevron-down text-[#003366] dark:text-blue-300 transform transition-transform duration-300"></i>
         </button>
         <div class="faq-answer px-6 pb-6 hidden">
-          <p class="text-gray-700">Failure to file a tax return when required can result in penalties, including fines and surcharges. Additionally, non-filers face higher withholding tax rates on various transactions such as banking, property, and vehicle purchases. Your name may also be removed from the Active Taxpayers List (ATL), which can affect your ability to conduct certain financial transactions.</p>
+          <p class="text-gray-700 dark:text-gray-300 transition-colors duration-300">Failure to file a tax return when required can result in penalties, including fines and surcharges. Additionally, non-filers face higher withholding tax rates on various transactions such as banking, property, and vehicle purchases. Your name may also be removed from the Active Taxpayers List (ATL), which can affect your ability to conduct certain financial transactions.</p>
         </div>
       </div>
     </div>
@@ -584,9 +873,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <!-- Call to Action Section -->
-<section class="py-12 bg-white">
+<section class="py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-[#003366] rounded-xl p-8 text-center">
+    <div class="bg-[#003366] dark:bg-blue-900 rounded-xl p-8 text-center transition-colors duration-300">
       <h2 class="text-2xl font-bold text-white mb-4">Need Professional Tax Assistance?</h2>
       <p class="text-white/80 max-w-2xl mx-auto mb-6">Our tax experts can help you with tax planning, return filing, and maximizing your tax savings.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -600,4 +889,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div>
 </section>
+
+<!-- Add jsPDF library for PDF export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 {% endblock Content %}
