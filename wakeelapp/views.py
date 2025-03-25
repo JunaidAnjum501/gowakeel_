@@ -4,20 +4,8 @@ from .models import Blogs, BlogCategory, VideoCategory, Videos
 
 
 def index(request):
-    services = [
-        {"slug":"NTN-Registration", "name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/NTNRegistraion.png"},
-        {"slug":"Annual-Income-Tax-Return-(Salary)", "name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "wakeelapp/Img/annualtaxsalary.png"},
-        {"slug":"Annual-Income-Tax-Return-(Business)", "name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "wakeelapp/Img/annualtaxbus.png"},
-        {"slug":"GST-Registration", "name": "GST Registration", "price": "5000 PKR", "image": "wakeelapp/Img/gst.png"},
-        {"slug":"Monthly-Sales-Tax-Return-Filing", "name": "Monthly Sales Tax Return Filing", "price": "5000 PKR", "image": "wakeelapp/Img/monthly.png"},
-        {"slug":"Company-Registration", "name": "Company Registration", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/companyregistration.png"},
-        {"slug":"Trade-Marks-&-Partnership", "name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/Trademarks.png"},
-    ]
 
-    
-    context = {'services': services}
-
-    return render(request, 'wakeelapp/index.html', context)
+    return render(request, 'wakeelapp/index.html')
 
 
 def calculator(request):
@@ -54,12 +42,25 @@ def zakatcalculator(request):
 def currencyconvert(request):
     return render(request, 'wakeelapp/currencyconvert.html')
 
+def services(request):
+    services = [
+        {"slug":"NTN-Registration", "name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/NTNRegistraion.png"},
+        {"slug":"Annual-Income-Tax-Return-(Salary)", "name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "wakeelapp/Img/annualtaxsalary.png"},
+        {"slug":"Annual-Income-Tax-Return-(Business)", "name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "wakeelapp/Img/annualtaxbus.png"},
+        {"slug":"GST-Registration", "name": "GST Registration", "price": "5000 PKR", "image": "wakeelapp/Img/gst.png"},
+        {"slug":"Monthly-Sales-Tax-Return-Filing", "name": "Monthly Sales Tax Return Filing", "price": "5000 PKR", "image": "wakeelapp/Img/monthly.png"},
+        {"slug":"Company-Registration", "name": "Company Registration", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/companyregistration.png"},
+        {"slug":"Trade-Marks-&-Partnership", "name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/Trademarks.png"},
+    ]
+
+    
+    context = {'services': services}
+    return render(request, 'wakeelapp/services.html', context)    
+
 
 def blogdetail(request, blogs_slug):
     try:
         blog = Blogs.objects.get(slug=blogs_slug)
-        from icecream import ic
-        ic(blogs)
         blogs = Blogs.objects.all().order_by('-created_at')[:3]
     
     except:

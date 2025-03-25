@@ -10,7 +10,7 @@
             <nav class="flex" aria-label="Breadcrumb">
                 <ol class="inline-flex items-center space-x-1 md:space-x-3">
                     <li class="inline-flex items-center">
-                        <a href="{% url 'wakeelapp:index' %}" class="text-sm text-gray-700 hover:text-[#003366]">
+                        <a href="{% url 'wakeelapp:index' %}" class="text-sm text-gray-700 hover:text-[#003366] transition-colors duration-300">
                             <i class="fas fa-home mr-1"></i> Home
                         </a>
                     </li>
@@ -24,58 +24,84 @@
             </nav>
         </div>
 
-        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-[#003366]/10">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-[#003366]/10 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
             <div class="flex flex-col md:flex-row">
                 <!-- Service Details -->
                 <div class="w-full md:w-1/2 p-8">
-                    <div class="flex items-center mb-4">
-                        <span class="bg-[#003366]/10 text-[#003366] text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    <div class="flex items-center mb-4 animate-fadeIn">
+                        <span class="bg-[#003366]/10 text-[#003366] text-xs font-medium px-3 py-1 rounded-full flex items-center">
+                            <svg class="w-3 h-3 mr-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6H16V4C16 2.89 15.11 2 14 2H10C8.89 2 8 2.89 8 4V6H4C2.89 6 2 6.89 2 8V19C2 20.11 2.89 21 4 21H20C21.11 21 22 20.11 22 19V8C22 6.89 21.11 6 20 6ZM10 4H14V6H10V4ZM20 19H4V8H20V19Z" fill="currentColor"/>
+                            </svg>
                             Professional Service
                         </span>
                     </div>
                     
-                    <h1 class="text-3xl font-bold text-[#003366] mb-4">{{ service_name }}</h1>
+                    <h1 class="text-3xl font-bold text-[#003366] mb-4 animate-slideInLeft">{{ service_name }}</h1>
                     
-                    <div class="prose max-w-none mb-6">
+                    <div class="prose max-w-none mb-6 animate-fadeIn">
                         <p class="text-gray-700">{{ service.description }}</p>
                     </div>
                     
-                    <div class="bg-[#003366]/5 p-4 rounded-lg mb-6">
+                    <div class="bg-gradient-to-r from-[#003366]/10 to-[#003366]/5 p-5 rounded-lg mb-6 transform transition-all duration-500 hover:scale-105 shadow-sm hover:shadow-md">
                         <div class="flex items-center">
-                            <i class="fas fa-tag text-[#003366] mr-2"></i>
+                            <svg class="w-5 h-5 text-[#003366] mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21.41 11.58L12.41 2.58C12.05 2.22 11.55 2 11 2H4C2.9 2 2 2.9 2 4V11C2 11.55 2.22 12.05 2.59 12.42L11.59 21.42C11.95 21.78 12.45 22 13 22C13.55 22 14.05 21.78 14.41 21.41L21.41 14.41C21.78 14.05 22 13.55 22 13C22 12.45 21.77 11.94 21.41 11.58ZM5.5 7C4.67 7 4 6.33 4 5.5C4 4.67 4.67 4 5.5 4C6.33 4 7 4.67 7 5.5C7 6.33 6.33 7 5.5 7Z" fill="currentColor"/>
+                            </svg>
                             <h2 class="text-xl font-bold text-[#003366]">Pricing</h2>
                         </div>
-                        <div class="mt-2 text-2xl font-semibold text-[#003366]">{{ service.price }}</div>
+                        <div class="mt-2 text-2xl font-semibold text-[#003366] flex items-center">
+                            <span class="animate-pulse">{{ service.price }}</span>
+                            <svg class="w-5 h-5 ml-2 text-green-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/>
+                            </svg>
+                        </div>
                     </div>
                     
-                    <div class="mb-6">
+                    <div class="mb-6 animate-slideInRight">
                         <h2 class="text-xl font-bold text-[#003366] mb-4 flex items-center">
-                            <i class="fas fa-clipboard-list mr-2"></i> Requirements
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6C4.9 2 4.01 2.9 4.01 4L4 20C4 21.1 4.89 22 5.99 22H18C19.1 22 20 21.1 20 20V8L14 2ZM16 18H8V16H16V18ZM16 14H8V12H16V14ZM13 9V3.5L18.5 9H13Z" fill="currentColor"/>
+                            </svg>
+                            Requirements
                         </h2>
-                        <ul class="space-y-2">
+                        <ul class="space-y-3">
                             {% for req in service.requirements %}
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-[#003366] mt-1 mr-2"></i>
+                            <li class="flex items-start p-2 rounded-md hover:bg-[#003366]/5 transition-colors duration-300">
+                                <svg class="w-5 h-5 text-[#003366] mt-0.5 mr-2 animate-bounce" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="currentColor"/>
+                                </svg>
                                 <span>{{ req }}</span>
                             </li>
                             {% endfor %}
                         </ul>
                     </div>
                     
-                    <div class="flex space-x-4 mt-8">
-                        <a href="https://wa.me/923369969997?text=I'm%20interested%20in%20{{ service_name|urlencode }}" class="px-4 py-2 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center">
-                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                    <div class="flex space-x-4 mt-8 animate-fadeIn">
+                        <a href="https://wa.me/923369969997?text=I'm%20interested%20in%20{{ service_name|urlencode }}" class="px-5 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#128C7E] transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.6 14.0001C16.4 13.9001 15.1 13.3001 14.9 13.2001C14.7 13.1001 14.5 13.1001 14.3 13.3001C14.1 13.5001 13.7 14.1001 13.5 14.3001C13.4 14.5001 13.2 14.5001 13 14.4001C12.3 14.1001 11.6 13.7001 11 13.2001C10.5 12.7001 10 12.1001 9.6 11.5001C9.5 11.3001 9.6 11.1001 9.7 11.0001C9.8 10.9001 9.9 10.7001 10.1 10.6001C10.2 10.5001 10.3 10.3001 10.3 10.2001C10.4 10.1001 10.4 9.9001 10.3 9.8001C10.2 9.7001 9.7 8.5001 9.5 8.0001C9.4 7.3001 9.2 7.3001 9 7.3001C8.9 7.3001 8.7 7.3001 8.5 7.3001C8.3 7.3001 8 7.5001 7.9 7.6001C7.3 8.2001 7 8.9001 7 9.7001C7.1 10.6001 7.4 11.5001 8 12.3001C9.1 13.9001 10.5 15.2001 12.2 16.0001C12.7 16.2001 13.1 16.4001 13.6 16.5001C14.1 16.7001 14.6 16.7001 15.2 16.6001C15.9 16.5001 16.5 16.0001 16.9 15.4001C17.1 15.0001 17.1 14.6001 17 14.2001C17 14.2001 16.8 14.1001 16.6 14.0001ZM19.1 4.9001C15.2 1.0001 8.9 1.0001 5 4.9001C1.8 8.1001 1.2 13.0001 3.4 16.9001L2 22.0001L7.3 20.6001C8.8 21.4001 10.4 21.8001 12 21.8001C17.5 21.8001 21.9 17.4001 21.9 11.9001C22 9.3001 20.9 6.8001 19.1 4.9001ZM16.4 18.9001C15.1 19.7001 13.6 20.2001 12 20.2001C10.5 20.2001 9.1 19.8001 7.8 19.1001L7.5 18.9001L4.4 19.7001L5.2 16.7001L5 16.4001C2.6 12.4001 3.8 7.4001 7.7 4.9001C11.6 2.4001 16.6 3.7001 19 7.5001C21.4 11.4001 20.3 16.5001 16.4 18.9001Z" fill="currentColor"/>
+                            </svg>
+                            WhatsApp
                         </a>
-                        <a href="#contact-form" class="px-4 py-2 bg-[#003366] text-white font-semibold rounded-lg hover:bg-[#002244] transition-all duration-300 flex items-center justify-center">
-                            <i class="fas fa-envelope mr-2"></i> Contact Us
+                        <a href="#contact-form" class="px-5 py-3 bg-gradient-to-r from-[#003366] to-[#0055b3] text-white font-semibold rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
+                            </svg>
+                            Contact Us
                         </a>
                     </div>
                 </div>
                 
+                <!-- ... existing code ... -->
+                
                 <!-- Contact Form -->
-                <div id="contact-form" class="w-full md:w-1/2 p-8 bg-[#f8f9fa]">
+                <div id="contact-form" class="w-full md:w-1/2 p-8 bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] animate-fadeIn">
                     <h2 class="text-2xl font-bold text-[#003366] mb-6 flex items-center">
-                        <i class="fas fa-paper-plane mr-2"></i> Send Inquiry
+                        <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+                        </svg>
+                        Send Inquiry
                     </h2>
                     
                     <form method="post" action="" class="space-y-4">
@@ -166,9 +192,12 @@
                         
                         <button
                             type="submit"
-                            class="w-full px-6 py-3 bg-gradient-to-r from-[#003366] to-[#0066cc] text-white font-semibold rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center"
+                            class="w-full px-6 py-3 bg-gradient-to-r from-[#003366] to-[#0066cc] text-white font-semibold rounded-lg hover:from-[#002244] hover:to-[#004c99] transition-all duration-300 flex items-center justify-center shadow-md hover:shadow-xl transform hover:-translate-y-1 group"
                         >
-                            <i class="fas fa-paper-plane mr-2"></i> Submit Inquiry
+                            <svg class="w-5 h-5 mr-2 group-hover:animate-bounce" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+                            </svg>
+                            Submit Inquiry
                         </button>
                     </form>
                 </div>
@@ -176,4 +205,37 @@
         </div>
     </div>
 </section>
+
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.8s ease-in-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-in-out;
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+</style>
 {% endblock Content %}

@@ -24,6 +24,7 @@ urlpatterns =[
     path('blogdetail/<slug:blogs_slug>/', views.blogdetail, name='blogdetail'),
     path('zakatcalculator/', views.zakatcalculator, name="zakatcalculator"),
     path('currencyconvert/', views.currencyconvert, name="currencyconvert"),
+    path('services/', views.services, name="services"),
 ]
 
 

@@ -248,7 +248,7 @@
     <!-- Navbar -->
     <nav
       x-data="{ isOpen: false, toolsOpen: false, generalToolsOpen: false }"
-      class="relative w-full sticky top-0 z-50 glass-effect shadow-lg dark-transition"
+      class="relative w-full top-0 z-50 glass-effect shadow-lg dark-transition"
       :class="{ 'dark': darkMode }"
     >
       <div
@@ -357,7 +357,7 @@
             :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
             >Contact</a
           >
-        </div>
+        
 
         <!-- Dark Mode Toggle and Buttons -->
         <div class="flex items-center space-x-4 mt-4 md:mt-0">
@@ -411,6 +411,7 @@
             <span>Chat Now</span>
           </a>
         </div>
+      </div>
       </div>
     </nav>
     <!-- Navbar End -->
@@ -1108,174 +1109,153 @@
     {% endblock Content %}
 
 <!-- Footer -->
-<footer class="bg-[#003366] text-white py-12 dark:bg-[#1a2e4a]">
+<footer class="pt-20 pb-10" :class="darkMode ? 'bg-dark-200 text-gray-300' : 'bg-gray-900 text-gray-300'">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Company Info -->
-            <div>
-              <div class="flex items-center mb-4">
-                <img
-                  src="{% static 'wakeelapp/Img/logo2.png' %}"
-                  alt="GoWakeel Logo"
-                  class="h-10 mr-2"
-                />
-                <h3 class="text-xl font-bold">GOWAKEEL</h3>
-              </div>
-              <p class="text-gray-300 mb-4">
-                Your trusted partner for tax filing, company registration, and legal
-                services in Pakistan.
-              </p>
-              <div class="flex space-x-4">
-                <a
-                  href="#"
-                  class="text-white hover:text-blue-400 transition-colors"
-                >
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a
-                  href="#"
-                  class="text-white hover:text-blue-400 transition-colors"
-                >
-                  <i class="fab fa-twitter"></i>
-                </a>
-                <a
-                  href="#"
-                  class="text-white hover:text-pink-400 transition-colors"
-                >
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a
-                  href="#"
-                  class="text-white hover:text-blue-400 transition-colors"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </div>
-            </div>
-      
-            <!-- Quick Links -->
-            <div>
-              <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-              <ul class="space-y-2">
-                <li>
-                  <a href="{% url 'wakeelapp:index' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Home
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:about' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Services
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:blogs' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:faq' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>FAQs
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:contact' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-      
-            <!-- Services -->
-            <div>
-              <h3 class="text-xl font-bold mb-4">Our Services</h3>
-              <ul class="space-y-2">
-                <li>
-                  <a href="{% url 'wakeelapp:service_detail' 'income-tax-filing' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Income Tax Filing
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:service_detail' 'ntn-registration' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>NTN Registration
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:service_detail' 'sales-tax-registration' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Sales Tax Registration
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:service_detail' 'company-registration' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Company Registration
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'wakeelapp:service_detail' 'tax-consultation' %}" class="text-gray-300 hover:text-white transition-colors">
-                    <i class="fas fa-chevron-right mr-2 text-sm"></i>Tax Consultation
-                  </a>
-                </li>
-              </ul>
-            </div>
-      
-            <!-- Contact Info -->
-            <div>
-              <h3 class="text-xl font-bold mb-4">Contact Us</h3>
-              <ul class="space-y-3">
-                <li class="flex items-start">
-                  <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                  <span class="text-gray-300">43c B 8th St, DHA Phase 5 Badar Commercial Area, Karachi</span>
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
-                  <a href="tel:+923369969997" class="text-gray-300 hover:text-white transition-colors">+92 336 9969997</a>
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-envelope mr-3 text-blue-400"></i>
-                  <a href="mailto:info@gowakeel.com" class="text-gray-300 hover:text-white transition-colors">info@gowakeel.com</a>
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-clock mr-3 text-blue-400"></i>
-                  <span class="text-gray-300">Mon-Fri: 9:00 AM - 6:00 PM</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-      
-          <!-- Bottom Footer -->
-          <div class="pt-8 mt-8 border-t border-blue-900">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-              <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                &copy; {% now "Y" %} GoWakeel. All rights reserved.
-              </p>
-              <div class="flex space-x-6">
-                <a href="" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                <a href="" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-                <a href="" class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a>
-              </div>
-            </div>
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <!-- Company Info -->
+      <div>
+        <div class="mb-6">
+          <a href="{% url 'wakeelapp:index' %}" class="flex items-center">
+            <h2
+          class="text-2xl md:text-3xl lg:text-4xl ml-2 text-primary-700 dark:text-primary-400 font-bold"
+        >
+          GOWAKEEL
+        </h2>
+            <!-- <img src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="GoWakeel" class="h-20"> -->
+          </a>
         </div>
-      </footer>
-      <!-- Footer End -->
-      
-      <!-- WhatsApp Floating Button -->
-      <a href="https://wa.me/+923369969997" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
-        <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="WhatsApp" class="h-6 w-6">
-      </a>
+        <p class="mb-6 text-gray-400">
+          Professional tax services for individuals and businesses in Pakistan. Making tax compliance easy and stress-free.
+        </p>
+        <div class="flex space-x-4">
+          <a href="https://facebook.com/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+            <i class="fab fa-facebook-f text-lg"></i>
+          </a>
+          <a href="https://twitter.com/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+            <i class="fab fa-twitter text-lg"></i>
+          </a>
+          <a href="https://instagram.com/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+            <i class="fab fa-instagram text-lg"></i>
+          </a>
+          <a href="https://linkedin.com/company/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
+            <i class="fab fa-linkedin-in text-lg"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white">Quick Links</h3>
+        <ul class="space-y-4">
+          <li>
+            <a href="{% url 'wakeelapp:about' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">About Us</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:login' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Services</a>
+          </li> 
+          <li>
+            <a href="{% url 'wakeelapp:faq' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">FAQs</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:blogs' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Blog</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:contact' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white">Services</h3>
+        <ul class="space-y-4">
+          <li>
+            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Income Tax Filing</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">NTN Registration</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sales Tax Registration</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Tax Consultation</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Business Registration</a>
+          </li>
+          <li>
+            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Financial Planning</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-lg font-bold mb-6 text-white">Contact Us</h3>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-400"></i>
+            <span class="text-gray-400">43c B 8th St, DHA Phase 5 Badar Commercial Area, Karachi</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-phone-alt mr-3 text-primary-400"></i>
+            <a href="tel:+923369969997" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">+92 336 9969997</a>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-envelope mr-3 text-primary-400"></i>
+            <a href="mailto:info@gowakeel.com" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">info@gowakeel.com</a>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-clock mr-3 text-primary-400"></i>
+            <span class="text-gray-400">Mon-Fri: 9:00 AM - 6:00 PM</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="pt-8 border-t border-gray-800">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">
+          &copy; {% now "Y" %} GoWakeel. All rights reserved.
+        </p>
+        <div class="flex space-x-6">
+          <a href="" class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">Privacy Policy</a>
+          <a href="" class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">Terms of Service</a>
+          <a href="" class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Footer End -->
       
       <!-- Back to Top Button -->
       <button 
-        id="backToTop" 
-        class="fixed bottom-6 right-20 z-50 p-3 rounded-full shadow-lg transition-all duration-300 transform scale-0 flex items-center justify-center"
-        :class="darkMode ? 'bg-dark-100 text-white hover:bg-primary-900' : 'bg-white text-gray-800 hover:bg-gray-100'"
-      >
-        <i class="fas fa-arrow-up"></i>
-      </button>
+          id="backToTop" 
+          class="fixed bottom-6 right-6 z-50 py-3 px-4 rounded-full shadow-lg transition-all duration-300 transform scale-0 bg-white text-gray-800 hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+        >
+          <i class="fas fa-arrow-up"></i>
+        </button>
 
+        <script>
+          // JavaScript to handle the back to top button
+          const backToTopBtn = document.getElementById('backToTop');
+
+          backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });   
+          })
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+              backToTopBtn.classList.remove('scale-0');
+            } else {
+              backToTopBtn.classList.add('scale-0');
+            }
+          });
+      </script>
   </body>
 </html>

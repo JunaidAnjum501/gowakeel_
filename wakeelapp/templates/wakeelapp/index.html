@@ -408,7 +408,7 @@
     <!-- Navbar -->
     <nav
       x-data="{ isOpen: false, toolsOpen: false, generalToolsOpen: false }"
-      class="relative w-full sticky top-0 z-50 glass-effect shadow-lg dark-transition"
+      class="relative w-full top-0 z-50 glass-effect shadow-lg dark-transition"
       :class="{ 'dark': darkMode }"
     >
       <div
@@ -489,7 +489,7 @@
             >About</a
           >
           <a
-          href="{% url 'wakeelapp:about' %}"
+          href="{% url 'wakeelapp:services' %}"
           class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
           :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
           >Services</a
@@ -846,111 +846,111 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service Card 1 -->
-        <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="150">
-          <div class="h-48 overflow-hidden">
-            <img src="{% static 'wakeelapp/Img/service1.jpg' %}" alt="Income Tax Filing" class="w-full h-full object-cover transition-all duration-500">
-          </div>
-          <div class="p-6">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-              <i class="fas fa-file-invoice text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Income Tax Filing</h3>
-            <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Professional preparation and submission of income tax returns for individuals and businesses.</p>
-            <a href="{% url 'wakeelapp:service_detail' 'income-tax-filing' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 2 -->
-        <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="200">
-          <div class="h-48 overflow-hidden">
-            <img src="{% static 'wakeelapp/Img/service2.jpg' %}" alt="NTN Registration" class="w-full h-full object-cover transition-all duration-500">
-          </div>
-          <div class="p-6">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-              <i class="fas fa-id-card text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">NTN Registration</h3>
-            <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Hassle-free National Tax Number registration for individuals and businesses in Pakistan.</p>
-            <a href="{% url 'wakeelapp:service_detail' 'ntn-registration' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 3 -->
-        <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="250">
-          <div class="h-48 overflow-hidden">
-            <img src="{% static 'wakeelapp/Img/service3.jpg' %}" alt="Sales Tax Registration" class="w-full h-full object-cover transition-all duration-500">
-          </div>
-          <div class="p-6">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-              <i class="fas fa-store text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Sales Tax Registration</h3>
-            <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Complete assistance with sales tax registration and compliance for businesses.</p>
-            <a href="{% url 'wakeelapp:service_detail' 'sales-tax-registration' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 4 -->
-        <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="300">
-          <div class="h-48 overflow-hidden">
-            <img src="{% static 'wakeelapp/Img/service4.jpg' %}" alt="Tax Consultation" class="w-full h-full object-cover transition-all duration-500">
-          </div>
-          <div class="p-6">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-              <i class="fas fa-comments text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Tax Consultation</h3>
-            <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Expert advice on tax planning, compliance, and optimization strategies for your specific situation.</p>
-            <a href="{% url 'wakeelapp:service_detail' 'tax-consultation' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 5 -->
-        <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="350">
-          <div class="h-48 overflow-hidden">
-            <img src="{% static 'wakeelapp/Img/service5.jpg' %}" alt="Business Registration" class="w-full h-full object-cover transition-all duration-500">
-          </div>
-          <div class="p-6">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-              <i class="fas fa-building text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Business Registration</h3>
-            <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Complete assistance with company registration, partnership formation, and sole proprietorship setup.</p>
-            <a href="{% url 'wakeelapp:service_detail' 'business-registration' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 6 -->
-        <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="400">
-          <div class="h-48 overflow-hidden">
-            <img src="{% static 'wakeelapp/Img/service6.jpg' %}" alt="Financial Planning" class="w-full h-full object-cover transition-all duration-500">
-          </div>
+                <!-- Service Card 1 -->
+                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="150">
+                  <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="Income Tax Filing" class="w-full h-full object-cover transition-all duration-500">
+                  </div>
+                  <div class="p-6">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
+                      <i class="fas fa-file-invoice text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Income Tax Filing</h3>
+                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Professional preparation and submission of income tax returns for individuals and businesses.</p>
+                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
+                      Learn More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+        
+                <!-- Service Card 2 -->
+                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="200">
+                  <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="NTN Registration" class="w-full h-full object-cover transition-all duration-500">
+                  </div>
+                  <div class="p-6">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
+                      <i class="fas fa-id-card text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">NTN Registration</h3>
+                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Hassle-free National Tax Number registration for individuals and businesses in Pakistan.</p>
+                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
+                      Learn More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+        
+                <!-- Service Card 3 -->
+                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="250">
+                  <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sales Tax Registration" class="w-full h-full object-cover transition-all duration-500">
+                  </div>
+                  <div class="p-6">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
+                      <i class="fas fa-store text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Sales Tax Registration</h3>
+                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Complete assistance with sales tax registration and compliance for businesses.</p>
+                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
+                      Learn More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+        
+                <!-- Service Card 4 -->
+                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="300">
+                  <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tax Consultation" class="w-full h-full object-cover transition-all duration-500">
+                  </div>
+                  <div class="p-6">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
+                      <i class="fas fa-comments text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Tax Consultation</h3>
+                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Expert advice on tax planning, compliance, and optimization strategies for your specific situation.</p>
+                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
+                      Learn More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+        
+                <!-- Service Card 5 -->
+                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="350">
+                  <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Business Registration" class="w-full h-full object-cover transition-all duration-500">
+                  </div>
+                  <div class="p-6">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
+                      <i class="fas fa-building text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Business Registration</h3>
+                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Complete assistance with company registration, partnership formation, and sole proprietorship setup.</p>
+                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
+                      Learn More
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+        
+                <!-- Service Card 6 -->
+                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="400">
+                  <div class="h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Accounting Services" class="w-full h-full object-cover transition-all duration-500">
+                  </div>
           <div class="p-6">
             <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
               <i class="fas fa-chart-line text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
@@ -968,7 +968,8 @@
       </div>
 
       <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="450">
-        <a href="" class="btn-animated">
+        <a href="{% url 'wakeelapp:services' %}
+        " class="btn-animated">
           <button class="px-8 py-4 text-sm tracking-wider font-semibold transition-all duration-300 transform rounded-lg shadow-lg"
             :class="darkMode ? 'bg-primary-600 hover:bg-primary-700 text-white' : 'bg-primary-700 hover:bg-primary-800 text-white'">
             <span class="flex justify-center items-center">
@@ -1163,7 +1164,7 @@
                     "GoWakeel made my tax filing process incredibly simple. Their team guided me through every step, and I was able to complete everything without any stress. Highly recommended for anyone looking for professional tax services in Pakistan."
                   </p>
                   <div class="flex items-center">
-                    <img src="{% static 'wakeelapp/Img/testimonial1.jpg' %}" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFcccKNqXWCKdFIiJhndpIfWw_I8hfzbM7rQ&s" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4">
                     <div>
                       <h4 class="font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">Ahmed Khan</h4>
                       <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Business Owner, Lahore</p>
@@ -1188,7 +1189,7 @@
                     "As a freelancer, I was always worried about tax compliance. GoWakeel not only helped me register for NTN but also provided valuable advice on optimizing my tax situation. Their service is worth every penny!"
                   </p>
                   <div class="flex items-center">
-                    <img src="{% static 'wakeelapp/Img/testimonial2.jpg' %}" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpfyz8d0hr8lE8SeJyjAoxqHtV6UKIGgdoew&s" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4">
                     <div>
                       <h4 class="font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">Fatima Ali</h4>
                       <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Freelance Designer, Karachi</p>
@@ -1213,7 +1214,7 @@
                     "I needed help with sales tax registration for my new business, and GoWakeel delivered exceptional service. Their team is knowledgeable, responsive, and truly cares about their clients. I'll definitely be using their services again."
                   </p>
                   <div class="flex items-center">
-                    <img src="{% static 'wakeelapp/Img/testimonial3.jpg' %}" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLWltO_RzTpY_bKJ5glRBmGHEPbuUj3YnrVQ&s" alt="Client" class="w-14 h-14 rounded-full object-cover mr-4">
                     <div>
                       <h4 class="font-bold" :class="darkMode ? 'text-white' : 'text-gray-900'">Usman Malik</h4>
                       <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Entrepreneur, Islamabad</p>
@@ -1368,7 +1369,12 @@
           <div>
             <div class="mb-6">
               <a href="{% url 'wakeelapp:index' %}" class="flex items-center">
-                <img src="{% static 'wakeelapp/Img/logo-light.png' %}" alt="GoWakeel" class="h-10">
+                <h2
+              class="text-2xl md:text-3xl lg:text-4xl ml-2 text-primary-700 dark:text-primary-400 font-bold"
+            >
+              GOWAKEEL
+            </h2>
+                <!-- <img src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="GoWakeel" class="h-20"> -->
               </a>
             </div>
             <p class="mb-6 text-gray-400">
@@ -1398,11 +1404,8 @@
                 <a href="{% url 'wakeelapp:about' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">About Us</a>
               </li>
               <li>
-                <a href="" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Services</a>
-              </li>
-              <li>
-                <a href="" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Testimonials</a>
-              </li>
+                <a href="{% url 'wakeelapp:login' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Services</a>
+              </li> 
               <li>
                 <a href="{% url 'wakeelapp:faq' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">FAQs</a>
               </li>
@@ -1420,22 +1423,22 @@
             <h3 class="text-lg font-bold mb-6 text-white">Services</h3>
             <ul class="space-y-4">
               <li>
-                <a href="{% url 'wakeelapp:service_detail' 'income-tax-filing' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Income Tax Filing</a>
+                <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Income Tax Filing</a>
               </li>
               <li>
-                <a href="{% url 'wakeelapp:service_detail' 'ntn-registration' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">NTN Registration</a>
+                <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">NTN Registration</a>
               </li>
               <li>
-                <a href="{% url 'wakeelapp:service_detail' 'sales-tax-registration' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sales Tax Registration</a>
+                <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sales Tax Registration</a>
               </li>
               <li>
-                <a href="{% url 'wakeelapp:service_detail' 'tax-consultation' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Tax Consultation</a>
+                <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Tax Consultation</a>
               </li>
               <li>
-                <a href="{% url 'wakeelapp:service_detail' 'business-registration' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Business Registration</a>
+                <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Business Registration</a>
               </li>
               <li>
-                <a href="{% url 'wakeelapp:service_detail' 'financial-planning' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Financial Planning</a>
+                <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Financial Planning</a>
               </li>
             </ul>
           </div>
@@ -1481,15 +1484,10 @@
     </footer>
     <!-- Footer End -->
   
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/+923369969997" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center">
-      <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="WhatsApp" class="h-6 w-6">
-    </a>
-  
        <!-- Back to Top Button -->
        <button 
        id="backToTop" 
-       class="fixed bottom-6 right-20 z-50 p-3 rounded-full shadow-lg transition-all duration-300 transform scale-0 flex items-center justify-center"
+       class="fixed bottom-6 right-20 z-50 py-3 px-4 rounded-full shadow-lg transition-all duration-300 transform scale-0 flex items-center justify-center"
        :class="darkMode ? 'bg-dark-100 text-white hover:bg-primary-900' : 'bg-white text-gray-800 hover:bg-gray-100'"
      >
        <i class="fas fa-arrow-up"></i>
