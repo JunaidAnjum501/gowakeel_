@@ -369,36 +369,6 @@
           }
         }));
     
-        Alpine.data('faqAccordion', () => ({
-        faqs: [
-          {
-            question: 'Do I need to file a tax return in Pakistan?',
-            answer: 'Yes, if your annual income exceeds the minimum threshold set by FBR, you are required to file a tax return. This applies to salaried individuals, business owners, and professionals.',
-            open: false,
-          },
-          {
-            question: 'How long does it take to get an NTN?',
-            answer: 'With our service, you can typically get your National Tax Number (NTN) within 3-5 working days, depending on the FBR processing time.',
-            open: false,
-          },
-          {
-            question: 'What documents do I need for tax filing?',
-            answer: 'You\'ll need your CNIC, income details, tax deduction certificates, property documents (if applicable), and bank statements. Our team will guide you through the specific requirements for your situation.',
-            open: false,
-          },
-          {
-            question: 'Can you help with tax planning?',
-            answer: 'Yes, we offer comprehensive tax planning services to help you optimize your tax situation legally and maximize your savings.',
-            open: false,
-          },
-          {
-            question: 'What are your service charges?',
-            answer: 'Our service charges vary depending on the complexity of your tax situation and the specific services you need. Please contact us for a personalized quote.',
-            open: false,
-          },
-        ]
-      }));
-    
         // Initialize Alpine.js globally
         Alpine.start();
       });
@@ -1253,64 +1223,6 @@
     </div>
   </section>
   <!-- Testimonials Section End -->
-<!-- FAQ Section -->
-<section class="py-20 relative overflow-hidden" :class="darkMode ? 'bg-dark-200' : 'bg-gray-50'">
-  <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-  <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-primary-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4" :class="darkMode ? 'text-white' : 'text-gray-900'" data-aos="fade-up">
-        Frequently Asked <span class="gradient-text">Questions</span>
-      </h2>
-      <p class="text-lg max-w-3xl mx-auto" :class="darkMode ? 'text-gray-300' : 'text-gray-600'" data-aos="fade-up" data-aos-delay="100">
-        Find answers to common questions about our tax services and processes.
-      </p>
-    </div>
-
-    <!-- FAQ Accordion -->
-    <div x-data="faqAccordion">
-      <div class="space-y-4">
-        <template x-for="(faq, index) in faqs" :key="index">
-          <div class="border rounded-xl overflow-hidden">
-            <button 
-              @click="faq.open = !faq.open" 
-              class="flex justify-between items-center w-full px-6 py-4 text-left font-semibold">
-              <span x-text="faq.question"></span>
-              <svg class="w-5 h-5 ml-2 transition-transform duration-300" :class="faq.open ? 'transform rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <!-- Use x-show and transition for smooth opening/closing -->
-            <div 
-              x-show="faq.open" 
-              x-cloak
-              x-transition:enter="transition ease-out duration-300" 
-              x-transition:enter-start="opacity-0 transform translate-y-4" 
-              x-transition:enter-end="opacity-100 transform translate-y-0"
-              x-transition:leave="transition ease-in duration-300"
-              x-transition:leave-start="opacity-100 transform translate-y-0"
-              x-transition:leave-end="opacity-0 transform translate-y-4"
-              class="px-6 py-4 border-t">
-              <p x-text="faq.answer"></p>
-            </div>
-          </div>
-        </template>
-      </div>
-    </div>
-
-    <!-- View All FAQs Link -->
-    <div class="text-center mt-12" data-aos="fade-up">
-      <a href="{% url 'wakeelapp:faq' %}" class="inline-flex items-center font-medium text-lg" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-        View All FAQs
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
-<!-- FAQ Section End -->
     <!-- CTA Section -->
     <section class="py-20 relative overflow-hidden" :class="darkMode ? 'bg-dark-100' : 'bg-white'">
       <div class="max-w-7xl mx-auto px-6">
@@ -1558,8 +1470,6 @@
         });
       }
     });
-
-    
   </script>
    </body>
  </html>
