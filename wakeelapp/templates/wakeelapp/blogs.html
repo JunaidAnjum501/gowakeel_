@@ -45,7 +45,7 @@
                                     </span>
                                 </div>
                                 <h2 class="text-xl font-bold text-[#003366] mb-3 line-clamp-2 dark:text-[#4d94ff]">{{ blog.title }}</h2>
-                                <p class="text-gray-600 mb-4 line-clamp-3 dark:text-gray-300">{{ blog.content|slice:":250" }}{% if blog.content|length > 250 %}...{% endif %}</p>
+                                <p class="text-gray-600 mb-4 line-clamp-3 dark:text-gray-300">{{ blog.content| striptags |slice:":250" }}{% if blog.content|length > 250 %}...{% endif %}</p>
                                 <div class="flex items-center justify-between">
                                     <a href="{% url 'wakeelapp:blogdetail' blog.slug %}" class="inline-flex items-center text-[#003366] font-semibold hover:text-[#0066cc] transition-colors dark:text-[#4d94ff] dark:hover:text-[#66b3ff]">
                                         Read more 
