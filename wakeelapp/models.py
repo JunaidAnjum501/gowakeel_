@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class BlogCategory(models.Model):
@@ -16,7 +17,7 @@ class BlogCategory(models.Model):
 class Blogs(models.Model):
     category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE,related_name="blogs")
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = CKEditor5Field('Text', config_name='extends')
     slug = models.SlugField(max_length=255, unique=True)
     image = CloudinaryField()
 
