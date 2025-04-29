@@ -125,8 +125,8 @@ def service_detail(request, service_name):
             
         },
         "Annual-Income-Tax-Return-(Salary)": {
-            'metaservice_name':"",
-            'metadescription':"",
+            'metaservice_name':"Easy & Secure Income Tax Return Filing | File Your Tax Online Today",
+            'metadescription':"File your income tax return quickly and securely with expert guidance. Maximize refunds, minimize errors – hassle-free ITR filing for individuals & businesses.",
             "description": "File your tax returns without any hassle.",
             "price": "Rs:3000/-",
             "requirements": [
