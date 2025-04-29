@@ -1,6 +1,9 @@
 {% extends "wakeelapp/index.html" %} {% load static %}
-{% block title %}<title>{{ service_name }} - GoWakeel Services</title>{% endblock title %}
-{% block metatitle %}<meta name="description" content="{{ service.description|truncatechars:160 }}">{% endblock metatitle %}
+
+{% block metatitle %}
+<title>{{ service.metaservice_name }}</title>
+<meta name="description" content="{{ service.metadescription|truncatechars:160 }}">
+{% endblock metatitle %}
 
 {% block Content %}
 <section class="py-8 bg-gradient-to-r from-white to-[#003366]/5">

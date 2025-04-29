@@ -112,6 +112,8 @@ def video(request):
 def service_detail(request, service_name):
     services = {
         "NTN-Registration": {
+            'metaservice_name':"NTN Registration Online in Pakistan | GoWakeel",
+            'metadescription':"Register your NTN quickly and hassle-free with GoWakeel. Whether you're a salaried individual, freelancer, or business owner, we make the process simple and 100% online.",
             "description": "Get your Individual NTN in just 3 simple steps.",
             "price": "Rs:500/-",
             "requirements": [
@@ -123,6 +125,8 @@ def service_detail(request, service_name):
             
         },
         "Annual-Income-Tax-Return-(Salary)": {
+            'metaservice_name':"",
+            'metadescription':"",
             "description": "File your tax returns without any hassle.",
             "price": "Rs:3000/-",
             "requirements": [
@@ -139,6 +143,8 @@ def service_detail(request, service_name):
             
         },
         "Annual-Income-Tax-Return-(Business)": {
+            'metaservice_name':"",
+            'metadescription':"",
             "description": "Start your business legally with ease.",
             "price": "Rs:5000/-",
             "requirements": [
@@ -155,6 +161,8 @@ def service_detail(request, service_name):
             
         },
         "GST-Registration": {
+            'metaservice_name':"GST Registration in Pakistan | GoWakeel",
+            'metadescription':"Get your GST registration done quickly and easily with GoWakeel. Our expert team ensures smooth compliance with Pakistan's tax regulations, helping businesses register and file GST effortlessly.",
             "description": "Start your business legally with ease.",
             "price": "Rs:5000/-",
             "requirements": [
@@ -174,12 +182,16 @@ def service_detail(request, service_name):
             
         },
         "Monthly-Sales-Tax-Return-Filing": {
+            'metaservice_name':"Sales Tax Registration & Filing in Pakistan | GoWakeel",
+            'metadescription':"Register for Sales Tax and manage your filings easily with GoWakeel. Our platform helps businesses comply with tax laws, ensuring timely and accurate sales tax returns for smooth operations.",
             "description": "Start your business legally with ease.",
             "price": "Rs:5000/-",
             "requirements": ["Business Name", "CNIC Copy", "Bank Account", "Office Address"],
             
         },
         "Company-Registration": {
+            'metaservice_name':"Company Registration in Pakistan | GoWakeel",
+            'metadescription':"Register your company with ease through GoWakeel. We simplify the process of company incorporation, ensuring that your business is set up legally and in compliance with Pakistani laws.",
             "description": "Start your business legally with ease.",
             "price": "Starting From Rs:15000/-",
             "requirements": [
@@ -202,6 +214,8 @@ def service_detail(request, service_name):
             
         },
         "Trade-Marks-&-Partnership": {
+            'metaservice_name':"Trademark & Partnership Registration in Pakistan | GoWakeel",
+            'metadescription':"Protect your brand and launch legal partnerships with GoWakeel. We offer seamless trademark registration.",
             "description": "Start your business legally with ease.",
             "price": "Starting From Rs:15000/-",
             "requirements": ["Business Name", "CNIC Copy", "Bank Account", "Office Address"],
