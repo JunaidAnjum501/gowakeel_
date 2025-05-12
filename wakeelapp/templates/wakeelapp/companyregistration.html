@@ -1,0 +1,1730 @@
+{% extends 'wakeelapp/index.html' %} 
+{% load static %} 
+{% block Content %}
+<!-- Hero Section with Consistent Design -->
+<div class="w-full py-12" :class="darkMode ? 'bg-gradient-to-r from-gray-900 to-blue-950 text-white' : 'bg-gradient-to-r from-gray-100 to-blue-50'">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="lg:w-2/3">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 relative" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+          <span class="relative inline-block"
+            >Company Registration
+            
+          </span>
+        </h1>
+        <p class="text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+          Ready to launch your business? Let Go Wakeel help you get started with
+          SECP-registered company formation in Pakistan. Whether you're setting
+          up a private limited company, single-member company, or LLP, our
+          experts ensure a smooth, fast, and fully compliant registration
+          process.
+        </p>
+        <div class="mt-6">
+          <a
+            href="#contact-section"
+            class="inline-flex items-center px-6 py-3 text-white font-medium rounded-lg shadow-lg transition-colors" :class="darkMode ? 'bg-blue-800 hover:bg-blue-700' : 'bg-[#002244] hover:bg-[#003366]'"
+          >
+            <i class="fas fa-rocket mr-2"></i>
+            Get Started
+          </a>
+        </div>
+      </div>
+      <div class="lg:w-1/3 mt-8 lg:mt-0 relative">
+        <img class="w-auto" src="https://wakafridi.com/photos/1614777382secpppp-removebg-preview.png" alt="Company Registration">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container max-w-7xl mx-auto px-4 py-12" :class="darkMode ? 'text-white' : ''">
+  <!-- Tab Navigation -->
+  <div class="mb-8 border-b" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+    <ul
+      class="flex flex-wrap -mb-px text-sm font-medium text-center"
+      id="companyRegTabs"
+      role="tablist"
+    >
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg active" :class="darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]'"
+          id="overview-tab"
+          data-tab-target="#overview"
+          type="button"
+          role="tab"
+          aria-controls="overview"
+          aria-selected="true"
+        >
+          <i class="fas fa-info-circle mr-2" :class="darkMode ? 'text-blue-400' : 'text-[#003366]'"></i>Overview
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg" :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400' : 'hover:text-[#003366] hover:border-[#003366]'"
+          id="benefits-tab"
+          data-tab-target="#benefits"
+          type="button"
+          role="tab"
+          aria-controls="benefits"
+          aria-selected="false"
+        >
+          <i class="fas fa-check-circle mr-2 text-green-600"></i>Benefits
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg" :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400' : 'hover:text-[#003366] hover:border-[#003366]'"
+          id="types-tab"
+          data-tab-target="#types"
+          type="button"
+          role="tab"
+          aria-controls="types"
+          aria-selected="false"
+        >
+          <i class="fas fa-list-alt mr-2 text-orange-600"></i>Company Types
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg" :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400' : 'hover:text-[#003366] hover:border-[#003366]'"
+          id="documents-tab"
+          data-tab-target="#documents"
+          type="button"
+          role="tab"
+          aria-controls="documents"
+          aria-selected="false"
+        >
+          <i class="fas fa-file-alt mr-2 text-red-600"></i>Required Documents
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="companyRegTabContent">
+    <!-- Overview Tab -->
+    <div
+      class="tab-pane active animate__animated animate__fadeIn"
+      id="overview"
+      role="tabpanel"
+      aria-labelledby="overview-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+            Company Registration in Pakistan: FBR vs SECP
+          </h2>
+          <div
+            class="rounded-lg shadow-sm border" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+          >
+            <div class="p-6">
+              <p class="mb-4">
+                Company registration in Pakistan is monitored by both the FBR
+                (Federal Board of Revenue) and the SECP (Securities and Exchange
+                Commission of Pakistan).
+              </p>
+              <p class="mb-4">
+                If you're operating as a sole proprietor, registration is done
+                only with the FBR, which makes it simpler and easier to manage.
+                However, a Private Limited Company or Single Member Company
+                (SMC) must be registered with both FBR and SECP, and must adhere
+                to all compliance requirements under the Companies Act and
+                Company Ordinance.
+              </p>
+              <p>
+                This structure provides credibility, transparency, and legal
+                protection, but also comes with annual filing and audit
+                obligations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Tab -->
+    <div
+      class="tab-pane animate__animated animate__fadeIn"
+      id="benefits"
+      role="tabpanel"
+      aria-labelledby="benefits-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : ''">Why Register a Company?</h2>
+          <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : ''">
+            Registering your company under the Securities and Exchange
+            Commission of Pakistan (SECP) offers multiple benefits:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-gavel"></i>
+                  </div>
+                  <h5 class="font-bold text-lg" :class="darkMode ? 'text-gray-100' : ''">Legal Recognition</h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Get official legal recognition for your business under SECP
+                  registration.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-building"></i>
+                  </div>
+                  <h5 class="font-bold text-lg" :class="darkMode ? 'text-gray-100' : ''">Corporate Identity</h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Establish strong brand credibility and corporate identity in
+                  the market.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <h5 class="font-bold text-lg" :class="darkMode ? 'text-gray-100' : ''">Limited Liability</h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Protect shareholders with limited liability protection.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-university"></i>
+                  </div>
+                  <h5 class="font-bold text-lg" :class="darkMode ? 'text-gray-100' : ''">Banking Access</h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Open business bank accounts and access financial services.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-hand-holding-usd"></i>
+                  </div>
+                  <h5 class="font-bold text-lg" :class="darkMode ? 'text-gray-100' : ''">Funding Access</h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Access funding, tenders, and government contracts easily.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h5 class="font-bold text-lg" :class="darkMode ? 'text-gray-100' : ''">Global Operations</h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Work with foreign clients and platforms like Amazon, Upwork,
+                  etc.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Types Tab -->
+    <div
+      class="tab-pane animate__animated animate__fadeIn"
+      id="types"
+      role="tabpanel"
+      aria-labelledby="types-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : ''">
+            Types of Company Registration in Pakistan
+          </h2>
+          <div class="space-y-4" id="companyTypesAccordion">
+            <!-- Sole Proprietor -->
+            <div class="rounded-lg shadow-sm border mb-4" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+              <h2 class="accordion-header" id="headingSole">
+                <button
+                  class="flex justify-between items-center w-full p-5 font-medium text-left rounded-t-lg focus:outline-none transition-colors" :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+                  type="button"
+                  aria-expanded="true"
+                  aria-controls="collapseSole"
+                  data-accordion-target="#collapseSole"
+                >
+                  <span class="flex items-center"><i class="fas fa-user mr-3 text-blue-600"></i> Sole Proprietor</span>
+                  <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+              </h2>
+              <div
+                id="collapseSole"
+                class="accordion-content"
+                aria-labelledby="headingSole"
+              >
+                <div class="p-5 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                  <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    A business owned and operated by a single individual. Simple
+                    registration process with FBR only. The owner has complete
+                    control but also bears all liabilities personally.
+                  </p>
+
+                  <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-blue-900/30 border-blue-800' : 'bg-blue-50 border-blue-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-blue-700'">
+                        <i class="fas fa-check-circle mr-2 text-blue-600"></i>Advantages
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>Simple and inexpensive to establish</li>
+                        <li>Complete control over business decisions</li>
+                        <li>Minimal regulatory requirements</li>
+                        <li>
+                          No separate tax filing (personal income tax only)
+                        </li>
+                        <li>Easy to dissolve or transfer ownership</li>
+                      </ul>
+                    </div>
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-red-300' : 'text-red-700'">
+                        <i class="fas fa-exclamation-circle mr-2 text-red-600"></i>
+                        Limitations
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>Unlimited personal liability for business debts</li>
+                        <li>Limited access to capital and financing</li>
+                        <li>Business existence tied to owner's life</li>
+                        <li>Less credibility with clients and vendors</li>
+                        <li>
+                          Limited ability to work with international platforms
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Single Member Company -->
+            <div class="rounded-lg shadow-sm border mb-4" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+              <h2 class="accordion-header" id="headingSMC">
+                <button
+                  class="flex justify-between items-center w-full p-5 font-medium text-left rounded-t-lg focus:outline-none transition-colors" :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="collapseSMC"
+                  data-accordion-target="#collapseSMC"
+                >
+                  <span class="flex items-center"><i class="fas fa-user-tie mr-3 text-blue-600"></i> Single Member Company (SMC)</span>
+                  <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+              </h2>
+              <div
+                id="collapseSMC"
+                class="accordion-content hidden"
+                aria-labelledby="headingSMC"
+              >
+                <div class="p-5 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                  <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    A Private Limited Company with only one
+                    director/shareholder. Provides limited liability protection
+                    while allowing sole ownership. Must be registered with both
+                    FBR and SECP.
+                  </p>
+
+                  <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-blue-900/30 border-blue-800' : 'bg-blue-50 border-blue-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-blue-700'">
+                        <i class="fas fa-check-circle mr-2 text-blue-600"></i>Advantages
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>
+                          Limited liability protection for personal assets
+                        </li>
+                        <li>Enhanced credibility with clients and partners</li>
+                        <li>Perpetual existence independent of owner</li>
+                        <li>Easier access to business loans and capital</li>
+                        <li>Ability to work with international platforms</li>
+                      </ul>
+                    </div>
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-red-300' : 'text-red-700'">
+                        <i class="fas fa-exclamation-circle mr-2 text-red-600"></i>
+                        Limitations
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>Higher setup and maintenance costs</li>
+                        <li>More regulatory compliance requirements</li>
+                        <li>Annual filing and audit obligations</li>
+                        <li>More complex tax filing requirements</li>
+                        <li>Requires maintaining proper corporate records</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div
+                    class="mt-6 p-4 rounded-lg border" :class="darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'"
+                  >
+                    <h4 class="font-bold mb-3 flex items-center" :class="darkMode ? 'text-gray-200' : 'text-gray-800'">
+                      <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>
+                      Key Requirements
+                    </h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Minimum paid-up capital of PKR 100,000</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >One director who is also the sole shareholder</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Registered office address in Pakistan</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Memorandum & Articles of Association</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Digital signature from NIFT</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Annual returns and financial statements</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Private Limited Company -->
+            <div class="rounded-lg shadow-sm border mb-4" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+              <h2 class="accordion-header" id="headingPLC">
+                <button
+                  class="flex justify-between items-center w-full p-5 font-medium text-left rounded-t-lg focus:outline-none transition-colors" :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="collapsePLC"
+                  data-accordion-target="#collapsePLC"
+                >
+                  <span class="flex items-center"><i class="fas fa-users mr-3 text-blue-600"></i> Private Limited Company</span>
+                  <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+              </h2>
+              <div
+                id="collapsePLC"
+                class="accordion-content hidden"
+                aria-labelledby="headingPLC"
+              >
+                <div class="p-5 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                  <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    A business entity with multiple shareholders (minimum 2,
+                    maximum 50) with limited liability. Shares cannot be offered
+                    to the general public. Provides a formal structure with
+                    clear separation between company and personal assets.
+                  </p>
+
+                  <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-blue-900/30 border-blue-800' : 'bg-blue-50 border-blue-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-blue-700'">
+                        <i class="fas fa-check-circle mr-2 text-blue-600"></i>Advantages
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>
+                          Limited liability protection for all shareholders
+                        </li>
+                        <li>
+                          Enhanced business credibility and professional image
+                        </li>
+                        <li>
+                          Easier to raise capital through multiple shareholders
+                        </li>
+                        <li>Perpetual existence independent of shareholders</li>
+                        <li>Transferable ownership through share transfers</li>
+                        <li>
+                          Tax benefits and deductions not available to
+                          individuals
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-red-300' : 'text-red-700'">
+                        <i class="fas fa-exclamation-circle mr-2 text-red-600"></i>
+                        Limitations
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>
+                          More complex and costly to establish than sole
+                          proprietorship
+                        </li>
+                        <li>Extensive regulatory compliance requirements</li>
+                        <li>Mandatory annual audits and financial reporting</li>
+                        <li>Cannot raise funds from the general public</li>
+                        <li>
+                          Decision-making may require shareholder consensus
+                        </li>
+                        <li>
+                          Double taxation in some cases (corporate and dividend
+                          tax)
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div
+                    class="mt-6 p-4 rounded-lg border" :class="darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'"
+                  >
+                    <h4 class="font-bold mb-3 flex items-center" :class="darkMode ? 'text-gray-200' : 'text-gray-800'">
+                      <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>
+                      Key Requirements
+                    </h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Minimum 2 shareholders, maximum 50</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >At least 2 directors (can be shareholders)</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Minimum paid-up capital of PKR 100,000</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Registered office address in Pakistan</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Memorandum & Articles of Association</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Annual returns and audited financial statements</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Company secretary appointment</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Annual general meetings</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Partnership Registration -->
+            <div class="rounded-lg shadow-sm border mb-4" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+              <h2 class="accordion-header" id="headingPartnership">
+                <button
+                  class="flex justify-between items-center w-full p-5 font-medium text-left rounded-t-lg focus:outline-none transition-colors" :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="collapsePartnership"
+                  data-accordion-target="#collapsePartnership"
+                >
+                  <span class="flex items-center"><i class="fas fa-handshake mr-3 text-blue-600"></i> Partnership Registration</span>
+                  <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+              </h2>
+              <div
+                id="collapsePartnership"
+                class="accordion-content hidden"
+                aria-labelledby="headingPartnership"
+              >
+                <div class="p-5 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                  <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    A business arrangement where two or more individuals share
+                    ownership and responsibilities. Partners share profits
+                    according to the partnership deed and are jointly liable for
+                    business debts.
+                  </p>
+
+                  <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-blue-900/30 border-blue-800' : 'bg-blue-50 border-blue-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-blue-700'">
+                        <i class="fas fa-check-circle mr-2 text-blue-600"></i>Advantages
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>Easy and inexpensive to establish</li>
+                        <li>Shared financial investment and risk</li>
+                        <li>Combined knowledge, skills and resources</li>
+                        <li>Flexible management structure</li>
+                        <li>Less regulatory compliance than companies</li>
+                        <li>Tax advantages (pass-through taxation)</li>
+                      </ul>
+                    </div>
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-red-300' : 'text-red-700'">
+                        <i class="fas fa-exclamation-circle mr-2 text-red-600"></i>
+                        Limitations
+                      </h4>
+                      <ul
+                        class="list-disc pl-5 text-sm space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                      >
+                        <li>Unlimited liability for all partners</li>
+                        <li>
+                          Each partner liable for actions of other partners
+                        </li>
+                        <li>Potential for conflicts between partners</li>
+                        <li>Limited life (dissolves if partner leaves)</li>
+                        <li>Difficult to raise large amounts of capital</li>
+                        <li>Less credibility than incorporated entities</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div
+                    class="mt-6 p-4 rounded-lg border" :class="darkMode ? 'bg-gray-700 border-gray-600' : 'bg-gray-50 border-gray-200'"
+                  >
+                    <h4 class="font-bold mb-3 flex items-center" :class="darkMode ? 'text-gray-200' : 'text-gray-800'">
+                      <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>
+                      Key Requirements
+                    </h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Partnership deed/agreement</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">NTN registration with FBR</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm"
+                          >Bank account in partnership name</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">CNIC copies of all partners</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Business address proof</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Annual tax returns</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Limited Liability Company (LLC) -->
+            <div class="rounded-lg shadow-sm border mb-4" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+              <h2 class="accordion-header" id="headingLLC">
+                <button
+                  class="flex justify-between items-center w-full p-5 font-medium text-left rounded-t-lg focus:outline-none transition-colors" :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="collapseLLC"
+                  data-accordion-target="#collapseLLC"
+                >
+                  <span class="flex items-center"><i class="fas fa-building mr-3 text-blue-600"></i> Limited Liability Company (LLC)</span>
+                  <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                </button>
+              </h2>
+              <div
+                id="collapseLLC"
+                class="accordion-content hidden"
+                aria-labelledby="headingLLC"
+              >
+                <div class="p-5 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                  <p class="mb-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    Limited Liability Company structure that combines elements
+                    of partnership and corporation. Provides liability
+                    protection while allowing flexible management structure and
+                    tax benefits.
+                  </p>
+                  
+                  <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-blue-900/30 border-blue-800' : 'bg-blue-50 border-blue-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-blue-700'">
+                        <i class="fas fa-check-circle mr-2 text-blue-600"></i>Advantages
+                      </h4>
+                      <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                        <li>Limited liability protection for all members</li>
+                        <li>Flexible management structure</li>
+                        <li>Pass-through taxation (no double taxation)</li>
+                        <li>Less formalities than a corporation</li>
+                        <li>Easier to attract investors than partnerships</li>
+                        <li>No restriction on number of members</li>
+                      </ul>
+                    </div>
+                    <div class="p-4 rounded-lg border" :class="darkMode ? 'bg-red-900/20 border-red-800' : 'bg-red-50 border-red-100'">
+                      <h4 class="font-bold mb-2 flex items-center" :class="darkMode ? 'text-red-300' : 'text-red-700'">
+                        <i class="fas fa-exclamation-circle mr-2 text-red-600"></i>Limitations
+                      </h4>
+                      <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">
+                        <li>More complex to set up than sole proprietorship</li>
+                        <li>Self-employment taxes for managing members</li>
+                        <li>Requires more record-keeping than partnerships</li>
+                        <li>Ownership transfer restrictions</li>
+                        <li>Limited ability to raise capital compared to corporations</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <div class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <h4 class="font-bold mb-3 flex items-center" :class="darkMode ? 'text-gray-200' : 'text-gray-800'">
+                      <i class="fas fa-clipboard-list mr-2 text-blue-600"></i>Key Requirements
+                    </h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Minimum 2 designated partners</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">LLP Agreement</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Registered office address in Pakistan</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Name approval from SECP</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Statement of partners and registered office</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                        <span class="text-sm">Annual statement of accounts and solvency</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents Tab -->
+    <div
+      class="tab-pane animate__animated animate__fadeIn"
+      id="documents"
+      role="tabpanel"
+      aria-labelledby="documents-tab"
+    >
+      <div class="w-full">
+        <h2 class="text-2xl font-bold mb-6">
+          Documents Required for Company Registration
+        </h2>
+        <div class="rounded-lg shadow-sm border" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+          <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <ul class="space-y-4">
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-id-card text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'">NIC copy</strong>
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                        All shareholders/partners
+                      </p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-map-marker-alt text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Business Address</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                        Physical location of business
+                      </p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-signature text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'">Business Name</strong>
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">Provide 3 options</p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-building text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'">Company Type</strong>
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                        SMC, Private Limited, etc.
+                      </p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-briefcase text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Nature of Business</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                        Business activities description
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul class="space-y-4">
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-file-contract text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Memorandum of Association</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                        Prepared by our expert
+                      </p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-file-alt text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Articles of Association</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                        Prepared by our expert
+                      </p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-chart-pie text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Share Structure</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">Shareholding details</p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-mobile-alt text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Mobile Numbers</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">All shareholders</p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-envelope text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                        >Email Addresses</strong
+                      >
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">All shareholders</p>
+                    </div>
+                  </li>
+                  <li
+                    class="flex items-center py-3 transition-colors duration-200" :class="darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'"
+                  >
+                    <div
+                      class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mr-4"
+                    >
+                      <i class="fas fa-hashtag text-xl"></i>
+                    </div>
+                    <div>
+                      <strong class="block" :class="darkMode ? 'text-gray-100' : 'text-gray-900'">NTN Numbers</strong>
+                      <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">All partners</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Registration Process Section -->
+<section class="py-16" :class="darkMode ? 'bg-gray-900' : 'bg-gray-50'">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Company Registration Process</h2>
+      <p class="text-lg max-w-3xl mx-auto" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+        Our streamlined process makes company registration simple and hassle-free.
+        Here's how we'll help you establish your business:
+      </p>
+    </div>
+
+    <div class="relative">
+      <!-- Process Timeline -->
+      <div class="hidden md:block h-1 absolute top-24 left-0 right-0 z-0" :class="darkMode ? 'bg-blue-800' : 'bg-blue-200'"></div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+        <!-- Step 1 -->
+        <div class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-2 p-6 text-center" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'">
+          <div class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-search text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2" :class="darkMode ? 'text-gray-100' : ''">Name Availability</h3>
+          <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+            We check and secure your desired company name with SECP.
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-2 p-6 text-center" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'">
+          <div class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-file-alt text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2" :class="darkMode ? 'text-gray-100' : ''">Document Preparation</h3>
+          <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+            We prepare all necessary legal documents and forms.
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-2 p-6 text-center" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'">
+          <div class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-file-signature text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2" :class="darkMode ? 'text-gray-100' : ''">SECP Filing</h3>
+          <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+            We submit all documents to SECP for registration.
+          </p>
+        </div>
+        <!-- Step 4 -->
+        <div class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-2 p-6 text-center" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'">
+          <div class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-certificate text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2" :class="darkMode ? 'text-gray-100' : ''">Certificate Issuance</h3>
+          <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+            Receive incorporation certificate from SECP.
+          </p>
+        </div>
+        <!-- Step 5 -->
+        <div class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-2 p-6 text-center" :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'">
+          <div class="w-12 h-12 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-id-card text-xl"></i>
+          </div>
+          <h3 class="font-bold text-lg mb-2" :class="darkMode ? 'text-gray-100' : ''">Tax Registration</h3>
+          <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+            Complete FBR registration and obtain NTN.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 p-6 rounded-lg border" :class="darkMode ? 'bg-blue-900/20 border-blue-800' : 'bg-blue-50 border-blue-200'">
+      <h3 class="text-xl font-bold mb-4 flex items-center" :class="darkMode ? 'text-gray-100' : ''">
+        <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+        Why Choose Go Wakeel for Company Registration?
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="flex items-start">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center mr-4">
+            <i class="fas fa-check"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1" :class="darkMode ? 'text-gray-100' : ''">Fast Processing</h4>
+            <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+              Complete registration in as little as 7-10 business days.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center mr-4">
+            <i class="fas fa-check"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1" :class="darkMode ? 'text-gray-100' : ''">Expert Guidance</h4>
+            <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+              Our legal experts handle all complexities for you.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center mr-4">
+            <i class="fas fa-check"></i>
+          </div>
+          <div>
+            <h4 class="font-bold mb-1" :class="darkMode ? 'text-gray-100' : ''">Ongoing Support</h4>
+            <p class="text-sm" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+              We provide post-registration compliance assistance.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+      <p class="text-lg max-w-3xl mx-auto" :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+        Find answers to common questions about company registration in Pakistan.
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4" id="faqAccordion">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+          <h2 class="accordion-header" id="headingFaq1">
+            <button
+              class="flex justify-between items-center w-full p-5 font-medium text-left text-gray-900 rounded-t-lg focus:outline-none hover:bg-gray-50 transition-colors"
+              type="button"
+              aria-expanded="true"
+              aria-controls="collapseFaq1"
+              data-accordion-target="#collapseFaq1"
+            >
+              <span class="flex items-center">
+                <i class="fas fa-question-circle text-blue-600 mr-3"></i> 
+                How long does it take to register a company in Pakistan?
+              </span>
+              <i class="fas fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          </h2>
+          <div
+            id="collapseFaq1"
+            class="accordion-content"
+            aria-labelledby="headingFaq1"
+          >
+            <div class="p-5 border-t border-gray-200">
+              <p class="text-gray-700">
+                The typical timeframe for company registration in Pakistan is
+                7-15 business days, depending on the company type and
+                documentation readiness. With Go Wakeel's expedited service, we
+                can complete the process in as little as 7-10 business days for
+                most company types.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+          <h2 class="accordion-header" id="headingFaq2">
+            <button
+              class="flex justify-between items-center w-full p-5 font-medium text-left text-gray-900 rounded-t-lg focus:outline-none hover:bg-gray-50 transition-colors"
+              type="button"
+              aria-expanded="false"
+              aria-controls="collapseFaq2"
+              data-accordion-target="#collapseFaq2"
+            >
+              <span class="flex items-center">
+                <i class="fas fa-question-circle text-blue-600 mr-3"></i> 
+                What is the minimum capital requirement for company registration?
+              </span>
+              <i class="fas fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          </h2>
+          <div
+            id="collapseFaq2"
+            class="accordion-content hidden"
+            aria-labelledby="headingFaq2"
+          >
+            <div class="p-5 border-t border-gray-200">
+              <p class="text-gray-700">
+                For a Private Limited Company or Single Member Company, the
+                minimum paid-up capital requirement is PKR 100,000. However, you
+                can start with a lower authorized capital and increase it later
+                as your business grows. For certain specialized businesses like
+                insurance or banking, higher capital requirements apply.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+          <h2 class="accordion-header" id="headingFaq3">
+            <button
+              class="flex justify-between items-center w-full p-5 font-medium text-left text-gray-900 rounded-t-lg focus:outline-none hover:bg-gray-50 transition-colors"
+              type="button"
+              aria-expanded="false"
+              aria-controls="collapseFaq3"
+              data-accordion-target="#collapseFaq3"
+            >
+              <span class="flex items-center">
+                <i class="fas fa-question-circle text-blue-600 mr-3"></i> 
+                Can foreigners register a company in Pakistan?
+              </span>
+              <i class="fas fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          </h2>
+          <div
+            id="collapseFaq3"
+            class="accordion-content hidden"
+            aria-labelledby="headingFaq3"
+          >
+            <div class="p-5 border-t border-gray-200">
+              <p class="text-gray-700">
+                Yes, foreigners can register a company in Pakistan. They can own
+                up to 100% of the shares in most business sectors. However,
+                there are some additional requirements, including security
+                clearance from relevant authorities and authentication of
+                documents from the Pakistani embassy in their home country. Our
+                team can guide foreign investors through this process.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+          <h2 class="accordion-header" id="headingFaq4">
+            <button
+              class="flex justify-between items-center w-full p-5 font-medium text-left text-gray-900 rounded-t-lg focus:outline-none hover:bg-gray-50 transition-colors"
+              type="button"
+              aria-expanded="false"
+              aria-controls="collapseFaq4"
+              data-accordion-target="#collapseFaq4"
+            >
+              <span class="flex items-center">
+                <i class="fas fa-question-circle text-blue-600 mr-3"></i> 
+                What ongoing compliance requirements exist after registration?
+              </span>
+              <i class="fas fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          </h2>
+          <div
+            id="collapseFaq4"
+            class="accordion-content hidden"
+            aria-labelledby="headingFaq4"
+          >
+            <div class="p-5 border-t border-gray-200">
+              <p class="text-gray-700">
+                After registration, companies must comply with several ongoing
+                requirements, including:
+              </p>
+              <ul class="list-disc pl-5 mt-2 text-gray-700">
+                <li>Filing annual returns with SECP</li>
+                <li>Submitting audited financial statements</li>
+                <li>Filing monthly/quarterly/annual tax returns with FBR</li>
+                <li>Holding annual general meetings</li>
+                <li>Maintaining statutory registers and records</li>
+                <li>Reporting any changes in company structure or directors</li>
+              </ul>
+              <p class="mt-2 text-gray-700">
+                Go Wakeel offers comprehensive compliance services to help you
+                meet these requirements.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+          <h2 class="accordion-header" id="headingFaq5">
+            <button
+              class="flex justify-between items-center w-full p-5 font-medium text-left text-gray-900 rounded-t-lg focus:outline-none hover:bg-gray-50 transition-colors"
+              type="button"
+              aria-expanded="false"
+              aria-controls="collapseFaq5"
+              data-accordion-target="#collapseFaq5"
+            >
+              <span class="flex items-center">
+                <i class="fas fa-question-circle text-blue-600 mr-3"></i> 
+                What's the difference between NTN and STRN registration?
+              </span>
+              <i class="fas fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          </h2>
+          <div
+            id="collapseFaq5"
+            class="accordion-content hidden"
+            aria-labelledby="headingFaq5"
+          >
+            <div class="p-5 border-t border-gray-200">
+              <p class="text-gray-700">
+                NTN (National Tax Number) is issued by FBR for income tax
+                purposes and is mandatory for all businesses. STRN (Sales Tax
+                Registration Number) is required only if your business falls
+                under the sales tax regime and has an annual turnover exceeding
+                the threshold set by FBR. Our registration packages include both
+                NTN and STRN registration where applicable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enhanced Contact Section -->
+<section id="contact-section" class="py-16 bg-gradient-to-r from-blue-50 to-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col lg:flex-row gap-12">
+        <!-- Contact Information -->
+        <div class="lg:w-1/2">
+          <div class="bg-white p-8 rounded-xl shadow-lg h-full">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Contact Information</h2>
+            <p class="text-gray-600 mb-8">
+              Have questions about company registration? Reach out to our experts for personalized assistance.
+            </p>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg text-gray-800 mb-1">Office Address</h3>
+                  <p class="text-gray-600">123 Business Plaza, Main Boulevard, Lahore, Pakistan</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-phone-alt text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg text-gray-800 mb-1">Phone Number</h3>
+                  <p class="text-gray-600">+92 300 1234567</p>
+                  <p class="text-gray-600">+92 42 1234567</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-envelope text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg text-gray-800 mb-1">Email Address</h3>
+                  <p class="text-gray-600">info@gowakeel.com</p>
+                  <p class="text-gray-600">support@gowakeel.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                  <i class="fas fa-clock text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-lg text-gray-800 mb-1">Working Hours</h3>
+                  <p class="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                  <p class="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <h3 class="font-bold text-lg text-gray-800 mb-4">Follow Us</h3>
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-[#003366] hover:text-white transition-colors">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-[#003366] hover:text-white transition-colors">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-[#003366] hover:text-white transition-colors">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-[#003366] hover:text-white transition-colors">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="lg:w-1/2">
+          <div class="bg-white p-8 rounded-xl shadow-lg h-full">
+            <h2 class="text-3xl font-bold mb-6 text-gray-800">Get In Touch</h2>
+            <p class="text-gray-600 mb-8">
+              Fill out the form below and our team will get back to you within 24 hours.
+            </p>
+            
+            <form class="space-y-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <i class="fas fa-user text-gray-400"></i>
+                    </div>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                      placeholder="Your Name"
+                      required
+                    >
+                  </div>
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <i class="fas fa-envelope text-gray-400"></i>
+                    </div>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                      placeholder="your@email.com"
+                      required
+                    >
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-phone-alt text-gray-400"></i>
+                  </div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    placeholder="+92 XXX XXXXXXX"
+                    required
+                  >
+                </div>
+              </div>
+              
+              <div>
+                <label for="company_type" class="block text-sm font-medium text-gray-700 mb-1">Company Type</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <i class="fas fa-building text-gray-400"></i>
+                  </div>
+                  <select
+                    id="company_type"
+                    name="company_type"
+                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all appearance-none"
+                    required
+                  >
+                    <option value="">Select Company Type</option>
+                    <option value="private_limited">Private Limited Company</option>
+                    <option value="single_member">Single Member Company</option>
+                    <option value="llc">Limited Liability Company</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="sole_proprietor">Sole Proprietor</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 pl-3 pt-3 flex items-start pointer-events-none">
+                    <i class="fas fa-comment-dots text-gray-400"></i>
+                  </div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    placeholder="Tell us about your business needs"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              
+              <div>
+                <button
+                  type="submit"
+                  class="w-full bg-[#003366] text-white font-medium py-3 px-6 rounded-md hover:bg-[#002244] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center"
+                >
+                  <i class="fas fa-paper-plane mr-2"></i>Send Message
+                </button>
+              </div>
+              
+              <div class="text-center mt-4">
+                <p class="text-sm text-gray-500 flex items-center justify-center">
+                  <i class="fas fa-shield-alt text-blue-500 mr-2"></i> 
+                  Your information is secure and will never be shared with third parties
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add Animate.css library -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+<!-- Custom JavaScript -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Tab functionality - fixed version
+  const tabButtons = document.querySelectorAll("[data-tab-target]");
+  const tabPanes = document.querySelectorAll(".tab-pane");
+  
+  // Show the first tab by default
+  tabPanes.forEach((pane, index) => {
+    if(index === 0) {
+      pane.classList.add("active");
+    } else {
+      pane.classList.remove("active");
+    }
+  });
+  
+  tabButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-tab-target");
+      const targetTab = document.querySelector(targetId);
+      
+      // Hide all tabs
+      tabPanes.forEach(tab => {
+        tab.classList.remove("active");
+      });
+      
+      // Deactivate all buttons
+      tabButtons.forEach(btn => {
+        btn.classList.remove("border-blue-600");
+        btn.classList.add("border-transparent");
+        btn.setAttribute("aria-selected", "false");
+      });
+      
+      // Activate current button
+      button.classList.add("border-blue-600");
+      button.classList.remove("border-transparent");
+      button.setAttribute("aria-selected", "true");
+      
+      // Show target tab
+      targetTab.classList.add("active");
+      
+      // Add animation class
+      targetTab.classList.add("animate__animated", "animate__fadeIn");
+      
+      // Remove animation class after animation completes
+      setTimeout(() => {
+        targetTab.classList.remove("animate__animated", "animate__fadeIn");
+      }, 500);
+    });
+  });
+  
+  // Accordion functionality
+  const accordionButtons = document.querySelectorAll("[data-accordion-target]");
+  
+  accordionButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-accordion-target");
+      const targetContent = document.querySelector(targetId);
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      
+      // Toggle content
+      if (isExpanded) {
+        targetContent.classList.add("hidden");
+        button.setAttribute("aria-expanded", "false");
+      } else {
+        targetContent.classList.remove("hidden");
+        button.setAttribute("aria-expanded", "true");
+      }
+      
+      // Toggle icon rotation
+      const icon = button.querySelector(".fa-chevron-down");
+      icon.classList.toggle("rotate-180");
+    });
+  });
+  
+  // Form submission
+  const contactForm = document.querySelector("#contact-section form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // Simulate form submission
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Message Sent!';
+        submitBtn.classList.remove("bg-[#003366]", "hover:bg-[#002244]");
+        submitBtn.classList.add("bg-green-600", "hover:bg-green-700");
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          this.reset();
+          submitBtn.innerHTML = originalText;
+          submitBtn.classList.remove("bg-green-600", "hover:bg-green-700");
+          submitBtn.classList.add("bg-[#003366]", "hover:bg-[#002244]");
+          submitBtn.disabled = false;
+        }, 3000);
+      }, 1500);
+    });
+  }
+  
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute("href");
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 100,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+});
+</script>
+
+<style>
+/* Accordion styles */
+.accordion-content {
+  transition: all 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* Tab styles */
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+/* Form input styles */
+input, textarea, select {
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Button hover effect */
+.hover-effect:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .process-step::before {
+    display: none;
+  }
+  
+  .tab-content .tab-pane {
+    padding: 1rem;
+  }
+  
+  .accordion-button {
+    padding: 1rem;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation for cards */
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Enhanced contrast for icons */
+.fas, .fab {
+  color: inherit;
+}
+
+/* Improved contrast for text */
+.text-gray-800 {
+  color: #1f2937;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+</style>
+{% endblock Content %}

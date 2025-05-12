@@ -1,0 +1,2022 @@
+{% extends "wakeelapp/index.html" %} {% load static %} {% block title %}
+<title>Tax Return Filing in Pakistan - GoWakeel</title>
+{% endblock title %} {% block metatitle %}
+<meta
+  name="description"
+  content="Professional tax return filing services in Pakistan. Get expert assistance with income tax returns, NTN registration, and maximize your eligible tax refunds."
+/>
+{% endblock metatitle %} {% block Content %}
+<style>
+  /* Animation keyframes */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes expand {
+    from {
+      width: 0;
+    }
+    to {
+      width: 5rem;
+    }
+  }
+
+  /* Scroll animations */
+  .reveal {
+    position: relative;
+    opacity: 0;
+    transition: all 0.8s ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+  }
+
+  .reveal-up {
+    transform: translateY(50px);
+  }
+
+  .reveal.active.reveal-up {
+    transform: translateY(0);
+  }
+
+  /* Interactive elements */
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .tab-btn {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .tab-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .tab-btn.active::after {
+    width: 100%;
+  }
+
+  .tab-btn:hover::after {
+    width: 100%;
+  }
+
+  /* Accordion styles */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .accordion-btn.open + .accordion-content {
+    max-height: 500px;
+    opacity: 1;
+    padding: 1rem;
+  }
+
+  .accordion-btn .icon {
+    transition: transform 0.4s ease;
+  }
+
+  .accordion-btn.open .icon {
+    transform: rotate(180deg);
+  }
+
+  /* Service cards */
+  .service-card {
+    transition: all 0.3s ease;
+  }
+
+  .service-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+  }
+
+  .service-card.expanded .service-details {
+    max-height: 300px;
+    opacity: 1;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 6px;
+    width: 100%;
+    background-color: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #003366;
+    border-radius: 3px;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Custom checkbox */
+  .custom-checkbox {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .custom-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  .custom-checkbox input:checked ~ .checkmark {
+    background-color: #003366;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .custom-checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  /* Dark mode styles */
+  .dark .progress-bar {
+    background-color: #374151;
+  }
+
+  .dark .progress-bar-fill {
+    background-color: #3b82f6;
+  }
+
+  .dark .checkmark {
+    background-color: #374151;
+  }
+
+  .dark .custom-checkbox:hover input ~ .checkmark {
+    background-color: #4b5563;
+  }
+
+  .dark .custom-checkbox input:checked ~ .checkmark {
+    background-color: #3b82f6;
+  }
+</style>
+
+<!-- Hero Section -->
+<div
+  class="bg-gradient-to-r from-[#003366]/10 to-white dark:from-gray-900 dark:to-gray-800 py-16 transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center">
+      <h1
+        class="text-3xl md:text-5xl font-bold text-[#003366] dark:text-blue-300 mb-3 transition-colors duration-300 animate-fade-in-down"
+      >
+        Tax Return Filing in Pakistan
+      </h1>
+      <div
+        class="h-1 w-20 bg-[#003366] dark:bg-blue-500 mb-6 mx-auto transition-colors duration-300 animate-expand"
+      ></div>
+      <p
+        class="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg transition-colors duration-300 animate-fade-in-up"
+      >
+        Professional tax return filing services to help you navigate the
+        complexities of Pakistani tax regulations and maximize your eligible
+        refunds.
+      </p>
+      <div
+        class="mt-8 flex justify-center space-x-4 animate-fade-in"
+        style="animation-delay: 0.5s"
+      >
+        <a
+          href="{% url 'wakeelapp:contact' %}"
+          class="px-6 py-3 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 flex items-center"
+        >
+          <i class="fas fa-file-invoice mr-2"></i> File Your Tax Return
+        </a>
+        <a
+          href="{% url 'wakeelapp:calculator' %}"
+          class="px-6 py-3 bg-white border border-[#003366] text-[#003366] hover:bg-gray-50 font-medium rounded-lg transition-all duration-300 flex items-center"
+        >
+          <i class="fas fa-calculator mr-2"></i> Use Tax Calculator
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content Section -->
+<section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div
+      class="prose prose-lg max-w-none dark:prose-invert transition-colors duration-300"
+    >
+      <p class="text-gray-700 dark:text-gray-300 mb-8 text-lg reveal reveal-up">
+        Tax return filing in Pakistan is an important annual obligation that
+        typically takes place between July and September. At Go Wakeel, we
+        specialize in making this process simple, secure, and beneficial for
+        every taxpayer—whether you're a salaried individual, business owner, or
+        freelancer.
+      </p>
+
+      <!-- Interactive Tabs Section -->
+      <div class="mb-12 reveal reveal-up">
+        <div
+          class="flex flex-wrap border-b border-gray-200 dark:border-gray-700 mb-8"
+        >
+          <button
+            class="tab-btn active px-6 py-3 text-[#003366] dark:text-blue-300 font-medium"
+            data-tab="why-choose"
+          >
+            Why Choose Us
+          </button>
+          <button
+            class="tab-btn px-6 py-3 text-gray-500 dark:text-gray-400 font-medium"
+            data-tab="overpaying"
+          >
+            Areas of Overpaying
+          </button>
+          <button
+            class="tab-btn px-6 py-3 text-gray-500 dark:text-gray-400 font-medium"
+            data-tab="services"
+          >
+            Our Services
+          </button>
+          <button
+            class="tab-btn px-6 py-3 text-gray-500 dark:text-gray-400 font-medium"
+            data-tab="documents"
+          >
+            Required Documents
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" id="why-choose">
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-md transition-colors duration-300"
+          >
+            <div class="flex items-center mb-4">
+              <div
+                class="bg-[#003366]/10 dark:bg-blue-900/30 p-3 rounded-full mr-4"
+              >
+                <i
+                  class="fas fa-shield-alt text-2xl text-[#003366] dark:text-blue-300"
+                ></i>
+              </div>
+              <h2
+                class="text-2xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300"
+              >
+                Why Choose Go Wakeel for Tax Filing?
+              </h2>
+            </div>
+            <p
+              class="text-gray-700 dark:text-gray-300 mb-6 transition-colors duration-300"
+            >
+              Our experienced team understands the importance of accurate and
+              timely tax filing while ensuring complete confidentiality of your
+              financial information. Many individuals unknowingly pay excessive
+              withholding tax throughout the year—on bank transactions, mobile
+              phone usage, utility bills, and even ATM withdrawals—without
+              realizing these can often be claimed back.
+            </p>
+            <p
+              class="text-gray-700 dark:text-gray-300 transition-colors duration-300"
+            >
+              Go Wakeel provides comprehensive tax consultancy to help you not
+              only file your income tax return correctly but also maximize your
+              eligible tax refunds.
+            </p>
+
+            <!-- Benefits Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+              <div
+                class="bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm transition-colors duration-300"
+              >
+                <div class="text-[#003366] dark:text-blue-300 mb-3">
+                  <i class="fas fa-check-circle text-xl"></i>
+                </div>
+                <h3
+                  class="font-semibold text-[#003366] dark:text-blue-300 mb-2"
+                >
+                  Expert Guidance
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Professional tax consultants with years of experience in
+                  Pakistani tax laws
+                </p>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm transition-colors duration-300"
+              >
+                <div class="text-[#003366] dark:text-blue-300 mb-3">
+                  <i class="fas fa-lock text-xl"></i>
+                </div>
+                <h3
+                  class="font-semibold text-[#003366] dark:text-blue-300 mb-2"
+                >
+                  Confidentiality
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Complete privacy and security of your sensitive financial
+                  information
+                </p>
+              </div>
+              <div
+                class="bg-white dark:bg-gray-700 p-5 rounded-lg shadow-sm transition-colors duration-300"
+              >
+                <div class="text-[#003366] dark:text-blue-300 mb-3">
+                  <i class="fas fa-money-bill-wave text-xl"></i>
+                </div>
+                <h3
+                  class="font-semibold text-[#003366] dark:text-blue-300 mb-2"
+                >
+                  Maximize Refunds
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Identify all eligible deductions to ensure you don't overpay
+                  taxes
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="overpaying">
+          <div
+            class="bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div
+                  class="bg-[#003366]/10 dark:bg-blue-900/30 p-3 rounded-full mr-4"
+                >
+                  <i
+                    class="fas fa-exclamation-circle text-2xl text-[#003366] dark:text-blue-300"
+                  ></i>
+                </div>
+                <h2
+                  class="text-2xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300"
+                >
+                  Common Areas Where You Might Be Overpaying Tax
+                </h2>
+              </div>
+
+              <!-- Interactive Accordion -->
+              <div class="mt-6 space-y-4">
+                <div
+                  class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                >
+                  <button
+                    class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 text-left"
+                  >
+                    <div class="flex items-center">
+                      <i class="fas fa-mobile-alt text-red-500 mr-3"></i>
+                      <span class="font-medium text-gray-800 dark:text-gray-200"
+                        >Mobile Phone & Internet Usage</span
+                      >
+                    </div>
+                    <i
+                      class="fas fa-chevron-down icon text-gray-500 dark:text-gray-400"
+                    ></i>
+                  </button>
+                  <div class="accordion-content bg-white dark:bg-gray-800">
+                    <div class="p-4">
+                      <p class="text-gray-700 dark:text-gray-300">
+                        Many Pakistanis pay significant withholding taxes on
+                        their mobile phone bills and internet services. These
+                        taxes are often eligible for refund when filing your
+                        annual tax return, especially for salaried individuals
+                        and businesses.
+                      </p>
+                      <div class="mt-3">
+                        <div
+                          class="text-sm text-gray-500 dark:text-gray-400 mb-1"
+                        >
+                          Average potential savings
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-bar-fill"
+                            style="width: 65%"
+                          ></div>
+                        </div>
+                        <div
+                          class="text-right text-sm text-gray-500 dark:text-gray-400 mt-1"
+                        >
+                          Up to 65% refundable
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                >
+                  <button
+                    class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 text-left"
+                  >
+                    <div class="flex items-center">
+                      <i class="fas fa-university text-red-500 mr-3"></i>
+                      <span class="font-medium text-gray-800 dark:text-gray-200"
+                        >Bank Transactions & ATM Withdrawals</span
+                      >
+                    </div>
+                    <i
+                      class="fas fa-chevron-down icon text-gray-500 dark:text-gray-400"
+                    ></i>
+                  </button>
+                  <div class="accordion-content bg-white dark:bg-gray-800">
+                    <div class="p-4">
+                      <p class="text-gray-700 dark:text-gray-300">
+                        Banking transactions, including ATM withdrawals above
+                        certain thresholds, are subject to withholding tax.
+                        These taxes can add up significantly over the year and
+                        may be claimed back when filing your tax return.
+                      </p>
+                      <div class="mt-3">
+                        <div
+                          class="text-sm text-gray-500 dark:text-gray-400 mb-1"
+                        >
+                          Average potential savings
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-bar-fill"
+                            style="width: 75%"
+                          ></div>
+                        </div>
+                        <div
+                          class="text-right text-sm text-gray-500 dark:text-gray-400 mt-1"
+                        >
+                          Up to 75% refundable
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                >
+                  <button
+                    class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 text-left"
+                  >
+                    <div class="flex items-center">
+                      <i class="fas fa-bolt text-red-500 mr-3"></i>
+                      <span class="font-medium text-gray-800 dark:text-gray-200"
+                        >Utility Bills</span
+                      >
+                    </div>
+                    <i
+                      class="fas fa-chevron-down icon text-gray-500 dark:text-gray-400"
+                    ></i>
+                  </button>
+                  <div class="accordion-content bg-white dark:bg-gray-800">
+                    <div class="p-4">
+                      <p class="text-gray-700 dark:text-gray-300">
+                        Electricity, gas, and water bills often include
+                        withholding taxes that can be claimed back. Many
+                        taxpayers overlook these deductions, resulting in
+                        overpayment of taxes.
+                      </p>
+                      <div class="mt-3">
+                        <div
+                          class="text-sm text-gray-500 dark:text-gray-400 mb-1"
+                        >
+                          Average potential savings
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-bar-fill"
+                            style="width: 55%"
+                          ></div>
+                        </div>
+                        <div
+                          class="text-right text-sm text-gray-500 dark:text-gray-400 mt-1"
+                        >
+                          Up to 55% refundable
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+                >
+                  <button
+                    class="accordion-btn w-full flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 text-left"
+                  >
+                    <div class="flex items-center">
+                      <i class="fas fa-home text-red-500 mr-3"></i>
+                      <span class="font-medium text-gray-800 dark:text-gray-200"
+                        >Property & Investment Transactions</span
+                      >
+                    </div>
+                    <i
+                      class="fas fa-chevron-down icon text-gray-500 dark:text-gray-400"
+                    ></i>
+                  </button>
+                  <div class="accordion-content bg-white dark:bg-gray-800">
+                    <div class="p-4">
+                      <p class="text-gray-700 dark:text-gray-300">
+                        Property sales, car purchases, and investment profits
+                        are subject to various taxes. With proper documentation
+                        and expert guidance, you can ensure you're not
+                        overpaying on these transactions.
+                      </p>
+                      <div class="mt-3">
+                        <div
+                          class="text-sm text-gray-500 dark:text-gray-400 mb-1"
+                        >
+                          Average potential savings
+                        </div>
+                        <div class="progress-bar">
+                          <div
+                            class="progress-bar-fill"
+                            style="width: 80%"
+                          ></div>
+                        </div>
+                        <div
+                          class="text-right text-sm text-gray-500 dark:text-gray-400 mt-1"
+                        >
+                          Up to 80% refundable
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="services">
+          <div
+            class="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-md transition-colors duration-300"
+          >
+            <div class="flex items-center mb-6">
+              <div
+                class="bg-[#003366]/10 dark:bg-blue-900/30 p-3 rounded-full mr-4"
+              >
+                <i
+                  class="fas fa-briefcase text-2xl text-[#003366] dark:text-blue-300"
+                ></i>
+              </div>
+              <h2
+                class="text-2xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300"
+              >
+                Taxation Services Available at Go Wakeel
+              </h2>
+            </div>
+
+            <!-- Interactive Service Cards -->
+            <div class="grid grid-cols-1 gap-6">
+              <!-- NTN Registration -->
+              <div
+                class="service-card bg-white dark:bg-gray-700 rounded-lg shadow-sm overflow-hidden"
+              >
+                <div class="p-6 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <div
+                      class="bg-[#003366]/10 dark:bg-blue-900/20 p-3 rounded-full mr-4"
+                    >
+                      <i
+                        class="fas fa-id-card text-xl text-[#003366] dark:text-blue-300"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3
+                        class="text-lg font-semibold text-[#003366] dark:text-blue-300"
+                      >
+                        NTN Registration
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        National Tax Number registration for individuals and
+                        businesses
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="service-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-[#003366] dark:hover:text-blue-300"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </div>
+                <div
+                  class="service-details bg-gray-50 dark:bg-gray-800 px-6 pb-6"
+                >
+                  <div
+                    class="pt-4 border-t border-gray-100 dark:border-gray-600"
+                  >
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-2"
+                    >
+                      What's included:
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span
+                          >Complete assistance with NTN application
+                          process</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Document preparation and verification</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Follow-up with tax authorities</span>
+                      </li>
+                    </ul>
+                    <div class="mt-4 flex justify-between items-center">
+                      <div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                          >Starting from</span
+                        >
+                        <span
+                          class="block text-lg font-bold text-[#003366] dark:text-blue-300"
+                          >PKR 3,500</span
+                        >
+                      </div>
+                      <a
+                        href="{% url 'wakeelapp:contact' %}"
+                        class="px-4 py-2 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 flex items-center"
+                      >
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Individual Tax Return Filing -->
+              <div
+                class="service-card bg-white dark:bg-gray-700 rounded-lg shadow-sm overflow-hidden"
+              >
+                <div class="p-6 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <div
+                      class="bg-[#003366]/10 dark:bg-blue-900/20 p-3 rounded-full mr-4"
+                    >
+                      <i
+                        class="fas fa-user-tie text-xl text-[#003366] dark:text-blue-300"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3
+                        class="text-lg font-semibold text-[#003366] dark:text-blue-300"
+                      >
+                        Individual Tax Return Filing
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Professional tax return preparation for individuals
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="service-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-[#003366] dark:hover:text-blue-300"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </div>
+                <div
+                  class="service-details bg-gray-50 dark:bg-gray-800 px-6 pb-6"
+                >
+                  <div
+                    class="pt-4 border-t border-gray-100 dark:border-gray-600"
+                  >
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-2"
+                    >
+                      What's included:
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Comprehensive review of income sources</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Maximization of allowable deductions</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Accurate tax calculation and filing</span>
+                      </li>
+                    </ul>
+                    <div class="mt-4 flex justify-between items-center">
+                      <div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                          >Starting from</span
+                        >
+                        <span
+                          class="block text-lg font-bold text-[#003366] dark:text-blue-300"
+                          >PKR 4,000</span
+                        >
+                      </div>
+                      <a
+                        href="{% url 'wakeelapp:contact' %}"
+                        class="px-4 py-2 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 flex items-center"
+                      >
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Business/Corporate Tax Filing -->
+              <div
+                class="service-card bg-white dark:bg-gray-700 rounded-lg shadow-sm overflow-hidden"
+              >
+                <div class="p-6 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <div
+                      class="bg-[#003366]/10 dark:bg-blue-900/20 p-3 rounded-full mr-4"
+                    >
+                      <i
+                        class="fas fa-building text-xl text-[#003366] dark:text-blue-300"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3
+                        class="text-lg font-semibold text-[#003366] dark:text-blue-300"
+                      >
+                        Business/Corporate Tax Filing
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Comprehensive tax solutions for businesses
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="service-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-[#003366] dark:hover:text-blue-300"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </div>
+                <div
+                  class="service-details bg-gray-50 dark:bg-gray-800 px-6 pb-6"
+                >
+                  <div
+                    class="pt-4 border-t border-gray-100 dark:border-gray-600"
+                  >
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-2"
+                    >
+                      What's included:
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Preparation of corporate tax returns</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Financial statement analysis</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Tax liability optimization</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Compliance with corporate tax regulations</span>
+                      </li>
+                    </ul>
+                    <div class="mt-4 flex justify-between items-center">
+                      <div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                          >Starting from</span
+                        >
+                        <span
+                          class="block text-lg font-bold text-[#003366] dark:text-blue-300"
+                          >PKR 15,000</span
+                        >
+                      </div>
+                      <a
+                        href="{% url 'wakeelapp:contact' %}"
+                        class="px-4 py-2 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 hover-lift flex items-center"
+                      >
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sales Tax Return Filing -->
+              <div
+                class="service-card bg-white dark:bg-gray-700 rounded-lg shadow-sm overflow-hidden"
+              >
+                <div class="p-6 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <div
+                      class="bg-[#003366]/10 dark:bg-blue-900/20 p-3 rounded-full mr-4"
+                    >
+                      <i
+                        class="fas fa-receipt text-xl text-[#003366] dark:text-blue-300"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3
+                        class="text-lg font-semibold text-[#003366] dark:text-blue-300"
+                      >
+                        Sales Tax Return Filing
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Monthly/quarterly sales tax compliance services
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="service-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-[#003366] dark:hover:text-blue-300"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </div>
+                <div
+                  class="service-details bg-gray-50 dark:bg-gray-800 px-6 pb-6"
+                >
+                  <div
+                    class="pt-4 border-t border-gray-100 dark:border-gray-600"
+                  >
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-2"
+                    >
+                      What's included:
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span
+                          >Sales tax calculation and return preparation</span
+                        >
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Input/output tax reconciliation</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Electronic filing with FBR</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Payment processing assistance</span>
+                      </li>
+                    </ul>
+                    <div class="mt-4 flex justify-between items-center">
+                      <div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                          >Starting from</span
+                        >
+                        <span
+                          class="block text-lg font-bold text-[#003366] dark:text-blue-300"
+                          >PKR 6,500</span
+                        >
+                      </div>
+                      <a
+                        href="{% url 'wakeelapp:contact' %}"
+                        class="px-4 py-2 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 hover-lift flex items-center"
+                      >
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SRB Sales Tax Registration & Filing -->
+              <div
+                class="service-card bg-white dark:bg-gray-700 rounded-lg shadow-sm overflow-hidden"
+              >
+                <div class="p-6 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <div
+                      class="bg-[#003366]/10 dark:bg-blue-900/20 p-3 rounded-full mr-4"
+                    >
+                      <i
+                        class="fas fa-landmark text-xl text-[#003366] dark:text-blue-300"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3
+                        class="text-lg font-semibold text-[#003366] dark:text-blue-300"
+                      >
+                        SRB Sales Tax Registration & Filing
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Sindh Revenue Board compliance services
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="service-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-[#003366] dark:hover:text-blue-300"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </div>
+                <div
+                  class="service-details bg-gray-50 dark:bg-gray-800 px-6 pb-6"
+                >
+                  <div
+                    class="pt-4 border-t border-gray-100 dark:border-gray-600"
+                  >
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-2"
+                    >
+                      What's included:
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>SRB sales tax registration assistance</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Monthly/quarterly return preparation</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Compliance with Sindh-specific regulations</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Representation before SRB authorities</span>
+                      </li>
+                    </ul>
+                    <div class="mt-4 flex justify-between items-center">
+                      <div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                          >Starting from</span
+                        >
+                        <span
+                          class="block text-lg font-bold text-[#003366] dark:text-blue-300"
+                          >PKR 8,000</span
+                        >
+                      </div>
+                      <a
+                        href="{% url 'wakeelapp:contact' %}"
+                        class="px-4 py-2 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 hover-lift flex items-center"
+                      >
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PRA Sales Tax Registration -->
+              <div
+                class="service-card bg-white dark:bg-gray-700 rounded-lg shadow-sm overflow-hidden"
+              >
+                <div class="p-6 flex justify-between items-center">
+                  <div class="flex items-center">
+                    <div
+                      class="bg-[#003366]/10 dark:bg-blue-900/20 p-3 rounded-full mr-4"
+                    >
+                      <i
+                        class="fas fa-university text-xl text-[#003366] dark:text-blue-300"
+                      ></i>
+                    </div>
+                    <div>
+                      <h3
+                        class="text-lg font-semibold text-[#003366] dark:text-blue-300"
+                      >
+                        PRA Sales Tax Registration
+                      </h3>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">
+                        Punjab Revenue Authority compliance services
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    class="service-toggle p-2 text-gray-500 dark:text-gray-400 hover:text-[#003366] dark:hover:text-blue-300"
+                  >
+                    <i class="fas fa-chevron-down"></i>
+                  </button>
+                </div>
+                <div
+                  class="service-details bg-gray-50 dark:bg-gray-800 px-6 pb-6"
+                >
+                  <div
+                    class="pt-4 border-t border-gray-100 dark:border-gray-600"
+                  >
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-2"
+                    >
+                      What's included:
+                    </h4>
+                    <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>PRA registration process completion</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Document preparation and submission</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Ongoing compliance monitoring</span>
+                      </li>
+                      <li class="flex items-start">
+                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                        <span>Quarterly return filing services</span>
+                      </li>
+                    </ul>
+                    <div class="mt-4 flex justify-between items-center">
+                      <div>
+                        <span class="text-sm text-gray-500 dark:text-gray-400"
+                          >Starting from</span
+                        >
+                        <span
+                          class="block text-lg font-bold text-[#003366] dark:text-blue-300"
+                          >PKR 7,500</span
+                        >
+                      </div>
+                      <a
+                        href="{% url 'wakeelapp:contact' %}"
+                        class="px-4 py-2 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 hover-lift flex items-center"
+                      >
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="documents">
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-6">
+                <div
+                  class="bg-[#003366]/10 dark:bg-blue-900/30 p-3 rounded-full mr-4"
+                >
+                  <i
+                    class="fas fa-file-alt text-2xl text-[#003366] dark:text-blue-300"
+                  ></i>
+                </div>
+                <h2
+                  class="text-2xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300"
+                >
+                  Documents Required for Tax Filing
+                </h2>
+              </div>
+
+              <p class="text-gray-700 dark:text-gray-300 mb-6">
+                To get started with your income tax return filing, you'll need
+                to provide the following documents. Use this interactive
+                checklist to ensure you have everything ready:
+              </p>
+
+              <!-- Interactive Checklist -->
+              <div class="space-y-4 mb-6">
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Copy of your CNIC (Computerized National Identity Card)
+                  <span class="tooltip ml-2">
+                    <i class="fas fa-info-circle text-gray-400"></i>
+                    <span class="tooltip-text"
+                      >Both sides of your CNIC should be clearly visible in the
+                      copy</span
+                    >
+                  </span>
+                </label>
+
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Valid mobile number and email address
+                </label>
+
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Details of your source of income or estimated annual income
+                </label>
+
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Bank statements covering the period from 1st July to 30th June
+                  <span class="tooltip ml-2">
+                    <i class="fas fa-info-circle text-gray-400"></i>
+                    <span class="tooltip-text"
+                      >Statements from all bank accounts in your name</span
+                    >
+                  </span>
+                </label>
+
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Records of property sales or purchases, if applicable
+                </label>
+
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Records of assets bought or sold (e.g., vehicles, gold,
+                  stocks, bonds)
+                </label>
+
+                <label
+                  class="custom-checkbox flex items-center text-gray-700 dark:text-gray-300"
+                >
+                  <input type="checkbox" class="document-check" />
+                  <span class="checkmark"></span>
+                  Any other supporting documents, if required
+                </label>
+              </div>
+
+              <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                <div class="flex items-start">
+                  <i class="fas fa-lightbulb text-yellow-500 mt-1 mr-3"></i>
+                  <div>
+                    <h4
+                      class="font-medium text-gray-800 dark:text-gray-200 mb-1"
+                    >
+                      Document Readiness
+                    </h4>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                      <span id="checklist-progress">0</span> of 7 documents
+                      ready.
+                      <span id="checklist-message"
+                        >Let's get started with your tax filing
+                        preparation!</span
+                      >
+                    </p>
+                    <div class="mt-2 progress-bar">
+                      <div
+                        class="progress-bar-fill"
+                        id="document-progress"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tax Calculator Section -->
+      <div class="mb-12 reveal reveal-up">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 mb-2">
+            Calculate Your Tax Easily with Our Free Tax Calculator
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            To further simplify tax return filing in Pakistan, we've introduced
+            an easy-to-use tax calculator on our platform. This tool allows you
+            to calculate your annual tax liability based on your income—so you
+            can get a clear estimate before filing.
+          </p>
+        </div>
+
+        <div
+          class="w-full max-w-7xl mx-auto bg-white dark:bg-gray-800 p-6 md:p-8 shadow-md rounded-lg border border-[#003366]/10 dark:border-blue-900/30 transition-colors duration-300"
+        >
+          <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="flex flex-col">
+                <label
+                  class="font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300"
+                  >Select Tax Year</label
+                >
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i
+                      class="fas fa-calendar-alt text-gray-400 dark:text-gray-500 transition-colors duration-300"
+                    ></i>
+                  </div>
+                  <select
+                    id="taxSlab"
+                    class="pl-10 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-400 focus:border-[#003366] dark:focus:border-blue-400 transition-colors duration-300 w-full"
+                  >
+                    <script>
+                      for (let year = 2024; year >= 2022; year--) {
+                        document.write(
+                          `<option value="${year}-${year + 1}">${year}-${
+                            year + 1
+                          }</option>`
+                        );
+                      }
+                    </script>
+                  </select>
+                </div>
+              </div>
+
+              <div class="flex flex-col">
+                <label
+                  class="font-medium text-gray-700 dark:text-gray-300 mb-1 transition-colors duration-300"
+                  >Enter Monthly Salary (PKR)</label
+                >
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                  >
+                    <i
+                      class="fas fa-rupee-sign text-gray-400 dark:text-gray-500 transition-colors duration-300"
+                    ></i>
+                  </div>
+                  <input
+                    id="salary"
+                    type="number"
+                    placeholder="e.g. 100000"
+                    class="pl-10 w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-400 focus:border-[#003366] dark:focus:border-blue-400 transition-colors duration-300"
+                  />
+                  <div
+                    class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  >
+                    <span
+                      class="text-gray-400 dark:text-gray-500 transition-colors duration-300"
+                      >PKR</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button
+                onclick="calculateTax()"
+                class="w-full bg-gradient-to-r from-[#003366] to-[#0066cc] dark:from-blue-700 dark:to-blue-500 text-white px-6 py-3 rounded-lg hover:from-[#002244] hover:to-[#004c99] dark:hover:from-blue-800 dark:hover:to-blue-600 transition-all duration-300 flex items-center justify-center"
+              >
+                <i class="fas fa-calculator mr-2"></i> Calculate Tax
+              </button>
+            </div>
+
+            <div
+              class="text-xs text-center text-gray-500 dark:text-gray-400 mt-2 transition-colors duration-300"
+            >
+              <i class="fas fa-shield-alt mr-1"></i> Your data is processed
+              locally and never stored or shared
+            </div>
+          </div>
+
+          <!-- Results Section - Simplified -->
+          <div
+            id="resultsSection"
+            class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 hidden transition-colors duration-300"
+          >
+            <h3
+              class="text-xl font-bold text-[#003366] dark:text-blue-300 text-center mb-6 transition-colors duration-300"
+            >
+              Your Tax Estimate
+            </h3>
+
+            <div
+              class="bg-gradient-to-r from-[#003366]/10 to-[#003366]/5 dark:from-blue-900/30 dark:to-blue-800/20 p-6 rounded-lg border border-[#003366]/20 dark:border-blue-800/30 mb-6 transition-colors duration-300"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="text-center">
+                  <div
+                    class="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300"
+                  >
+                    Monthly Take-Home
+                  </div>
+                  <div
+                    id="monthlyAfterTax"
+                    class="text-3xl font-bold text-[#003366] dark:text-blue-300 transition-colors duration-300"
+                  >
+                    0/-
+                  </div>
+                  <div
+                    class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300"
+                  >
+                    After tax
+                  </div>
+                </div>
+                <div class="text-center">
+                  <div
+                    class="text-sm text-gray-600 dark:text-gray-300 font-medium transition-colors duration-300"
+                  >
+                    Effective Tax Rate
+                  </div>
+                  <div
+                    id="effectiveTaxRate"
+                    class="text-2xl font-semibold text-[#003366] dark:text-blue-300 transition-colors duration-300"
+                  >
+                    0%
+                  </div>
+                  <div
+                    class="text-xs text-gray-500 dark:text-gray-400 mt-1 transition-colors duration-300"
+                  >
+                    Of total income
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mb-6">
+              <p class="text-gray-700 dark:text-gray-300 mb-4">
+                With just a few inputs, you can:
+              </p>
+              <ul
+                class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700 dark:text-gray-300 mb-6"
+              >
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Get an idea of how much income tax you are required to
+                    pay</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Understand the impact of withholding taxes</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >See potential areas where tax savings are possible</span
+                  >
+                </li>
+              </ul>
+
+              <p class="text-gray-700 dark:text-gray-300 mb-6">
+                After calculating, you can consult our experts who will analyze
+                your financial details, validate your calculations, and guide
+                you through a personalized tax-saving strategy.
+              </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="{% url 'wakeelapp:contact' %}"
+                class="px-6 py-3 bg-[#003366] hover:bg-[#00264d] text-white font-medium rounded-lg transition-all duration-300 hover-lift flex items-center justify-center"
+              >
+                <i class="fas fa-user-tie mr-2"></i> Consult Our Tax Experts
+              </a>
+              <button
+                onclick="window.print()"
+                class="px-6 py-3 bg-white dark:bg-gray-700 border border-[#003366] dark:border-blue-500 text-[#003366] dark:text-blue-300 font-medium rounded-lg transition-all duration-300 hover-lift flex items-center justify-center"
+              >
+                <i class="fas fa-print mr-2"></i> Print Results
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // Tax slabs for different years
+        const taxSlabs = {
+          "2024-2025": [
+            { min: 0, max: 600000, rate: 0, fixed: 0 },
+            { min: 600000, max: 1200000, rate: 0.05, fixed: 0 },
+            { min: 1200000, max: 2200000, rate: 0.15, fixed: 30000 },
+            { min: 2200000, max: 4200000, rate: 0.2, fixed: 180000 },
+            { min: 4200000, max: 6200000, rate: 0.25, fixed: 580000 },
+            { min: 6200000, max: Infinity, rate: 0.325, fixed: 1080000 },
+          ],
+          "2023-2024": [
+            { min: 0, max: 600000, rate: 0, fixed: 0 },
+            { min: 600000, max: 1200000, rate: 0.05, fixed: 0 },
+            { min: 1200000, max: 2400000, rate: 0.1, fixed: 30000 },
+            { min: 2400000, max: 3600000, rate: 0.15, fixed: 150000 },
+            { min: 3600000, max: 6000000, rate: 0.2, fixed: 330000 },
+            { min: 6000000, max: 12000000, rate: 0.25, fixed: 810000 },
+            { min: 12000000, max: Infinity, rate: 0.32, fixed: 2310000 },
+          ],
+          "2022-2023": [
+            { min: 0, max: 600000, rate: 0, fixed: 0 },
+            { min: 600000, max: 1200000, rate: 0.025, fixed: 0 },
+            { min: 1200000, max: 2400000, rate: 0.125, fixed: 15000 },
+            { min: 2400000, max: 3600000, rate: 0.2, fixed: 165000 },
+            { min: 3600000, max: 6000000, rate: 0.25, fixed: 405000 },
+            { min: 6000000, max: 12000000, rate: 0.3, fixed: 1005000 },
+            { min: 12000000, max: Infinity, rate: 0.35, fixed: 2805000 },
+          ],
+        };
+
+        // Add tax slabs for previous years
+        for (let year = 2021; year >= 2014; year--) {
+          taxSlabs[`${year}-${year + 1}`] = taxSlabs["2022-2023"];
+        }
+
+        // Format currency function
+        function formatCurrency(amount) {
+          return amount.toLocaleString("en-PK") + "/-";
+        }
+
+        // Calculate tax based on annual income and selected tax slab
+        function calculateTax() {
+          // Get input values
+          const monthlySalary =
+            parseFloat(document.getElementById("salary").value) || 0;
+          const selectedYear = document.getElementById("taxSlab").value;
+          const annualSalary = monthlySalary * 12;
+
+          // Validate input
+          if (monthlySalary <= 0) {
+            alert("Please enter a valid salary amount");
+            return;
+          }
+
+          // Get tax slab for selected year
+          const currentTaxSlab =
+            taxSlabs[selectedYear] || taxSlabs["2024-2025"];
+
+          // Find applicable tax bracket
+          let applicableSlab = currentTaxSlab[0];
+          for (const slab of currentTaxSlab) {
+            if (annualSalary > slab.min && annualSalary <= slab.max) {
+              applicableSlab = slab;
+              break;
+            }
+          }
+
+          // Calculate tax
+          const fixedTax = applicableSlab.fixed;
+          const variableTax =
+            (annualSalary - applicableSlab.min) * applicableSlab.rate;
+          const totalAnnualTax = fixedTax + variableTax;
+          const monthlyTax = totalAnnualTax / 12;
+
+          // Calculate net income
+          const netAnnualIncome = annualSalary - totalAnnualTax;
+          const netMonthlyIncome = netAnnualIncome / 12;
+
+          // Calculate tax percentage
+          const taxPercentage = (totalAnnualTax / annualSalary) * 100;
+
+          // Update UI
+          document.getElementById("monthlyAfterTax").textContent =
+            formatCurrency(netMonthlyIncome);
+          document.getElementById(
+            "effectiveTaxRate"
+          ).textContent = `${taxPercentage.toFixed(1)}%`;
+
+          // Show results section
+          document.getElementById("resultsSection").classList.remove("hidden");
+
+          // Scroll to results
+          document
+            .getElementById("resultsSection")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // Add Enter key support for salary input
+        document
+          .getElementById("salary")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              calculateTax();
+            }
+          });
+      </script>
+      <!-- FAQ Section -->
+      <div class="mb-12 reveal reveal-up">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-[#003366] dark:text-blue-300 mb-2">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            Get answers to common questions about tax filing in Pakistan
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div
+            class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+          >
+            <button
+              class="faq-btn w-full flex justify-between items-center p-4 bg-white dark:bg-gray-800 text-left"
+            >
+              <span class="font-medium text-gray-800 dark:text-gray-200"
+                >When is the deadline for filing tax returns in Pakistan?</span
+              >
+              <i
+                class="fas fa-plus icon text-gray-500 dark:text-gray-400 transition-transform duration-300"
+              ></i>
+            </button>
+            <div
+              class="faq-content max-h-0 overflow-hidden transition-all duration-300"
+            >
+              <div
+                class="p-4 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600"
+              >
+                <p class="text-gray-700 dark:text-gray-300">
+                  The deadline for filing tax returns in Pakistan is typically
+                  September 30th for salaried individuals and December 31st for
+                  businesses and self-employed individuals. However, the Federal
+                  Board of Revenue (FBR) may extend these deadlines. It's always
+                  best to file early to avoid last-minute complications.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden"
+          >
+            <button
+              class="faq-btn w-full flex justify-between items-center p-4 bg-white dark:bg-gray-800 text-left"
+            >
+              <span class="font-medium text-gray-800 dark:text-gray-200"
+                >Do I need to file a tax return if I'm a salaried
+                employee?</span
+              >
+              <i
+                class="fas fa-plus icon text-gray-500 dark:text-gray-400 transition-transform duration-300"
+              ></i>
+            </button>
+            <div
+              class="faq-content max-h-0 overflow-hidden transition-all duration-300"
+            >
+              <div
+                class="p-4 bg-gray-50 dark:bg-gray-700 border-t border-gray-200 dark:border-gray-600"
+              >
+                <p class="text-gray-700 dark:text-gray-300">
+                  Yes, if your annual salary exceeds PKR 600,000, you are
+                  required to file a tax return even if your employer deducts
+                  tax at source. Filing a return is also beneficial as it allows
+                  you to claim refunds on withholding taxes deducted throughout
+                  the year.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div
+        class="bg-[#003366] dark:bg-blue-900 rounded-xl p-8 mb-12 shadow-md text-white text-center reveal reveal-up"
+      >
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">
+          Ready to File Your Tax Return?
+        </h2>
+        <p class="text-gray-100 max-w-2xl mx-auto mb-8">
+          Our tax experts are ready to help you navigate the complexities of
+          Pakistani tax laws and ensure you get the maximum refund possible.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="{% url 'wakeelapp:contact' %}"
+            class="px-6 py-3 bg-white text-[#003366] hover:bg-gray-100 font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
+          >
+            <i class="fas fa-phone-alt mr-2"></i> Contact Our Tax Experts
+          </a>
+          <a
+            href="{% url 'wakeelapp:calculator' %}"
+            class="px-6 py-3 bg-transparent border-2 border-white text-white hover:bg-white/10 font-medium rounded-lg transition-all duration-300 flex items-center justify-center"
+          >
+            <i class="fas fa-calculator mr-2"></i> Use Tax Calculator
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // =============================================
+    // Tab Functionality
+    // =============================================
+    function initTabs() {
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabId = button.getAttribute("data-tab");
+
+          // Remove active class from all buttons and contents
+          tabButtons.forEach((btn) => {
+            btn.classList.remove("active");
+          });
+          tabContents.forEach((content) => {
+            content.classList.remove("active");
+            content.style.display = "none";
+          });
+
+          // Add active class to clicked button and corresponding content
+          button.classList.add("active");
+          const activeContent = document.getElementById(tabId);
+          activeContent.classList.add("active");
+          activeContent.style.display = "block";
+
+          // Initialize content when tab is shown
+          if (tabId === "services") {
+            initServiceCards();
+          } else if (tabId === "overpaying") {
+            initOverpayingAccordions();
+          }
+        });
+      });
+
+      // Activate first tab by default
+      if (tabButtons.length > 0) {
+        tabButtons[0].click();
+      }
+    }
+
+    // =============================================
+    // Service Cards Functionality
+    // =============================================
+    function initServiceCards() {
+      const serviceCards = document.querySelectorAll(".service-card");
+
+      serviceCards.forEach((card) => {
+        const header = card.querySelector(".p-6");
+        const toggle = card.querySelector(".service-toggle");
+        const details = card.querySelector(".service-details");
+
+        // Set initial state
+        details.style.maxHeight = "0";
+        details.style.opacity = "0";
+
+        // Click handler for the entire header
+        header.addEventListener("click", (e) => {
+          if (e.target.tagName === "A" || e.target.closest("a")) return;
+          toggleServiceCard(card);
+        });
+
+        // Click handler for the toggle button
+        if (toggle) {
+          toggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleServiceCard(card);
+          });
+        }
+      });
+    }
+
+    function toggleServiceCard(card) {
+      const details = card.querySelector(".service-details");
+      const icon = card.querySelector(".service-toggle i");
+      const isExpanding = !card.classList.contains("expanded");
+
+      // Ensure the card is visible before calculations
+      if (isExpanding) {
+        details.style.display = "block";
+        void details.offsetHeight;
+      }
+
+      // Close all other open service cards
+      document.querySelectorAll(".service-card").forEach((otherCard) => {
+        if (otherCard !== card && otherCard.classList.contains("expanded")) {
+          otherCard.classList.remove("expanded");
+          const otherDetails = otherCard.querySelector(".service-details");
+          const otherIcon = otherCard.querySelector(".service-toggle i");
+
+          if (otherDetails) {
+            otherDetails.style.maxHeight = "0";
+            otherDetails.style.opacity = "0";
+          }
+          if (otherIcon) {
+            icon.classList.remove("fa-chevron-up");
+            icon.classList.add("fa-chevron-down");
+          }
+        }
+      });
+
+      // Toggle current card
+      card.classList.toggle("expanded");
+
+      if (card.classList.contains("expanded")) {
+        if (details) {
+          details.style.maxHeight = details.scrollHeight + "px";
+          details.style.opacity = "1";
+        }
+        if (icon) {
+          icon.classList.remove("fa-chevron-down");
+          icon.classList.add("fa-chevron-up");
+        }
+      } else {
+        if (details) {
+          details.style.maxHeight = "0";
+          details.style.opacity = "0";
+        }
+        if (icon) {
+          icon.classList.remove("fa-chevron-up");
+          icon.classList.add("fa-chevron-down");
+        }
+      }
+    }
+
+    // =============================================
+    // Overpaying Accordion Functionality
+    // =============================================
+    function initOverpayingAccordions() {
+      const accordionButtons = document.querySelectorAll(".accordion-btn");
+
+      accordionButtons.forEach((button) => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector(".icon");
+
+        // Set initial state
+        content.style.maxHeight = "0";
+        content.style.opacity = "0";
+        content.style.padding = "0";
+
+        button.addEventListener("click", () => {
+          toggleOverpayingAccordion(button);
+        });
+      });
+    }
+
+    function toggleOverpayingAccordion(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector(".icon");
+      const isExpanding = !button.classList.contains("open");
+
+      // Ensure content is visible before calculations
+      if (isExpanding) {
+        content.style.display = "block";
+        void content.offsetHeight;
+      }
+
+      // Close all other open accordions
+      document.querySelectorAll(".accordion-btn").forEach((otherButton) => {
+        if (otherButton !== button && otherButton.classList.contains("open")) {
+          otherButton.classList.remove("open");
+          const otherContent = otherButton.nextElementSibling;
+          const otherIcon = otherButton.querySelector(".icon");
+
+          if (otherContent) {
+            otherContent.style.maxHeight = "0";
+            otherContent.style.opacity = "0";
+            otherContent.style.padding = "0";
+          }
+          if (otherIcon) {
+            otherIcon.style.transform = "rotate(0deg)";
+          }
+        }
+      });
+
+      // Toggle current accordion
+      button.classList.toggle("open");
+
+      if (button.classList.contains("open")) {
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.style.opacity = "1";
+          content.style.padding = "1rem";
+        }
+        if (icon) {
+          icon.style.transform = "rotate(180deg)";
+        }
+      } else {
+        if (content) {
+          content.style.maxHeight = "0";
+          content.style.opacity = "0";
+          content.style.padding = "0";
+        }
+        if (icon) {
+          icon.style.transform = "rotate(0deg)";
+        }
+      }
+    }
+
+    // =============================================
+    // Document Checklist Functionality
+    // =============================================
+    function initDocumentChecklist() {
+      const checkboxes = document.querySelectorAll(".document-check");
+      const progressBar = document.getElementById("document-progress");
+      const progressText = document.getElementById("checklist-progress");
+      const messageText = document.getElementById("checklist-message");
+      const messages = [
+        "Let's get started with your tax filing preparation!",
+        "Great start! Keep gathering your documents.",
+        "You're making progress!",
+        "Almost halfway there!",
+        "All set! You're ready to file your taxes.",
+      ];
+
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", updateProgress);
+      });
+
+      function updateProgress() {
+        const checkedCount = document.querySelectorAll(
+          ".document-check:checked"
+        ).length;
+        const totalCount = checkboxes.length;
+        const percentage = (checkedCount / totalCount) * 100;
+
+        if (progressBar) {
+          progressBar.style.width = percentage + "%";
+        }
+        if (progressText) {
+          progressText.textContent = checkedCount;
+        }
+
+        // Update message based on progress
+        if (messageText && checkedCount <= messages.length - 1) {
+          messageText.textContent = messages[checkedCount];
+        }
+      }
+
+      // Initialize progress
+      updateProgress();
+    }
+
+    // =============================================
+    // FAQ Accordion Functionality
+    // =============================================
+    function initFAQAccordions() {
+      const faqButtons = document.querySelectorAll(".faq-btn");
+
+      faqButtons.forEach((button) => {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector(".icon");
+
+        // Set initial state
+        content.style.maxHeight = "0";
+
+        button.addEventListener("click", () => {
+          // Close all other open FAQs
+          document.querySelectorAll(".faq-btn").forEach((otherButton) => {
+            if (
+              otherButton !== button &&
+              otherButton.querySelector(".icon").classList.contains("fa-minus")
+            ) {
+              const otherContent = otherButton.nextElementSibling;
+              const otherIcon = otherButton.querySelector(".icon");
+
+              otherContent.style.maxHeight = "0";
+              otherIcon.classList.remove("fa-minus");
+              otherIcon.classList.add("fa-plus");
+            }
+          });
+
+          // Toggle current item
+          if (content.style.maxHeight === "0px") {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.classList.remove("fa-plus");
+            icon.classList.add("fa-minus");
+          } else {
+            content.style.maxHeight = "0";
+            icon.classList.remove("fa-minus");
+            icon.classList.add("fa-plus");
+          }
+        });
+      });
+    }
+
+    // =============================================
+    // Scroll Reveal Animations
+    // =============================================
+    function initScrollReveal() {
+      const revealElements = document.querySelectorAll(".reveal");
+
+      function revealOnScroll() {
+        revealElements.forEach((element) => {
+          const windowHeight = window.innerHeight;
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+
+          if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll(); // Initial check
+    }
+
+    // =============================================
+    // Initialize All Functionality
+    // =============================================
+    function initAll() {
+      initTabs();
+      initDocumentChecklist();
+      initFAQAccordions();
+      initScrollReveal();
+    }
+
+    // Start everything
+    initAll();
+  });
+</script>
+{% endblock Content %}

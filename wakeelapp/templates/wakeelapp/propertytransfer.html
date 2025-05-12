@@ -1,0 +1,1012 @@
+{% extends 'wakeelapp/index.html' %}
+{% load static %}
+
+{% block title %}Property Transfer & Mutation Services in Karachi | Go Wakeel{% endblock %}
+
+{% block meta_description %}Professional property transfer and mutation services in District South Karachi including Saddar, Clifton, and DHA. Fast, reliable legal assistance for property transfers.{% endblock %}
+
+{% block Content %}
+<div x-data="{ activeTab: 'overview', darkMode: false }" x-init="darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden bg-gradient-to-r from-[#002244] to-[#003366] py-16">
+    <div class="absolute inset-0 z-0 opacity-20">
+      <img src="{% static 'wakeelapp/images/pattern-bg.png' %}" alt="" class="w-full h-full object-cover">
+    </div>
+    <div class="container max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Property Transfer & Mutation Services</h1>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+          Professional assistance for seamless property transfers in District South Karachi
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container max-w-7xl mx-auto px-4 py-12">
+    <!-- Tabs -->
+    <div class="mb-8 border-b" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+      <div class="flex flex-wrap -mb-px">
+        <button
+          class="inline-block py-4 px-6 text-lg font-medium border-b-2 transition-colors duration-200"
+          :class="activeTab === 'overview' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+          @click="activeTab = 'overview'"
+          role="tab"
+          aria-selected="true"
+          aria-controls="overview"
+        >
+          Overview
+        </button>
+        <button
+          class="inline-block py-4 px-6 text-lg font-medium border-b-2 transition-colors duration-200"
+          :class="activeTab === 'services' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+          @click="activeTab = 'services'"
+          role="tab"
+          aria-selected="false"
+          aria-controls="services"
+        >
+          Our Services
+        </button>
+        <button
+          class="inline-block py-4 px-6 text-lg font-medium border-b-2 transition-colors duration-200"
+          :class="activeTab === 'areas' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+          @click="activeTab = 'areas'"
+          role="tab"
+          aria-selected="false"
+          aria-controls="areas"
+        >
+          Areas We Serve
+        </button>
+        <button
+          class="inline-block py-4 px-6 text-lg font-medium border-b-2 transition-colors duration-200"
+          :class="activeTab === 'process' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : 'border-transparent hover:text-gray-600 hover:border-gray-300'"
+          @click="activeTab = 'process'"
+          role="tab"
+          aria-selected="false"
+          aria-controls="process"
+        >
+          Process
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Overview Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="overview"
+        role="tabpanel"
+        x-show="activeTab === 'overview'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+              Property Transfer and Mutation Service
+            </h2>
+            <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+              Buying or inheriting a property in Karachi? Don't let paperwork and legal delays stand in the way. At Go Wakeel, we provide reliable, efficient, and transparent property transfer and mutation services in District South Karachi, including Saddar, Clifton, and DHA.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div class="rounded-lg shadow-lg border" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4" :class="darkMode ? 'bg-blue-900' : ''">
+                      <i class="fas fa-check-circle text-2xl text-blue-600" :class="darkMode ? 'text-blue-400' : ''"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Why Choose Our Services?</h3>
+                  </div>
+                  <ul class="space-y-3 mt-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Expert legal team with specialized knowledge of Karachi property laws</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Transparent pricing with no hidden charges</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Regular updates on your property transfer status</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Hassle-free process with minimal involvement required from you</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="rounded-lg shadow-lg border" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4" :class="darkMode ? 'bg-blue-900' : ''">
+                      <i class="fas fa-exclamation-circle text-2xl text-blue-600" :class="darkMode ? 'text-blue-400' : ''"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Why Property Mutation Matters</h3>
+                  </div>
+                  <ul class="space-y-3 mt-4" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Legal recognition of your ownership rights</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Protection against fraudulent property claims</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Required for utility connections and property tax assessments</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check mt-1 mr-3 text-green-500"></i>
+                      <span>Essential for future property sales or transfers</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-6 rounded-lg border bg-blue-50 border-blue-100" :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'">
+              <h3 class="text-xl font-semibold mb-4 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                <i class="fas fa-lightbulb mr-3 text-yellow-500"></i>Did You Know?
+              </h3>
+              <p class="mb-4">
+                Property mutation is the process of transferring a property's title from one person to another in the revenue records. Without proper mutation, you may face legal complications even if you have the sale deed.
+              </p>
+              <p>
+                At Go Wakeel, we ensure your property is properly transferred and mutated in all relevant government records, giving you complete peace of mind about your ownership.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="services"
+        role="tabpanel"
+        x-show="activeTab === 'services'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+              Our Property Transfer Services
+            </h2>
+            <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+              We offer comprehensive property transfer and mutation services tailored to the specific requirements of different authorities in District South Karachi:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <!-- Service 1 -->
+              <div class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="p-6">
+                  <div class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-building text-2xl"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-center mb-4" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Cantonment Board</h3>
+                  <ul class="space-y-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Property Mutation</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Property Transfer</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>NOC Acquisition</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Documentation Verification</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Service 2 -->
+              <div class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="p-6">
+                  <div class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-shield-alt text-2xl"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-center mb-4" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Military Estate (MEO)</h3>
+                  <ul class="space-y-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Property Mutation</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Property Transfer</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>NOC Processing</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Legal Documentation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Service 3 -->
+              <div class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="p-6">
+                  <div class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-home text-2xl"></i>
+                  </div>
+                  <h3 class="text-xl font-bold text-center mb-4" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">DHA</h3>
+                  <ul class="space-y-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Property Mutation</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>NOC Processing</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Transfer Fee Calculation</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                      <span>Documentation Assistance</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-6 rounded-lg border bg-blue-50 border-blue-100" :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'">
+              <h3 class="text-xl font-semibold mb-4 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                <i class="fas fa-info-circle mr-3 text-blue-600"></i>Additional Services
+              </h3>
+              <p class="mb-4">
+                Beyond the core property transfer services, we also assist with:
+              </p>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-3 text-green-500"></i>
+                  <span>Property tax assessment and payment</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-3 text-green-500"></i>
+                  <span>Utility connection transfers</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-3 text-green-500"></i>
+                  <span>Legal verification of property documents</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-3 text-green-500"></i>
+                  <span>Resolution of property disputes</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Areas Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="areas"
+        role="tabpanel"
+        x-show="activeTab === 'areas'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+              Areas We Serve
+            </h2>
+            <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+              We currently offer property transfer and mutation services only in specific areas of District South Karachi. If your property is located in these areas, we are ready to help:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <!-- Area 1 -->
+              <div class="rounded-lg shadow-lg border overflow-hidden" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="h-48 bg-gray-200 relative" :class="darkMode ? 'bg-gray-700' : ''">
+                  <img src="https://i.redd.it/zslmje3v5u961.jpg" alt="Saddar Town" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Saddar Town</h3>
+                </div>
+                <div class="p-6">
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    The commercial hub of Karachi, Saddar Town includes several important commercial and residential areas.
+                  </p>
+                  <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                    <h4 class="font-medium mb-2" :class="darkMode ? 'text-gray-200' : 'text-gray-900'">Key Neighborhoods:</h4>
+                    <ul class="space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Saddar</span>
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Civil Lines</span>
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Frere Town</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Area 2 -->
+              <div class="rounded-lg shadow-lg border overflow-hidden" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="h-48 bg-gray-200 relative" :class="darkMode ? 'bg-gray-700' : ''">
+                  <img src="https://www.shutterstock.com/image-photo/karachi-pakistan-august-10-2021-600nw-2030246723.jpg" alt="Clifton" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Clifton</h3>
+                </div>
+                <div class="p-6">
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    An upscale residential and commercial area with many high-value properties and modern developments.
+                  </p>
+                  <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                    <h4 class="font-medium mb-2" :class="darkMode ? 'text-gray-200' : 'text-gray-900'">Key Neighborhoods:</h4>
+                    <ul class="space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Clifton Blocks 1-9</span>
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Bath Island</span>
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Boat Basin</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Area 3 -->
+              <div class="rounded-lg shadow-lg border overflow-hidden" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'">
+                <div class="h-48 bg-gray-200 relative" :class="darkMode ? 'bg-gray-700' : ''">
+                  <img src="https://www.property365.pk/wp-content/uploads/2023/02/Creek-Vistas.jpg" alt="DHA" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">DHA</h3>
+                </div>
+                <div class="p-6">
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                    Defence Housing Authority is one of the most prestigious residential areas in Karachi with well-planned infrastructure.
+                  </p>
+                  <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                    <h4 class="font-medium mb-2" :class="darkMode ? 'text-gray-200' : 'text-gray-900'">Key Neighborhoods:</h4>
+                    <ul class="space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>DHA Phase 1-8</span>
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Creek Vista</span>
+                      </li>
+                      <li class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2 text-red-500"></i>
+                        <span>Seher Commercial</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-6 rounded-lg border bg-blue-50 border-blue-100" :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'">
+              <h3 class="text-xl font-semibold mb-4 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                <i class="fas fa-map-marked-alt mr-3 text-blue-600"></i>Service Area Expansion
+              </h3>
+              <p class="mb-4">
+                We are currently focused on providing the highest quality service in District South Karachi. We plan to expand our property transfer services to other areas of Karachi in the near future.
+              </p>
+              <p>
+                If your property is outside our current service areas, please contact us anyway. We may be able to make special arrangements or refer you to trusted partners who can assist you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="process"
+        role="tabpanel"
+        x-show="activeTab === 'process'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2 class="text-2xl font-bold mb-6" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+              Our Property Transfer Process
+            </h2>
+            <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+              At Go Wakeel, we've streamlined the property transfer and mutation process to make it as smooth and hassle-free as possible for our clients. Here's how we handle your property transfer:
+            </p>
+            
+            <!-- Process Steps -->
+            <div class="space-y-8 mb-12">
+              <!-- Step 1 -->
+              <div class="flex flex-col md:flex-row gap-6 items-start group">
+                <div class="md:w-16 flex-shrink-0 relative">
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center z-10 relative transition-all duration-300 group-hover:scale-110" 
+                       :class="darkMode ? 'bg-blue-800 text-blue-200' : 'bg-[#003366] text-white'">
+                    <i class="fas fa-handshake text-2xl"></i>
+                  </div>
+                  <div class="absolute top-0 left-0 w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       :class="darkMode ? 'bg-blue-700' : 'bg-blue-200'"></div>
+                </div>
+                <div class="flex-grow">
+                  <div class="rounded-lg shadow-sm border transition-all duration-300 group-hover:shadow-lg" 
+                       :class="darkMode ? 'bg-gray-800 border-gray-700 group-hover:border-blue-500' : 'bg-white border-gray-200 group-hover:border-[#003366]'">
+                    <div class="p-6">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Initial Consultation</h3>
+                          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                            We begin with a detailed consultation to understand your property transfer needs, collect basic information, and explain the process specific to your property's location.
+                          </p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium ml-4 whitespace-nowrap" 
+                              :class="darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'">Day 1</span>
+                      </div>
+                      <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                        <h4 class="text-sm font-semibold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                          <i class="fas fa-info-circle mr-2"></i> What We Need
+                        </h4>
+                        <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                          Basic property details, ownership information, and your transfer requirements. We'll provide a clear fee structure and timeline.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Step 2 -->
+              <div class="flex flex-col md:flex-row gap-6 items-start group">
+                <div class="md:w-16 flex-shrink-0 relative">
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center z-10 relative transition-all duration-300 group-hover:scale-110" 
+                       :class="darkMode ? 'bg-blue-800 text-blue-200' : 'bg-[#003366] text-white'">
+                    <i class="fas fa-file-alt text-2xl"></i>
+                  </div>
+                  <div class="absolute top-0 left-0 w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       :class="darkMode ? 'bg-blue-700' : 'bg-blue-200'"></div>
+                </div>
+                <div class="flex-grow">
+                  <div class="rounded-lg shadow-sm border transition-all duration-300 group-hover:shadow-lg" 
+                       :class="darkMode ? 'bg-gray-800 border-gray-700 group-hover:border-blue-500' : 'bg-white border-gray-200 group-hover:border-[#003366]'">
+                    <div class="p-6">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Document Collection & Verification</h3>
+                          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                            We collect all necessary documents from you and conduct a thorough verification to ensure everything is in order for a smooth transfer process.
+                          </p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium ml-4 whitespace-nowrap" 
+                              :class="darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'">Days 2-5</span>
+                      </div>
+                      <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                        <h4 class="text-sm font-semibold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                          <i class="fas fa-clipboard-check mr-2"></i> Required Documents
+                        </h4>
+                        <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                          Sale deed/gift deed, CNIC copies, property tax receipts, utility bills, and other authority-specific documents.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Step 3 -->
+              <div class="flex flex-col md:flex-row gap-6 items-start group">
+                <div class="md:w-16 flex-shrink-0 relative">
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center z-10 relative transition-all duration-300 group-hover:scale-110" 
+                       :class="darkMode ? 'bg-blue-800 text-blue-200' : 'bg-[#003366] text-white'">
+                    <i class="fas fa-file-signature text-2xl"></i>
+                  </div>
+                  <div class="absolute top-0 left-0 w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       :class="darkMode ? 'bg-blue-700' : 'bg-blue-200'"></div>
+                </div>
+                <div class="flex-grow">
+                  <div class="rounded-lg shadow-sm border transition-all duration-300 group-hover:shadow-lg" 
+                       :class="darkMode ? 'bg-gray-800 border-gray-700 group-hover:border-blue-500' : 'bg-white border-gray-200 group-hover:border-[#003366]'">
+                    <div class="p-6">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Application Preparation & Submission</h3>
+                          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                            We prepare all necessary applications, forms, and supporting documents according to the specific requirements of the relevant authority.
+                          </p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium ml-4 whitespace-nowrap" 
+                              :class="darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'">Days 6-10</span>
+                      </div>
+                      <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                        <h4 class="text-sm font-semibold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                          <i class="fas fa-tasks mr-2"></i> Our Actions
+                        </h4>
+                        <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                          Complete all forms, calculate fees, prepare affidavits if needed, and submit the application package to the relevant authority.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Step 4 -->
+              <div class="flex flex-col md:flex-row gap-6 items-start group">
+                <div class="md:w-16 flex-shrink-0 relative">
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center z-10 relative transition-all duration-300 group-hover:scale-110" 
+                       :class="darkMode ? 'bg-blue-800 text-blue-200' : 'bg-[#003366] text-white'">
+                    <i class="fas fa-sync-alt text-2xl"></i>
+                  </div>
+                  <div class="absolute top-0 left-0 w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       :class="darkMode ? 'bg-blue-700' : 'bg-blue-200'"></div>
+                </div>
+                <div class="flex-grow">
+                  <div class="rounded-lg shadow-sm border transition-all duration-300 group-hover:shadow-lg" 
+                       :class="darkMode ? 'bg-gray-800 border-gray-700 group-hover:border-blue-500' : 'bg-white border-gray-200 group-hover:border-[#003366]'">
+                    <div class="p-6">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Follow-up & Processing</h3>
+                          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                            We actively follow up with the relevant authorities to ensure your application is processed promptly and address any queries or requirements.
+                          </p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium ml-4 whitespace-nowrap" 
+                              :class="darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'">Days 11-30</span>
+                      </div>
+                      <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                        <h4 class="text-sm font-semibold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                          <i class="fas fa-bell mr-2"></i> Regular Updates
+                        </h4>
+                        <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                          We provide you with regular status updates and immediately address any objections or additional requirements from the authorities.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Step 5 -->
+              <div class="flex flex-col md:flex-row gap-6 items-start group">
+                <div class="md:w-16 flex-shrink-0 relative">
+                  <div class="w-16 h-16 rounded-full flex items-center justify-center z-10 relative transition-all duration-300 group-hover:scale-110" 
+                       :class="darkMode ? 'bg-blue-800 text-blue-200' : 'bg-[#003366] text-white'">
+                    <i class="fas fa-certificate text-2xl"></i>
+                  </div>
+                  <div class="absolute top-0 left-0 w-16 h-16 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       :class="darkMode ? 'bg-blue-700' : 'bg-blue-200'"></div>
+                </div>
+                <div class="flex-grow">
+                  <div class="rounded-lg shadow-sm border transition-all duration-300 group-hover:shadow-lg" 
+                       :class="darkMode ? 'bg-gray-800 border-gray-700 group-hover:border-blue-500' : 'bg-white border-gray-200 group-hover:border-[#003366]'">
+                    <div class="p-6">
+                      <div class="flex justify-between items-start">
+                        <div>
+                          <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Completion & Handover</h3>
+                          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                            Once the transfer is approved, we collect all final documents, verify their accuracy, and hand them over to you with a complete explanation.
+                          </p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-sm font-medium ml-4 whitespace-nowrap" 
+                              :class="darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'">Final Day</span>
+                      </div>
+                      <div class="mt-4 pt-4 border-t" :class="darkMode ? 'border-gray-700' : 'border-gray-200'">
+                        <h4 class="text-sm font-semibold mb-2 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                          <i class="fas fa-check-double mr-2"></i> Final Deliverables
+                        </h4>
+                        <p class="text-sm" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">
+                          Transfer letter, mutation certificate, updated property documents, and a comprehensive file of all relevant paperwork for your records.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="p-6 rounded-lg border bg-blue-50 border-blue-100" :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'">
+              <h3 class="text-xl font-semibold mb-4 flex items-center" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">
+                <i class="fas fa-clock mr-3 text-blue-600"></i>Typical Timeline
+              </h3>
+              <p class="mb-4">
+                The complete property transfer process typically takes 30-45 days, depending on the specific authority and property type. Cantonment Board and Military Estate transfers may take longer due to additional security verifications.
+              </p>
+              <p>
+                Our team works diligently to complete your property transfer in the shortest possible time while ensuring all legal requirements are properly fulfilled.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FAQ Section -->
+<div class="py-16" :class="darkMode ? 'bg-gray-900' : 'bg-white'">
+    <div class="container max-w-7xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Frequently Asked Questions</h2>
+        <p class="text-lg max-w-3xl mx-auto" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+          Find answers to common questions about property transfer and mutation services in Karachi
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6">
+          <!-- FAQ Item 1 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">What is property mutation and why is it important?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Property mutation is the process of transferring a property's title from one person to another in the revenue records. It's important because:
+              </p>
+              <ul class="mt-2 space-y-1 list-disc list-inside" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>It establishes your legal ownership in government records</li>
+                <li>It's required for paying property taxes in your name</li>
+                <li>It protects you from fraudulent claims on your property</li>
+                <li>It's necessary for obtaining utility connections</li>
+                <li>It's essential for any future property transactions</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 2 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">How long does the property transfer process take in Karachi?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                The property transfer timeline varies depending on the authority and property type:
+              </p>
+              <ul class="mt-2 space-y-1" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li><span class="font-medium">DHA:</span> Typically 30-45 days</li>
+                <li><span class="font-medium">Cantonment Board:</span> Approximately 45-60 days</li>
+                <li><span class="font-medium">Military Estate (MEO):</span> Around 60-90 days</li>
+              </ul>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                With Go Wakeel's expertise, we work to expedite the process while ensuring all legal requirements are properly fulfilled. We'll provide you with a more accurate timeline during our initial consultation based on your specific property.
+              </p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 3 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">What documents are required for property transfer in Karachi?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                The basic documents required for property transfer include:
+              </p>
+              <ul class="mt-2 space-y-1 list-disc list-inside" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>Original sale deed/gift deed/inheritance document</li>
+                <li>CNIC copies of both buyer and seller</li>
+                <li>Property tax payment receipts</li>
+                <li>Recent utility bills</li>
+                <li>Property ownership documents (allotment letter, lease, etc.)</li>
+                <li>Passport-sized photographs</li>
+                <li>Authority-specific forms and applications</li>
+              </ul>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Additional documents may be required depending on the specific authority (DHA, Cantonment Board, or MEO) and the nature of the transfer. Our team will provide you with a comprehensive checklist during the initial consultation.
+              </p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 4 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">How much does property transfer and mutation cost in Karachi?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                The cost of property transfer and mutation in Karachi consists of two main components:
+              </p>
+              <ol class="mt-2 space-y-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>
+                  <p class="font-medium">Government Fees:</p>
+                  <ul class="ml-5 mt-1 space-y-1 list-disc">
+                    <li>Transfer fee (varies by authority and property value)</li>
+                    <li>Stamp duty (typically 3-5% of property value)</li>
+                    <li>Registration fee</li>
+                    <li>Mutation fee</li>
+                    <li>Tax clearance charges</li>
+                  </ul>
+                </li>
+                <li>
+                  <p class="font-medium">Service Fees:</p>
+                  <p class="ml-5">Our professional service fees depend on the complexity of your case, property value, and the specific authority involved. We provide transparent pricing with no hidden charges.</p>
+                </li>
+              </ol>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                For a detailed cost estimate tailored to your specific property, please contact us for a consultation. We'll provide a comprehensive breakdown of all fees and charges.
+              </p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 5 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Do I need to be physically present for the property transfer process?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                In most cases, your physical presence is required at certain key stages of the property transfer process:
+              </p>
+              <ul class="mt-2 space-y-1 list-disc list-inside" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>Initial document signing</li>
+                <li>Biometric verification (if required by the authority)</li>
+                <li>Final document collection</li>
+              </ul>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                However, at Go Wakeel, we minimize your involvement by:
+              </p>
+              <ul class="mt-2 space-y-1 list-disc list-inside" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>Handling all paperwork and documentation</li>
+                <li>Managing all follow-ups with authorities</li>
+                <li>Scheduling appointments at your convenience</li>
+                <li>Providing clear instructions when your presence is required</li>
+              </ul>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                If you're unable to be physically present, we can discuss alternative arrangements such as power of attorney options in certain cases.
+              </p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 6 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">What happens if there are issues with my property documents?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Document issues are common in property transfers. Our team is experienced in handling various complications:
+              </p>
+              <ul class="mt-2 space-y-2" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>
+                  <p class="font-medium">Missing Documents:</p>
+                  <p class="ml-5">We'll guide you on how to obtain duplicates or alternatives from the relevant authorities.</p>
+                </li>
+                <li>
+                  <p class="font-medium">Discrepancies in Names or Details:</p>
+                  <p class="ml-5">We'll assist with the correction process through proper channels.</p>
+                </li>
+                <li>
+                  <p class="font-medium">Unpaid Taxes or Dues:</p>
+                  <p class="ml-5">We'll help calculate outstanding amounts and facilitate clearance.</p>
+                </li>
+                <li>
+                  <p class="font-medium">Title Defects:</p>
+                  <p class="ml-5">We'll work with legal experts to resolve title issues before proceeding with the transfer.</p>
+                </li>
+              </ul>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Our initial document verification process identifies potential issues early, allowing us to address them proactively before they delay your property transfer.
+              </p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 7 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Can you handle property transfers for commercial properties?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Yes, we handle property transfers for both residential and commercial properties in District South Karachi. Commercial property transfers often involve additional requirements:
+              </p>
+              <ul class="mt-2 space-y-1 list-disc list-inside" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>Business registration documents</li>
+                <li>Commercial usage permits and NOCs</li>
+                <li>Tax clearance certificates</li>
+                <li>Specialized zoning compliance</li>
+              </ul>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Our team has experience with various commercial property types including shops, offices, warehouses, and mixed-use buildings. We understand the specific requirements of different authorities for commercial property transfers.
+              </p>
+            </div>
+          </div>
+          
+          <!-- FAQ Item 8 -->
+          <div class="rounded-lg border shadow-sm" :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'" x-data="{ open: false }">
+            <button 
+              class="flex justify-between items-center w-full px-6 py-5 text-left"
+              @click="open = !open"
+              :class="darkMode ? 'hover:bg-gray-750' : 'hover:bg-gray-50'"
+            >
+              <span class="text-lg font-medium" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">How do I get started with your property transfer services?</span>
+              <span class="ml-6 flex-shrink-0">
+                <i class="fas transition-transform duration-200" :class="open ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+              </span>
+            </button>
+            <div 
+              class="px-6 pb-5" 
+              x-show="open" 
+              x-transition:enter="transition ease-out duration-200" 
+              x-transition:enter-start="opacity-0 -translate-y-2" 
+              x-transition:enter-end="opacity-100 translate-y-0"
+            >
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Getting started with our property transfer services is simple:
+              </p>
+              <ol class="mt-2 space-y-2 list-decimal list-inside" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                <li>Contact us through our website, phone (0311-1924335), or visit our office</li>
+                <li>Schedule an initial consultation (in-person or virtual)</li>
+                <li>Provide basic property details during the consultation</li>
+                <li>Receive a customized service proposal with timeline and fees</li>
+                <li>Sign a service agreement and provide initial documentation</li>
+                <li>Our team begins the property transfer process immediately</li>
+              </ol>
+              <p class="mt-3" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Throughout the process, you'll receive regular updates on the progress of your property transfer. Our team is always available to answer any questions you may have.
+              </p>
+              <div class="mt-4">
+                <a href="{% url 'wakeelapp:contact' %}" class="inline-block px-5 py-2 bg-[#003366] text-white font-medium rounded-lg hover:bg-[#002244] transition-colors duration-300" :class="darkMode ? 'bg-blue-700 hover:bg-blue-800' : ''">
+                  Contact Us to Get Started
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Call to Action Section -->
+<div class="bg-gray-100 py-16" :class="darkMode ? 'bg-gray-800' : ''">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold mb-4" :class="darkMode ? 'text-blue-300' : 'text-[#003366]'">Ready to Transfer Your Property?</h2>
+      <p class="text-lg max-w-3xl mx-auto mb-8" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+        Let our expert team handle all the legal complexities and paperwork for your property transfer in Karachi.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="{% url 'wakeelapp:contact' %}" class="inline-block px-8 py-4 bg-[#003366] text-white font-medium rounded-lg hover:bg-[#002244] transition-colors duration-300">
+          Contact Us Now
+        </a>
+        <a href="tel:+923111924335" class="inline-flex items-center justify-center px-8 py-4 border border-[#003366] text-[#003366] font-medium rounded-lg hover:bg-blue-50 transition-colors duration-300" :class="darkMode ? 'border-blue-500 text-blue-400 hover:bg-blue-900/20' : ''">
+          <i class="fas fa-phone-alt mr-2"></i> Call: 0311-1924335
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock Content %}

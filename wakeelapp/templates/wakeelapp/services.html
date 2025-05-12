@@ -131,13 +131,13 @@
       {% for service in services %}
       <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-600 hover:shadow-lg transition-all duration-300 flex flex-col h-full transform hover:-translate-y-1 animate-fade-in" style="animation-delay: {{ forloop.counter|add:2 }}00ms">
         <div class="relative h-48 overflow-hidden">
-          <img src="{% static service.image %}" alt="{{ service.name }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+          <img src="{{service.image}}" alt="{{ service.name }}" class="w-full h-full object-contain transition-transform duration-500 hover:scale-105">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 p-4">
+          {% comment %} <div class="absolute bottom-0 left-0 p-4">
             <span class="bg-[#003366] dark:bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium transition-colors duration-300">
               {{ service.price }}
             </span>
-          </div>
+          </div> {% endcomment %}
         </div>
         
         <div class="p-6 flex-grow">
@@ -150,7 +150,7 @@
         </div>
         
         <div class="px-6 pb-6">
-          <a href="{% url 'wakeelapp:service_detail' service.slug %}" class="group block w-full bg-[#003366] dark:bg-blue-600 hover:bg-[#002244] dark:hover:bg-blue-700 text-white text-center py-2 rounded-lg transition-colors duration-300">
+          <a href="{{ service.url }}" class="group block w-full bg-[#003366] dark:bg-blue-600 hover:bg-[#002244] dark:hover:bg-blue-700 text-white text-center py-2 rounded-lg transition-colors duration-300">
             <span class="inline-flex items-center">
               View Details
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -301,7 +301,7 @@
           </div>
         </div>
         <div class="hidden md:block relative">
-          <img src="{% static 'wakeelapp/Img/contact-cta.jpg' %}" alt="Contact Us" class="w-full h-full object-cover">
+          <img src="https://img.freepik.com/free-photo/contact-us-communication-support-service-assistance-concept_53876-128103.jpg?t=st=1746467918~exp=1746471518~hmac=c07bf1db75a258e683d81f82a36e3a4b09766c99aa69f94fb8f8ad7aa5d3c53a&w=1380" alt="Contact Us" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-8 text-white">
             <p class="text-lg font-medium mb-2">Expert Support</p>

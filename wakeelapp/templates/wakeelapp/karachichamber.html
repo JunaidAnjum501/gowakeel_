@@ -1,0 +1,1086 @@
+{% extends 'wakeelapp/index.html' %} {% load static %} {% block Content %}
+<!-- Hero Section with Consistent Design -->
+<div
+  class="w-full py-12"
+  :class="darkMode ? 'bg-gradient-to-r from-gray-900 to-blue-950 text-white' : 'bg-gradient-to-r from-gray-100 to-blue-50'"
+>
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="lg:w-2/3">
+        <h1
+          class="text-4xl md:text-5xl font-bold mb-6 relative"
+          :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+        >
+          <span class="relative inline-block">
+            Karachi Chamber of Commerce Registration
+            <span
+              class="absolute bottom-0 left-0 w-full h-1 bg-blue-400 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"
+            ></span>
+          </span>
+        </h1>
+        <p
+          class="text-lg"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+        >
+          Need to register with the Karachi Chamber of Commerce? Go Wakeel can
+          help you complete the registration process efficiently. Our experts
+          ensure a smooth and compliant registration with the Karachi Chamber of
+          Commerce, enhancing your business credibility and networking
+          opportunities.
+        </p>
+        <div class="mt-6">
+          <a
+            href="#contact-section"
+            class="inline-flex items-center px-6 py-3 text-white font-medium rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+            :class="darkMode ? 'bg-blue-800 hover:bg-blue-700' : 'bg-[#002244] hover:bg-[#003366]'"
+          >
+            <i class="fas fa-rocket mr-2"></i>
+            Get Started
+          </a>
+        </div>
+      </div>
+      <div class="lg:w-1/3 mt-8 lg:mt-0 relative">
+        <img
+          class="w-full h-auto animate__animated animate__fadeInRight"
+          src="https://i.ibb.co/rRdsmTPd/Asset-6-288x-1-300x300-removebg-preview.png"
+          alt="Karachi Chamber of Commerce"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="container max-w-7xl mx-auto px-4 py-12"
+  :class="darkMode ? 'text-white' : ''"
+>
+  <!-- Tab Navigation -->
+  <div
+    class="mb-8 border-b"
+    :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+  >
+    <ul
+      class="flex flex-wrap -mb-px text-sm font-medium text-center"
+      id="chamberRegTabs"
+      role="tablist"
+    >
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg transition-all duration-300"
+          :class="darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]'"
+          id="overview-tab"
+          data-tab-target="#overview"
+          type="button"
+          role="tab"
+          aria-controls="overview"
+          aria-selected="true"
+        >
+          <i class="fas fa-info-circle mr-2"></i>Overview
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg transition-all duration-300"
+          :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400 text-gray-400' : 'hover:text-[#003366] hover:border-[#003366] text-gray-500'"
+          id="benefits-tab"
+          data-tab-target="#benefits"
+          type="button"
+          role="tab"
+          aria-controls="benefits"
+          aria-selected="false"
+        >
+          <i class="fas fa-check-circle mr-2"></i>Benefits
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg transition-all duration-300"
+          :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400 text-gray-400' : 'hover:text-[#003366] hover:border-[#003366] text-gray-500'"
+          id="documents-tab"
+          data-tab-target="#documents"
+          type="button"
+          role="tab"
+          aria-controls="documents"
+          aria-selected="false"
+        >
+          <i class="fas fa-file-alt mr-2"></i>Required Documents
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="chamberRegTabContent">
+    <!-- Overview Tab -->
+    <div
+      class="tab-pane active animate__animated animate__fadeIn"
+      id="overview"
+      role="tabpanel"
+      aria-labelledby="overview-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Karachi Chamber of Commerce Registration
+          </h2>
+          <div
+            class="rounded-lg shadow-sm border transition-all duration-300 hover:shadow-md"
+            :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200 hover:shadow-lg'"
+          >
+            <div class="p-6">
+              <p
+                class="mb-4"
+                :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+              >
+                We facilitate the registration process with the Karachi Chamber
+                of Commerce for businesses operating in Karachi. The Chamber of
+                Commerce membership provides businesses with various benefits
+                including networking opportunities, business development, and
+                advocacy support.
+              </p>
+              <p
+                class="mb-4"
+                :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+              >
+                The registration process typically takes around 10 working days
+                to complete. To expedite the process, we advise having all the
+                required documents ready before starting the application.
+              </p>
+              <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                Our team of experts will guide you through the entire process,
+                ensuring that your application meets all the requirements and is
+                processed without any delays.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Tab -->
+    <div
+      class="tab-pane animate__animated animate__fadeIn hidden"
+      id="benefits"
+      role="tabpanel"
+      aria-labelledby="benefits-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : ''"
+          >
+            Benefits of Chamber of Commerce Membership
+          </h2>
+          <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : ''">
+            Registering with the Karachi Chamber of Commerce offers numerous
+            advantages for your business:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full animate__animated animate__fadeInUp"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+              style="animation-delay: 0.1s"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Networking Opportunities
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Connect with other businesses and potential clients through
+                  events, meetings, and forums.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full animate__animated animate__fadeInUp"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+              style="animation-delay: 0.2s"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-certificate"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Business Credibility
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Enhance your business reputation and credibility in the market
+                  with official membership.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full animate__animated animate__fadeInUp"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+              style="animation-delay: 0.3s"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-bullhorn"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Advocacy Support
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Get representation for business interests with government
+                  bodies and policymakers.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full animate__animated animate__fadeInUp"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+              style="animation-delay: 0.4s"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    International Trade Support
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Access support for international trade, export documentation,
+                  and trade delegations.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full animate__animated animate__fadeInUp"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+              style="animation-delay: 0.5s"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Training & Development
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Access to workshops, seminars, and training programs for
+                  business growth and development.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full animate__animated animate__fadeInUp"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+              style="animation-delay: 0.6s"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-file-signature"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Certificate of Origin
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Obtain certificates of origin and other trade documentation
+                  required for exports.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents Tab -->
+    <div
+      class="tab-pane animate__animated animate__fadeIn hidden"
+      id="documents"
+      role="tabpanel"
+      aria-labelledby="documents-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : ''"
+          >
+            Required Documents
+          </h2>
+          <p class="text-lg mb-6" :class="darkMode ? 'text-gray-300' : ''">
+            To expedite your Karachi Chamber of Commerce registration, please
+            have the following documents ready:
+          </p>
+
+          <div
+            class="rounded-lg shadow-sm border mb-8 transition-all duration-300 hover:shadow-md"
+            :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200 hover:shadow-lg'"
+          >
+            <div class="p-6">
+              <ul class="space-y-4">
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.1s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Copy of CNIC</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Valid computerized national identity card of the business
+                      owner/directors
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.2s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Contact Information</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Mobile number and email address for official communication
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.3s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Bank Maintenance Certificate</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Recent bank maintenance certificate from your business
+                      account
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.4s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >NTN Certificate and Returns</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Copy of National Tax Number certificate and submitted tax
+                      returns
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.5s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Sales Tax Certificate (if available)</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Copy of sales tax registration certificate (not mandatory)
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.6s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Business Address</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Address must match the one registered with NTN
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.7s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Import/Export Items List</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Detailed list of items you import or export
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.8s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Two Proposers</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Two proposers who are existing members of the Karachi
+                      Chamber of Commerce
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 0.9s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Pay Order</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      Pay order of PKR 10,000/- in favor of Karachi Chamber of
+                      Commerce
+                    </p>
+                  </div>
+                </li>
+                <li
+                  class="flex items-start animate__animated animate__fadeInLeft"
+                  style="animation-delay: 1s"
+                >
+                  <i class="fas fa-check-circle text-green-600 mt-1 mr-3"></i>
+                  <div>
+                    <strong
+                      class="block mb-1"
+                      :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+                      >Photograph</strong
+                    >
+                    <p
+                      class="text-sm"
+                      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                    >
+                      1 passport size photograph with white background
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 animate__animated animate__fadeIn"
+            :class="darkMode ? 'bg-yellow-900/20 border-yellow-800 text-yellow-200' : ''"
+          >
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <i class="fas fa-lightbulb text-yellow-500 mt-1"></i>
+              </div>
+              <div class="ml-3">
+                <h3
+                  class="text-sm font-medium"
+                  :class="darkMode ? 'text-yellow-200' : 'text-yellow-800'"
+                >
+                  Important Note
+                </h3>
+                <div
+                  class="mt-2 text-sm"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <p>
+                    All documents must be clear, legible copies. Having these
+                    documents ready before starting the application will
+                    significantly speed up the registration process.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Registration Process Section -->
+<div class="py-12" :class="darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50'">
+  <div class="container max-w-7xl mx-auto px-4">
+    <h2
+      class="text-3xl font-bold mb-8 text-center"
+      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+    >
+      Registration Process
+    </h2>
+    <p
+      class="text-lg mb-12 text-center max-w-3xl mx-auto"
+      :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+    >
+      The Karachi Chamber of Commerce registration process typically takes
+      around 10 working days to complete. Here's our streamlined process:
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Step 1 -->
+      <div
+        class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl animate__animated animate__fadeInUp"
+        :class="darkMode ? 'bg-gray-800' : ''"
+        style="animation-delay: 0.1s"
+      >
+        <div class="p-6">
+          <div
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-[#003366] text-white text-2xl font-bold mb-4 mx-auto"
+            :class="darkMode ? 'bg-blue-700' : ''"
+          >
+            1
+          </div>
+          <h3
+            class="text-xl font-bold mb-3 text-center"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Document Collection
+          </h3>
+          <p
+            class="text-center"
+            :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+          >
+            We'll provide a checklist and help you gather all required
+            documents.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div
+        class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl animate__animated animate__fadeInUp"
+        :class="darkMode ? 'bg-gray-800' : ''"
+        style="animation-delay: 0.2s"
+      >
+        <div class="p-6">
+          <div
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-[#003366] text-white text-2xl font-bold mb-4 mx-auto"
+            :class="darkMode ? 'bg-blue-700' : ''"
+          >
+            2
+          </div>
+          <h3
+            class="text-xl font-bold mb-3 text-center"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Application Preparation
+          </h3>
+          <p
+            class="text-center"
+            :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+          >
+            Our experts prepare and review your application to ensure accuracy.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div
+        class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl animate__animated animate__fadeInUp"
+        :class="darkMode ? 'bg-gray-800' : ''"
+        style="animation-delay: 0.3s"
+      >
+        <div class="p-6">
+          <div
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-[#003366] text-white text-2xl font-bold mb-4 mx-auto"
+            :class="darkMode ? 'bg-blue-700' : ''"
+          >
+            3
+          </div>
+          <h3
+            class="text-xl font-bold mb-3 text-center"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Submission & Follow-up
+          </h3>
+          <p
+            class="text-center"
+            :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+          >
+            We submit your application and handle all follow-ups with the
+            Chamber.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div
+        class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl animate__animated animate__fadeInUp"
+        :class="darkMode ? 'bg-gray-800' : ''"
+        style="animation-delay: 0.4s"
+      >
+        <div class="p-6">
+          <div
+            class="flex items-center justify-center w-16 h-16 rounded-full bg-[#003366] text-white text-2xl font-bold mb-4 mx-auto"
+            :class="darkMode ? 'bg-blue-700' : ''"
+          >
+            4
+          </div>
+          <h3
+            class="text-xl font-bold mb-3 text-center"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Membership Issuance
+          </h3>
+          <p
+            class="text-center"
+            :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+          >
+            Receive your membership certificate and start enjoying the benefits.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto mt-12">
+      <div
+        class="bg-blue-50 border border-blue-200 rounded-lg p-6 animate__animated animate__fadeIn"
+        :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-blue-200' : ''"
+      >
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <i class="fas fa-clock text-blue-500 text-2xl mt-1"></i>
+          </div>
+          <div class="ml-4">
+            <h3
+              class="text-lg font-medium"
+              :class="darkMode ? 'text-blue-200' : 'text-blue-800'"
+            >
+              Processing Time
+            </h3>
+            <div
+              class="mt-2"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+            >
+              <p>
+                The entire registration process typically takes around
+                <strong>10 working days</strong> to complete, provided all
+                documents are in order and there are no complications.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Section -->
+<div
+  class="container max-w-7xl mx-auto px-4 py-12"
+  :class="darkMode ? 'text-white' : ''"
+>
+  <h2
+    class="text-3xl font-bold mb-8 text-center"
+    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+  >
+    Frequently Asked Questions
+  </h2>
+
+  <div class="max-w-3xl mx-auto">
+    <div class="space-y-4">
+      <!-- FAQ Item 1 -->
+      <div
+        class="border rounded-lg overflow-hidden transition-all duration-300 animate__animated animate__fadeIn"
+        :class="darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'"
+      >
+        <button
+          class="flex justify-between items-center w-full p-4 text-left font-medium transition-colors duration-300"
+          :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+        >
+          <span>Who can apply for Karachi Chamber of Commerce membership?</span>
+          <i class="fas fa-chevron-down transition-transform duration-300"></i>
+        </button>
+        <div class="p-4 pt-0 hidden">
+          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            Any business entity operating in Karachi, including sole
+            proprietorships, partnerships, and companies, can apply for
+            membership with the Karachi Chamber of Commerce.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div
+        class="border rounded-lg overflow-hidden transition-all duration-300 animate__animated animate__fadeIn"
+        :class="darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'"
+      >
+        <button
+          class="flex justify-between items-center w-full p-4 text-left font-medium transition-colors duration-300"
+          :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+        >
+          <span>How long is the membership valid?</span>
+          <i class="fas fa-chevron-down transition-transform duration-300"></i>
+        </button>
+        <div class="p-4 pt-0 hidden">
+          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            The membership is valid for one year and needs to be renewed
+            annually. Renewal notices are sent to members before the expiry
+            date.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div
+        class="border rounded-lg overflow-hidden transition-all duration-300 animate__animated animate__fadeIn"
+        :class="darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'"
+      >
+        <button
+          class="flex justify-between items-center w-full p-4 text-left font-medium transition-colors duration-300"
+          :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+        >
+          <span>What if I don't have two proposers from existing members?</span>
+          <i class="fas fa-chevron-down transition-transform duration-300"></i>
+        </button>
+        <div class="p-4 pt-0 hidden">
+          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            If you don't have two proposers, our team can help connect you with
+            existing members who may be willing to propose your membership.
+            Contact us for assistance.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div
+        class="border rounded-lg overflow-hidden transition-all duration-300 animate__animated animate__fadeIn"
+        :class="darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'"
+      >
+        <button
+          class="flex justify-between items-center w-full p-4 text-left font-medium transition-colors duration-300"
+          :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+        >
+          <span>Can Go Wakeel handle the entire registration process?</span>
+          <i class="fas fa-chevron-down transition-transform duration-300"></i>
+        </button>
+        <div class="p-4 pt-0 hidden">
+          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            Yes, Go Wakeel can handle the entire registration process on your
+            behalf. We'll collect the required documents from you, prepare the
+            application, and follow up with the Chamber until your membership is
+            approved.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div
+        class="border rounded-lg overflow-hidden transition-all duration-300 animate__animated animate__fadeIn"
+        :class="darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'"
+      >
+        <button
+          class="flex justify-between items-center w-full p-4 text-left font-medium transition-colors duration-300"
+          :class="darkMode ? 'text-gray-100 hover:bg-gray-700' : 'text-gray-900 hover:bg-gray-50'"
+        >
+          <span
+            >What are the benefits of using Go Wakeel for this service?</span
+          >
+          <i class="fas fa-chevron-down transition-transform duration-300"></i>
+        </button>
+        <div class="p-4 pt-0 hidden">
+          <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            By using Go Wakeel, you save time and avoid the hassle of navigating
+            the registration process yourself. Our experts ensure that your
+            application is complete and compliant, reducing the risk of delays
+            or rejection.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter Section -->
+<div
+  class="py-12"
+  :class="darkMode ? 'bg-gradient-to-r from-gray-900 to-blue-950 text-white' : 'bg-gradient-to-r from-gray-100 to-blue-50'"
+>
+  <div class="container max-w-7xl mx-auto px-4">
+    <div
+      class="flex flex-col lg:flex-row items-center justify-between gap-8 p-8 rounded-xl shadow-lg"
+      :class="darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'"
+    >
+      <div class="lg:w-2/3">
+        <h2
+          class="text-3xl font-bold mb-4"
+          :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+        >
+          Stay Updated with Chamber News
+        </h2>
+        <p
+          class="text-lg mb-6"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+        >
+          Subscribe to our newsletter to receive updates on Chamber of Commerce
+          events, networking opportunities, and business development resources.
+        </p>
+      </div>
+      <div class="lg:w-1/3 w-full">
+        <form class="space-y-4">
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium mb-2"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none transition-colors duration-300"
+              :class="darkMode ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500' : 'bg-white border-gray-300 text-gray-900 focus:ring-blue-600'"
+              required
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="w-full px-6 py-3 text-white font-medium rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+              :class="darkMode ? 'bg-blue-800 hover:bg-blue-700' : 'bg-[#002244] hover:bg-[#003366]'"
+            >
+              <i class="fas fa-paper-plane mr-2"></i>
+              Subscribe Now
+            </button>
+          </div>
+          <p
+            class="text-xs text-center mt-2"
+            :class="darkMode ? 'text-gray-400' : 'text-gray-500'"
+          >
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Initialize JavaScript for Tabs and FAQ -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Tab functionality
+    const tabs = document.querySelectorAll("[data-tab-target]");
+    const tabContents = document.querySelectorAll(".tab-pane");
+
+    // Function to check dark mode
+    function isDarkMode() {
+      const darkModeAttribute = document.body.getAttribute("x-data");
+      if (darkModeAttribute) {
+        try {
+          const data = JSON.parse(darkModeAttribute.replace(/'/g, '"'));
+          return data.darkMode;
+        } catch (e) {
+          console.error("Error parsing x-data:", e);
+          return false;
+        }
+      }
+      return false;
+    }
+
+    // Function to activate a tab
+    function activateTab(tab) {
+      const targetId = tab.getAttribute("data-tab-target");
+      const target = document.querySelector(targetId);
+
+      if (!target) return; // Safety check
+
+      // Hide all tab contents
+      tabContents.forEach((tabContent) => {
+        tabContent.classList.add("hidden");
+        tabContent.classList.remove("active");
+      });
+
+      // Remove active class from all tabs
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+        t.classList.remove(
+          "border-blue-400",
+          "text-blue-400",
+          "border-[#003366]",
+          "text-[#003366]"
+        );
+        t.classList.add("border-transparent");
+      });
+
+      // Add active class to clicked tab
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      tab.classList.remove("border-transparent");
+
+      // Add appropriate styling based on dark mode
+      if (isDarkMode()) {
+        tab.classList.add("border-blue-400", "text-blue-400");
+      } else {
+        tab.classList.add("border-[#003366]", "text-[#003366]");
+      }
+
+      // Show the target tab content
+      target.classList.remove("hidden");
+      target.classList.add("active");
+    }
+
+    // Set up click handlers for tabs
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        activateTab(tab);
+      });
+    });
+
+    // Activate the first tab by default if no tab is active
+    const activeTab = document.querySelector('[role="tab"].active');
+    if (!activeTab && tabs.length > 0) {
+      activateTab(tabs[0]);
+    }
+
+    // FAQ accordion functionality
+    const faqButtons = document.querySelectorAll(".border.rounded-lg button");
+    faqButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const faqItem = button.closest(".border.rounded-lg");
+        const content = button.nextElementSibling;
+        const icon = button.querySelector("i");
+
+        // Toggle content visibility
+        content.classList.toggle("hidden");
+
+        // Rotate chevron icon
+        icon.classList.toggle("fa-chevron-down");
+        icon.classList.toggle("fa-chevron-up");
+
+        // Add animation class
+        faqItem.classList.add("animate__animated", "animate__fadeIn");
+      });
+    });
+
+    // Add intersection observer for animations
+    const animateElements = document.querySelectorAll(".animate__animated");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const animation = entry.target.classList.contains("animate__fadeIn")
+              ? "fadeIn"
+              : entry.target.classList.contains("animate__fadeInUp")
+              ? "fadeInUp"
+              : entry.target.classList.contains("animate__fadeInLeft")
+              ? "fadeInLeft"
+              : entry.target.classList.contains("animate__fadeInRight")
+              ? "fadeInRight"
+              : "fadeIn";
+
+            entry.target.classList.add(`animate__${animation}`);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    animateElements.forEach((element) => {
+      observer.observe(element);
+    });
+  });
+</script>
+{% endblock Content %}

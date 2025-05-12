@@ -1,71 +1,87 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" 
-      x-init="$watch('darkMode', val => { 
+<html
+  lang="en"
+  x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+  x-init="$watch('darkMode', val => { 
                 localStorage.setItem('darkMode', val); 
                 document.documentElement.classList.toggle('dark', val);
-              })">
+              })"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GoWakeel - Your Trusted Tax Partner</title>
-   
+
     <!-- Favicon -->
-    <link rel="icon" href="{% static 'wakeelapp/Img/favicon.ico' %}" type="image/x-icon">
-    
+    <link
+      rel="icon"
+      href="{% static 'wakeelapp/Img/favicon.ico' %}"
+      type="image/x-icon"
+    />
+
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
     <!-- AOS Animation -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
-        darkMode: 'class',
+        darkMode: "class",
         theme: {
           extend: {
             colors: {
               primary: {
-                50: '#f0f9ff',
-                100: '#e0f2fe',
-                200: '#bae6fd',
-                300: '#7dd3fc',
-                400: '#38bdf8',
-                500: '#0ea5e9',
-                600: '#0284c7',
-                700: '#0369a1',
-                800: '#075985',
-                900: '#0c4a6e',
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                200: "#bae6fd",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                700: "#0369a1",
+                800: "#075985",
+                900: "#0c4a6e",
               },
               secondary: {
-                50: '#f8fafc',
-                100: '#f1f5f9',
-                200: '#e2e8f0',
-                300: '#cbd5e1',
-                400: '#94a3b8',
-                500: '#64748b',
-                600: '#475569',
-                700: '#334155',
-                800: '#1e293b',
-                900: '#0f172a',
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
               },
               dark: {
-                100: '#1e293b',
-                200: '#0f172a',
-                300: '#020617',
-              }
+                100: "#1e293b",
+                200: "#0f172a",
+                300: "#020617",
+              },
             },
           },
         },
       };
     </script>
-    <script>      
+    <script>
       // Counter animation function
       function animateCounter(element, target, duration) {
         let start = 0;
@@ -79,15 +95,15 @@
           }
         }, 16);
       }
-    
+
       // Initialize counters when they come into view
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Fix for dark mode initialization
-        const darkModeEnabled = localStorage.getItem('darkMode') === 'true';
+        const darkModeEnabled = localStorage.getItem("darkMode") === "true";
         if (darkModeEnabled) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         }
-        
+
         // Initialize AOS
         AOS.init({
           duration: 800,
@@ -101,19 +117,19 @@
         scroll-behavior: smooth;
         transition: background-color 0.3s ease, color 0.3s ease;
       }
-      
+
       body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         overflow-x: hidden;
         transition: background-color 0.3s ease, color 0.3s ease;
       }
-      
+
       /* Dark mode transitions */
       .dark-transition {
-        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease,
+          border-color 0.3s ease, box-shadow 0.3s ease;
       }
-      
-      
+
       /* Text effects */
       .gradient-text {
         background: linear-gradient(90deg, #0369a1, #38bdf8);
@@ -121,20 +137,20 @@
         background-clip: text;
         color: transparent;
       }
-      
+
       .dark .gradient-text {
         background: linear-gradient(90deg, #38bdf8, #7dd3fc);
         -webkit-background-clip: text;
         background-clip: text;
       }
-           
+
       /* Navbar animations */
       .nav-link {
         position: relative;
       }
-      
+
       .nav-link::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 0;
         height: 2px;
@@ -143,15 +159,15 @@
         background-color: #0369a1;
         transition: width 0.3s ease;
       }
-      
+
       .dark .nav-link::after {
         background-color: #38bdf8;
       }
-      
+
       .nav-link:hover::after {
         width: 100%;
       }
-      
+
       /* Button animations */
       .btn-animated {
         position: relative;
@@ -159,9 +175,9 @@
         z-index: 1;
         transition: all 0.3s ease;
       }
-      
+
       .btn-animated:after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -170,9 +186,9 @@
         background-color: rgba(255, 255, 255, 0.2);
         z-index: -2;
       }
-      
+
       .btn-animated:before {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -182,19 +198,19 @@
         transition: all 0.3s;
         z-index: -1;
       }
-      
+
       .btn-animated:hover:before {
         width: 100%;
       }
-      
+
       /* Footer link animations */
       .footer-link {
         position: relative;
         display: inline-block;
       }
-      
+
       .footer-link::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 0;
         height: 1px;
@@ -203,48 +219,51 @@
         background-color: white;
         transition: width 0.3s ease;
       }
-      
+
       .footer-link:hover::after {
         width: 100%;
       }
-      
+
       /* Dark mode toggle */
       .toggle-checkbox:checked {
         right: 0;
         border-color: #38bdf8;
       }
-      
+
       .toggle-checkbox:checked + .toggle-label {
         background-color: #0369a1;
       }
-      
+
       /* Dark mode styles */
       .dark-mode-icon {
         transition: transform 0.5s ease, opacity 0.3s ease;
       }
-      
+
       .dark .sun-icon {
         opacity: 1;
         transform: rotate(0deg) scale(1);
       }
-      
+
       .dark .moon-icon {
         opacity: 0;
         transform: rotate(90deg) scale(0);
       }
-      
+
       .sun-icon {
         opacity: 0;
         transform: rotate(-90deg) scale(0);
       }
-      
+
       .moon-icon {
         opacity: 1;
         transform: rotate(0deg) scale(1);
       }
     </style>
   </head>
-  <body :class="{ 'dark bg-dark-100 text-gray-100': darkMode, 'bg-white text-gray-900': !darkMode }" class="dark-transition">
+  <body
+    :class="{ 'dark bg-dark-100 text-gray-100': darkMode, 'bg-white text-gray-900': !darkMode }"
+    class="dark-transition"
+  >
     <!-- Navbar -->
     <nav
       x-data="{ isOpen: false, toolsOpen: false, generalToolsOpen: false }"
@@ -256,7 +275,10 @@
       >
         <div class="flex items-center justify-between">
           <!-- Logo -->
-          <a class="flex justify-center items-center hover-float transition-all duration-300" href="{% url 'wakeelapp:index' %}">
+          <a
+            class="flex justify-center items-center hover-float transition-all duration-300"
+            href="{% url 'wakeelapp:index' %}"
+          >
             <img
               class="w-auto h-10 md:h-12 lg:h-14"
               src="{% static 'wakeelapp/Img/logo2.png' %}"
@@ -323,33 +345,34 @@
               >Home</a
             >
             <a
-            href="{% url 'wakeelapp:about' %}"
-            class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
-            :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
-            >About</a
-             >
+              href="{% url 'wakeelapp:about' %}"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+              >About</a
+            >
             <a
-          href="{% url 'wakeelapp:about' %}"
-          class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
-          :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
-          >Services</a
-          >
+              href="{% url 'wakeelapp:about' %}"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+              >Services</a
+            >
 
             <a
               href="{% url 'wakeelapp:calculator' %}"
-              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-2 text-lg md:my-0 nav-link"
               :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
-              >Tools</a
+              >Tools & Support</a
             >
+            {% comment %}
             <a
               href="{% url 'wakeelapp:blogs' %}"
               class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
               :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
               >Resources</a
             >
-            
+            {% endcomment %}
           </div>
-          
+
           <!-- Contact Link -->
           <a
             href="{% url 'wakeelapp:contact' %}"
@@ -357,69 +380,86 @@
             :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
             >Contact</a
           >
-        
 
-        <!-- Dark Mode Toggle and Buttons -->
-        <div class="flex items-center space-x-4 mt-4 md:mt-0">
-          <!-- Dark Mode Toggle -->
-          <button 
-            @click="darkMode = !darkMode" 
-            class="p-2 rounded-full transition-colors duration-300 focus:outline-none"
-            :class="darkMode ? 'bg-dark-200 text-primary-400' : 'bg-gray-100 text-primary-700'"
-            id="theme-toggle-desktop"
-          >
-            <div class="relative w-6 h-6 overflow-hidden">
-              <!-- Sun Icon -->
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                class="h-6 w-6 absolute transition-opacity duration-300 sun-icon" 
-                :class="darkMode ? 'opacity-100' : 'opacity-0'"
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              
-              <!-- Moon Icon -->
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                class="h-6 w-6 absolute transition-opacity duration-300 moon-icon" 
-                :class="darkMode ? 'opacity-0' : 'opacity-100'"
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </div>
-          </button>
-
-          <!-- Action Buttons -->
-          <a
-            href="{% url 'wakeelapp:login' %}"
-            class="px-4 py-2 rounded-lg btn-animated transition-all duration-300"
-            :class="darkMode ? 'text-primary-400 border border-primary-400 hover:bg-primary-900 hover:text-white' : 'text-primary-700 border border-primary-700 hover:text-white hover:bg-primary-700'"
-            >Join Us</a
-          >
-          <a
-            href="https://wa.me/+923369969997"
-            class="px-4 py-2 flex items-center rounded-lg btn-animated transition-all duration-300"
-            :class="darkMode ? 'text-green-400 border border-green-400 hover:bg-green-900 hover:text-white' : 'text-green-700 border border-green-700 hover:bg-green-700 hover:text-white'"
+          <!-- Dark Mode Toggle and Buttons -->
+          <div class="flex items-center space-x-4 mt-4 md:mt-0">
+            <!-- Dark Mode Toggle -->
+            <button
+              @click="darkMode = !darkMode"
+              class="p-2 rounded-full transition-colors duration-300 focus:outline-none"
+              :class="darkMode ? 'bg-dark-200 text-primary-400' : 'bg-gray-100 text-primary-700'"
+              id="theme-toggle-desktop"
             >
-            <img src="{% static 'wakeelapp/Img/whatsapp.png' %}" alt="WhatsApp" class="h-5 w-5 mr-2" />
-            <span>Chat Now</span>
-          </a>
+              <div class="relative w-6 h-6 overflow-hidden">
+                <!-- Sun Icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 absolute transition-opacity duration-300 sun-icon"
+                  :class="darkMode ? 'opacity-100' : 'opacity-0'"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+
+                <!-- Moon Icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 absolute transition-opacity duration-300 moon-icon"
+                  :class="darkMode ? 'opacity-0' : 'opacity-100'"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  />
+                </svg>
+              </div>
+            </button>
+
+            <!-- Action Buttons -->
+            <a
+              href="{% url 'wakeelapp:calculator' %}"
+              class="px-4 py-2 rounded-lg btn-animated transition-all duration-300"
+              :class="darkMode ? 'text-primary-400 border border-primary-400 hover:bg-primary-900 hover:text-white' : 'text-primary-700 border border-primary-700 hover:text-white hover:bg-primary-700'"
+              >TAX Calculator</a
+            >
+            <a
+              href="https://wa.me/+923369969997"
+              class="px-4 py-2 flex items-center rounded-lg btn-animated transition-all duration-300"
+              :class="darkMode ? 'text-green-400 border border-green-400 hover:bg-green-900 hover:text-white' : 'text-green-700 border border-green-700 hover:bg-green-700 hover:text-white'"
+            >
+              <img
+                src="{% static 'wakeelapp/Img/whatsapp.png' %}"
+                alt="WhatsApp"
+                class="h-5 w-5 mr-2"
+              />
+              <span>Chat Now</span>
+            </a>
+          </div>
         </div>
-      </div>
       </div>
     </nav>
     <!-- Navbar End -->
-    
+
     <!-- Subnavbar section -->
-    <div class="bg-white dark:bg-gray-800  py-4 px-6 transition-colors duration-300">
-      <div class="max-w-7xl mx-auto flex justify-center items-center gap-5 md:gap-10 overflow-x-auto">
-        <a
+    <div
+      class="bg-white dark:bg-gray-800 py-4 px-6 transition-colors duration-300"
+    >
+      <div
+        class="max-w-7xl mx-auto flex justify-center items-center gap-5 md:gap-10 overflow-x-auto"
+      >
+        <!-- <a
           href="{% url 'wakeelapp:calculator' %}"
           class="flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-[#003366] dark:hover:text-blue-300 font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
         >
@@ -429,7 +469,7 @@
             alt="Calculator"
           />
           <span>Tax Calculator</span>
-        </a>
+        </a> -->
         <a
           href="{% url 'wakeelapp:zakatcalculator' %}"
           class="flex flex-col items-center text-[#003366] dark:text-blue-300 font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
@@ -474,30 +514,90 @@
           />
           <span>Currency Converter</span>
         </a>
+        <a
+          href="/blogs/"
+          class="flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-[#003366] dark:hover:text-blue-300 font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="/static/wakeelapp/Img/blogs.png"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="Blogs"
+          />
+          <span>Blogs</span>
+        </a>
+        <a
+          href="/video/"
+          class="flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-[#003366] dark:hover:text-blue-300 font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="/static/wakeelapp/Img/video.png"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="Video"
+          />
+          <span>Video</span>
+        </a>
+        <a
+          href="/faq/"
+          class="flex flex-col items-center text-gray-700 dark:text-gray-300 hover:text-[#003366] dark:hover:text-blue-300 font-bold text-xs sm:text-sm md:text-base transition-colors duration-300"
+        >
+          <img
+            src="/static/wakeelapp/Img/FAQ.png"
+            class="h-10 mb-2 sm:h-12 md:h-14"
+            alt="FAQ"
+          />
+          <span>FAQ's</span>
+        </a>
       </div>
     </div>
     <!-- NavbarEnd -->
-    
+
     {% block Content %}
     <!-- Hero Section -->
-    <div class="bg-gradient-to-r from-white to-[#003366]/5 dark:from-gray-900 dark:to-darkaccent/20 py-12 transition-colors duration-300">
+    <div
+      class="bg-gradient-to-r from-white to-[#003366]/5 dark:from-gray-900 dark:to-darkaccent/20 py-12 transition-colors duration-300"
+    >
       <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
+        <div
+          class="flex flex-col lg:flex-row items-center justify-between gap-10"
+        >
           <div class="w-full lg:w-1/2">
-            <h1 class="text-4xl font-bold text-[#003366] dark:text-blue-300 mb-2">
+            <h1
+              class="text-4xl font-bold text-[#003366] dark:text-blue-300 mb-2"
+            >
               <span class="text-5xl font-bold">Zakat</span> Calculator
             </h1>
             <div class="h-1 w-20 bg-[#003366] dark:bg-blue-300 mb-6"></div>
-            <p class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">A Pillar of Islam and Social Responsibility</p>
-            <p class="text-gray-700 dark:text-gray-300 text-lg mb-4"> 
-              Zakat is one of the five pillars of Islam, a mandatory form of charity that ensures wealth is distributed fairly within the community. Every eligible Muslim who meets the <span class="font-semibold">Nisab threshold—the minimum amount of wealth required to be liable for Zakat—must donate 2.5%</span> of their savings, gold, silver, investments, and other assets after deducting liabilities.
+            <p
+              class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4"
+            >
+              A Pillar of Islam and Social Responsibility
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 text-lg mb-4">
+              Zakat is one of the five pillars of Islam, a mandatory form of
+              charity that ensures wealth is distributed fairly within the
+              community. Every eligible Muslim who meets the
+              <span class="font-semibold"
+                >Nisab threshold—the minimum amount of wealth required to be
+                liable for Zakat—must donate 2.5%</span
+              >
+              of their savings, gold, silver, investments, and other assets
+              after deducting liabilities.
             </p>
             <p class="text-gray-700 dark:text-gray-300 text-lg">
-              By giving Zakat, individuals purify their wealth, foster social equity, and provide financial relief to the poor, needy, orphans, and those in debt. It is more than just a charitable act; it is a system designed to uplift society and create economic balance.
+              By giving Zakat, individuals purify their wealth, foster social
+              equity, and provide financial relief to the poor, needy, orphans,
+              and those in debt. It is more than just a charitable act; it is a
+              system designed to uplift society and create economic balance.
             </p>
-            <a href="#linkhere"><button class="p-3 bg-[#1f628a] dark:bg-blue-700 text-white font-semibold rounded mt-2 hover:bg-[#003366] dark:hover:bg-blue-800 transition-colors duration-300">Zakat Calculator</button></a>
+            <a href="#linkhere"
+              ><button
+                class="p-3 bg-[#1f628a] dark:bg-blue-700 text-white font-semibold rounded mt-2 hover:bg-[#003366] dark:hover:bg-blue-800 transition-colors duration-300"
+              >
+                Zakat Calculator
+              </button></a
+            >
           </div>
-          
+
           <div class="w-full lg:w-1/2 flex justify-center">
             <img
               class="w-full max-w-md rounded-lg shadow-lg"
@@ -509,299 +609,603 @@
       </div>
     </div>
     <!-- Hero Section End -->
-    
+
     <!-- Calculator Section -->
     <div class="py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-10">
-          <h2 id="linkhere" class="text-3xl md:text-4xl font-bold text-[#003366] dark:text-blue-300 mb-4">Calculate Your Zakat</h2>
+          <h2
+            id="linkhere"
+            class="text-3xl md:text-4xl font-bold text-[#003366] dark:text-blue-300 mb-4"
+          >
+            Calculate Your Zakat
+          </h2>
           <p class="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Use our Zakat Calculator to accurately determine your due amount and ensure you fulfill this important religious obligation with ease.
+            Use our Zakat Calculator to accurately determine your due amount and
+            ensure you fulfill this important religious obligation with ease.
           </p>
           <div class="flex items-center justify-center mt-4">
-            <div class="px-4 py-2 bg-[#003366]/10 dark:bg-blue-900/30 rounded-lg text-[#003366] dark:text-blue-300 font-semibold flex items-center">
+            <div
+              class="px-4 py-2 bg-[#003366]/10 dark:bg-blue-900/30 rounded-lg text-[#003366] dark:text-blue-300 font-semibold flex items-center"
+            >
               <i class="fas fa-info-circle mr-2"></i>
-              Current Nisab Threshold: <span class="ml-2 font-bold">Rs. 179,689</span>
+              Current Nisab Threshold:
+              <span class="ml-2 font-bold">Rs. 179,689</span>
             </div>
           </div>
         </div>
-        
-        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors duration-300">
-          <div class="bg-gradient-to-r from-[#003366] to-[#004c99] dark:from-blue-900 dark:to-blue-800 text-white p-4">
+
+        <div
+          class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors duration-300"
+        >
+          <div
+            class="bg-gradient-to-r from-[#003366] to-[#004c99] dark:from-blue-900 dark:to-blue-800 text-white p-4"
+          >
             <h3 class="text-xl font-bold text-center">Enter Your Assets</h3>
           </div>
-          
+
           <div class="p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               <!-- Left Column: Gold & Silver -->
               <div class="space-y-6">
-                <div class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300">
-                  <h4 class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
+                <div
+                  class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300"
+                >
+                  <h4
+                    class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                  >
                     <i class="fas fa-coins mr-2"></i>Gold & Silver
                   </h4>
-                  
+
                   <!-- Gold Dropdown -->
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Gold Price per Tola (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Gold Price per Tola (Rs.)</label
+                    >
                     <div class="relative">
-                      <select id="goldPrice" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600">
+                      <select
+                        id="goldPrice"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                      >
                         <option value="0">Loading...</option>
                       </select>
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-coins text-[#003366] dark:text-blue-300"></i>
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-coins text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
-                      <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <i class="fas fa-chevron-down text-gray-400 dark:text-gray-500"></i>
+                      <div
+                        class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-chevron-down text-gray-400 dark:text-gray-500"
+                        ></i>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Gold (Tolas)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Gold (Tolas)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="goldTolas" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0" step="0.01">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-balance-scale text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="goldTolas"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                        step="0.01"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-balance-scale text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Enter the amount of gold you own in tolas</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      Enter the amount of gold you own in tolas
+                    </p>
                   </div>
-                  
+
                   <!-- Silver Dropdown -->
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Silver Price per Tola (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Silver Price per Tola (Rs.)</label
+                    >
                     <div class="relative">
-                      <select id="silverPrice" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600">
+                      <select
+                        id="silverPrice"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 appearance-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                      >
                         <option value="0">Loading...</option>
                       </select>
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-coins text-[#003366] dark:text-blue-300"></i>
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-coins text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
-                      <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                        <i class="fas fa-chevron-down text-gray-400 dark:text-gray-500"></i>
+                      <div
+                        class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-chevron-down text-gray-400 dark:text-gray-500"
+                        ></i>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Silver (Tolas)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Silver (Tolas)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="silverTolas" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0" step="0.01">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-balance-scale text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="silverTolas"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                        step="0.01"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-balance-scale text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Enter the amount of silver you own in tolas</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      Enter the amount of silver you own in tolas
+                    </p>
                   </div>
                 </div>
-                
+
                 <!-- Cash & Bank Balances -->
-                <div class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300">
-                  <h4 class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
-                    <i class="fas fa-money-bill-wave mr-2"></i>Cash & Bank Balances
+                <div
+                  class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300"
+                >
+                  <h4
+                    class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                  >
+                    <i class="fas fa-money-bill-wave mr-2"></i>Cash & Bank
+                    Balances
                   </h4>
-                  
+
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Cash in Hand (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Cash in Hand (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="cashInHand" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-wallet text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="cashInHand"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-wallet text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Bank Balance (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Bank Balance (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="bankBalance" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-university text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="bankBalance"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-university text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <!-- Right Column: Investments & Liabilities -->
               <div class="space-y-6">
                 <!-- Investments -->
-                <div class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300">
-                  <h4 class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
-                    <i class="fas fa-chart-line mr-2"></i>Investments & Other Assets
+                <div
+                  class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300"
+                >
+                  <h4
+                    class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                  >
+                    <i class="fas fa-chart-line mr-2"></i>Investments & Other
+                    Assets
                   </h4>
-                  
+
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Stocks & Mutual Funds (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Stocks & Mutual Funds (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="investments" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-chart-pie text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="investments"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-chart-pie text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Business Assets (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Business Assets (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="businessAssets" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-store text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="businessAssets"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-store text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Other Assets (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Other Assets (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="otherAssets" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-boxes text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="otherAssets"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-boxes text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- Liabilities -->
-                <div class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300">
-                  <h4 class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
+                <div
+                  class="bg-[#003366]/5 dark:bg-blue-900/20 p-4 rounded-lg transition-colors duration-300"
+                >
+                  <h4
+                    class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                  >
                     <i class="fas fa-hand-holding-usd mr-2"></i>Liabilities
                   </h4>
-                  
+
                   <div class="mb-4">
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Loans & Debts (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Loans & Debts (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="loans" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-file-invoice-dollar text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="loans"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-file-invoice-dollar text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label class="block mb-2 text-gray-700 dark:text-gray-300 font-medium">Other Liabilities (Rs.)</label>
+                    <label
+                      class="block mb-2 text-gray-700 dark:text-gray-300 font-medium"
+                      >Other Liabilities (Rs.)</label
+                    >
                     <div class="relative">
-                      <input type="number" id="otherLiabilities" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600" placeholder="Enter amount" min="0">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="fas fa-receipt text-[#003366] dark:text-blue-300"></i>
+                      <input
+                        type="number"
+                        id="otherLiabilities"
+                        class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#003366] dark:focus:ring-blue-500 focus:border-[#003366] dark:focus:border-blue-500 pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600"
+                        placeholder="Enter amount"
+                        min="0"
+                      />
+                      <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                      >
+                        <i
+                          class="fas fa-receipt text-[#003366] dark:text-blue-300"
+                        ></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <!-- Calculate Button -->
             <div class="mt-8 flex justify-center">
-              <button id="calculateZakat" class="px-8 py-4 bg-gradient-to-r from-[#003366] to-[#004c99] dark:from-blue-800 dark:to-blue-600 text-white font-bold rounded-lg hover:from-[#002244] hover:to-[#003366] dark:hover:from-blue-900 dark:hover:to-blue-700 transition-all duration-300 shadow-md flex items-center">
+              <button
+                id="calculateZakat"
+                class="px-8 py-4 bg-gradient-to-r from-[#003366] to-[#004c99] dark:from-blue-800 dark:to-blue-600 text-white font-bold rounded-lg hover:from-[#002244] hover:to-[#003366] dark:hover:from-blue-900 dark:hover:to-blue-700 transition-all duration-300 shadow-md flex items-center"
+              >
                 <i class="fas fa-calculator mr-2"></i> Calculate Zakat
               </button>
             </div>
           </div>
         </div>
-        
+
         <!-- Results Section -->
         <div id="zakatResults" class="mt-10 hidden">
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors duration-300">
-            <div class="bg-gradient-to-r from-[#003366] to-[#004c99] dark:from-blue-900 dark:to-blue-800 text-white p-4">
-              <h3 class="text-xl font-bold text-center">Your Zakat Calculation Results</h3>
+          <div
+            class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors duration-300"
+          >
+            <div
+              class="bg-gradient-to-r from-[#003366] to-[#004c99] dark:from-blue-900 dark:to-blue-800 text-white p-4"
+            >
+              <h3 class="text-xl font-bold text-center">
+                Your Zakat Calculation Results
+              </h3>
             </div>
-            
+
             <div class="p-6">
               <!-- Summary Card -->
-              <div class="bg-[#003366]/10 dark:bg-blue-900/30 p-6 rounded-lg mb-6 text-center">
-                <h4 class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-2">Total Zakat Due</h4>
-                <p id="totalZakat" class="text-4xl font-bold text-[#003366] dark:text-blue-300 mb-2">Rs. 0</p>
-                <p class="text-sm text-gray-600 dark:text-gray-400">Based on your total zakatable assets</p>
+              <div
+                class="bg-[#003366]/10 dark:bg-blue-900/30 p-6 rounded-lg mb-6 text-center"
+              >
+                <h4
+                  class="text-lg font-semibold text-[#003366] dark:text-blue-300 mb-2"
+                >
+                  Total Zakat Due
+                </h4>
+                <p
+                  id="totalZakat"
+                  class="text-4xl font-bold text-[#003366] dark:text-blue-300 mb-2"
+                >
+                  Rs. 0
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Based on your total zakatable assets
+                </p>
               </div>
-              
+
               <!-- Detailed Breakdown -->
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <!-- Assets Summary -->
-                <div class="bg-white dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm">
-                  <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
-                    <i class="fas fa-plus-circle mr-2 text-green-600 dark:text-green-400"></i>Total Assets
+                <div
+                  class="bg-white dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm"
+                >
+                  <h4
+                    class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                  >
+                    <i
+                      class="fas fa-plus-circle mr-2 text-green-600 dark:text-green-400"
+                    ></i
+                    >Total Assets
                   </h4>
                   <div class="space-y-3">
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Gold Value:</span>
-                      <span id="goldValue" class="font-bold dark:text-white">Rs. 0</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Gold Value:</span
+                      >
+                      <span id="goldValue" class="font-bold dark:text-white"
+                        >Rs. 0</span
+                      >
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Silver Value:</span>
-                      <span id="silverValue" class="font-bold dark:text-white">Rs. 0</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Silver Value:</span
+                      >
+                      <span id="silverValue" class="font-bold dark:text-white"
+                        >Rs. 0</span
+                      >
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Cash & Bank:</span>
-                      <span id="cashBankValue" class="font-bold dark:text-white">Rs. 0</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Cash & Bank:</span
+                      >
+                      <span id="cashBankValue" class="font-bold dark:text-white"
+                        >Rs. 0</span
+                      >
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Investments & Other:</span>
-                      <span id="investmentsValue" class="font-bold dark:text-white">Rs. 0</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Investments & Other:</span
+                      >
+                      <span
+                        id="investmentsValue"
+                        class="font-bold dark:text-white"
+                        >Rs. 0</span
+                      >
                     </div>
-                    <div class="flex justify-between items-center border-t border-gray-300 dark:border-gray-500 pt-3 mt-3">
-                      <span class="text-gray-700 dark:text-gray-200 font-medium">Total Assets:</span>
-                      <span id="totalAssets" class="font-bold text-lg text-green-600 dark:text-green-400">Rs. 0</span>
+                    <div
+                      class="flex justify-between items-center border-t border-gray-300 dark:border-gray-500 pt-3 mt-3"
+                    >
+                      <span class="text-gray-700 dark:text-gray-200 font-medium"
+                        >Total Assets:</span
+                      >
+                      <span
+                        id="totalAssets"
+                        class="font-bold text-lg text-green-600 dark:text-green-400"
+                        >Rs. 0</span
+                      >
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- Liabilities & Net Worth -->
-                <div class="bg-white dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm">
-                  <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
-                    <i class="fas fa-minus-circle mr-2 text-red-600 dark:text-red-400"></i>Liabilities & Net Worth
+                <div
+                  class="bg-white dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm"
+                >
+                  <h4
+                    class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                  >
+                    <i
+                      class="fas fa-minus-circle mr-2 text-red-600 dark:text-red-400"
+                    ></i
+                    >Liabilities & Net Worth
                   </h4>
                   <div class="space-y-3">
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Total Liabilities:</span>
-                      <span id="totalLiabilities" class="font-bold text-red-600 dark:text-red-400">Rs. 0</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Total Liabilities:</span
+                      >
+                      <span
+                        id="totalLiabilities"
+                        class="font-bold text-red-600 dark:text-red-400"
+                        >Rs. 0</span
+                      >
                     </div>
-                    <div class="flex justify-between items-center border-t border-gray-300 dark:border-gray-500 pt-3 mt-3">
-                      <span class="text-gray-700 dark:text-gray-200 font-medium">Net Zakatable Amount:</span>
-                      <span id="netWorth" class="font-bold text-lg dark:text-white">Rs. 0</span>
+                    <div
+                      class="flex justify-between items-center border-t border-gray-300 dark:border-gray-500 pt-3 mt-3"
+                    >
+                      <span class="text-gray-700 dark:text-gray-200 font-medium"
+                        >Net Zakatable Amount:</span
+                      >
+                      <span
+                        id="netWorth"
+                        class="font-bold text-lg dark:text-white"
+                        >Rs. 0</span
+                      >
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Nisab Threshold:</span>
-                      <span id="nisabThreshold" class="font-bold dark:text-white">Rs. 179,689</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Nisab Threshold:</span
+                      >
+                      <span
+                        id="nisabThreshold"
+                        class="font-bold dark:text-white"
+                        >Rs. 179,689</span
+                      >
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-600 dark:text-gray-300">Zakat Rate:</span>
+                      <span class="text-gray-600 dark:text-gray-300"
+                        >Zakat Rate:</span
+                      >
                       <span class="font-bold dark:text-white">2.5%</span>
                     </div>
                     <div class="flex justify-between items-center">
-                      <span class="text-gray-700 dark:text-gray-200 font-medium">Zakat Status:</span>
-                      <span id="zakatStatus" class="font-bold text-[#003366] dark:text-blue-300">Not Eligible</span>
+                      <span class="text-gray-700 dark:text-gray-200 font-medium"
+                        >Zakat Status:</span
+                      >
+                      <span
+                        id="zakatStatus"
+                        class="font-bold text-[#003366] dark:text-blue-300"
+                        >Not Eligible</span
+                      >
                     </div>
                   </div>
                 </div>
               </div>
-              
+
               <!-- Visual Representation -->
-              <div class="bg-white dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm mb-6">
-                <h4 class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center">
+              <div
+                class="bg-white dark:bg-gray-700 p-5 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm mb-6"
+              >
+                <h4
+                  class="font-semibold text-[#003366] dark:text-blue-300 mb-4 flex items-center"
+                >
                   <i class="fas fa-chart-pie mr-2"></i>Zakat Breakdown
                 </h4>
-                <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-8 mb-3 overflow-hidden">
-                  <div id="zakatProgressBar" class="bg-gradient-to-r from-[#003366] to-[#0066cc] dark:from-blue-800 dark:to-blue-600 h-8 rounded-full relative" style="width: 0%">
-                    <span id="zakatProgressText" class="absolute inset-0 text-center text-white flex items-center justify-center font-medium">0%</span>
+                <div
+                  class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-8 mb-3 overflow-hidden"
+                >
+                  <div
+                    id="zakatProgressBar"
+                    class="bg-gradient-to-r from-[#003366] to-[#0066cc] dark:from-blue-800 dark:to-blue-600 h-8 rounded-full relative"
+                    style="width: 0%"
+                  >
+                    <span
+                      id="zakatProgressText"
+                      class="absolute inset-0 text-center text-white flex items-center justify-center font-medium"
+                      >0%</span
+                    >
                   </div>
                 </div>
                 <div class="flex justify-between text-sm mt-2">
-                  <span class="font-medium text-gray-700 dark:text-gray-300"><i class="fas fa-money-bill-wave mr-1"></i>Total Assets</span>
-                  <span id="zakatPercentage" class="font-medium text-gray-700 dark:text-gray-300">2.5% goes to Zakat</span>
-                  <span class="font-medium text-gray-700 dark:text-gray-300"><i class="fas fa-hand-holding-usd mr-1"></i>Zakat Due</span>
+                  <span class="font-medium text-gray-700 dark:text-gray-300"
+                    ><i class="fas fa-money-bill-wave mr-1"></i>Total
+                    Assets</span
+                  >
+                  <span
+                    id="zakatPercentage"
+                    class="font-medium text-gray-700 dark:text-gray-300"
+                    >2.5% goes to Zakat</span
+                  >
+                  <span class="font-medium text-gray-700 dark:text-gray-300"
+                    ><i class="fas fa-hand-holding-usd mr-1"></i>Zakat Due</span
+                  >
                 </div>
               </div>
-              
+
               <!-- Print/Share Options -->
               <div class="flex justify-center space-x-4">
-                <button onclick="printZakatResults()" class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors flex items-center text-sm font-medium">
+                <button
+                  onclick="printZakatResults()"
+                  class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors flex items-center text-sm font-medium"
+                >
                   <i class="fas fa-print mr-2"></i> Print Results
                 </button>
-                <button onclick="downloadPDF()" class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors flex items-center text-sm font-medium">
+                <button
+                  onclick="downloadPDF()"
+                  class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors flex items-center text-sm font-medium"
+                >
                   <i class="fas fa-file-pdf mr-2"></i> Download PDF
                 </button>
-                <button onclick="copyZakatResults()" class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors flex items-center text-sm font-medium">
+                <button
+                  onclick="copyZakatResults()"
+                  class="px-6 py-3 bg-[#003366]/10 dark:bg-blue-900/30 text-[#003366] dark:text-blue-300 rounded-lg hover:bg-[#003366]/20 dark:hover:bg-blue-900/50 transition-colors flex items-center text-sm font-medium"
+                >
                   <i class="fas fa-copy mr-2"></i> Copy Results
                 </button>
               </div>
@@ -810,103 +1214,151 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Zakat Information Section -->
-    <section class="py-12 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section
+      class="py-12 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+    >
       <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-[#003366] dark:text-blue-300 mb-8 text-center">Understanding Zakat</h2>
-        
+        <h2
+          class="text-3xl font-bold text-[#003366] dark:text-blue-300 mb-8 text-center"
+        >
+          Understanding Zakat
+        </h2>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Card 1: What is Zakat -->
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
             <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-question text-[#003366] dark:text-blue-300 text-xl"></i>
+              <div
+                class="w-12 h-12 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4"
+              >
+                <i
+                  class="fas fa-question text-[#003366] dark:text-blue-300 text-xl"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300">What is Zakat?</h3>
+              <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300">
+                What is Zakat?
+              </h3>
             </div>
             <p class="text-gray-700 dark:text-gray-300">
-              Zakat is an obligatory charity in Islam, requiring Muslims to donate 2.5% of their qualifying wealth annually. It's considered a form of worship and self-purification, while also addressing social inequality.
+              Zakat is an obligatory charity in Islam, requiring Muslims to
+              donate 2.5% of their qualifying wealth annually. It's considered a
+              form of worship and self-purification, while also addressing
+              social inequality.
             </p>
           </div>
-          
+
           <!-- Card 2: Who Must Pay -->
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
             <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-user-check text-[#003366] dark:text-blue-300 text-xl"></i>
+              <div
+                class="w-12 h-12 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4"
+              >
+                <i
+                  class="fas fa-user-check text-[#003366] dark:text-blue-300 text-xl"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300">Who Must Pay?</h3>
+              <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300">
+                Who Must Pay?
+              </h3>
             </div>
             <p class="text-gray-700 dark:text-gray-300">
-              Zakat is obligatory for every adult Muslim who possesses wealth equal to or exceeding the nisab threshold for a full lunar year. The wealth must be in excess of one's basic needs and free from debt.
+              Zakat is obligatory for every adult Muslim who possesses wealth
+              equal to or exceeding the nisab threshold for a full lunar year.
+              The wealth must be in excess of one's basic needs and free from
+              debt.
             </p>
           </div>
-          
+
           <!-- Card 3: Calculation Method -->
-          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <div
+            class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
             <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-calculator text-[#003366] dark:text-blue-300 text-xl"></i>
+              <div
+                class="w-12 h-12 bg-[#003366]/10 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4"
+              >
+                <i
+                  class="fas fa-calculator text-[#003366] dark:text-blue-300 text-xl"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300">How It's Calculated</h3>
+              <h3 class="text-xl font-bold text-[#003366] dark:text-blue-300">
+                How It's Calculated
+              </h3>
             </div>
             <p class="text-gray-700 dark:text-gray-300">
-              Zakat is calculated at 2.5% of eligible assets including gold, silver, cash, investments, and business inventory. Liabilities are deducted before calculating the final amount due.
+              Zakat is calculated at 2.5% of eligible assets including gold,
+              silver, cash, investments, and business inventory. Liabilities are
+              deducted before calculating the final amount due.
             </p>
           </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Add JavaScript for Dark Mode Toggle -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Dark mode toggle functionality
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        
-        darkModeToggle.addEventListener('click', function() {
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        darkModeToggle.addEventListener("click", function () {
           // Toggle dark class on html element
-          document.documentElement.classList.toggle('dark');
-          document.documentElement.classList.toggle('light');
-          
+          document.documentElement.classList.toggle("dark");
+          document.documentElement.classList.toggle("light");
+
           // Save preference to localStorage
-          if (document.documentElement.classList.contains('dark')) {
-            localStorage.setItem('darkMode', 'enabled');
+          if (document.documentElement.classList.contains("dark")) {
+            localStorage.setItem("darkMode", "enabled");
           } else {
-            localStorage.setItem('darkMode', 'disabled');
+            localStorage.setItem("darkMode", "disabled");
           }
         });
-        
+
         // Fetch gold and silver prices from API
         fetchMetalPrices();
-        
+
         // Calculate button event listener
-        document.getElementById('calculateZakat').addEventListener('click', calculateZakat);
+        document
+          .getElementById("calculateZakat")
+          .addEventListener("click", calculateZakat);
       });
-      
+
       async function fetchMetalPrices() {
         try {
           // Display loading state
-          const goldPriceSelect = document.getElementById('goldPrice');
-          const silverPriceSelect = document.getElementById('silverPrice');
-          goldPriceSelect.innerHTML = '<option value="0">Loading prices...</option>';
-          silverPriceSelect.innerHTML = '<option value="0">Loading prices...</option>';
-          
+          const goldPriceSelect = document.getElementById("goldPrice");
+          const silverPriceSelect = document.getElementById("silverPrice");
+          goldPriceSelect.innerHTML =
+            '<option value="0">Loading prices...</option>';
+          silverPriceSelect.innerHTML =
+            '<option value="0">Loading prices...</option>';
+
           // API request setup
           const myHeaders = new Headers();
-          myHeaders.append("x-api-key", "sk_f72dBc50967d40EdE688A5d02656A2d574513118506DcC3b");
+          myHeaders.append(
+            "x-api-key",
+            "sk_f72dBc50967d40EdE688A5d02656A2d574513118506DcC3b"
+          );
 
           const requestOptions = {
-              method: "GET",
-              headers: myHeaders,
-              redirect: "follow"
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow",
           };
 
           // Fetch metal prices from API
-          const response = await fetch("https://gold.g.apised.com/v1/latest?metals=XAU,XAG&base_currency=PKR&currencies=PKR&weight_unit=gram", requestOptions);
+          const response = await fetch(
+            "https://gold.g.apised.com/v1/latest?metals=XAU,XAG&base_currency=PKR&currencies=PKR&weight_unit=gram",
+            requestOptions
+          );
           const data = await response.json();
-          
+
           const goldPrices = data.data.metal_prices.XAU;
           const silverPricePerGram = data.data.metal_prices.XAG.price;
 
@@ -918,181 +1370,219 @@
 
           // Gold Prices in Different Carats (Convert to Tola)
           const goldCarats = {
-              "24K": goldPrices.price_24k,
-              "22K": goldPrices.price_22k,
-              "21K": goldPrices.price_21k,
-              "18K": goldPrices.price_18k
+            "24K": goldPrices.price_24k,
+            "22K": goldPrices.price_22k,
+            "21K": goldPrices.price_21k,
+            "18K": goldPrices.price_18k,
           };
 
           for (let [carat, pricePerGram] of Object.entries(goldCarats)) {
-              let pricePerTola = pricePerGram * tolaConversion;
-              let option = document.createElement("option");
-              option.value = Math.round(pricePerTola);
-              option.text = `${carat} - Rs. ${Math.round(pricePerTola).toLocaleString()}`;
-              goldPriceSelect.appendChild(option);
+            let pricePerTola = pricePerGram * tolaConversion;
+            let option = document.createElement("option");
+            option.value = Math.round(pricePerTola);
+            option.text = `${carat} - Rs. ${Math.round(
+              pricePerTola
+            ).toLocaleString()}`;
+            goldPriceSelect.appendChild(option);
           }
 
           // Silver Price per Tola
           let silverPricePerTola = silverPricePerGram * tolaConversion;
           let silverOption = document.createElement("option");
           silverOption.value = Math.round(silverPricePerTola);
-          silverOption.text = `Silver - Rs. ${Math.round(silverPricePerTola).toLocaleString()}`;
+          silverOption.text = `Silver - Rs. ${Math.round(
+            silverPricePerTola
+          ).toLocaleString()}`;
           silverPriceSelect.appendChild(silverOption);
-          
+
           // Add sterling silver option (92.5% pure)
           let sterlingSilverPricePerTola = silverPricePerTola * 0.925;
           let sterlingSilverOption = document.createElement("option");
           sterlingSilverOption.value = Math.round(sterlingSilverPricePerTola);
-          sterlingSilverOption.text = `Sterling Silver (92.5%) - Rs. ${Math.round(sterlingSilverPricePerTola).toLocaleString()}`;
+          sterlingSilverOption.text = `Sterling Silver (92.5%) - Rs. ${Math.round(
+            sterlingSilverPricePerTola
+          ).toLocaleString()}`;
           silverPriceSelect.appendChild(sterlingSilverOption);
-          
+
           // Update Nisab threshold based on silver price (612.36 grams = 52.5 tolas of silver)
           const nisabThreshold = Math.round(silverPricePerTola * 52.5);
-          document.getElementById('nisabThreshold').textContent = `Rs. ${nisabThreshold.toLocaleString()}`;
-          
+          document.getElementById(
+            "nisabThreshold"
+          ).textContent = `Rs. ${nisabThreshold.toLocaleString()}`;
         } catch (error) {
-          console.error('Error fetching metal prices:', error);
-          
+          console.error("Error fetching metal prices:", error);
+
           // Fallback to default values if API fails
-          const goldPriceSelect = document.getElementById('goldPrice');
-          const silverPriceSelect = document.getElementById('silverPrice');
-          
-          goldPriceSelect.innerHTML = '';
+          const goldPriceSelect = document.getElementById("goldPrice");
+          const silverPriceSelect = document.getElementById("silverPrice");
+
+          goldPriceSelect.innerHTML = "";
           const goldPrices = [
             { value: 245000, label: "24K - Rs. 245,000" },
             { value: 224583, label: "22K - Rs. 224,583" },
             { value: 204167, label: "21K - Rs. 204,167" },
-            { value: 183750, label: "18K - Rs. 183,750" }
+            { value: 183750, label: "18K - Rs. 183,750" },
           ];
-          
-          goldPrices.forEach(price => {
-            const option = document.createElement('option');
+
+          goldPrices.forEach((price) => {
+            const option = document.createElement("option");
             option.value = price.value;
             option.textContent = price.label;
             goldPriceSelect.appendChild(option);
           });
-          
-          silverPriceSelect.innerHTML = '';
+
+          silverPriceSelect.innerHTML = "";
           const silverPrices = [
             { value: 2900, label: "Pure Silver - Rs. 2,900" },
-            { value: 2700, label: "Sterling Silver - Rs. 2,700" }
+            { value: 2700, label: "Sterling Silver - Rs. 2,700" },
           ];
-          
-          silverPrices.forEach(price => {
-            const option = document.createElement('option');
+
+          silverPrices.forEach((price) => {
+            const option = document.createElement("option");
             option.value = price.value;
             option.textContent = price.label;
             silverPriceSelect.appendChild(option);
           });
-          
+
           // Set default nisab threshold
-          document.getElementById('nisabThreshold').textContent = 'Rs. 152,250';
+          document.getElementById("nisabThreshold").textContent = "Rs. 152,250";
         }
       }
-      
+
       function calculateZakat() {
         // Get values from inputs
-        const goldPrice = parseFloat(document.getElementById('goldPrice').value) || 0;
-        const goldTolas = parseFloat(document.getElementById('goldTolas').value) || 0;
-        const silverPrice = parseFloat(document.getElementById('silverPrice').value) || 0;
-        const silverTolas = parseFloat(document.getElementById('silverTolas').value) || 0;
-        const cashInHand = parseFloat(document.getElementById('cashInHand').value) || 0;
-        const bankBalance = parseFloat(document.getElementById('bankBalance').value) || 0;
-        const investments = parseFloat(document.getElementById('investments').value) || 0;
-        const businessAssets = parseFloat(document.getElementById('businessAssets').value) || 0;
-        const otherAssets = parseFloat(document.getElementById('otherAssets').value) || 0;
-        const loans = parseFloat(document.getElementById('loans').value) || 0;
-        const otherLiabilities = parseFloat(document.getElementById('otherLiabilities').value) || 0;
-        
+        const goldPrice =
+          parseFloat(document.getElementById("goldPrice").value) || 0;
+        const goldTolas =
+          parseFloat(document.getElementById("goldTolas").value) || 0;
+        const silverPrice =
+          parseFloat(document.getElementById("silverPrice").value) || 0;
+        const silverTolas =
+          parseFloat(document.getElementById("silverTolas").value) || 0;
+        const cashInHand =
+          parseFloat(document.getElementById("cashInHand").value) || 0;
+        const bankBalance =
+          parseFloat(document.getElementById("bankBalance").value) || 0;
+        const investments =
+          parseFloat(document.getElementById("investments").value) || 0;
+        const businessAssets =
+          parseFloat(document.getElementById("businessAssets").value) || 0;
+        const otherAssets =
+          parseFloat(document.getElementById("otherAssets").value) || 0;
+        const loans = parseFloat(document.getElementById("loans").value) || 0;
+        const otherLiabilities =
+          parseFloat(document.getElementById("otherLiabilities").value) || 0;
+
         // Calculate values
         const goldValue = goldPrice * goldTolas;
         const silverValue = silverPrice * silverTolas;
         const cashBankValue = cashInHand + bankBalance;
         const investmentsValue = investments + businessAssets + otherAssets;
-        const totalAssets = goldValue + silverValue + cashBankValue + investmentsValue;
+        const totalAssets =
+          goldValue + silverValue + cashBankValue + investmentsValue;
         const totalLiabilities = loans + otherLiabilities;
         const netWorth = totalAssets - totalLiabilities;
-        
+
         // Get nisab threshold from the UI (removing "Rs. " and commas)
-        const nisabThresholdText = document.getElementById('nisabThreshold').textContent;
-        const nisabThreshold = parseFloat(nisabThresholdText.replace('Rs. ', '').replace(/,/g, ''));
-        
+        const nisabThresholdText =
+          document.getElementById("nisabThreshold").textContent;
+        const nisabThreshold = parseFloat(
+          nisabThresholdText.replace("Rs. ", "").replace(/,/g, "")
+        );
+
         // Calculate Zakat (2.5% of net worth if above nisab)
         let zakatAmount = 0;
         let zakatStatus = "Not Eligible";
-        
+
         if (netWorth >= nisabThreshold) {
           zakatAmount = netWorth * 0.025;
           zakatStatus = "Eligible - Zakat Due";
         }
-        
+
         // Update results
-        document.getElementById('goldValue').textContent = `Rs. ${goldValue.toLocaleString()}`;
-        document.getElementById('silverValue').textContent = `Rs. ${silverValue.toLocaleString()}`;
-        document.getElementById('cashBankValue').textContent = `Rs. ${cashBankValue.toLocaleString()}`;
-        document.getElementById('investmentsValue').textContent = `Rs. ${investmentsValue.toLocaleString()}`;
-        document.getElementById('totalAssets').textContent = `Rs. ${totalAssets.toLocaleString()}`;
-        document.getElementById('totalLiabilities').textContent = `Rs. ${totalLiabilities.toLocaleString()}`;
-        document.getElementById('netWorth').textContent = `Rs. ${netWorth.toLocaleString()}`;
-        document.getElementById('totalZakat').textContent = `Rs. ${zakatAmount.toLocaleString()}`;
-        document.getElementById('zakatStatus').textContent = zakatStatus;
-        
+        document.getElementById(
+          "goldValue"
+        ).textContent = `Rs. ${goldValue.toLocaleString()}`;
+        document.getElementById(
+          "silverValue"
+        ).textContent = `Rs. ${silverValue.toLocaleString()}`;
+        document.getElementById(
+          "cashBankValue"
+        ).textContent = `Rs. ${cashBankValue.toLocaleString()}`;
+        document.getElementById(
+          "investmentsValue"
+        ).textContent = `Rs. ${investmentsValue.toLocaleString()}`;
+        document.getElementById(
+          "totalAssets"
+        ).textContent = `Rs. ${totalAssets.toLocaleString()}`;
+        document.getElementById(
+          "totalLiabilities"
+        ).textContent = `Rs. ${totalLiabilities.toLocaleString()}`;
+        document.getElementById(
+          "netWorth"
+        ).textContent = `Rs. ${netWorth.toLocaleString()}`;
+        document.getElementById(
+          "totalZakat"
+        ).textContent = `Rs. ${zakatAmount.toLocaleString()}`;
+        document.getElementById("zakatStatus").textContent = zakatStatus;
+
         // Update progress bar
-        const progressBar = document.getElementById('zakatProgressBar');
-        const progressText = document.getElementById('zakatProgressText');
-        const percentage = totalAssets > 0 ? (zakatAmount / totalAssets) * 100 : 0;
+        const progressBar = document.getElementById("zakatProgressBar");
+        const progressText = document.getElementById("zakatProgressText");
+        const percentage =
+          totalAssets > 0 ? (zakatAmount / totalAssets) * 100 : 0;
         progressBar.style.width = `${percentage}%`;
         progressText.textContent = `${percentage.toFixed(1)}%`;
-        
+
         // Show results section
-        const resultsSection = document.getElementById('zakatResults');
-        resultsSection.classList.remove('hidden');
-        
+        const resultsSection = document.getElementById("zakatResults");
+        resultsSection.classList.remove("hidden");
+
         // Scroll to results
-        resultsSection.scrollIntoView({ behavior: 'smooth' });
+        resultsSection.scrollIntoView({ behavior: "smooth" });
       }
-      
+
       // Print functionality
-      window.printZakatResults = function() {
+      window.printZakatResults = function () {
         window.print();
       };
-      
+
       // Download PDF functionality
-      window.downloadPDF = function() {
+      window.downloadPDF = function () {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
-        
-        const resultsElement = document.getElementById('zakatResults');
-        
-        html2canvas(resultsElement).then(canvas => {
-          const imgData = canvas.toDataURL('image/png');
+
+        const resultsElement = document.getElementById("zakatResults");
+
+        html2canvas(resultsElement).then((canvas) => {
+          const imgData = canvas.toDataURL("image/png");
           const imgWidth = 210;
           const pageHeight = 295;
-          const imgHeight = canvas.height * imgWidth / canvas.width;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
           let heightLeft = imgHeight;
           let position = 0;
-          
-          doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+
+          doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
           heightLeft -= pageHeight;
-          
+
           while (heightLeft >= 0) {
             position = heightLeft - imgHeight;
             doc.addPage();
-            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            doc.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
             heightLeft -= pageHeight;
           }
-          
-          doc.save('zakat-calculation.pdf');
+
+          doc.save("zakat-calculation.pdf");
         });
       };
-      
+
       // Copy results functionality
-      window.copyZakatResults = function() {
-        const totalZakat = document.getElementById('totalZakat').textContent;
-        const totalAssets = document.getElementById('totalAssets').textContent;
-        const netWorth = document.getElementById('netWorth').textContent;
-        const zakatStatus = document.getElementById('zakatStatus').textContent;
-        
+      window.copyZakatResults = function () {
+        const totalZakat = document.getElementById("totalZakat").textContent;
+        const totalAssets = document.getElementById("totalAssets").textContent;
+        const netWorth = document.getElementById("netWorth").textContent;
+        const zakatStatus = document.getElementById("zakatStatus").textContent;
+
         const textToCopy = `
           Zakat Calculation Results:
           Total Assets: ${totalAssets}
@@ -1100,162 +1590,247 @@
           Zakat Status: ${zakatStatus}
           Total Zakat Due: ${totalZakat}
         `;
-        
+
         navigator.clipboard.writeText(textToCopy).then(() => {
-          alert('Zakat calculation results copied to clipboard!');
+          alert("Zakat calculation results copied to clipboard!");
         });
       };
     </script>
     {% endblock Content %}
 
-<!-- Footer -->
-<footer class="pt-20 pb-10" :class="darkMode ? 'bg-dark-200 text-gray-300' : 'bg-gray-900 text-gray-300'">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-      <!-- Company Info -->
-      <div>
-        <div class="mb-6">
-          <a href="{% url 'wakeelapp:index' %}" class="flex items-center">
-            <h2
-          class="text-2xl md:text-3xl lg:text-4xl ml-2 text-primary-700 dark:text-primary-400 font-bold"
+    <!-- Footer -->
+    <footer
+      class="pt-20 pb-10"
+      :class="darkMode ? 'bg-dark-200 text-gray-300' : 'bg-gray-900 text-gray-300'"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
         >
-          GOWAKEEL
-        </h2>
-            <!-- <img src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="GoWakeel" class="h-20"> -->
-          </a>
+          <!-- Company Info -->
+          <div>
+            <div class="mb-6">
+              <a href="{% url 'wakeelapp:index' %}" class="flex items-center">
+                <h2
+                  class="text-2xl md:text-3xl lg:text-4xl ml-2 text-primary-700 dark:text-primary-400 font-bold"
+                >
+                  GOWAKEEL
+                </h2>
+                <!-- <img src="{% static 'wakeelapp/Img/footerlogo.png' %}" alt="GoWakeel" class="h-20"> -->
+              </a>
+            </div>
+            <p class="mb-6 text-gray-400">
+              Professional tax services for individuals and businesses in
+              Pakistan. Making tax compliance easy and stress-free.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://facebook.com/gowakeel"
+                class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+              >
+                <i class="fab fa-facebook-f text-lg"></i>
+              </a>
+              <a
+                href="https://twitter.com/gowakeel"
+                class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+              >
+                <i class="fab fa-twitter text-lg"></i>
+              </a>
+              <a
+                href="https://instagram.com/gowakeel"
+                class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+              >
+                <i class="fab fa-instagram text-lg"></i>
+              </a>
+              <a
+                href="https://linkedin.com/company/gowakeel"
+                class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+              >
+                <i class="fab fa-linkedin-in text-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-lg font-bold mb-6 text-white">Quick Links</h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="{% url 'wakeelapp:about' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:login' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:faq' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >FAQs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:blogs' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:contact' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h3 class="text-lg font-bold mb-6 text-white">Services</h3>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="{% url 'wakeelapp:services' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Income Tax Filing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:services' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >NTN Registration</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:services' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Sales Tax Registration</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:services' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Tax Consultation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:services' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Business Registration</a
+                >
+              </li>
+              <li>
+                <a
+                  href="{% url 'wakeelapp:services' %}"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >Financial Planning</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-lg font-bold mb-6 text-white">Contact Us</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-400"></i>
+                <span class="text-gray-400"
+                  >43c B 8th St, DHA Phase 5 Badar Commercial Area,
+                  Karachi</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone-alt mr-3 text-primary-400"></i>
+                <a
+                  href="tel:+923369969997"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >+92 336 9969997</a
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-primary-400"></i>
+                <a
+                  href="mailto:info@gowakeel.com"
+                  class="text-gray-400 hover:text-primary-400 transition-colors duration-300"
+                  >info@gowakeel.com</a
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-clock mr-3 text-primary-400"></i>
+                <span class="text-gray-400">Mon-Fri: 9:00 AM - 6:00 PM</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p class="mb-6 text-gray-400">
-          Professional tax services for individuals and businesses in Pakistan. Making tax compliance easy and stress-free.
-        </p>
-        <div class="flex space-x-4">
-          <a href="https://facebook.com/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
-            <i class="fab fa-facebook-f text-lg"></i>
-          </a>
-          <a href="https://twitter.com/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
-            <i class="fab fa-twitter text-lg"></i>
-          </a>
-          <a href="https://instagram.com/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
-            <i class="fab fa-instagram text-lg"></i>
-          </a>
-          <a href="https://linkedin.com/company/gowakeel" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">
-            <i class="fab fa-linkedin-in text-lg"></i>
-          </a>
+
+        <!-- Bottom Footer -->
+        <div class="pt-8 border-t border-gray-800">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm mb-4 md:mb-0">
+              &copy; {% now "Y" %} GoWakeel. All rights reserved.
+            </p>
+            <div class="flex space-x-6">
+              <a
+                href=""
+                class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300"
+                >Privacy Policy</a
+              >
+              <a
+                href=""
+                class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300"
+                >Terms of Service</a
+              >
+              <a
+                href=""
+                class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300"
+                >Sitemap</a
+              >
+            </div>
+          </div>
         </div>
       </div>
+    </footer>
+    <!-- Footer End -->
 
-      <!-- Quick Links -->
-      <div>
-        <h3 class="text-lg font-bold mb-6 text-white">Quick Links</h3>
-        <ul class="space-y-4">
-          <li>
-            <a href="{% url 'wakeelapp:about' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">About Us</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:login' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Services</a>
-          </li> 
-          <li>
-            <a href="{% url 'wakeelapp:faq' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">FAQs</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:blogs' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Blog</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:contact' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Contact</a>
-          </li>
-        </ul>
-      </div>
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 z-50 py-3 px-4 rounded-full shadow-lg transition-all duration-300 transform scale-0 bg-white text-gray-800 hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
-      <!-- Services -->
-      <div>
-        <h3 class="text-lg font-bold mb-6 text-white">Services</h3>
-        <ul class="space-y-4">
-          <li>
-            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Income Tax Filing</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">NTN Registration</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Sales Tax Registration</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Tax Consultation</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Business Registration</a>
-          </li>
-          <li>
-            <a href="{% url 'wakeelapp:services' %}" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">Financial Planning</a>
-          </li>
-        </ul>
-      </div>
+    <script>
+      // JavaScript to handle the back to top button
+      const backToTopBtn = document.getElementById("backToTop");
 
-      <!-- Contact Info -->
-      <div>
-        <h3 class="text-lg font-bold mb-6 text-white">Contact Us</h3>
-        <ul class="space-y-4">
-          <li class="flex items-start">
-            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary-400"></i>
-            <span class="text-gray-400">43c B 8th St, DHA Phase 5 Badar Commercial Area, Karachi</span>
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-phone-alt mr-3 text-primary-400"></i>
-            <a href="tel:+923369969997" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">+92 336 9969997</a>
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-envelope mr-3 text-primary-400"></i>
-            <a href="mailto:info@gowakeel.com" class="text-gray-400 hover:text-primary-400 transition-colors duration-300">info@gowakeel.com</a>
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-clock mr-3 text-primary-400"></i>
-            <span class="text-gray-400">Mon-Fri: 9:00 AM - 6:00 PM</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Bottom Footer -->
-    <div class="pt-8 border-t border-gray-800">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm mb-4 md:mb-0">
-          &copy; {% now "Y" %} GoWakeel. All rights reserved.
-        </p>
-        <div class="flex space-x-6">
-          <a href="" class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">Privacy Policy</a>
-          <a href="" class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">Terms of Service</a>
-          <a href="" class="text-gray-500 hover:text-primary-400 text-sm transition-colors duration-300">Sitemap</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-<!-- Footer End -->
-      
-      <!-- Back to Top Button -->
-      <button 
-          id="backToTop" 
-          class="fixed bottom-6 right-6 z-50 py-3 px-4 rounded-full shadow-lg transition-all duration-300 transform scale-0 bg-white text-gray-800 hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
-        >
-          <i class="fas fa-arrow-up"></i>
-        </button>
-
-        <script>
-          // JavaScript to handle the back to top button
-          const backToTopBtn = document.getElementById('backToTop');
-
-          backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });   
-          })
-          window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-              backToTopBtn.classList.remove('scale-0');
-            } else {
-              backToTopBtn.classList.add('scale-0');
-            }
-          });
-      </script>
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+          backToTopBtn.classList.remove("scale-0");
+        } else {
+          backToTopBtn.classList.add("scale-0");
+        }
+      });
+    </script>
   </body>
 </html>

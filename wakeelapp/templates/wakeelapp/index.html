@@ -123,7 +123,7 @@
     <style>
       html {
         scroll-behavior: smooth;
-  transition: background-color 0.3s ease, color 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       
       body {
@@ -286,14 +286,14 @@
       
       /* Glass effect */
       .glass-effect {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
       
       .dark .glass-effect {
-        background: rgba(15, 23, 42, 0.8);
+        background: rgba(15, 23, 42, 1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(15, 23, 42, 0.2);
@@ -383,7 +383,7 @@
   <body :class="{ 'dark bg-dark-100 text-gray-100': darkMode, 'bg-white text-gray-900': !darkMode }" class="dark-transition">
     <!-- Navbar -->
     <nav
-      x-data="{ isOpen: false, toolsOpen: false, generalToolsOpen: false }"
+      x-data="{ isOpen: false, toolsOpen: false, servicesOpen: false, generalToolsOpen: false }"
       class="relative w-full top-0 z-50 glass-effect shadow-lg dark-transition"
       :class="{ 'dark': darkMode }"
     >
@@ -464,12 +464,69 @@
             :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
             >About</a
           >
-          <a
-          href="{% url 'wakeelapp:services' %}"
-          class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
-          :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
-          >Services</a
-        >
+          <!-- Services Dropdown -->
+          <div
+            @mouseenter="servicesOpen = true"
+            @mouseleave="servicesOpen = false"
+            class="relative"
+            x-data="{ servicesOpen: false }"
+          >
+            <a
+              href="{% url 'wakeelapp:services' %}"
+              class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
+              :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
+              >Services</a
+            >
+            <div
+              x-show="servicesOpen"
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0 transform scale-95"
+              x-transition:enter-end="opacity-100 transform scale-100"
+              x-transition:leave="transition ease-in duration-200"
+              x-transition:leave-start="opacity-100 transform scale-100"
+              x-transition:leave-end="opacity-0 transform scale-95"
+              class="absolute left-0 top-10 shadow-xl py-4 rounded-2xl border glass-effect dark-transition w-max"
+              :class="darkMode ? 'border-dark-200' : 'border-gray-100'"
+            >
+              <div class="grid grid-cols-2 gap-6 p-6">
+                <!-- Tax Return Filing -->
+                <div class="space-y-4">
+                  <h3 class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300"><a href="{% url 'wakeelapp:taxreturn' %}">Tax Return Filing</a></h3>
+                  <ul class="space-y-2">
+                    <li >NTN</a></li>
+                    <li >Individual Tax Return Filing</li>
+                    <li >Business / Corporate Tax Filing</li>
+                    <li >Sale Tax Return Filing</li>
+                    <li >Sindh Revenue Boards (SRB) Sale Tax Registration</li>
+                    <li >Punjab Revenue Authority (PRA) Sales Tax Registration</li>
+                  </ul>
+                </div>
+                
+                <!-- Company Registration -->
+                <div class="space-y-4">
+                  <h3 class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300"><a href="{% url 'wakeelapp:companyregistration' %}">Company Registration</a></h3>
+                  <ul class="space-y-2">
+                    <li>Sole Proprietor</li>
+                    <li>Single Member Company (SMC)</li>
+                    <li>Private Limited Company</li>
+                    <li>Partnership Registration</li>
+                    <li>LLC Registration</li>
+                  </ul>
+                </div>
+                
+                <!-- Other Services -->
+                <div class="space-y-2">
+                    <h3><a href="{% url 'wakeelapp:karachichamber' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">Chamber of Commerce Registration</a></h3>
+                    <h3><a href="{% url 'wakeelapp:pswregistration' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">Pakistan Single Window (PSW) Registration</a></h3>
+                    <h3><a href="{% url 'wakeelapp:pseb' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">PSEB Registration</a></h3>
+                    <h3><a href="{% url 'wakeelapp:trademark' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">Trademark Registration</a></h3>
+                    <h3><a href="{% url 'wakeelapp:schoolngo' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">NGO / School Registration</a></h3>
+                    <h3><a href="{% url 'wakeelapp:propertytransfer' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">Property Transfer and Mutation</a></h3>
+                    <h3><a href="{% url 'wakeelapp:auditservice' %}" class="font-bold text-lg text-primary-900 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300">Bookkeeping and Audit Services</a></h3>
+                  </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Tools Dropdown -->
           <div
@@ -478,10 +535,10 @@
             class="relative"
           >
             <a
-              href="{% url 'wakeelapp:calculator' %}"
+              href="{% url 'wakeelapp:blogs' %}"
               class="my-2 font-semibold transition-colors duration-300 transform hover:text-primary-700 dark:hover:text-primary-400 md:mx-3 text-lg md:my-0 nav-link"
               :class="darkMode ? 'text-gray-100' : 'text-gray-900'"
-              >Tools</a
+              >Tools & Support</a
             >
             <div
               x-show="toolsOpen"
@@ -497,7 +554,7 @@
               <div
                 class="w-80vh m-2 p-5 mx-auto flex justify-around items-center gap-10 rounded"
               >
-                <a
+                <!-- <a
                   href="{% url 'wakeelapp:calculator' %}"
                   class="flex flex-col items-center font-bold gap-2 hover-float transition-all duration-300"
                   :class="darkMode ? 'text-gray-300 hover:text-primary-400' : 'text-gray-700 hover:text-primary-700'"
@@ -508,7 +565,7 @@
                     alt="Tax Calculator"
                   />
                   <span class="mt-2">Tax Calculator</span>
-                </a>
+                </a> -->
                 <a
                   href=""
                   class="flex flex-col items-center font-bold gap-2 hover-float transition-all duration-300"
@@ -557,13 +614,48 @@
                   />
                   <span class="mt-2">Currency Converter</span>
                 </a>
-
+                <a
+                  href="{% url 'wakeelapp:blogs' %}"
+                  class="flex flex-col items-center font-bold gap-2 hover-float transition-all duration-300"
+                  :class="darkMode ? 'text-gray-300 hover:text-primary-400' : 'text-gray-700 hover:text-primary-700'"
+                >
+                  <img
+                    src="{% static 'wakeelapp/Img/blogs.png' %}"
+                    class="h-12"
+                    alt="Blogs"
+                  />
+                  <span class="mt-2">Blogs</span>
+                </a>
+                <a
+                  href="{% url 'wakeelapp:video' %}"
+                  class="flex flex-col items-center font-bold gap-2 hover-float transition-all duration-300"
+                  :class="darkMode ? 'text-gray-300 hover:text-primary-400' : 'text-gray-700 hover:text-primary-700'"
+                >
+                  <img
+                    src="{% static 'wakeelapp/Img/video.png' %}"
+                    class="h-12"
+                    alt="Video"
+                  />
+                  <span class="mt-2">Video</span>
+                </a>
+                <a
+                  href="{% url 'wakeelapp:faq' %}"
+                  class="flex flex-col items-center font-bold gap-2 hover-float transition-all duration-300"
+                  :class="darkMode ? 'text-gray-300 hover:text-primary-400' : 'text-gray-700 hover:text-primary-700'"
+                >
+                  <img
+                    src="{% static 'wakeelapp/Img/FAQ.png' %}"
+                    class="h-12"
+                    alt="FQA's"
+                  />
+                  <span class="mt-2">FQA's</span>
+                </a>
               </div>
             </div>
           </div>
 
           <!-- Resources Dropdown -->
-          <div
+          <!-- <div
             @mouseenter="resourcesOpen = true"
             @mouseleave="resourcesOpen = false"
             class="relative"
@@ -628,7 +720,7 @@
 
               </div>
             </div>
-          </div>
+          </div> -->
           
           <!-- Contact Link -->
           <a
@@ -676,13 +768,13 @@
 
           <!-- Action Buttons -->
           <a
-            href="{% url 'wakeelapp:login' %}"
+            href="{% url 'wakeelapp:calculator' %}"
             class="px-4 py-2 rounded-lg btn-animated transition-all duration-300"
             :class="darkMode ? 'text-primary-400 border border-primary-400 hover:bg-primary-900 hover:text-white' : 'text-primary-700 border border-primary-700 hover:text-white hover:bg-primary-700'"
-            >Join Us</a
+            >TAX Calculator</a
           >
           <a
-            href="https://wa.me/+923369969997"
+            href="{% url 'wakeelapp:trademark' %}"
             class="px-4 py-2 flex items-center rounded-lg btn-animated transition-all duration-300"
             :class="darkMode ? 'text-green-400 border border-green-400 hover:bg-green-900 hover:text-white' : 'text-green-700 border border-green-700 hover:bg-green-700 hover:text-white'"
             >
@@ -862,46 +954,6 @@
                   </div>
                 </div>
         
-                <!-- Service Card 3 -->
-                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="250">
-                  <div class="h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1607863680198-23d4b2565df0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sales Tax Registration" class="w-full h-full object-cover transition-all duration-500">
-                  </div>
-                  <div class="p-6">
-                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-                      <i class="fas fa-store text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Sales Tax Registration</h3>
-                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Complete assistance with sales tax registration and compliance for businesses.</p>
-                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-                      Learn More
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-        
-                <!-- Service Card 4 -->
-                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="300">
-                  <div class="h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Tax Consultation" class="w-full h-full object-cover transition-all duration-500">
-                  </div>
-                  <div class="p-6">
-                    <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-                      <i class="fas fa-comments text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Tax Consultation</h3>
-                    <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Expert advice on tax planning, compliance, and optimization strategies for your specific situation.</p>
-                    <a href="{% url 'wakeelapp:services' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-                      Learn More
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-        
                 <!-- Service Card 5 -->
                 <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="350">
                   <div class="h-48 overflow-hidden">
@@ -922,27 +974,7 @@
                   </div>
                 </div>
         
-                <!-- Service Card 6 -->
-                <div class="service-card rounded-xl overflow-hidden shadow-lg" :class="darkMode ? 'bg-dark-100 border-dark-300' : 'bg-white'" data-aos="fade-up" data-aos-delay="400">
-                  <div class="h-48 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Accounting Services" class="w-full h-full object-cover transition-all duration-500">
-                  </div>
-          <div class="p-6">
-            <div class="w-14 h-14 rounded-full flex items-center justify-center mb-4" :class="darkMode ? 'bg-primary-900' : 'bg-primary-100'">
-              <i class="fas fa-chart-line text-xl" :class="darkMode ? 'text-primary-400' : 'text-primary-700'"></i>
-            </div>
-            <h3 class="text-xl font-bold mb-3" :class="darkMode ? 'text-white' : 'text-gray-900'">Financial Planning</h3>
-            <p class="mb-4" :class="darkMode ? 'text-gray-400' : 'text-gray-600'">Personalized financial planning services to help you achieve your short and long-term financial goals.</p>
-            <a href="{% url 'wakeelapp:service_detail' 'financial-planning' %}" class="inline-flex items-center font-medium" :class="darkMode ? 'text-primary-400 hover:text-primary-300' : 'text-primary-700 hover:text-primary-600'">
-              Learn More
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
       </div>
-
       <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="450">
         <a href="{% url 'wakeelapp:services' %}
         " class="btn-animated">
@@ -961,6 +993,51 @@
   </section>
   <!-- Services Section End -->
 
+  <!-- About Us Section -->
+  <section class="py-20 hero-pattern" :class="darkMode ? 'bg-dark-200' : 'bg-gray-50'">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4" :class="darkMode ? 'text-white' : 'text-gray-900'" data-aos="fade-up">
+          About <span class="gradient-text">Us</span>
+        </h2>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- About Content -->
+        <div class="space-y-6" data-aos="fade-right">
+          <p class="text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            We are Pakistan's leading legal service provider, offering a comprehensive range of services including tax filing, business registration, school, NGO registration, as well as property transfer and mutation services. Since 2017, we have proudly upheld our commitment to serving the Karachi community.
+          </p>
+          <p class="text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            Now by adopting digital transformation during the COVID-19 pandemic enabled us to expand our services nationwide. Today, we celebrate five successful years of operations, having served over 1,500 clients across Pakistan.
+          </p>
+          <p class="text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+            We are the team of three dedicated partners — a Chartered Accountant (CA), a lawyer, and an MBA. This diverse expertise allows us to deliver high-quality services to our clients' needs. With over 30 employees across our two offices and a network of dedicated freelancers working remotely, we continue to grow and enhance our service offerings to better support businesses and individuals throughout the country.
+          </p>
+        </div>
+        
+        <!-- Vision & Mission -->
+        <div class="space-y-8" data-aos="fade-left">
+          <!-- Vision Card -->
+          <div class="glass-effect rounded-xl p-6 shadow-lg hover-float" :class="darkMode ? 'border-dark-300' : 'border-gray-200'">
+            <h3 class="text-2xl font-bold mb-4 text-primary-700 dark:text-primary-400">Vision</h3>
+            <p class="text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+              To become a globally recognized Firm in legal services, setting new standards of excellence while making quality legal support accessible and affordable for every individual in Pakistan
+            </p>
+          </div>
+          
+          <!-- Mission Card -->
+          <div class="glass-effect rounded-xl p-6 shadow-lg hover-float" :class="darkMode ? 'border-dark-300' : 'border-gray-200'">
+            <h3 class="text-2xl font-bold mb-4 text-primary-700 dark:text-primary-400">Mission</h3>
+            <p class="text-lg" :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+              Our mission is to provide cost-effective, reliable, and comprehensive legal services to individuals and businesses across Pakistan. By leveraging innovation and digital transformation, we aim to simplify legal processes, empower clients with knowledge, and expand our reach to leave a lasting footprint in the global legal industry.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- How It Works Section -->
   <section class="py-20" :class="darkMode ? 'bg-dark-100' : 'bg-white'">
     <div class="max-w-7xl mx-auto px-6">

@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import Blogs, BlogCategory, VideoCategory, Videos
@@ -42,15 +43,45 @@ def zakatcalculator(request):
 def currencyconvert(request):
     return render(request, 'wakeelapp/currencyconvert.html')
 
+def taxreturn(request):
+    return render(request, 'wakeelapp/taxreturn.html')
+
+def companyregistration(request):
+    return render(request, 'wakeelapp/companyregistration.html')
+
+def karachichamber(request):
+    return render(request, 'wakeelapp/karachichamber.html')
+
+def pswregistration(request):
+    return render(request, 'wakeelapp/pswregistration.html') 
+
+def pseb(request):
+    return render(request, 'wakeelapp/pseb.html')
+
+def trademark(request):
+    return render(request, 'wakeelapp/trademark.html')
+
+def schoolngo(request):
+    return render(request, 'wakeelapp/schoolngo.html')
+
+def propertytransfer(request):
+    return render(request, 'wakeelapp/propertytransfer.html')
+
+def auditservice(request):
+    return render(request, 'wakeelapp/auditservice.html')                        
+
+
 def services(request):
     services = [
-        {"slug":"NTN-Registration", "name": "NTN Registration", "price": "500 PKR", "image": "wakeelapp/Img/NTNRegistraion.png"},
-        {"slug":"Annual-Income-Tax-Return-(Salary)", "name": "Annual Income Tax Return (Salary)", "price": "3000 PKR", "image": "wakeelapp/Img/annualtaxsalary.png"},
-        {"slug":"Annual-Income-Tax-Return-(Business)", "name": "Annual Income Tax Return (Business)", "price": "5000 PKR", "image": "wakeelapp/Img/annualtaxbus.png"},
-        {"slug":"GST-Registration", "name": "GST Registration", "price": "5000 PKR", "image": "wakeelapp/Img/gst.png"},
-        {"slug":"Monthly-Sales-Tax-Return-Filing", "name": "Monthly Sales Tax Return Filing", "price": "5000 PKR", "image": "wakeelapp/Img/monthly.png"},
-        {"slug":"Company-Registration", "name": "Company Registration", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/companyregistration.png"},
-        {"slug":"Trade-Marks-&-Partnership", "name": "Trade Marks & Partnership", "price": "Starting 15000 PKR", "image": "wakeelapp/Img/Trademarks.png"},
+        {"slug":"Tax Return Filing", "name": "Tax Return Filing", "image": "https://arynews.tv/wp-content/uploads/2019/06/INCOME-TAX.jpg", "url": reverse('wakeelapp:taxreturn')  },
+        {"slug":"Company Registration", "name": "Company Registration",  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgbc8zqbS8GOskOI5_OuLFFefeItPr5yosGA&s" , "url": reverse('wakeelapp:companyregistration') },
+        {"slug":"Chamber of commerce registration", "name": "Chamber of commerce registration", "image": "https://i.ibb.co/rRdsmTPd/Asset-6-288x-1-300x300-removebg-preview.png" , "url": reverse('wakeelapp:karachichamber') },
+        {"slug":"Pakistan Single window (PSW) Registration", "name": "Pakistan Single window (PSW) Registration", "image": "https://abconsultants.com.pk/wp-content/uploads/2024/10/1643202941126.png" , "url": reverse('wakeelapp:pswregistration') },
+        {"slug":"PSEB registration", "name": "PSEB registration",  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeJkOAcZct0nKAHzGmFfJceS-3pzfk5X1-ug&s" , "url": reverse('wakeelapp:pseb') },
+        {"slug":"Trademark registration", "name": "Trademark registration",  "image": "https://www.axisip.com.pk/wp-content/uploads/2023/10/brand-trademark-registration.jpg" , "url": reverse('wakeelapp:trademark') },
+        {"slug":"NGO & School Registration", "name": "NGO / School Registration",  "image": "https://rightlaw.com.pk/wp-content/uploads/2022/12/ngo-nongovernmental-organization-serve-specific-social-template-hand-drawn-illustration_2175-7882-1024x720.webp" , "url": reverse('wakeelapp:schoolngo') },
+        {"slug":"Property transfer and mutation ", "name": "Property transfer and mutation ", "image": "https://img.freepik.com/premium-photo/businessman-ready-take-notes-empty-note-pad_1016675-480.jpg" , "url": reverse('wakeelapp:propertytransfer') },
+        {"slug":"Bookkeeping and Audit Services", "name": "Bookkeeping and Audit Services", "image": "https://img.freepik.com/free-vector/audit-concept-illustration-idea-taxes-examination-control_613284-2016.jpg" , "url": reverse('wakeelapp:auditservice')},
     ]
 
     

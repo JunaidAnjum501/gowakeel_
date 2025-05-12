@@ -1,0 +1,1154 @@
+{% extends 'wakeelapp/index.html' %} {% load static %} {% block Content %}
+<!-- Hero Section with Consistent Design -->
+<div
+  class="w-full py-12"
+  :class="darkMode ? 'bg-gradient-to-r from-gray-900 to-blue-950 text-white' : 'bg-gradient-to-r from-gray-100 to-blue-50'"
+>
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="lg:w-2/3">
+        <h1
+          class="text-4xl md:text-5xl font-bold mb-6 relative"
+          :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+        >
+          <span class="relative inline-block">
+            Pakistan Single Window (PSW) Registration
+          </span>
+        </h1>
+        <p
+          class="text-lg"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+        >
+          Pakistan Single Window (PSW) is a revolutionary digital platform
+          launched by the Government of Pakistan to facilitate the import/export
+          process and reduce regulatory burdens. It allows importers, exporters,
+          and customs agents to submit all required trade documentation through
+          a single electronic platform, eliminating the need to deal with
+          multiple government departments.
+        </p>
+        <p
+          class="text-lg mt-4"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+        >
+          At Go Wakeel, we make PSW registration fast, simple, and error-free—so
+          your business can stay compliant and trade efficiently.
+        </p>
+        <div class="mt-6">
+          <a
+            href="#contact-section"
+            class="inline-flex items-center px-6 py-3 text-white font-medium rounded-lg shadow-lg transition-colors"
+            :class="darkMode ? 'bg-blue-800 hover:bg-blue-700' : 'bg-[#002244] hover:bg-[#003366]'"
+          >
+            <i class="fas fa-rocket mr-2"></i>
+            Get Started
+          </a>
+        </div>
+      </div>
+      <div class="lg:w-1/3 mt-8 lg:mt-0 relative">
+        <img
+          class="w-auto"
+          src="https://abconsultants.com.pk/wp-content/uploads/2024/10/1643202941126.png"
+          alt="Pakistan Single Window"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="container max-w-7xl mx-auto px-4 py-12"
+  :class="darkMode ? 'text-white' : ''"
+>
+  <!-- Tab Navigation -->
+  <div
+    class="mb-8 border-b"
+    :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+  >
+    <ul
+      class="flex flex-wrap -mb-px text-sm font-medium text-center"
+      id="pswRegTabs"
+      role="tablist"
+    >
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 rounded-t-lg"
+          :class="darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]'"
+          id="overview-tab"
+          data-tab-target="#overview"
+          type="button"
+          role="tab"
+          aria-controls="overview"
+          aria-selected="true"
+        >
+          <i class="fas fa-info-circle mr-2"></i>Overview
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300"
+          :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400' : 'hover:text-[#003366] hover:border-[#003366]'"
+          id="services-tab"
+          data-tab-target="#services"
+          type="button"
+          role="tab"
+          aria-controls="services"
+          aria-selected="false"
+        >
+          <i class="fas fa-hands-helping mr-2"></i>Our Services
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300"
+          :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400' : 'hover:text-[#003366] hover:border-[#003366]'"
+          id="documents-tab"
+          data-tab-target="#documents"
+          type="button"
+          role="tab"
+          aria-controls="documents"
+          aria-selected="false"
+        >
+          <i class="fas fa-file-alt mr-2"></i>Required Documents
+        </button>
+      </li>
+      <li class="mr-2" role="presentation">
+        <button
+          class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300"
+          :class="darkMode ? 'hover:text-blue-400 hover:border-blue-400' : 'hover:text-[#003366] hover:border-[#003366]'"
+          id="benefits-tab"
+          data-tab-target="#benefits"
+          type="button"
+          role="tab"
+          aria-controls="benefits"
+          aria-selected="false"
+        >
+          <i class="fas fa-star mr-2"></i>Key Benefits
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="pswRegTabContent">
+    <!-- Overview Tab -->
+    <div
+      class="tab-pane active"
+      id="overview"
+      role="tabpanel"
+      aria-labelledby="overview-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Understanding Pakistan Single Window (PSW)
+          </h2>
+          <div
+            class="rounded-lg shadow-sm border"
+            :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+          >
+            <div class="p-6">
+              <p class="mb-4">
+                Pakistan Single Window (PSW) is a transformative initiative by
+                the Government of Pakistan designed to streamline cross-border
+                trade processes. It serves as a centralized digital platform
+                where traders can submit standardized information to fulfill all
+                regulatory requirements related to imports, exports, and
+                transit.
+              </p>
+              <p class="mb-4">
+                Before PSW, businesses had to navigate through multiple
+                government agencies, submit redundant information, and deal with
+                complex paper-based processes. PSW eliminates these
+                inefficiencies by providing a single point of submission for all
+                trade-related documentation and approvals.
+              </p>
+              <p class="mb-6">
+                By registering with PSW, businesses can significantly reduce
+                clearance times, lower compliance costs, and minimize the risk
+                of errors or delays in their international trade operations.
+              </p>
+
+              <h3
+                class="text-xl font-semibold mb-4"
+                :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+              >
+                Who Needs PSW Registration?
+              </h3>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                  <span>Importers and exporters of goods</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                  <span>Customs clearing agents</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                  <span>Freight forwarders and logistics providers</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                  <span>Manufacturers engaged in international trade</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                  <span>Trade associations and chambers of commerce</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                  <span>Shipping lines and airlines</span>
+                </li>
+              </ul>
+
+              <div
+                class="bg-blue-50 p-4 rounded-lg"
+                :class="darkMode ? 'bg-blue-900/20' : ''"
+              >
+                <h4
+                  class="font-semibold mb-2"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  Did You Know?
+                </h4>
+                <p :class="darkMode ? 'text-gray-300' : ''">
+                  PSW has reduced the average clearance time for imports from 7
+                  days to just 48 hours, and for exports from 3 days to 24
+                  hours, significantly improving Pakistan's ranking in the World
+                  Bank's Ease of Doing Business index.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services Tab -->
+    <div
+      class="tab-pane hidden"
+      id="services"
+      role="tabpanel"
+      aria-labelledby="services-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            How Go Wakeel Helps with PSW Registration
+          </h2>
+          <p class="text-lg mb-8" :class="darkMode ? 'text-gray-300' : ''">
+            Our comprehensive PSW registration services are designed to make the
+            process seamless and stress-free for businesses of all sizes:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-user-plus"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    User Profile Creation
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  We help create your PSW user profile with all required details
+                  for a smooth registration process, ensuring all information
+                  meets regulatory requirements.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-id-card"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    NADRA Verification
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Guiding you through NADRA ID verification and IRIS integration
+                  for proper authentication, including troubleshooting common
+                  verification issues.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-file-upload"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Document Uploads
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Uploading the required business and tax documents in the
+                  correct format and specifications, with pre-submission quality
+                  checks.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-tools"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Technical Support
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Troubleshooting technical issues or rejections to ensure your
+                  application proceeds smoothly, including resolving common
+                  system errors.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-link"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    WeBOC Integration
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Ensuring smooth linkage with Customs WeBOC system if
+                  applicable for your business needs, including profile
+                  synchronization.
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-lg shadow-sm border hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-full"
+              :class="darkMode ? 'bg-gray-800 border-gray-700 hover:shadow-blue-900/30' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-10 h-10 rounded-full bg-[#003366] text-white flex items-center justify-center mr-3"
+                  >
+                    <i class="fas fa-check-double"></i>
+                  </div>
+                  <h5
+                    class="font-bold text-lg"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Approval Assistance
+                  </h5>
+                </div>
+                <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                  Our expert team ensures your registration is approved quickly
+                  and accurately, saving you time and eliminating problems with
+                  follow-up on pending approvals.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 p-6 rounded-lg border"
+            :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+          >
+            <h3
+              class="text-xl font-semibold mb-4"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              Our PSW Registration Process
+            </h3>
+            <ol class="space-y-4">
+              <li class="flex items-start">
+                <span
+                  class="flex items-center justify-center w-6 h-6 bg-[#003366] text-white rounded-full mr-3 flex-shrink-0"
+                  >1</span
+                >
+                <div>
+                  <h4
+                    class="font-medium"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Initial Consultation
+                  </h4>
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    We assess your business needs and determine the appropriate
+                    PSW registration category
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="flex items-center justify-center w-6 h-6 bg-[#003366] text-white rounded-full mr-3 flex-shrink-0"
+                  >2</span
+                >
+                <div>
+                  <h4
+                    class="font-medium"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Document Collection
+                  </h4>
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    We guide you in gathering all necessary documents and verify
+                    their validity
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="flex items-center justify-center w-6 h-6 bg-[#003366] text-white rounded-full mr-3 flex-shrink-0"
+                  >3</span
+                >
+                <div>
+                  <h4
+                    class="font-medium"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Application Submission
+                  </h4>
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    Our experts complete and submit your PSW registration
+                    application
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="flex items-center justify-center w-6 h-6 bg-[#003366] text-white rounded-full mr-3 flex-shrink-0"
+                  >4</span
+                >
+                <div>
+                  <h4
+                    class="font-medium"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Follow-up & Approval
+                  </h4>
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    We monitor your application status and address any queries
+                    from authorities
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="flex items-center justify-center w-6 h-6 bg-[#003366] text-white rounded-full mr-3 flex-shrink-0"
+                  >5</span
+                >
+                <div>
+                  <h4
+                    class="font-medium"
+                    :class="darkMode ? 'text-gray-100' : ''"
+                  >
+                    Onboarding & Training
+                  </h4>
+                  <p :class="darkMode ? 'text-gray-300' : 'text-gray-600'">
+                    We provide guidance on using the PSW platform for your trade
+                    operations
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents Tab -->
+    <div
+      class="tab-pane hidden"
+      id="documents"
+      role="tabpanel"
+      aria-labelledby="documents-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Documents Required for PSW Registration
+          </h2>
+          <p class="text-lg mb-6" :class="darkMode ? 'text-gray-300' : ''">
+            To get started with your PSW registration, you'll need to prepare
+            the following documents:
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-user-check mr-3 text-blue-600"></i>Personal
+                  Identification
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Valid CNIC (Computerized National Identity Card) - front
+                      and back copies</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Registered mobile number (linked with CNIC for OTP
+                      verification)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Active personal email address (not shared with other PSW
+                      accounts)</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-building mr-3 text-blue-600"></i>Business
+                  Documentation
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Business registration documents (SECP certificate for
+                      companies, partnership deed, or sole proprietorship
+                      registration)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Company letterhead (for authorization letters and
+                      declarations)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Memorandum and Articles of Association (for
+                      companies)</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-file-invoice-dollar mr-3 text-blue-600"></i
+                  >Tax Documentation
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Active FBR NTN (National Tax Number) certificate</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >IRIS credentials (username and password for FBR
+                      portal)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Sales Tax Registration certificate (if applicable)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span>Income Tax Return (latest filed)</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-clipboard-list mr-3 text-blue-600"></i
+                  >Additional Requirements
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Authorization letter (if registering on behalf of someone
+                      else)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Digital photograph (passport size with white
+                      background)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Specimen signature (scanned copy on white paper)</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Bank account details (for payment of registration
+                      fees)</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 p-6 rounded-lg border"
+            :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'bg-blue-50 border-blue-100 text-gray-700'"
+          >
+            <h3
+              class="text-xl font-semibold mb-4 flex items-center"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              <i class="fas fa-lightbulb mr-3 text-yellow-500"></i>Document
+              Preparation Tips
+            </h3>
+            <ul class="space-y-2 mb-4">
+              <li class="flex items-start">
+                <i class="fas fa-check mt-1 mr-2 text-green-500"></i>
+                <span
+                  >All documents should be clear, legible scans (300dpi
+                  recommended)</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check mt-1 mr-2 text-green-500"></i>
+                <span>File sizes should not exceed 2MB per document</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check mt-1 mr-2 text-green-500"></i>
+                <span
+                  >Acceptable formats: PDF, JPG, PNG (PDF preferred for
+                  multi-page documents)</span
+                >
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check mt-1 mr-2 text-green-500"></i>
+                <span>Ensure all documents are valid and not expired</span>
+              </li>
+            </ul>
+            <p>
+              Don't worry if you're missing any documents or unsure about the
+              requirements. Our team at Go Wakeel can guide you through the
+              entire process and help you gather all necessary documentation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits Tab -->
+    <div
+      class="tab-pane hidden"
+      id="benefits"
+      role="tabpanel"
+      aria-labelledby="benefits-tab"
+    >
+      <div class="mb-12">
+        <div class="w-full">
+          <h2
+            class="text-2xl font-bold mb-6"
+            :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+          >
+            Key Benefits of PSW Registration
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-clock mr-3 text-blue-600"></i>Time Savings
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Reduce clearance times by up to 70% compared to manual
+                      processes</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Submit all documents through a single platform instead of
+                      multiple agencies</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >24/7 access to submit documents and track application
+                      status</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-money-bill-wave mr-3 text-blue-600"></i>Cost
+                  Reduction
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Eliminate costs associated with physical document
+                      submission</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Reduce demurrage and storage charges with faster
+                      clearances</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Lower compliance costs through standardized
+                      processes</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-shield-alt mr-3 text-blue-600"></i>Compliance
+                  & Security
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Automated validation reduces errors and compliance
+                      risks</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Secure digital platform with audit trails for all
+                      transactions</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Real-time updates on regulatory changes affecting your
+                      business</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="rounded-lg shadow-sm border"
+              :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+            >
+              <div class="p-6">
+                <h3
+                  class="text-xl font-semibold mb-4 flex items-center"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  <i class="fas fa-chart-line mr-3 text-blue-600"></i>Business
+                  Advantages
+                </h3>
+                <ul
+                  class="space-y-3"
+                  :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                >
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Improve your supply chain predictability and
+                      reliability</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Gain competitive advantage with faster turnaround
+                      times</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check-circle mt-1 mr-2 text-green-500"></i>
+                    <span
+                      >Access to trade analytics and performance metrics</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-6 rounded-lg border"
+            :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+          >
+            <h3
+              class="text-xl font-semibold mb-4"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              PSW Impact on Pakistani Trade
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div
+                class="text-center p-4 rounded-lg"
+                :class="darkMode ? 'bg-gray-700' : 'bg-blue-50'"
+              >
+                <div
+                  class="text-3xl font-bold mb-2"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  70%
+                </div>
+                <div :class="darkMode ? 'text-gray-300' : ''">
+                  Reduction in clearance times
+                </div>
+              </div>
+              <div
+                class="text-center p-4 rounded-lg"
+                :class="darkMode ? 'bg-gray-700' : 'bg-blue-50'"
+              >
+                <div
+                  class="text-3xl font-bold mb-2"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  40%
+                </div>
+                <div :class="darkMode ? 'text-gray-300' : ''">
+                  Decrease in trade compliance costs
+                </div>
+              </div>
+              <div
+                class="text-center p-4 rounded-lg"
+                :class="darkMode ? 'bg-gray-700' : 'bg-blue-50'"
+              >
+                <div
+                  class="text-3xl font-bold mb-2"
+                  :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                >
+                  25+
+                </div>
+                <div :class="darkMode ? 'text-gray-300' : ''">
+                  Government agencies integrated
+                </div>
+              </div>
+            </div>
+            <p :class="darkMode ? 'text-gray-300' : ''">
+              Since its launch, PSW has transformed Pakistan's trade ecosystem,
+              making it easier for businesses to comply with regulations while
+              significantly reducing time and costs associated with cross-border
+              trade. The platform continues to add new features and integrate
+              additional government agencies to further streamline processes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter Section -->
+<div
+  class="py-12"
+  :class="darkMode ? 'bg-gradient-to-r from-gray-900 to-blue-950 text-white' : 'bg-gradient-to-r from-gray-100 to-blue-50'"
+>
+  <div class="container max-w-7xl mx-auto px-4">
+    <div
+      class="flex flex-col lg:flex-row items-center justify-between gap-8 p-8 rounded-xl shadow-lg"
+      :class="darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'"
+    >
+      <div class="lg:w-2/3">
+        <h2
+          class="text-3xl font-bold mb-4"
+          :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+        >
+          Stay Updated with PSW News
+        </h2>
+        <p
+          class="text-lg mb-6"
+          :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+        >
+          Subscribe to our newsletter to receive updates on Pakistan Single
+          Window events, networking opportunities, and business development
+          resources.
+        </p>
+      </div>
+      <div class="lg:w-1/3 w-full">
+        <form class="space-y-4">
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium mb-2"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+              >Email Address</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:outline-none transition-colors duration-300"
+              :class="darkMode ? 'bg-gray-700 border-gray-600 text-white focus:ring-blue-500' : 'bg-white border-gray-300 text-gray-900 focus:ring-blue-600'"
+              required
+            />
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="w-full px-6 py-3 text-white font-medium rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+              :class="darkMode ? 'bg-blue-800 hover:bg-blue-700' : 'bg-[#002244] hover:bg-[#003366]'"
+            >
+              <i class="fas fa-paper-plane mr-2"></i>
+              Subscribe Now
+            </button>
+          </div>
+          <p
+            class="text-xs text-center mt-2"
+            :class="darkMode ? 'text-gray-400' : 'text-gray-500'"
+          >
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- JavaScript for Tab Functionality -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get all tab buttons and content
+    const tabButtons = document.querySelectorAll("[data-tab-target]");
+    const tabContents = document.querySelectorAll(".tab-pane");
+
+    // Function to switch tabs
+    function switchTab(tabId) {
+      // Hide all tab contents
+      tabContents.forEach((content) => {
+        content.classList.add("hidden");
+        content.classList.remove("active");
+      });
+
+      // Show selected tab content
+      const targetContent = document.querySelector(tabId);
+      if (targetContent) {
+        targetContent.classList.remove("hidden");
+        targetContent.classList.add("active");
+      }
+
+      // Update tab button states
+      tabButtons.forEach((button) => {
+        button.classList.remove(
+          "active",
+          "border-blue-400",
+          "text-blue-400",
+          "border-[#003366]",
+          "text-[#003366]"
+        );
+        button.setAttribute("aria-selected", "false");
+
+        if (button.getAttribute("data-tab-target") === tabId) {
+          button.classList.add("active");
+          if (document.documentElement.classList.contains("dark")) {
+            button.classList.add("border-blue-400", "text-blue-400");
+          } else {
+            button.classList.add("border-[#003366]", "text-[#003366]");
+          }
+          button.setAttribute("aria-selected", "true");
+        }
+      });
+    }
+
+    // Add click event to each tab button
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const tabId = button.getAttribute("data-tab-target");
+        switchTab(tabId);
+
+        // Update URL hash
+        history.pushState(null, null, tabId);
+      });
+    });
+
+    // Check URL hash on page load
+    if (window.location.hash) {
+      const hashTab = document.querySelector(
+        `[data-tab-target="${window.location.hash}"]`
+      );
+      if (hashTab) {
+        hashTab.click();
+      }
+    }
+
+    // Initialize accordion functionality
+    const accordionHeaders = document.querySelectorAll(
+      "[data-accordion-target]"
+    );
+
+    accordionHeaders.forEach((header) => {
+      header.addEventListener("click", () => {
+        const targetId = header.getAttribute("data-accordion-target");
+        const targetContent = document.querySelector(targetId);
+
+        // Toggle content visibility
+        if (targetContent.classList.contains("hidden")) {
+          targetContent.classList.remove("hidden");
+          header.querySelector(".fa-chevron-down")?.classList.add("rotate-180");
+        } else {
+          targetContent.classList.add("hidden");
+          header
+            .querySelector(".fa-chevron-down")
+            ?.classList.remove("rotate-180");
+        }
+      });
+    });
+  });
+</script>
+{% endblock Content %}

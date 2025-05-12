@@ -1,0 +1,1827 @@
+{% extends 'wakeelapp/index.html' %} {% load static %} {% block title %}Book
+Keeping & Audit Services - Go Wakeel{% endblock %} {% block Content %}
+<!-- Hero Section -->
+<div class="relative bg-gradient-to-r from-[#003366] to-[#006699] py-20">
+  <div class="absolute inset-0 bg-pattern opacity-10"></div>
+  <div class="container max-w-7xl mx-auto px-4 relative z-10">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+        Book Keeping & Audit Services
+      </h1>
+      <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+        Professional financial management solutions for businesses of all sizes
+        in Pakistan
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="py-16" x-data="{ activeTab: 'overview', darkMode: false }">
+  <!-- Scroll to Top Button -->
+  <div
+    id="scrollTopBtn"
+    class="fixed bottom-4 right-4 z-50 opacity-0 transition-opacity duration-300"
+  >
+    <button
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+      class="p-3 rounded-full shadow-lg transition-colors duration-200 bg-[#003366] text-white hover:bg-[#002244]"
+      aria-label="Scroll to top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+  <div class="container max-w-7xl mx-auto px-4">
+    <!-- Tabs -->
+    <div
+      class="mb-12 border-b"
+      :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+    >
+      <ul
+        class="flex flex-wrap -mb-px text-sm font-medium text-center"
+        role="tablist"
+      >
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
+            :class="activeTab === 'overview' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : ''"
+            id="overview-tab"
+            data-tabs-target="#overview"
+            type="button"
+            role="tab"
+            aria-controls="overview"
+            aria-selected="true"
+            @click="activeTab = 'overview'"
+          >
+            Overview
+          </button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
+            :class="activeTab === 'services' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : ''"
+            id="services-tab"
+            data-tabs-target="#services"
+            type="button"
+            role="tab"
+            aria-controls="services"
+            aria-selected="false"
+            @click="activeTab = 'services'"
+          >
+            Our Services
+          </button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
+            :class="activeTab === 'clients' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : ''"
+            id="clients-tab"
+            data-tabs-target="#clients"
+            type="button"
+            role="tab"
+            aria-controls="clients"
+            aria-selected="false"
+            @click="activeTab = 'clients'"
+          >
+            Who We Serve
+          </button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button
+            class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300"
+            :class="activeTab === 'benefits' ? (darkMode ? 'border-blue-400 text-blue-400' : 'border-[#003366] text-[#003366]') : ''"
+            id="benefits-tab"
+            data-tabs-target="#benefits"
+            type="button"
+            role="tab"
+            aria-controls="benefits"
+            aria-selected="false"
+            @click="activeTab = 'benefits'"
+          >
+            Benefits
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Overview Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="overview"
+        role="tabpanel"
+        x-show="activeTab === 'overview'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2
+              class="text-2xl font-bold mb-6"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              Professional Bookkeeping & Audit Services
+            </h2>
+            <p
+              class="text-lg mb-8"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+            >
+              Every successful business starts with strong financial records. At
+              Go Wakeel, we offer professional bookkeeping and audit services in
+              Pakistan, helping startups, SMEs, and established companies
+              maintain accurate books, stay compliant with tax laws, and make
+              confident financial decisions.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mb-6"
+                  >
+                    <i class="fas fa-book text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Why Bookkeeping Matters
+                  </h3>
+                  <p
+                    class="mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Bookkeeping is more than just recording transactions—it's
+                    the foundation of your financial health. Timely and accurate
+                    bookkeeping helps you:
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Track income, expenses, and cash flow</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Prepare for tax filing and compliance</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Make data-driven business decisions</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Avoid penalties due to inaccurate records</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Stay audit-ready at all times</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mb-6"
+                  >
+                    <i class="fas fa-chart-line text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Our Approach
+                  </h3>
+                  <p
+                    class="mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We understand that every business has unique financial
+                    needs. Our approach combines:
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span
+                        >Personalized service tailored to your industry</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Modern accounting software and technology</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span
+                        >Experienced professionals with industry knowledge</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span
+                        >Compliance with Pakistani tax laws and
+                        regulations</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-3 text-green-500"
+                      ></i>
+                      <span>Regular reporting and financial insights</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="p-6 rounded-lg border bg-blue-50 border-blue-100"
+              :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 flex items-center"
+                :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+              >
+                <i class="fas fa-lightbulb mr-3 text-yellow-500"></i>Why Choose
+                Go Wakeel?
+              </h3>
+              <p class="mb-4">
+                Our bookkeeping and audit services stand out because we focus on
+                more than just numbers. We provide actionable financial insights
+                that help your business grow and thrive in Pakistan's
+                competitive market.
+              </p>
+              <p>
+                Whether you're a startup looking to establish proper financial
+                systems or an established business needing to streamline your
+                accounting processes, our team has the expertise to support your
+                financial management needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="services"
+        role="tabpanel"
+        x-show="activeTab === 'services'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2
+              class="text-2xl font-bold mb-6"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              Our Bookkeeping Services
+            </h2>
+            <p
+              class="text-lg mb-8"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+            >
+              We tailor our services to your business size and industry. Our
+              expert team handles a comprehensive range of bookkeeping and audit
+              services to keep your finances in order.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <!-- Service 1 -->
+              <div
+                class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fas fa-calculator text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-center mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Daily/Monthly Financial Entries
+                  </h3>
+                  <p
+                    class="text-center mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Accurate recording of all financial transactions to maintain
+                    up-to-date books.
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Sales and purchase recording</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Expense categorization</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Revenue tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Journal entries</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Service 2 -->
+              <div
+                class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fas fa-university text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-center mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Bank Reconciliation Statements
+                  </h3>
+                  <p
+                    class="text-center mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Regular reconciliation to ensure your books match your bank
+                    statements.
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Monthly reconciliations</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Discrepancy identification</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Error correction</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Cash flow verification</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Service 3 -->
+              <div
+                class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fas fa-file-invoice-dollar text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-center mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Accounts Payable & Receivable
+                  </h3>
+                  <p
+                    class="text-center mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Comprehensive tracking of what you owe and what's owed to
+                    you.
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Invoice management</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Payment tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Aging reports</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Vendor/client management</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Service 4 -->
+              <div
+                class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fas fa-users text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-center mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Payroll Processing
+                  </h3>
+                  <p
+                    class="text-center mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Accurate and timely payroll management for your employees.
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Salary calculations</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Tax deductions</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Benefits management</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Payslip generation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- ... existing code ... -->
+              <!-- Service 5 -->
+              <div
+                class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fas fa-chart-pie text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-center mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Financial Reports
+                  </h3>
+                  <p
+                    class="text-center mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Comprehensive financial reporting for business insights.
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Profit & Loss statements</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Balance sheets</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Cash flow statements</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Custom management reports</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Service 6 -->
+              <div
+                class="rounded-lg shadow-lg border hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div class="p-6">
+                  <div
+                    class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fas fa-boxes text-2xl"></i>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-center mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Inventory Management
+                  </h3>
+                  <p
+                    class="text-center mb-6"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    Accurate tracking and management of your inventory assets.
+                  </p>
+                  <ul
+                    class="space-y-3"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Stock level tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Inventory valuation</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Purchase order management</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Inventory reconciliation</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="p-6 rounded-lg border bg-blue-50 border-blue-100 mb-8"
+              :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 flex items-center"
+                :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+              >
+                <i class="fas fa-laptop-code mr-3 text-blue-500"></i>Software
+                Solutions
+              </h3>
+              <p class="mb-4">
+                We use industry-standard software like QuickBooks, Xero, and
+                Excel, and offer both cloud-based and offline bookkeeping
+                solutions tailored to your business needs.
+              </p>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                <div
+                  class="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm"
+                  :class="darkMode ? 'bg-gray-800' : ''"
+                >
+                  <span class="font-medium">QuickBooks</span>
+                </div>
+                <div
+                  class="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm"
+                  :class="darkMode ? 'bg-gray-800' : ''"
+                >
+                  <span class="font-medium">Xero</span>
+                </div>
+                <div
+                  class="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm"
+                  :class="darkMode ? 'bg-gray-800' : ''"
+                >
+                  <span class="font-medium">Excel</span>
+                </div>
+                <div
+                  class="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm"
+                  :class="darkMode ? 'bg-gray-800' : ''"
+                >
+                  <span class="font-medium">Custom Solutions</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Clients Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="clients"
+        role="tabpanel"
+        x-show="activeTab === 'clients'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2
+              class="text-2xl font-bold mb-6"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              Who We Serve
+            </h2>
+            <p
+              class="text-lg mb-8"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+            >
+              Our bookkeeping and audit services are designed to meet the needs
+              of various businesses and organizations across Pakistan. We work
+              with clients of all sizes, from startups to established
+              enterprises.
+            </p>
+
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+            >
+              <!-- Client Type 1 -->
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div
+                  class="h-40 bg-gradient-to-r from-blue-600 to-blue-400 flex items-center justify-center"
+                >
+                  <i class="fas fa-building text-white text-5xl"></i>
+                </div>
+                <div class="p-6">
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    SMEs and Corporates
+                  </h3>
+                  <p
+                    class="mb-4"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We help small and medium enterprises as well as larger
+                    corporations maintain accurate financial records, comply
+                    with tax regulations, and make informed business decisions.
+                  </p>
+                  <ul
+                    class="space-y-2"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Comprehensive bookkeeping services</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Tax compliance and planning</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Financial reporting and analysis</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Client Type 2 -->
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div
+                  class="h-40 bg-gradient-to-r from-green-600 to-green-400 flex items-center justify-center"
+                >
+                  <i class="fas fa-laptop text-white text-5xl"></i>
+                </div>
+                <div class="p-6">
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Freelancers and eCommerce Sellers
+                  </h3>
+                  <p
+                    class="mb-4"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We provide tailored bookkeeping solutions for freelancers,
+                    digital entrepreneurs, and online sellers to manage their
+                    unique financial needs.
+                  </p>
+                  <ul
+                    class="space-y-2"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Income and expense tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Sales tax management</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Business expense optimization</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Client Type 3 -->
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div
+                  class="h-40 bg-gradient-to-r from-purple-600 to-purple-400 flex items-center justify-center"
+                >
+                  <i class="fas fa-hands-helping text-white text-5xl"></i>
+                </div>
+                <div class="p-6">
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    NGOs and Trusts
+                  </h3>
+                  <p
+                    class="mb-4"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We offer specialized bookkeeping services for non-profit
+                    organizations, ensuring compliance with regulatory
+                    requirements and transparent financial management.
+                  </p>
+                  <ul
+                    class="space-y-2"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Donor fund tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Grant management</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Regulatory compliance</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Client Type 4 -->
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div
+                  class="h-40 bg-gradient-to-r from-red-600 to-red-400 flex items-center justify-center"
+                >
+                  <i class="fas fa-school text-white text-5xl"></i>
+                </div>
+                <div class="p-6">
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Educational Institutions
+                  </h3>
+                  <p
+                    class="mb-4"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We provide comprehensive financial management services for
+                    schools, colleges, and educational institutes to maintain
+                    accurate records and ensure compliance.
+                  </p>
+                  <ul
+                    class="space-y-2"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Fee management systems</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Payroll for teaching staff</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Budget planning and monitoring</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Client Type 5 -->
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div
+                  class="h-40 bg-gradient-to-r from-yellow-600 to-yellow-400 flex items-center justify-center"
+                >
+                  <i class="fas fa-industry text-white text-5xl"></i>
+                </div>
+                <div class="p-6">
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Manufacturing and Trading Firms
+                  </h3>
+                  <p
+                    class="mb-4"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We offer specialized bookkeeping services for manufacturing
+                    and trading businesses, focusing on inventory management and
+                    cost accounting.
+                  </p>
+                  <ul
+                    class="space-y-2"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Inventory and cost accounting</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Supply chain financial tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Production cost analysis</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Client Type 6 -->
+              <div
+                class="rounded-lg shadow-lg border overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                :class="darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'"
+              >
+                <div
+                  class="h-40 bg-gradient-to-r from-indigo-600 to-indigo-400 flex items-center justify-center"
+                >
+                  <i class="fas fa-code text-white text-5xl"></i>
+                </div>
+                <div class="p-6">
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                  >
+                    Tech Startups and Software Houses
+                  </h3>
+                  <p
+                    class="mb-4"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    We provide modern bookkeeping solutions for technology
+                    companies, helping them manage their unique financial
+                    requirements and growth challenges.
+                  </p>
+                  <ul
+                    class="space-y-2"
+                    :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+                  >
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>SaaS revenue recognition</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Investor reporting</span>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check-circle mt-1 mr-2 text-green-500"
+                      ></i>
+                      <span>Burn rate and runway tracking</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="p-6 rounded-lg border bg-blue-50 border-blue-100"
+              :class="darkMode ? 'bg-blue-900/20 border-blue-800 text-gray-300' : 'text-gray-700'"
+            >
+              <h3
+                class="text-xl font-semibold mb-4 flex items-center"
+                :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+              >
+                <i class="fas fa-handshake mr-3 text-blue-500"></i>Our Client
+                Commitment
+              </h3>
+              <p class="mb-4">
+                Regardless of your business size or industry, we are committed
+                to providing personalized bookkeeping services that meet your
+                specific needs. Our team takes the time to understand your
+                business operations and financial goals to deliver tailored
+                solutions.
+              </p>
+              <p>
+                We pride ourselves on building long-term relationships with our
+                clients, becoming trusted financial partners rather than just
+                service providers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Tab -->
+      <div
+        class="tab-pane animate__animated animate__fadeIn"
+        id="benefits"
+        role="tabpanel"
+        x-show="activeTab === 'benefits'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+      >
+        <div class="mb-12">
+          <div class="w-full">
+            <h2
+              class="text-2xl font-bold mb-6"
+              :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+            >
+              Benefits of Our Bookkeeping Services
+            </h2>
+            <p
+              class="text-lg mb-8"
+              :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+            >
+              Partnering with Go Wakeel for your bookkeeping and audit needs
+              brings numerous advantages to your business. Here's how our
+              services can help you succeed:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <!-- Benefits Column 1 -->
+              <div>
+                <!-- Benefit 1 -->
+                <div class="mb-8 flex">
+                  <div class="mr-5 flex-shrink-0">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center"
+                    >
+                      <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-xl font-bold mb-3"
+                      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                    >
+                      Save Time and Focus on Growth
+                    </h3>
+                    <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      Outsourcing your bookkeeping to our experts frees up
+                      valuable time that you can invest in growing your
+                      business. Let us handle the numbers while you focus on
+                      what you do best.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="mb-8 flex">
+                  <div class="mr-5 flex-shrink-0">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center"
+                    >
+                      <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-xl font-bold mb-3"
+                      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                    >
+                      Make Better Business Decisions
+                    </h3>
+                    <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      Accurate financial records and regular reports provide the
+                      insights you need to make informed business decisions.
+                      Understand your financial position clearly and plan for
+                      the future with confidence.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="mb-8 flex">
+                  <div class="mr-5 flex-shrink-0">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center"
+                    >
+                      <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-xl font-bold mb-3"
+                      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                    >
+                      Ensure Compliance and Reduce Risk
+                    </h3>
+                    <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      Stay compliant with Pakistani tax laws and regulations.
+                      Our team keeps up with changing requirements to help you
+                      avoid penalties, fines, and legal issues related to
+                      financial reporting.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Benefits Column 2 -->
+              <div>
+                <!-- Benefit 4 -->
+                <div class="mb-8 flex">
+                  <div class="mr-5 flex-shrink-0">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center"
+                    >
+                      <i class="fas fa-coins text-2xl"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-xl font-bold mb-3"
+                      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                    >
+                      Cost-Effective Solution
+                    </h3>
+                    <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      Hiring our bookkeeping services is more cost-effective
+                      than maintaining an in-house accounting department. Save
+                      on salaries, benefits, training, and accounting software
+                      while getting professional expertise.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="mb-8 flex">
+                  <div class="mr-5 flex-shrink-0">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center"
+                    >
+                      <i class="fas fa-users-cog text-2xl"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-xl font-bold mb-3"
+                      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                    >
+                      Access to Expert Knowledge
+                    </h3>
+                    <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      Benefit from our team's extensive experience and expertise
+                      in Pakistani accounting practices. We bring
+                      industry-specific knowledge and best practices to your
+                      financial management.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div class="mb-8 flex">
+                  <div class="mr-5 flex-shrink-0">
+                    <div
+                      class="w-16 h-16 rounded-full bg-[#003366] text-white flex items-center justify-center"
+                    >
+                      <i class="fas fa-tasks text-2xl"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-xl font-bold mb-3"
+                      :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+                    >
+                      Scalable Services
+                    </h3>
+                    <p :class="darkMode ? 'text-gray-300' : 'text-gray-700'">
+                      Our bookkeeping services grow with your business. Whether
+                      you're a startup or an established company, we adjust our
+                      services to match your changing needs without the hassle
+                      of hiring additional staff.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Call to Action Section -->
+<div class="bg-gray-100 py-16" :class="darkMode ? 'bg-gray-800' : ''">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-8">
+      <h2
+        class="text-3xl font-bold mb-4"
+        :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+      >
+        Ready to Get Your Finances in Order?
+      </h2>
+      <p
+        class="text-lg max-w-3xl mx-auto mb-8"
+        :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+      >
+        Let our expert team handle your bookkeeping needs so you can focus on
+        growing your business. Contact us today for a consultation.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a
+          href="#"
+          class="bg-[#003366] text-white px-8 py-3 rounded-full hover:bg-[#002244] transition"
+          :class="darkMode? 'bg-blue-500 hover:bg-blue-600' : ''"
+        >
+          Contact Us
+        </a>
+        <a
+          href="#"
+          class="border border-[#003366] text-[#003366] px-8 py-3 rounded-full hover:bg-gray-100 transition"
+          :class="darkMode? 'border-blue-500 text-blue-400 hover:bg-gray-700' : ''"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ Section -->
+<div class="py-16" :class="darkMode ? 'bg-gray-900' : 'bg-white'">
+  <div class="container max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2
+        class="text-3xl font-bold mb-4"
+        :class="darkMode ? 'text-blue-300' : 'text-[#003366]'"
+      >
+        Frequently Asked Questions
+      </h2>
+      <p
+        class="text-lg max-w-3xl mx-auto"
+        :class="darkMode ? 'text-gray-300' : 'text-gray-700'"
+      >
+        Get answers to common questions about our bookkeeping and audit services
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto" x-data="{openFaq: null}">
+      <!-- FAQ Item 1 -->
+      <div
+        class="mb-4 border rounded-lg overflow-hidden"
+        :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+      >
+        <button
+          @click="openFaq === 1 ? openFaq = null : openFaq = 1"
+          class="flex justify-between items-center w-full p-5 text-left"
+          :class="darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50'"
+        >
+          <span
+            class="font-medium"
+            :class="darkMode ? 'text-white' : 'text-gray-900'"
+            >What bookkeeping services do you offer?</span
+          >
+          <svg
+            class="w-5 h-5 transition-transform"
+            :class="openFaq === 1 ? 'transform rotate-180' : ''"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div
+          x-show="openFaq === 1"
+          class="p-5 border-t"
+          :class="darkMode ? 'border-gray-700 bg-gray-800 text-gray-300' : 'border-gray-200 bg-white text-gray-700'"
+        >
+          <p>
+            We offer a comprehensive range of bookkeeping services including
+            daily/monthly financial entries, bank reconciliation, accounts
+            payable and receivable management, payroll processing, financial
+            reporting, tax preparation, and audit support. Our services can be
+            customized to meet your specific business needs.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div
+        class="mb-4 border rounded-lg overflow-hidden"
+        :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+      >
+        <button
+          @click="openFaq === 2 ? openFaq = null : openFaq = 2"
+          class="flex justify-between items-center w-full p-5 text-left"
+          :class="darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50'"
+        >
+          <span
+            class="font-medium"
+            :class="darkMode ? 'text-white' : 'text-gray-900'"
+            >How often will I receive financial reports?</span
+          >
+          <svg
+            class="w-5 h-5 transition-transform"
+            :class="openFaq === 2 ? 'transform rotate-180' : ''"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div
+          x-show="openFaq === 2"
+          class="p-5 border-t"
+          :class="darkMode ? 'border-gray-700 bg-gray-800 text-gray-300' : 'border-gray-200 bg-white text-gray-700'"
+        >
+          <p>
+            We typically provide monthly financial reports, but we can adjust
+            the frequency based on your business needs. Our standard reporting
+            package includes profit and loss statements, balance sheets, and
+            cash flow statements. We can also create custom reports to track
+            specific metrics important to your business.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div
+        class="mb-4 border rounded-lg overflow-hidden"
+        :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+      >
+        <button
+          @click="openFaq === 3 ? openFaq = null : openFaq = 3"
+          class="flex justify-between items-center w-full p-5 text-left"
+          :class="darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50'"
+        >
+          <span
+            class="font-medium"
+            :class="darkMode ? 'text-white' : 'text-gray-900'"
+            >What accounting software do you use?</span
+          >
+          <svg
+            class="w-5 h-5 transition-transform"
+            :class="openFaq === 3 ? 'transform rotate-180' : ''"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div
+          x-show="openFaq === 3"
+          class="p-5 border-t"
+          :class="darkMode ? 'border-gray-700 bg-gray-800 text-gray-300' : 'border-gray-200 bg-white text-gray-700'"
+        >
+          <p>
+            We are proficient in various accounting software platforms including
+            QuickBooks, Xero, and Excel. We can work with your existing system
+            or recommend the best solution for your business. We also offer
+            cloud-based options that allow you to access your financial
+            information anytime, anywhere.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div
+        class="mb-4 border rounded-lg overflow-hidden"
+        :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+      >
+        <button
+          @click="openFaq === 4 ? openFaq = null : openFaq = 4"
+          class="flex justify-between items-center w-full p-5 text-left"
+          :class="darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50'"
+        >
+          <span
+            class="font-medium"
+            :class="darkMode ? 'text-white' : 'text-gray-900'"
+            >How do you ensure data security and confidentiality?</span
+          >
+          <svg
+            class="w-5 h-5 transition-transform"
+            :class="openFaq === 4 ? 'transform rotate-180' : ''"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div
+          x-show="openFaq === 4"
+          class="p-5 border-t"
+          :class="darkMode ? 'border-gray-700 bg-gray-800 text-gray-300' : 'border-gray-200 bg-white text-gray-700'"
+        >
+          <p>
+            We take data security very seriously. We implement industry-standard
+            encryption, secure password policies, and regular security audits.
+            All client information is treated with strict confidentiality, and
+            we sign non-disclosure agreements to protect your sensitive
+            financial data. Our team members are trained in data protection best
+            practices.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div
+        class="mb-4 border rounded-lg overflow-hidden"
+        :class="darkMode ? 'border-gray-700' : 'border-gray-200'"
+      >
+        <button
+          @click="openFaq === 5 ? openFaq = null : openFaq = 5"
+          class="flex justify-between items-center w-full p-5 text-left"
+          :class="darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-50'"
+        >
+          <span
+            class="font-medium"
+            :class="darkMode ? 'text-white' : 'text-gray-900'"
+            >Can you help with tax preparation and compliance?</span
+          >
+          <svg
+            class="w-5 h-5 transition-transform"
+            :class="openFaq === 5 ? 'transform rotate-180' : ''"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            ></path>
+          </svg>
+        </button>
+        <div
+          x-show="openFaq === 5"
+          class="p-5 border-t"
+          :class="darkMode ? 'border-gray-700 bg-gray-800 text-gray-300' : 'border-gray-200 bg-white text-gray-700'"
+        >
+          <p>
+            Yes, we provide comprehensive tax preparation and compliance
+            services. Our team stays up-to-date with Pakistani tax laws and
+            regulations to ensure your business remains compliant. We can help
+            with sales tax, income tax, and other tax filings, as well as
+            provide strategic tax planning advice to minimize your tax liability
+            legally.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for Enhanced Functionality -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Alpine.js data if not already initialized
+    if (typeof Alpine !== "undefined") {
+      // Wait for Alpine to initialize
+      document.addEventListener("alpine:initialized", () => {
+        // Detect system dark mode preference
+        const prefersDarkMode = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        // Get the Alpine component
+        const alpineEl = document.querySelector("[x-data]");
+        if (alpineEl && alpineEl.__x) {
+          const alpineData = alpineEl.__x.$data;
+
+          // Set dark mode based on system preference if not already set in localStorage
+          if (localStorage.getItem("darkMode") === null) {
+            alpineData.darkMode = prefersDarkMode;
+          } else {
+            alpineData.darkMode = localStorage.getItem("darkMode") === "true";
+          }
+
+          // Watch for changes to darkMode and save to localStorage
+          Alpine.effect(() => {
+            localStorage.setItem("darkMode", alpineData.darkMode);
+
+            // Apply dark mode to body for global styling
+            if (alpineData.darkMode) {
+              document.body.classList.add("dark-mode");
+            } else {
+              document.body.classList.remove("dark-mode");
+            }
+          });
+        }
+      });
+
+      // If Alpine is already initialized, try direct approach
+      setTimeout(() => {
+        const alpineEl = document.querySelector("[x-data]");
+        if (alpineEl && alpineEl.__x) {
+          const prefersDarkMode = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          const alpineData = alpineEl.__x.$data;
+
+          if (localStorage.getItem("darkMode") === null) {
+            alpineData.darkMode = prefersDarkMode;
+          } else {
+            alpineData.darkMode = localStorage.getItem("darkMode") === "true";
+          }
+        }
+      }, 100);
+    }
+
+    // Enhanced tab switching with animation
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    const tabPanes = document.querySelectorAll(".tab-pane");
+
+    function activateTab(tabId) {
+      // Hide all tab panes first
+      tabPanes.forEach((pane) => {
+        pane.classList.add("hidden");
+      });
+
+      // Show the selected tab pane
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) {
+        targetPane.classList.remove("hidden");
+
+        // Add animation classes
+        targetPane.classList.add("animate__animated", "animate__fadeIn");
+
+        // Smooth scroll to the section
+        window.scrollTo({
+          top: targetPane.offsetTop - 100, // Offset for header
+          behavior: "smooth",
+        });
+      }
+
+      // Update active state on tab buttons
+      tabButtons.forEach((btn) => {
+        const controls = btn.getAttribute("aria-controls");
+        if (controls === tabId) {
+          btn.setAttribute("aria-selected", "true");
+        } else {
+          btn.setAttribute("aria-selected", "false");
+        }
+      });
+    }
+
+    // Add click event to tab buttons
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("aria-controls");
+        if (targetId) {
+          // Update URL hash for bookmarking
+          window.history.replaceState(null, null, `#${targetId}`);
+          activateTab(targetId);
+        }
+      });
+    });
+
+    // Check for hash in URL to activate correct tab on page load
+    if (window.location.hash) {
+      const tabId = window.location.hash.substring(1);
+      const tabButton = document.querySelector(`[aria-controls="${tabId}"]`);
+      if (tabButton) {
+        // Simulate click on the tab button
+        setTimeout(() => {
+          tabButton.click();
+        }, 100);
+      }
+    }
+
+    // Handle form submission with validation
+    const contactForm = document.querySelector("form");
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Basic form validation
+        let isValid = true;
+        const requiredFields = ["name", "email", "phone", "service"];
+
+        requiredFields.forEach((field) => {
+          const input = document.getElementById(field);
+          if (input && !input.value.trim()) {
+            isValid = false;
+            input.classList.add("border-red-500");
+
+            // Add shake animation to invalid fields
+            input.classList.add("animate__animated", "animate__shakeX");
+            setTimeout(() => {
+              input.classList.remove("animate__animated", "animate__shakeX");
+            }, 1000);
+          } else if (input) {
+            input.classList.remove("border-red-500");
+          }
+        });
+
+        // Email validation
+        const emailInput = document.getElementById("email");
+        if (emailInput && emailInput.value) {
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(emailInput.value)) {
+            isValid = false;
+            emailInput.classList.add("border-red-500");
+            emailInput.classList.add("animate__animated", "animate__shakeX");
+            setTimeout(() => {
+              emailInput.classList.remove(
+                "animate__animated",
+                "animate__shakeX"
+              );
+            }, 1000);
+          }
+        }
+
+        if (isValid) {
+          // Show success message with animation
+          const successMessage = document.createElement("div");
+          successMessage.className =
+            "mt-4 p-3 bg-green-100 text-green-700 rounded-lg animate__animated animate__fadeIn";
+          successMessage.textContent =
+            "Thank you for your message! We will get back to you soon.";
+
+          contactForm.appendChild(successMessage);
+
+          // Reset form
+          contactForm.reset();
+
+          // Remove success message after 5 seconds with fade out animation
+          setTimeout(() => {
+            successMessage.classList.remove("animate__fadeIn");
+            successMessage.classList.add("animate__fadeOut");
+
+            setTimeout(() => {
+              successMessage.remove();
+            }, 1000);
+          }, 4000);
+        }
+      });
+    }
+
+    // Initialize animations for service cards with staggered effect
+    const serviceCards = document.querySelectorAll(".rounded-lg.shadow-lg");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+              // Add staggered delay based on index
+              setTimeout(() => {
+                entry.target.classList.add(
+                  "animate__animated",
+                  "animate__fadeIn"
+                );
+              }, index * 150); // 150ms delay between each card
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      serviceCards.forEach((card) => {
+        observer.observe(card);
+      });
+    }
+
+    // Handle scroll-to-top button visibility
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) {
+      // Show button when page is scrolled down
+      window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 300) {
+          scrollTopBtn.classList.add("opacity-100");
+        } else {
+          scrollTopBtn.classList.remove("opacity-100");
+        }
+      });
+
+      // Initial check in case page is loaded scrolled down
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add("opacity-100");
+      }
+    }
+
+    // Add hover effects to service cards
+    serviceCards.forEach((card) => {
+      card.addEventListener("mouseenter", function () {
+        this.classList.add("transform", "scale-105");
+      });
+
+      card.addEventListener("mouseleave", function () {
+        this.classList.remove("transform", "scale-105");
+      });
+    });
+
+    // Add smooth scrolling to all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (targetId !== "#") {
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: "smooth",
+            });
+          }
+        }
+      });
+    });
+  });
+</script>
+
+{% endblock Content %}

@@ -25,6 +25,15 @@ urlpatterns =[
     path('zakatcalculator/', views.zakatcalculator, name="zakatcalculator"),
     path('currencyconvert/', views.currencyconvert, name="currencyconvert"),
     path('services/', views.services, name="services"),
+    path('taxreturn/', views.taxreturn, name="taxreturn"),
+    path('compnayregistration/', views.companyregistration, name="companyregistration"),
+    path('karachichamber/', views.karachichamber, name="karachichamber"),
+    path('pswregistration/', views.pswregistration, name="pswregistration"),
+    path('pseb/', views.pseb, name="pseb"),
+    path('trademark/', views.trademark, name="trademark"),
+    path('schoolngo', views.schoolngo, name="schoolngo"),
+    path('propertytransfer/', views.propertytransfer, name="propertytransfer"),
+    path('auditservice/', views.auditservice, name="auditservice"),
 ]
 
 
