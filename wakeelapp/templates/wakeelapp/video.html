@@ -69,6 +69,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <iframe class="absolute top-0 left-0 w-full h-full hidden" src="{{video.link}}" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                 </div>
                 <div class="p-6">
@@ -252,9 +253,28 @@
                   el.style.transform = 'translateY(0)';
               });
           });
+          
+          // Add hover functionality for video playback
+          document.querySelectorAll('.video-item').forEach(item => {
+              const thumbnailContainer = item.querySelector('.video-thumbnail-container');
+              
+              // Play video on hover
+              item.addEventListener('mouseenter', () => {
+                  if (thumbnailContainer) {
+                      playVideo(thumbnailContainer);
+                  }
+              });
+              
+              // Stop video when mouse leaves
+              item.addEventListener('mouseleave', () => {
+                  if (thumbnailContainer) {
+                      stopVideo(thumbnailContainer);
+                  }
+              });
+          });
       });
       
-      // Function to play video when thumbnail is clicked
+      // Function to play video when thumbnail is clicked or hovered
       function playVideo(element) {
           const container = element.closest('.relative');
           const iframe = container.querySelector('iframe');
@@ -269,6 +289,20 @@
           if (src.indexOf('autoplay=1') === -1) {
               iframe.src = src + (src.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
           }
+      }
+      
+      // Function to stop video playback
+      function stopVideo(element) {
+          const container = element.closest('.relative');
+          const iframe = container.querySelector('iframe');
+          const thumbnail = container.querySelector('.video-thumbnail-container');
+          
+          // Hide iframe and show thumbnail
+          iframe.classList.add('hidden');
+          thumbnail.classList.remove('hidden');
+          
+          // Reset iframe src to stop playback
+          iframe.src = iframe.src.split('?')[0];
       }
       
       // Function to share video
