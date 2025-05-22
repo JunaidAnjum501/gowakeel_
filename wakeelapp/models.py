@@ -16,6 +16,8 @@ class BlogCategory(models.Model):
 
 class Blogs(models.Model):
     category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE,related_name="blogs")
+    meta_title = models.CharField(max_length=255, blank=True)
+    meta_description = models.TextField(blank=True)
     title = models.CharField(max_length=255)
     content = CKEditor5Field('Text', config_name='extends')
     slug = models.SlugField(max_length=255, unique=True)
